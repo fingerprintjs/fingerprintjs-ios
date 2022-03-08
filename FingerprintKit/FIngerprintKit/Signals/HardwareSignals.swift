@@ -18,5 +18,12 @@ class HardwareSignals {
     var deviceModel: String {
         return device.model
     }
+    
+    var deviceModelSignal: DeviceModelSignal {
+        return DeviceModelSignal(value: device.model)
+    }
 }
 
+struct DeviceModelSignal: Fingerprintable {
+    var value: String
+}

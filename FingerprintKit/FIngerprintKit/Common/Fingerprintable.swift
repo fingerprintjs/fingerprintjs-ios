@@ -6,3 +6,16 @@
 //
 
 import Foundation
+
+protocol Fingerprintable {
+    associatedtype Value
+    
+    var value: Value { get }
+    var hash: String { get }
+}
+
+extension Fingerprintable where Value: Hashable {
+    var hash: String {
+        return String(value.hashValue)
+    }
+}
