@@ -22,14 +22,16 @@ public protocol HardwareInfoHarvesting {
 public class HardwareInfoHarvester {
     private let device: UIDevice
     private let screen: UIScreen
+    private let systemControl: SystemControl
     
-    init(_ device: UIDevice, screen: UIScreen) {
+    init(_ device: UIDevice, screen: UIScreen, systemControl: SystemControl) {
         self.device = device
         self.screen = screen
+        self.systemControl = systemControl
     }
     
     public convenience init() {
-        self.init(UIDevice.current, screen: UIScreen.main)
+        self.init( UIDevice.current, screen: UIScreen.main, systemControl: SystemControl())
     }
 }
 
@@ -44,6 +46,6 @@ extension HardwareInfoHarvester: HardwareInfoHarvesting {
     }
     
     public var deviceModel: String {
-        return ""
+        return systemControl.hardwareModel ?? "Undefined"
     }
 }
