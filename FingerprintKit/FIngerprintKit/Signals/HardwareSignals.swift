@@ -8,22 +8,22 @@
 import Foundation
 import UIKit
 
-class HardwareSignals {
+public class HardwareSignals {
     let device: UIDevice
     
-    init(_ device: UIDevice) {
+    public init(_ device: UIDevice) {
         self.device = device
     }
-    
+
     var deviceModel: String {
         return device.model
     }
     
-    var deviceModelSignal: DeviceModelSignal {
+    public var deviceModelSignal: DeviceModelSignal {
         return DeviceModelSignal(value: device.model)
     }
 }
 
-struct DeviceModelSignal: Fingerprintable {
-    var value: String
+public struct DeviceModelSignal: Fingerprintable {
+    public var value: String
 }
