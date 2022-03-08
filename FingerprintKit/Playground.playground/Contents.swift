@@ -13,3 +13,12 @@ if let deviceIdentifierSignal = hardwareSignals.deviceIdentifierSignal {
     deviceIdentifierSignal.value
     deviceIdentifierSignal.hash
 }
+
+/**
+ HardwareInfoHarvester
+ */
+let hardwareInfo = HardwareInfoHarvester()
+hardwareInfo.deviceType
+hardwareInfo.deviceModel
+hardwareInfo.displayResolution
+
