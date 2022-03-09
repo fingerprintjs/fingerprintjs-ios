@@ -22,3 +22,5 @@ hardwareInfo.deviceType
 hardwareInfo.deviceModel
 hardwareInfo.displayResolution
 
+let identifiers = IdentifierHarvester()
+identifiers.vendorIdentifier
