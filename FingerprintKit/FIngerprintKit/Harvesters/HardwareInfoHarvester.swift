@@ -31,7 +31,7 @@ public class HardwareInfoHarvester {
     }
     
     public convenience init() {
-        self.init( UIDevice.current, screen: UIScreen.main, systemControl: SystemControl())
+        self.init(UIDevice.current, screen: UIScreen.main, systemControl: SystemControl())
     }
 }
 

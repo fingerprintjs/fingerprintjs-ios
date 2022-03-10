@@ -6,16 +6,17 @@
 //
 
 import Foundation
+import CryptoKit
 
 public protocol Fingerprintable {
-    associatedtype Value
+    /// Provides necessary data to compute a fingerprint through a `FingerprintFunction`
+    var fingerprintInput: Data { get }
     
-    var value: Value { get }
-    var hash: String { get }
+    /// Computes a fingerprint with a `FingerprintFunction` function.
+    /// - Returns: Fingerprint in its `String` representation.
+    func fingerprint(using hashingFunction: FingerprintFunction) -> String
 }
 
-public extension Fingerprintable where Value: Hashable {
-    var hash: String {
-        return String(value.hashValue)
-    }
+public protocol FingerprintFunction {
+    func fingerprint(data: Data) -> String
 }
