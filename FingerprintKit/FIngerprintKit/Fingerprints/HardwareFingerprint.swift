@@ -23,15 +23,7 @@ public class HardwareFingerprint {
 
 extension HardwareFingerprint: Fingerprintable {
     public func fingerprint(using hashingFunction: FingerprintFunction = SHA256HashingFunction()) -> String {
-        let deviceModel = hardwareInfo.deviceModel
-        let deviceType = hardwareInfo.deviceType
-        let deviceResolution = hardwareInfo.displayResolution
-        
-        let combinedString = deviceModel + deviceType + "\(deviceResolution.width)x\(deviceResolution.height)"
-        guard let data = combinedString.data(using: .utf8) else {
-            return ""
-        }
-        return hashingFunction.fingerprint(data: data)
+        return hashingFunction.fingerprint(data: fingerprintInput)
     }
     
     public var fingerprintInput: Data {
@@ -41,7 +33,7 @@ extension HardwareFingerprint: Fingerprintable {
             hardwareInfo.displayResolution.description,
         ]
         
-        return strings.joined(separator: "/").data(using: .utf8) ?? Data()
+        return strings.compactMap{$0}.joined(separator: "/").data(using: .utf8) ?? Data()
     }
 }
 
