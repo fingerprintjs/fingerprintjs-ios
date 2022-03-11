@@ -18,3 +18,4 @@ hardwareFingerprint.fingerprint()
 let identifierFingerprint = IdentifierFingerprint()
 identifierFingerprint.fingerprint(using: SHA256HashingFunction())
 
+DeviceFingerprint.fingerprint
