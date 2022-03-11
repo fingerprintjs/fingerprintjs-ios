@@ -57,5 +57,33 @@ extension SystemControl {
         }
         return String(cString: machine)
     }
+    
+    public var osRelease: String? {
+        guard let osRelease: [CChar] = try? getSystemValue(.osRelease) else {
+            return nil
+        }
+        return String(cString: osRelease)
+    }
+    
+    public var osType: String? {
+        guard let osType: [CChar] = try? getSystemValue(.osType) else {
+            return nil
+        }
+        return String(cString: osType)
+    }
+    
+    public var osVersion: String? {
+        guard let osVersion: [CChar] = try? getSystemValue(.osVersion) else {
+            return nil
+        }
+        return String(cString: osVersion)
+    }
+    
+    public var kernelVersion: String? {
+        guard let kernelVersion: [CChar] = try? getSystemValue(.kernelVersion) else {
+            return nil
+        }
+        return String(cString: kernelVersion)
+    }
 }
 
