@@ -9,13 +9,14 @@ import SwiftUI
 
 struct CollapsibleCard<CollapsibleContent: View>: View {
     let title: String
+    let subtitle: String?
     let content: CollapsibleContent
     
     @State private var collapsed: Bool = true
     
-    init(_ title: String, @ViewBuilder collapsibleContent: () -> CollapsibleContent) {
-        // self.title = title
+    init(_ title: String, subtitle: String? = nil, @ViewBuilder collapsibleContent: () -> CollapsibleContent) {
         self.title = title
+        self.subtitle = subtitle
         self.content = collapsibleContent()
     }
     
@@ -24,12 +25,17 @@ struct CollapsibleCard<CollapsibleContent: View>: View {
             Button(action: {
                 collapsed = !collapsed
             }) {
-                VStack(alignment: .leading) {
-                    HStack {
+                HStack {
+                    VStack(alignment: .leading) {
                         Text(title)
-                        Spacer()
-                        Image(systemName: collapsed ? "chevron.down" : "chevron.up")
+                        if let subtitle = subtitle {
+                            Text(subtitle)
+                                .foregroundColor(.gray)
+                                .fontWeight(.medium)
+                        }
                     }
+                    Spacer()
+                    Image(systemName: collapsed ? "chevron.down" : "chevron.up")
                 }
                 .contentShape(Rectangle())
                 .padding()
@@ -47,8 +53,22 @@ struct CollapsibleCard<CollapsibleContent: View>: View {
 
 struct CollapsibleCard_Previews: PreviewProvider {
     static var previews: some View {
-        CollapsibleCard("Test") {
-            Text("TEST")
+        VStack {
+            CollapsibleCard("Title") {
+                Text("Simple text subview")
+            }
+            CollapsibleCard("Title", subtitle: "Subtitle") {
+                Image(systemName: "touchid")
+                    .resizable(
+                        capInsets: EdgeInsets(
+                            top: 0,
+                            leading: 0,
+                            bottom: 0,
+                            trailing: 0
+                        ),
+                        resizingMode: .tile
+                    )
+            }
         }
     }
 }

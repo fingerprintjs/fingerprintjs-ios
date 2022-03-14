@@ -17,9 +17,15 @@ public struct DeviceInfoItem {
 }
 
 public struct DeviceInfoCategory {
-    public let fingerprint: String? = nil
+    public let fingerprint: String?
     public let label: String
     public let items: [DeviceInfoItem]
+    
+    init(label: String, items: [DeviceInfoItem], fingerprint: String? = nil) {
+        self.label = label
+        self.items = items
+        self.fingerprint = fingerprint
+    }
 }
 
 extension HardwareInfoHarvester: DeviceInfoProvidable {
@@ -28,7 +34,7 @@ extension HardwareInfoHarvester: DeviceInfoProvidable {
             DeviceInfoItem(label: "Device type", value: deviceType),
             DeviceInfoItem(label: "Device model", value: deviceModel),
             DeviceInfoItem(label: "Display resolution", value: self.displayResolution.description),
-        ])]
+        ], fingerprint: "Test")]
     }
 }
 
