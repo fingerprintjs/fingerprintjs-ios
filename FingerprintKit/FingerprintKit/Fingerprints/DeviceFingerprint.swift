@@ -43,3 +43,19 @@ extension DeviceFingerprint: Fingerprintable {
         return allData
     }
 }
+
+public struct DeviceInfo: DeviceInfoProvidable {
+    let hardwareInfo = HardwareInfoHarvester()
+    let osInfo = OSInfoHarvester()
+    let identifiers = IdentifierHarvester()
+    
+    public init() {}
+    
+    public func getDeviceInfo() -> [DeviceInfoCategory] {
+        let providers: [DeviceInfoProvidable] = [hardwareInfo, osInfo, identifiers]
+        return providers.reduce(into: []) { categories, provider in
+            return categories += provider.getDeviceInfo()
+        }
+    }
+}
+

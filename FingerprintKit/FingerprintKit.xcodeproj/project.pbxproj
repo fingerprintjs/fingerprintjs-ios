@@ -23,6 +23,7 @@
 		6A82A1AF27DA0A19007C023F /* Digest+StringOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A1AE27DA0A18007C023F /* Digest+StringOutput.swift */; };
 		6A82A1B127DA3CC2007C023F /* DeviceFingerprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A1B027DA3CC2007C023F /* DeviceFingerprint.swift */; };
 		6A82A1B327DB5941007C023F /* OSInfoHarvester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A1B227DB5941007C023F /* OSInfoHarvester.swift */; };
+		6AC03F4B27DE574100EF9DB7 /* DeviceInfoProvidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC03F4A27DE574100EF9DB7 /* DeviceInfoProvidable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		6A82A1AE27DA0A18007C023F /* Digest+StringOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Digest+StringOutput.swift"; sourceTree = "<group>"; };
 		6A82A1B027DA3CC2007C023F /* DeviceFingerprint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceFingerprint.swift; sourceTree = "<group>"; };
 		6A82A1B227DB5941007C023F /* OSInfoHarvester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSInfoHarvester.swift; sourceTree = "<group>"; };
+		6AC03F4A27DE574100EF9DB7 /* DeviceInfoProvidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoProvidable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 			children = (
 				6A82A1A727D89CB0007C023F /* Storage */,
 				6A82A19627D74D5B007C023F /* Fingerprintable.swift */,
+				6AC03F4A27DE574100EF9DB7 /* DeviceInfoProvidable.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A82A1AA27D94940007C023F /* IdentifierFingerprint.swift in Sources */,
+				6AC03F4B27DE574100EF9DB7 /* DeviceInfoProvidable.swift in Sources */,
 				6A82A1A027D79618007C023F /* SystemControlFlag.swift in Sources */,
 				6A82A19E27D775AF007C023F /* SystemControl.swift in Sources */,
 				6A82A1B327DB5941007C023F /* OSInfoHarvester.swift in Sources */,

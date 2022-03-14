@@ -6,21 +6,15 @@
 //
 
 import SwiftUI
+import FingerprintKit
 
 @main
 struct DemoApp: App {
     var body: some Scene {
         WindowGroup {
-            CollapsibleCard("Device ID") {
-                Text("Device ID placeholder").padding()
+            ScrollView {
+                DeviceInfoView().padding()
             }
-            CollapsibleCard("Hardware Fingerprint") {
-                Text("Hardware details placeholder").padding()
-            }
-            CollapsibleCard("OS Fingerprint") {
-                Text("OS details placeholder").padding()
-            }
-            Spacer()
         }
     }
 }
