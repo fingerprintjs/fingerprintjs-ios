@@ -6,6 +6,8 @@
 //
 
 public protocol OSInfoHarvesting {
+    var osBuild: String { get }
+    
     var osVersion: String { get }
     
     var osType: String { get }
@@ -34,5 +36,12 @@ extension OSInfoHarvester: OSInfoHarvesting {
     
     public var kernelVersion: String {
         return systemControl.kernelVersion ?? "Undefined"
+    }
+    
+    public var osBuild: String {
+        guard let osBuild = systemControl.osBuild else {
+            return "Undefined"
+        }
+        return "\(osBuild)"
     }
 }

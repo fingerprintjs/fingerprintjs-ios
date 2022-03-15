@@ -34,18 +34,20 @@ extension HardwareInfoHarvester: DeviceInfoProvidable {
             DeviceInfoItem(label: "Device type", value: deviceType),
             DeviceInfoItem(label: "Device model", value: deviceModel),
             DeviceInfoItem(label: "Display resolution", value: self.displayResolution.description),
-        ], fingerprint: "Test")]
+            DeviceInfoItem(label: "Physical memory", value: memorySize),
+        ], fingerprint: HardwareFingerprint().fingerprint())]
     }
 }
 
 extension OSInfoHarvester: DeviceInfoProvidable {
     public func getDeviceInfo() -> [DeviceInfoCategory] {
         return [DeviceInfoCategory(label: "OS Information", items: [
+            DeviceInfoItem(label: "OS build", value: osBuild),
             DeviceInfoItem(label: "OS release", value: osRelease),
             DeviceInfoItem(label: "OS type", value: osType),
             DeviceInfoItem(label: "OS version", value: osVersion),
             DeviceInfoItem(label: "Kernel version", value: kernelVersion),
-        ])]
+        ], fingerprint: OSFingerprint().fingerprint(using: SHA256HashingFunction()))]
     }
 }
 

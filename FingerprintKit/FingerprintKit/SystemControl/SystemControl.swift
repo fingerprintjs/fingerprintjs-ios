@@ -12,9 +12,35 @@ enum SystemControlError: Error {
     case genericError(errno: Int32)
 }
 
+protocol DataConvertible {
+    static func from(_ data: Data) -> Self
+}
+
+extension String: DataConvertible {
+    static func from(_ data: Data) -> String {
+        return String(data: data, encoding: .utf8) ?? "Undefined"
+    }
+}
+
+extension Int32: DataConvertible {
+    static func from(_ data: Data) -> Int32 {
+        return data.withUnsafeBytes { ptr in
+            return ptr.load(as: Int32.self)
+        }
+    }
+}
+
+extension Int64: DataConvertible {
+    static func from(_ data: Data) -> Int64 {
+        return data.withUnsafeBytes { ptr in
+            return ptr.load(as: Int64.self)
+        }
+    }
+}
+
 class SystemControl {
     // Get a system value through a sysctl call
-    private func getSystemValue<T: Sequence>(_ flag: SystemControlFlag) throws -> T {
+    private func getSystemValue<T: DataConvertible>(_ flag: SystemControlFlag) throws -> T {
         var size = 0
         
         var sysctlFlags = flag.sysctlFlags
@@ -22,17 +48,15 @@ class SystemControl {
         
         var errno = sysctl(&sysctlFlags, flagCount, nil, &size, nil, 0)
         if errno == ERR_SUCCESS {
-            let valueMemory = UnsafeMutableBufferPointer<T.Element>.allocate(capacity: size)
+            let valueMemory = UnsafeMutableRawPointer.allocate(byteCount: size, alignment: 1)
             defer {
                 valueMemory.deallocate()
             }
             
-            errno = sysctl(&sysctlFlags, flagCount, valueMemory.baseAddress, &size, nil, 0)
+            errno = sysctl(&sysctlFlags, flagCount, valueMemory, &size, nil, 0)
             if errno == 0 {
-                guard let value = Array(valueMemory) as? T else {
-                    throw SystemControlError.wrongOutputType
-                }
-                return value
+                let data = Data(bytesNoCopy: valueMemory, count: size, deallocator: .none)
+                return T.from(data)
             } else {
                 throw SystemControlError.genericError(errno: errno)
             }
@@ -40,50 +64,38 @@ class SystemControl {
             throw SystemControlError.genericError(errno: errno)
         }
     }
-    
 }
 
 extension SystemControl {
     public var hardwareModel: String? {
-        guard let model: [CChar] = try? getSystemValue(.hardwareModel) else {
-            return nil
-        }
-        return String(cString: model)
+        return try? getSystemValue(.hardwareModel)
     }
     
     public var hardwareMachine: String? {
-        guard let machine: [CChar] = try? getSystemValue(.hardwareMachine) else {
-            return nil
-        }
-        return String(cString: machine)
+        return try? getSystemValue(.hardwareMachine)
     }
     
     public var osRelease: String? {
-        guard let osRelease: [CChar] = try? getSystemValue(.osRelease) else {
-            return nil
-        }
-        return String(cString: osRelease)
+        return try? getSystemValue(.osRelease)
     }
     
     public var osType: String? {
-        guard let osType: [CChar] = try? getSystemValue(.osType) else {
-            return nil
-        }
-        return String(cString: osType)
+        return try? getSystemValue(.osType)
     }
     
     public var osVersion: String? {
-        guard let osVersion: [CChar] = try? getSystemValue(.osVersion) else {
-            return nil
-        }
-        return String(cString: osVersion)
+        return try? getSystemValue(.osVersion)
     }
     
     public var kernelVersion: String? {
-        guard let kernelVersion: [CChar] = try? getSystemValue(.kernelVersion) else {
-            return nil
-        }
-        return String(cString: kernelVersion)
+        return try? getSystemValue(.kernelVersion)
+    }
+    
+    public var osBuild: Int32? {
+        return try? getSystemValue(.osBuild)
+    }
+    
+    public var memorySize: Int64? {
+        return try? getSystemValue(.memSize)
     }
 }
-

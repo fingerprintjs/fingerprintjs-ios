@@ -11,8 +11,10 @@ enum SystemControlFlag {
     // MARK: Device HW Information
     case hardwareModel
     case hardwareMachine
+    case memSize
     
     // MARK: OS/Kernel Information
+    case osBuild
     case osType
     case osRelease
     case osVersion
@@ -24,6 +26,8 @@ enum SystemControlFlag {
             return [CTL_HW, HW_MACHINE]
         case .hardwareModel:
             return [CTL_HW, HW_MODEL]
+        case .osBuild:
+            return [CTL_KERN, KERN_OSREV]
         case .osRelease:
             return [CTL_KERN, KERN_OSRELEASE]
         case .osType:
@@ -32,6 +36,8 @@ enum SystemControlFlag {
             return [CTL_KERN, KERN_OSVERSION]
         case .kernelVersion:
             return [CTL_KERN, KERN_VERSION]
+        case .memSize:
+            return [CTL_HW, HW_MEMSIZE]
         }
     }
 }

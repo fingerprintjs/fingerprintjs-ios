@@ -48,4 +48,11 @@ extension HardwareInfoHarvester: HardwareInfoHarvesting {
     public var deviceModel: String {
         return systemControl.hardwareModel ?? "Undefined"
     }
+    
+    public var memorySize: String {
+        guard let memorySize = systemControl.memorySize else {
+            return "Undefined"
+        }
+        return "\(memorySize)"
+    }
 }
