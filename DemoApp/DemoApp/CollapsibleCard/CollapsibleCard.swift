@@ -45,7 +45,7 @@ struct CollapsibleCard<CollapsibleContent: View>: View {
                 content
             }
         }
-        .background()
+        .background(Color.white)
         .cornerRadius(5)
         .shadow(radius: 2, y: 2)
     }

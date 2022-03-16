@@ -98,4 +98,16 @@ extension SystemControl {
     public var memorySize: Int64? {
         return try? getSystemValue(.memSize)
     }
+    
+    public var physicalMemory: Int32? {
+        return try? getSystemValue(.physicalMemory)
+    }
+    
+    public var cpuCount: Int32? {
+        return try? getSystemValue(.cpuCount)
+    }
+    
+    public var cpuFrequency: Int32? {
+        return try? getSystemValue(.cpuFrequency)
+    }
 }

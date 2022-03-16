@@ -13,7 +13,9 @@ class KeychainIdentifierStorage {
     private func getStringFromKeychain(_ key: String) -> String? {
         let loadQuery = [
             kSecClass: kSecClassGenericPassword as CFString,
-            kSecAttrService: fingerPrintJSService as CFString
+            kSecAttrService: fingerPrintJSService as CFString,
+            kSecReturnData: true as CFBoolean,
+            kSecAttrAccount: key as CFString
         ] as CFDictionary
         
         var result: AnyObject?
@@ -35,7 +37,9 @@ class KeychainIdentifierStorage {
         let storeQuery = [
             kSecClass: kSecClassGenericPassword as CFString,
             kSecValueData: stringData,
-            kSecAttrService: fingerPrintJSService as CFString
+            kSecAttrAccessible: kSecAttrAccessibleWhenUnlockedThisDeviceOnly as CFString,
+            kSecAttrService: fingerPrintJSService as CFString,
+            kSecAttrAccount: key as CFString
         ] as CFDictionary
         
         var result: AnyObject?

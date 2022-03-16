@@ -12,6 +12,9 @@ enum SystemControlFlag {
     case hardwareModel
     case hardwareMachine
     case memSize
+    case cpuCount
+    case cpuFrequency
+    case physicalMemory
     
     // MARK: OS/Kernel Information
     case osBuild
@@ -38,6 +41,12 @@ enum SystemControlFlag {
             return [CTL_KERN, KERN_VERSION]
         case .memSize:
             return [CTL_HW, HW_MEMSIZE]
+        case .cpuFrequency:
+            return [CTL_HW, HW_CPU_FREQ]
+        case .cpuCount:
+            return [CTL_HW, HW_NCPU]
+        case .physicalMemory:
+            return [CTL_HW, HW_PHYSMEM]
         }
     }
 }

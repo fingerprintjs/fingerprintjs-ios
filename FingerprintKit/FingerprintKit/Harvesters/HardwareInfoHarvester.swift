@@ -55,4 +55,22 @@ extension HardwareInfoHarvester: HardwareInfoHarvesting {
         }
         return "\(memorySize)"
     }
+    
+    public var physicalMemory: String {
+        guard let physicalMemory = systemControl.physicalMemory else {
+            return "Undefined"
+        }
+        return "\(physicalMemory)"
+    }
+    
+    public var cpuCount: String {
+        return "\(ProcessInfo.processInfo.processorCount)"
+    }
+    
+    public var cpuFrequency: String {
+        guard let cpuFrequency = systemControl.cpuFrequency else {
+            return "Undefined"
+        }
+        return "\(cpuFrequency)"
+    }
 }

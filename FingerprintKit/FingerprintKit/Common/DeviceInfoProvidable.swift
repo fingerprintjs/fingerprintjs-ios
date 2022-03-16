@@ -35,6 +35,9 @@ extension HardwareInfoHarvester: DeviceInfoProvidable {
             DeviceInfoItem(label: "Device model", value: deviceModel),
             DeviceInfoItem(label: "Display resolution", value: self.displayResolution.description),
             DeviceInfoItem(label: "Physical memory", value: memorySize),
+            DeviceInfoItem(label: "Processor count", value: cpuCount),
+            DeviceInfoItem(label: "Physical memory 2", value: physicalMemory),
+            DeviceInfoItem(label: "CPU frequency", value: cpuFrequency),
         ], fingerprint: HardwareFingerprint().fingerprint())]
     }
 }

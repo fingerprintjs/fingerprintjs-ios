@@ -13,9 +13,23 @@
 		6A82A1CF27DB72F6007C023F /* CollapsibleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A1CE27DB72F6007C023F /* CollapsibleCard.swift */; };
 		6AC03F4727DE508700EF9DB7 /* DeviceInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC03F4627DE508700EF9DB7 /* DeviceInfoViewModel.swift */; };
 		6AC03F4927DE509B00EF9DB7 /* DeviceInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC03F4827DE509B00EF9DB7 /* DeviceInfoView.swift */; };
-		6AC03F4E27DE7FC700EF9DB7 /* FingerprintKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AC03F4D27DE7FC700EF9DB7 /* FingerprintKit.framework */; };
 		6AC03F5027DF2DCC00EF9DB7 /* DeviceInfoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC03F4F27DF2DCC00EF9DB7 /* DeviceInfoItemView.swift */; };
+		6AC2334C27E0FEE3007786F2 /* FingerprintKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AC03F4D27DE7FC700EF9DB7 /* FingerprintKit.framework */; };
+		6AC2334E27E100A9007786F2 /* FingerprintKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6AC03F4D27DE7FC700EF9DB7 /* FingerprintKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6AC2334D27E10094007786F2 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6AC2334E27E100A9007786F2 /* FingerprintKit.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		6A82A1BD27DB71A2007C023F /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -34,7 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6AC03F4E27DE7FC700EF9DB7 /* FingerprintKit.framework in Frameworks */,
+				6AC2334C27E0FEE3007786F2 /* FingerprintKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,6 +128,7 @@
 				6A82A1B927DB71A2007C023F /* Sources */,
 				6A82A1BA27DB71A2007C023F /* Frameworks */,
 				6A82A1BB27DB71A2007C023F /* Resources */,
+				6AC2334D27E10094007786F2 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -236,7 +251,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -291,7 +306,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -309,6 +324,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DemoApp/Preview Content\"";
+				DEVELOPMENT_TEAM = K78JGMAWVU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -316,6 +332,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_DYLIB_INSTALL_NAME = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -337,6 +354,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DemoApp/Preview Content\"";
+				DEVELOPMENT_TEAM = K78JGMAWVU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -344,6 +362,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_DYLIB_INSTALL_NAME = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
