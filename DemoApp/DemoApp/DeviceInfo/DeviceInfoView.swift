@@ -14,7 +14,7 @@ struct DeviceInfoView: View {
     
     var body: some View {
         ForEach(viewModel.infoCategories, id: \.id) { category in
-            CollapsibleCard( category.label, subtitle: category.fingerprint) {
+            CollapsibleCard(category.label, subtitle: category.fingerprint) {
                 ForEach(category.items, id: \.id) {
                     DeviceInfoItemView( label: $0.label, value: $0.value)
                 }

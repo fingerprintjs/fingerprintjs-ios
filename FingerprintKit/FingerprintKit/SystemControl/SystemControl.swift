@@ -7,37 +7,6 @@
 
 import Foundation
 
-enum SystemControlError: Error {
-    case wrongOutputType
-    case genericError(errno: Int32)
-}
-
-protocol DataConvertible {
-    static func from(_ data: Data) -> Self
-}
-
-extension String: DataConvertible {
-    static func from(_ data: Data) -> String {
-        return String(data: data, encoding: .utf8) ?? "Undefined"
-    }
-}
-
-extension Int32: DataConvertible {
-    static func from(_ data: Data) -> Int32 {
-        return data.withUnsafeBytes { ptr in
-            return ptr.load(as: Int32.self)
-        }
-    }
-}
-
-extension Int64: DataConvertible {
-    static func from(_ data: Data) -> Int64 {
-        return data.withUnsafeBytes { ptr in
-            return ptr.load(as: Int64.self)
-        }
-    }
-}
-
 class SystemControl {
     // Get a system value through a sysctl call
     private func getSystemValue<T: DataConvertible>(_ flag: SystemControlFlag) throws -> T {
