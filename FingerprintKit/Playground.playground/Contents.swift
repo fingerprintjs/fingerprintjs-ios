@@ -26,3 +26,17 @@ identifierFingerprint.fingerprint(using: SHA256HashingFunction())
 
 DeviceFingerprint.fingerprint
 
+let fingerprinter = FingerprinterFactory.getInstance()
+fingerprinter.getDeviceId {
+    print($0)
+}
+
+fingerprinter.getFingerprint {
+    print($0)
+}
+
+Task {
+    await fingerprinter.getFingerprint()
+    await fingerprinter.getDeviceId()
+    await fingerprinter.getFingerprintTree()
+}

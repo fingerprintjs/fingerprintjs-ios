@@ -14,6 +14,8 @@ public protocol DeviceInfoProvidable {
 public struct DeviceInfoItem {
     public let label: String
     public let value: String
+    public let fingerprint: String?
+    public let children: [DeviceInfoItem]?
 }
 
 public struct DeviceInfoCategory {
