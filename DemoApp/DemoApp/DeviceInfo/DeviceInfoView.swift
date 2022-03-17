@@ -13,12 +13,17 @@ struct DeviceInfoView: View {
     @ObservedObject var viewModel: DeviceInfoViewModel = DeviceInfoViewModel(DeviceInfo())
     
     var body: some View {
-        ForEach(viewModel.infoCategories, id: \.id) { category in
-            CollapsibleCard(category.label, subtitle: category.fingerprint) {
-                ForEach(category.items, id: \.id) {
-                    DeviceInfoItemView( label: $0.label, value: $0.value)
-                }
+        if #available(iOS 15.0, *) {
+        VStack {
+            if let tree = viewModel.infoTree {
+                InfoTreeView(tree: tree)
+                Text("Tree: \(tree.description) \(tree.children?.count ?? 0)")
             }
+        }.task {
+            async {
+                await viewModel.loadTree()
+            }
+        }
         }
     }
 }
@@ -31,3 +36,10 @@ struct DeviceInfoView_Previews: PreviewProvider {
     }
 }
 
+struct InfoTreeView: View {
+    let tree: DeviceInfoItem
+    
+    var body: some View {
+        Text(tree.fingerprint!)
+    }
+}

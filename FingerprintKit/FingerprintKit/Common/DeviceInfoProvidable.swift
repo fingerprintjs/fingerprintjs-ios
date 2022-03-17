@@ -18,6 +18,24 @@ public struct DeviceInfoItem {
     public let children: [DeviceInfoItem]?
 }
 
+extension DeviceInfoItem: CustomStringConvertible {
+    public var description: String {
+        let base = "\(label): \(value)"
+        var childrenDebug = ""
+        if let children = children {
+            childrenDebug += "\n"
+            childrenDebug += """
+                                 Children [
+                                    \(children.map { $0.description }.joined(separator: "\n"))
+                                 ]
+                             """
+        }
+        
+        return base + childrenDebug
+    }
+}
+
+
 public struct DeviceInfoCategory {
     public let fingerprint: String?
     public let label: String
@@ -30,6 +48,7 @@ public struct DeviceInfoCategory {
     }
 }
 
+/*
 extension HardwareInfoHarvester: DeviceInfoProvidable {
     public func getDeviceInfo() -> [DeviceInfoCategory] {
         return [DeviceInfoCategory(label: "Hardware information", items: [
@@ -63,3 +82,4 @@ extension IdentifierHarvester: DeviceInfoProvidable {
         ])]
     }
 }
+*/

@@ -40,3 +40,7 @@ Task {
     await fingerprinter.getDeviceId()
     await fingerprinter.getFingerprintTree()
 }
+
+let fingerprintTreeBuilder = FingerprintTreeBuilder()
+let fingerprintTree = fingerprintTreeBuilder.buildTree(Configuration())
+print(fingerprintTree.description)

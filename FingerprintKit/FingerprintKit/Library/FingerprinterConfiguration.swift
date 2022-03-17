@@ -18,11 +18,20 @@ public enum FingerprintAlgorithm {
 }
 
 public struct Configuration {
-    private let version: FingerprintKitVersion
-    private let algorithm: FingerprintAlgorithm
+    let version: FingerprintKitVersion
+    let algorithm: FingerprintAlgorithm
     
     public init(version: FingerprintKitVersion = .v1, algorithm: FingerprintAlgorithm = .sha256) {
         self.version = version
         self.algorithm = algorithm
+    }
+    
+    public var hashFunction: FingerprintFunction {
+        switch algorithm {
+        case .sha256:
+            return SHA256HashingFunction()
+        case .custom(let fingerprintFunction):
+            return fingerprintFunction
+        }
     }
 }

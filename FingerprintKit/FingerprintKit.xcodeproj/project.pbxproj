@@ -28,6 +28,7 @@
 		6A9B7CAA27E214C5002B9939 /* FingerprinterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9B7CA927E214C5002B9939 /* FingerprinterFactory.swift */; };
 		6A9B7CAC27E214DA002B9939 /* FingerprinterConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9B7CAB27E214DA002B9939 /* FingerprinterConfiguration.swift */; };
 		6A9B7CAE27E220F1002B9939 /* Fingerprinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9B7CAD27E220F1002B9939 /* Fingerprinter.swift */; };
+		6A9B7CB027E36F66002B9939 /* FingerprintTreeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9B7CAF27E36F66002B9939 /* FingerprintTreeBuilder.swift */; };
 		6AC03F4B27DE574100EF9DB7 /* DeviceInfoProvidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC03F4A27DE574100EF9DB7 /* DeviceInfoProvidable.swift */; };
 		6AC03F5427E08C3A00EF9DB7 /* OSFingerprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC03F5327E08C3A00EF9DB7 /* OSFingerprint.swift */; };
 /* End PBXBuildFile section */
@@ -65,6 +66,7 @@
 		6A9B7CA927E214C5002B9939 /* FingerprinterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerprinterFactory.swift; sourceTree = "<group>"; };
 		6A9B7CAB27E214DA002B9939 /* FingerprinterConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerprinterConfiguration.swift; sourceTree = "<group>"; };
 		6A9B7CAD27E220F1002B9939 /* Fingerprinter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fingerprinter.swift; sourceTree = "<group>"; };
+		6A9B7CAF27E36F66002B9939 /* FingerprintTreeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerprintTreeBuilder.swift; sourceTree = "<group>"; };
 		6AC03F4A27DE574100EF9DB7 /* DeviceInfoProvidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoProvidable.swift; sourceTree = "<group>"; };
 		6AC03F5327E08C3A00EF9DB7 /* OSFingerprint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSFingerprint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -135,6 +137,7 @@
 				6A82A1A927D94940007C023F /* IdentifierFingerprint.swift */,
 				6A82A1B027DA3CC2007C023F /* DeviceFingerprint.swift */,
 				6AC03F5327E08C3A00EF9DB7 /* OSFingerprint.swift */,
+				6A9B7CAF27E36F66002B9939 /* FingerprintTreeBuilder.swift */,
 			);
 			path = Fingerprints;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				6A82A1AA27D94940007C023F /* IdentifierFingerprint.swift in Sources */,
 				6AC03F4B27DE574100EF9DB7 /* DeviceInfoProvidable.swift in Sources */,
 				6AC03F5427E08C3A00EF9DB7 /* OSFingerprint.swift in Sources */,
+				6A9B7CB027E36F66002B9939 /* FingerprintTreeBuilder.swift in Sources */,
 				6A82A1A027D79618007C023F /* SystemControlFlag.swift in Sources */,
 				6A82A19E27D775AF007C023F /* SystemControl.swift in Sources */,
 				6A82A1B327DB5941007C023F /* OSInfoHarvester.swift in Sources */,

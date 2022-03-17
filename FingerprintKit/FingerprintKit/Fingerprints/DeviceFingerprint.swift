@@ -52,7 +52,7 @@ public struct DeviceInfo: DeviceInfoProvidable {
     public init() {}
     
     public func getDeviceInfo() -> [DeviceInfoCategory] {
-        let providers: [DeviceInfoProvidable] = [hardwareInfo, osInfo, identifiers]
+        let providers: [DeviceInfoProvidable] = []
         return providers.reduce(into: []) { categories, provider in
             return categories += provider.getDeviceInfo()
         }

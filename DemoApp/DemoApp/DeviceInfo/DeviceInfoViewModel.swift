@@ -10,12 +10,18 @@ import FingerprintKit
 
 class DeviceInfoViewModel: ObservableObject {
     @Published var infoCategories: [DeviceInfoCategory]
+    @Published var infoTree: DeviceInfoItem?
     
     let deviceInfoModel: DeviceInfoProvidable
+    let fingerprinter: Fingerprinter = FingerprinterFactory.getInstance()
     
     init(_ deviceInfoModel: DeviceInfoProvidable) {
         self.deviceInfoModel = deviceInfoModel
         self.infoCategories = deviceInfoModel.getDeviceInfo()
+    }
+    
+    func loadTree() async {
+        infoTree = await fingerprinter.getFingerprintTree()
     }
 }
 

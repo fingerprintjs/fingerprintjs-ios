@@ -37,7 +37,6 @@ extension HardwareFingerprint: Fingerprintable {
     }
 }
 
-
 extension String: Error {}
 
 extension CGSize: CustomStringConvertible {
