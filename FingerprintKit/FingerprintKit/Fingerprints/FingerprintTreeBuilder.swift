@@ -11,7 +11,7 @@ protocol DeviceInfoTreeProvider {
     func buildTree(_ configuration: Configuration) -> DeviceInfoItem
 }
 
-public class FingerprintTreeBuilder: DeviceInfoTreeProvider {
+class FingerprintTreeBuilder: DeviceInfoTreeProvider {
     let treeProviders: [DeviceInfoTreeProvider] = [
         HardwareInfoHarvester(),
         OSInfoHarvester(),
@@ -29,15 +29,10 @@ public class FingerprintTreeBuilder: DeviceInfoTreeProvider {
 }
 
 
-// builds tree of items
-// top
-// hardwareItem value = .category(hardware), osItem value = .category(operating system) etc...
-// hwItem1 value = .leaf()
-
 extension HardwareInfoHarvester: DeviceInfoTreeProvider {
     func buildTree(_ configuration: Configuration) -> DeviceInfoItem {
         return DeviceInfoItem(
-            label: "System Information",
+            label: "Hardware",
             value: "Category",
             fingerprint: nil,
             children: [
@@ -56,7 +51,7 @@ extension HardwareInfoHarvester: DeviceInfoTreeProvider {
 extension IdentifierHarvester: DeviceInfoTreeProvider {
     func buildTree(_ configuration: Configuration) -> DeviceInfoItem {
         return DeviceInfoItem(
-            label: "Identifier Information",
+            label: "Identifiers",
             value: "Category",
             fingerprint: nil,
             children: [
@@ -74,11 +69,15 @@ extension IdentifierHarvester: DeviceInfoTreeProvider {
 extension OSInfoHarvester: DeviceInfoTreeProvider {
     func buildTree(_ configuration: Configuration) -> DeviceInfoItem {
         return DeviceInfoItem(
-            label: "System Information",
+            label: "Operating System",
             value: "Category",
             fingerprint: nil,
             children: [
-                DeviceInfoItem(label: "OS", value: osVersion, fingerprint: nil, children: nil),
+                DeviceInfoItem(label: "OS build", value: osBuild, fingerprint: nil, children: nil),
+                DeviceInfoItem(label: "OS release", value: osRelease, fingerprint: nil, children: nil),
+                DeviceInfoItem(label: "OS type", value: osType, fingerprint: nil, children: nil),
+                DeviceInfoItem(label: "OS version", value: osVersion, fingerprint: nil, children: nil),
+                DeviceInfoItem(label: "Kernel version", value: kernelVersion, fingerprint: nil, children: nil),
             ]
         )
     }
@@ -87,7 +86,9 @@ extension OSInfoHarvester: DeviceInfoTreeProvider {
 class TreeFingerprintCalculator {
     func calculateFingerprints(from tree: DeviceInfoItem, hashFunction: FingerprintFunction) -> DeviceInfoItem {
         if let children = tree.children {
-            let fingerprintedChildren = children.map { calculateFingerprints(from: $0, hashFunction: hashFunction) }
+            let fingerprintedChildren = children.map {
+                calculateFingerprints(from: $0, hashFunction: hashFunction)
+            }
             let fingerprint = hashFunction.fingerprint(data: fingerprintedChildren.reduce(into: "", { $0 += ($1.fingerprint ?? "") }).data(using: .utf8) ?? Data())
             return DeviceInfoItem(label: tree.label, value: tree.value, fingerprint: fingerprint, children: fingerprintedChildren)
         } else {
@@ -95,7 +96,6 @@ class TreeFingerprintCalculator {
         }
     }
 }
-
 
 extension DeviceInfoItem: Fingerprintable {
     public var fingerprintInput: Data {

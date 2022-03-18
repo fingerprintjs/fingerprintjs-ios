@@ -10,20 +10,17 @@ import Combine
 import FingerprintKit
 
 struct DeviceInfoView: View {
-    @ObservedObject var viewModel: DeviceInfoViewModel = DeviceInfoViewModel(DeviceInfo())
+    @ObservedObject var viewModel: DeviceInfoViewModel = DeviceInfoViewModel()
     
     var body: some View {
-        if #available(iOS 15.0, *) {
         VStack {
             if let tree = viewModel.infoTree {
                 InfoTreeView(tree: tree)
-                Text("Tree: \(tree.description) \(tree.children?.count ?? 0)")
             }
-        }.task {
-            async {
+        }.onAppear {
+            Task.init {
                 await viewModel.loadTree()
             }
-        }
         }
     }
 }
@@ -40,6 +37,19 @@ struct InfoTreeView: View {
     let tree: DeviceInfoItem
     
     var body: some View {
-        Text(tree.fingerprint!)
+        CollapsibleCard("Device Fingerprint", subtitle: tree.fingerprint) {}
+        if let children = tree.children {
+            ForEach(children, id: \.fingerprint) { child in
+                CollapsibleCard(child.label, subtitle: child.fingerprint) {
+                    if let items = child.children {
+                        VStack {
+                            ForEach(items) { item in
+                                DeviceInfoItemView(label: item.label, value: item.value)
+                            }
+                        }.padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
+                    }
+                }
+            }
+        }
     }
 }
