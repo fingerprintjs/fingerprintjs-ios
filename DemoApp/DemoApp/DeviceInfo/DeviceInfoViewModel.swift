@@ -9,7 +9,7 @@ import SwiftUI
 import FingerprintKit
 
 class DeviceInfoViewModel: ObservableObject {
-    @Published var infoTree: DeviceInfoItem?
+    @Published var infoTree: FingerprintTree?
     
     let fingerprinter: Fingerprinter = FingerprinterFactory.getInstance()
     
@@ -18,8 +18,8 @@ class DeviceInfoViewModel: ObservableObject {
     }
 }
 
-extension DeviceInfoItem: Identifiable {
+extension FingerprintTree: Identifiable {
     public var id: String {
-        return fingerprint ?? UUID().uuidString
+        return fingerprint
     }
 }

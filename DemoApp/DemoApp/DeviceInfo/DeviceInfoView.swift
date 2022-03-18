@@ -34,17 +34,22 @@ struct DeviceInfoView_Previews: PreviewProvider {
 }
 
 struct InfoTreeView: View {
-    let tree: DeviceInfoItem
+    let tree: FingerprintTree
     
     var body: some View {
-        CollapsibleCard("Device Fingerprint", subtitle: tree.fingerprint) {}
+        VStack {
+            Text("Device Fingerprint")
+            Text(tree.fingerprint)
+        }
         if let children = tree.children {
             ForEach(children, id: \.fingerprint) { child in
-                CollapsibleCard(child.label, subtitle: child.fingerprint) {
+                CollapsibleCard(child.info.label, subtitle: child.fingerprint) {
                     if let items = child.children {
                         VStack {
                             ForEach(items) { item in
-                                DeviceInfoItemView(label: item.label, value: item.value)
+                                if case let .info(value) = item.info.value {
+                                    DeviceInfoItemView(label: item.info.label, value: value)
+                                }
                             }
                         }.padding(EdgeInsets(top: 0, leading: 0, bottom: 8, trailing: 0))
                     }

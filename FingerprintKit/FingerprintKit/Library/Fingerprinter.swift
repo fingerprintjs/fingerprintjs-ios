@@ -44,7 +44,7 @@ public extension Fingerprinter {
         }
     }
     
-    func getFingerprintTree(_ completion: @escaping (DeviceInfoItem) -> Void) {
+    func getFingerprintTree(_ completion: @escaping (FingerprintTree) -> Void) {
         let inputTree = deviceInfoTree.buildTree(configuration)
         let fingerprintTree = fingerprintCalculator.calculateFingerprints(
             from: inputTree,
@@ -65,7 +65,7 @@ public extension Fingerprinter {
         })
     }
     
-    func getFingerprintTree() async -> DeviceInfoItem  {
+    func getFingerprintTree() async -> FingerprintTree  {
         return await withCheckedContinuation({ continuation in
             self.getFingerprintTree({ tree in
                 continuation.resume(with: .success(tree))

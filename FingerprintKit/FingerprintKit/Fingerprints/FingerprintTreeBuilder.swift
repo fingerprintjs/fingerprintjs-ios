@@ -24,7 +24,12 @@ class FingerprintTreeBuilder: DeviceInfoTreeProvider {
         let children = treeProviders.map { provider in
             return provider.buildTree(configuration)
         }
-        return DeviceInfoItem(label: "Fingerprint", value: "Top", fingerprint: nil, children: children)
+        
+        return DeviceInfoItem(
+            label: "Device Fingerprint",
+            value: .category,
+            children: children
+        )
     }
 }
 
@@ -33,16 +38,15 @@ extension HardwareInfoHarvester: DeviceInfoTreeProvider {
     func buildTree(_ configuration: Configuration) -> DeviceInfoItem {
         return DeviceInfoItem(
             label: "Hardware",
-            value: "Category",
-            fingerprint: nil,
+            value: .category,
             children: [
-                DeviceInfoItem(label: "Device type", value: deviceType, fingerprint: nil, children: nil),
-                DeviceInfoItem(label: "Device model", value: deviceModel, fingerprint: nil, children: nil),
-                DeviceInfoItem(label: "Display resolution", value: self.displayResolution.description, fingerprint: nil, children: nil),
-                DeviceInfoItem(label: "Physical memory", value: memorySize, fingerprint: nil, children: nil),
-                DeviceInfoItem(label: "Processor count", value: cpuCount, fingerprint: nil, children: nil),
-                DeviceInfoItem(label: "Physical memory 2", value: physicalMemory, fingerprint: nil, children: nil),
-                DeviceInfoItem(label: "CPU frequency", value: cpuFrequency, fingerprint: nil, children: nil),
+                DeviceInfoItem(label: "Device type", value: .info(deviceType)),
+                DeviceInfoItem(label: "Device model", value: .info(deviceModel)),
+                DeviceInfoItem(label: "Display resolution", value: .info(self.displayResolution.description)),
+                DeviceInfoItem(label: "Physical memory", value: .info(memorySize)),
+                DeviceInfoItem(label: "Processor count", value: .info(cpuCount)),
+                DeviceInfoItem(label: "Physical memory 2", value: .info(physicalMemory)),
+                DeviceInfoItem(label: "CPU frequency", value: .info(cpuFrequency))
             ]
         )
     }
@@ -52,14 +56,11 @@ extension IdentifierHarvester: DeviceInfoTreeProvider {
     func buildTree(_ configuration: Configuration) -> DeviceInfoItem {
         return DeviceInfoItem(
             label: "Identifiers",
-            value: "Category",
-            fingerprint: nil,
+            value: .category,
             children: [
                 DeviceInfoItem(
                     label: "Vendor identifier",
-                    value: vendorIdentifier?.uuidString ?? "No identifier",
-                    fingerprint: nil,
-                    children: nil
+                    value: .info(vendorIdentifier?.uuidString ?? "No identifier")
                 )
             ]
         )
@@ -70,36 +71,52 @@ extension OSInfoHarvester: DeviceInfoTreeProvider {
     func buildTree(_ configuration: Configuration) -> DeviceInfoItem {
         return DeviceInfoItem(
             label: "Operating System",
-            value: "Category",
-            fingerprint: nil,
+            value: .category,
             children: [
-                DeviceInfoItem(label: "OS build", value: osBuild, fingerprint: nil, children: nil),
-                DeviceInfoItem(label: "OS release", value: osRelease, fingerprint: nil, children: nil),
-                DeviceInfoItem(label: "OS type", value: osType, fingerprint: nil, children: nil),
-                DeviceInfoItem(label: "OS version", value: osVersion, fingerprint: nil, children: nil),
-                DeviceInfoItem(label: "Kernel version", value: kernelVersion, fingerprint: nil, children: nil),
+                DeviceInfoItem(label: "OS build", value: .info(osBuild)),
+                DeviceInfoItem(label: "OS release", value: .info(osRelease)),
+                DeviceInfoItem(label: "OS type", value: .info(osType)),
+                DeviceInfoItem(label: "OS version", value: .info(osVersion)),
+                DeviceInfoItem(label: "Kernel version", value: .info(kernelVersion))
             ]
         )
     }
 }
 
 class TreeFingerprintCalculator {
-    func calculateFingerprints(from tree: DeviceInfoItem, hashFunction: FingerprintFunction) -> DeviceInfoItem {
+    func calculateFingerprints(from tree: DeviceInfoItem, hashFunction: FingerprintFunction) -> FingerprintTree {
         if let children = tree.children {
             let fingerprintedChildren = children.map {
                 calculateFingerprints(from: $0, hashFunction: hashFunction)
             }
-            let fingerprint = hashFunction.fingerprint(data: fingerprintedChildren.reduce(into: "", { $0 += ($1.fingerprint ?? "") }).data(using: .utf8) ?? Data())
-            return DeviceInfoItem(label: tree.label, value: tree.value, fingerprint: fingerprint, children: fingerprintedChildren)
+            
+            let childrenFingeprintData = fingerprintedChildren.reduce(Data()) { prev, item in
+                return prev + item.fingerprintData
+            }
+            
+            let fingerprint = hashFunction.fingerprint(data: childrenFingeprintData)
+            return FingerprintTree(
+                info: tree,
+                children: fingerprintedChildren,
+                fingerprintData: fingerprint.data(using: .ascii) ?? Data()
+            )
         } else {
-            return DeviceInfoItem(label: tree.label, value: tree.value, fingerprint: tree.fingerprint(using: hashFunction), children: tree.children)
+            return FingerprintTree(
+                info: tree,
+                children: nil,
+                fingerprintData: tree.fingerprint(using: hashFunction).data(using: .ascii) ?? Data()
+            )
         }
     }
 }
 
 extension DeviceInfoItem: Fingerprintable {
     public var fingerprintInput: Data {
-        return value.data(using: .utf8) ?? Data()
+        if case let .info(infoValue) = value,
+           let data = infoValue.data(using: .ascii) {
+            return data
+        }
+        return Data()
     }
     
     public func fingerprint(using hashingFunction: FingerprintFunction) -> String {

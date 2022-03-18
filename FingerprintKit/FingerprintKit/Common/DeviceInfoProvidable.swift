@@ -7,11 +7,25 @@
 
 import Foundation
 
+public enum DeviceInfoValueType {
+    case category
+    case info(String)
+}
+
 public struct DeviceInfoItem {
     public let label: String
-    public let value: String
-    public let fingerprint: String?
+    public let value: DeviceInfoValueType
     public let children: [DeviceInfoItem]?
+    
+    public init(
+        label: String,
+        value: DeviceInfoValueType = .category,
+        children: [DeviceInfoItem]? = nil
+    ) {
+        self.label = label
+        self.value = value
+        self.children = children
+    }
 }
 
 extension DeviceInfoItem: CustomStringConvertible {
@@ -28,5 +42,16 @@ extension DeviceInfoItem: CustomStringConvertible {
         }
         
         return base + childrenDebug
+    }
+}
+
+public struct FingerprintTree {
+    public let info: DeviceInfoItem
+    public let children: [FingerprintTree]?
+    
+    let fingerprintData: Data
+    
+    public var fingerprint: String {
+        return String.from(fingerprintData)
     }
 }
