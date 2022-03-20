@@ -1,5 +1,5 @@
 //
-//  FingerprinterConfiguration.swift
+//  Configuration.swift
 //  FingerprintKit
 //
 //  Created by Petr Palata on 16.03.2022.

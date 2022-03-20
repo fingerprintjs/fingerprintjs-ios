@@ -28,23 +28,6 @@ public struct DeviceInfoItem {
     }
 }
 
-extension DeviceInfoItem: CustomStringConvertible {
-    public var description: String {
-        let base = "\(label): \(value)"
-        var childrenDebug = ""
-        if let children = children {
-            childrenDebug += "\n"
-            childrenDebug += """
-                                 Children [
-                                    \(children.map { $0.description }.joined(separator: "\n"))
-                                 ]
-                             """
-        }
-        
-        return base + childrenDebug
-    }
-}
-
 public struct FingerprintTree {
     public let info: DeviceInfoItem
     public let children: [FingerprintTree]?

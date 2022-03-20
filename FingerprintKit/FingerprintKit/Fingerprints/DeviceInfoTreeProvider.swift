@@ -1,8 +1,8 @@
 //
-//  FingerprintTreeBuilder.swift
+//  DeviceInfoTreeProvider.swift
 //  FingerprintKit
 //
-//  Created by Petr Palata on 17.03.2022.
+//  Created by Petr Palata on 20.03.2022.
 //
 
 import Foundation
@@ -10,29 +10,6 @@ import Foundation
 protocol DeviceInfoTreeProvider {
     func buildTree(_ configuration: Configuration) -> DeviceInfoItem
 }
-
-class FingerprintTreeBuilder: DeviceInfoTreeProvider {
-    let treeProviders: [DeviceInfoTreeProvider] = [
-        HardwareInfoHarvester(),
-        OSInfoHarvester(),
-        IdentifierHarvester()
-    ]
-    
-    public init() {}
-    
-    public func buildTree(_ configuration: Configuration) -> DeviceInfoItem {
-        let children = treeProviders.map { provider in
-            return provider.buildTree(configuration)
-        }
-        
-        return DeviceInfoItem(
-            label: "Device Fingerprint",
-            value: .category,
-            children: children
-        )
-    }
-}
-
 
 extension HardwareInfoHarvester: DeviceInfoTreeProvider {
     func buildTree(_ configuration: Configuration) -> DeviceInfoItem {
@@ -83,43 +60,3 @@ extension OSInfoHarvester: DeviceInfoTreeProvider {
     }
 }
 
-class TreeFingerprintCalculator {
-    func calculateFingerprints(from tree: DeviceInfoItem, hashFunction: FingerprintFunction) -> FingerprintTree {
-        if let children = tree.children {
-            let fingerprintedChildren = children.map {
-                calculateFingerprints(from: $0, hashFunction: hashFunction)
-            }
-            
-            let childrenFingeprintData = fingerprintedChildren.reduce(Data()) { prev, item in
-                return prev + item.fingerprintData
-            }
-            
-            let fingerprint = hashFunction.fingerprint(data: childrenFingeprintData)
-            return FingerprintTree(
-                info: tree,
-                children: fingerprintedChildren,
-                fingerprintData: fingerprint.data(using: .ascii) ?? Data()
-            )
-        } else {
-            return FingerprintTree(
-                info: tree,
-                children: nil,
-                fingerprintData: tree.fingerprint(using: hashFunction).data(using: .ascii) ?? Data()
-            )
-        }
-    }
-}
-
-extension DeviceInfoItem: Fingerprintable {
-    public var fingerprintInput: Data {
-        if case let .info(infoValue) = value,
-           let data = infoValue.data(using: .ascii) {
-            return data
-        }
-        return Data()
-    }
-    
-    public func fingerprint(using hashingFunction: FingerprintFunction) -> String {
-        hashingFunction.fingerprint(data: fingerprintInput)
-    }
-}

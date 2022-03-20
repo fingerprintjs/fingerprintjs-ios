@@ -8,7 +8,7 @@
 import Foundation
 import CryptoKit
 
-public protocol Fingerprintable {
+protocol Fingerprintable {
     /// Provides necessary data to compute a fingerprint through a `FingerprintFunction`
     var fingerprintInput: Data { get }
     
@@ -17,6 +17,16 @@ public protocol Fingerprintable {
     func fingerprint(using hashingFunction: FingerprintFunction) -> String
 }
 
-public protocol FingerprintFunction {
-    func fingerprint(data: Data) -> String
+extension DeviceInfoItem: Fingerprintable {
+    var fingerprintInput: Data {
+        if case let .info(infoValue) = value,
+           let data = infoValue.data(using: .ascii) {
+            return data
+        }
+        return Data()
+    }
+    
+    func fingerprint(using hashingFunction: FingerprintFunction) -> String {
+        hashingFunction.fingerprint(data: fingerprintInput)
+    }
 }

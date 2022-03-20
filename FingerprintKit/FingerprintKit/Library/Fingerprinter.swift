@@ -11,28 +11,33 @@ import SwiftUI
 public class Fingerprinter {
     private let configuration: Configuration
     private let identifiers: IdentifierHarvesting
-    private let deviceInfoTree: DeviceInfoTreeProvider
-    private let fingerprintCalculator: TreeFingerprintCalculator
+    private let treeProvider: DeviceInfoTreeProvider
+    private let fingerprintCalculator: FingerprintTreeCalculator
     
     public convenience init(_ configuration: Configuration) {
         self.init(
             configuration,
             identifiers: IdentifierHarvester(),
-            deviceInfoTree: FingerprintTreeBuilder(),
-            fingerprintCalculator: TreeFingerprintCalculator()
+            deviceInfoTree: CompoundTreeBuilder(),
+            fingerprintCalculator: FingerprintTreeCalculator()
         )
     }
     
-    init(_ configuration: Configuration, identifiers: IdentifierHarvesting, deviceInfoTree: DeviceInfoTreeProvider, fingerprintCalculator: TreeFingerprintCalculator) {
+    init(
+        _ configuration: Configuration,
+        identifiers: IdentifierHarvesting,
+        deviceInfoTree: DeviceInfoTreeProvider,
+        fingerprintCalculator: FingerprintTreeCalculator
+    ) {
         self.configuration = configuration
         self.identifiers = identifiers
-        self.deviceInfoTree = deviceInfoTree
+        self.treeProvider = deviceInfoTree
         self.fingerprintCalculator = fingerprintCalculator
     }
     
 }
 
-// MARK: - Public Interface:
+// MARK: - Public Interface
 public extension Fingerprinter {
     func getDeviceId(_ completion: @escaping (String?) -> Void) {
         completion(self.identifiers.vendorIdentifier?.uuidString)
@@ -45,7 +50,7 @@ public extension Fingerprinter {
     }
     
     func getFingerprintTree(_ completion: @escaping (FingerprintTree) -> Void) {
-        let inputTree = deviceInfoTree.buildTree(configuration)
+        let inputTree = treeProvider.buildTree(configuration)
         let fingerprintTree = fingerprintCalculator.calculateFingerprints(
             from: inputTree,
             hashFunction: configuration.hashFunction

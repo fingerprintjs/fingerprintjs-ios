@@ -23,7 +23,7 @@ class SystemControl {
             }
             
             errno = sysctl(&sysctlFlags, flagCount, valueMemory, &size, nil, 0)
-            if errno == 0 {
+            if errno == ERR_SUCCESS {
                 let data = Data(bytesNoCopy: valueMemory, count: size, deallocator: .none)
                 return T.from(data)
             } else {

@@ -10,7 +10,6 @@
 		6A82A18327D65DB4007C023F /* FingerprintKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A82A17A27D65DB4007C023F /* FingerprintKit.framework */; };
 		6A82A18827D65DB4007C023F /* FingerprintKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A18727D65DB4007C023F /* FingerprintKitTests.swift */; };
 		6A82A18927D65DB4007C023F /* FingerprintKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A82A17D27D65DB4007C023F /* FingerprintKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6A82A19427D65E3F007C023F /* HardwareFingerprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A19327D65E3F007C023F /* HardwareFingerprint.swift */; };
 		6A82A19727D74D5B007C023F /* Fingerprintable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A19627D74D5B007C023F /* Fingerprintable.swift */; };
 		6A82A19B27D76CD6007C023F /* HardwareInfoHarvester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A19A27D76CD6007C023F /* HardwareInfoHarvester.swift */; };
 		6A82A19E27D775AF007C023F /* SystemControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A19D27D775AF007C023F /* SystemControl.swift */; };
@@ -18,19 +17,21 @@
 		6A82A1A227D8965D007C023F /* IdentifierHarvester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A1A127D8965D007C023F /* IdentifierHarvester.swift */; };
 		6A82A1A427D897F2007C023F /* KeychainIdentifierStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A1A327D897F2007C023F /* KeychainIdentifierStorage.swift */; };
 		6A82A1A627D89817007C023F /* IdentifierStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A1A527D89817007C023F /* IdentifierStorable.swift */; };
-		6A82A1AA27D94940007C023F /* IdentifierFingerprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A1A927D94940007C023F /* IdentifierFingerprint.swift */; };
 		6A82A1AD27DA09E3007C023F /* SHA256FingerprintFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A1AC27DA09E3007C023F /* SHA256FingerprintFunction.swift */; };
 		6A82A1AF27DA0A19007C023F /* Digest+StringOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A1AE27DA0A18007C023F /* Digest+StringOutput.swift */; };
-		6A82A1B127DA3CC2007C023F /* DeviceFingerprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A1B027DA3CC2007C023F /* DeviceFingerprint.swift */; };
 		6A82A1B327DB5941007C023F /* OSInfoHarvester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A1B227DB5941007C023F /* OSInfoHarvester.swift */; };
 		6A9B7CA527E206EC002B9939 /* DataConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9B7CA427E206EC002B9939 /* DataConvertible.swift */; };
 		6A9B7CA727E207A9002B9939 /* SystemControlError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9B7CA627E207A9002B9939 /* SystemControlError.swift */; };
 		6A9B7CAA27E214C5002B9939 /* FingerprinterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9B7CA927E214C5002B9939 /* FingerprinterFactory.swift */; };
-		6A9B7CAC27E214DA002B9939 /* FingerprinterConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9B7CAB27E214DA002B9939 /* FingerprinterConfiguration.swift */; };
+		6A9B7CAC27E214DA002B9939 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9B7CAB27E214DA002B9939 /* Configuration.swift */; };
 		6A9B7CAE27E220F1002B9939 /* Fingerprinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9B7CAD27E220F1002B9939 /* Fingerprinter.swift */; };
-		6A9B7CB027E36F66002B9939 /* FingerprintTreeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9B7CAF27E36F66002B9939 /* FingerprintTreeBuilder.swift */; };
-		6AC03F4B27DE574100EF9DB7 /* DeviceInfoProvidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC03F4A27DE574100EF9DB7 /* DeviceInfoProvidable.swift */; };
-		6AC03F5427E08C3A00EF9DB7 /* OSFingerprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC03F5327E08C3A00EF9DB7 /* OSFingerprint.swift */; };
+		6A9B7CB027E36F66002B9939 /* CompoundTreeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9B7CAF27E36F66002B9939 /* CompoundTreeBuilder.swift */; };
+		6A9B7CB227E7AA8E002B9939 /* DeviceInfoTreeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9B7CB127E7AA8E002B9939 /* DeviceInfoTreeProvider.swift */; };
+		6A9B7CB427E7AB6D002B9939 /* FingerprintFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9B7CB327E7AB6D002B9939 /* FingerprintFunction.swift */; };
+		6A9B7CB627E7AC55002B9939 /* CGSize+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9B7CB527E7AC55002B9939 /* CGSize+CustomStringConvertible.swift */; };
+		6A9B7CB827E7ADC8002B9939 /* FingerprintTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9B7CB727E7ADC8002B9939 /* FingerprintTree.swift */; };
+		6A9B7CBA27E7B3D4002B9939 /* FingerprintTreeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9B7CB927E7B3D4002B9939 /* FingerprintTreeCalculator.swift */; };
+		6AC03F4B27DE574100EF9DB7 /* DeviceInfoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC03F4A27DE574100EF9DB7 /* DeviceInfoItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +49,6 @@
 		6A82A17D27D65DB4007C023F /* FingerprintKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FingerprintKit.h; sourceTree = "<group>"; };
 		6A82A18227D65DB4007C023F /* FingerprintKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FingerprintKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A82A18727D65DB4007C023F /* FingerprintKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerprintKitTests.swift; sourceTree = "<group>"; };
-		6A82A19327D65E3F007C023F /* HardwareFingerprint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardwareFingerprint.swift; sourceTree = "<group>"; };
 		6A82A19627D74D5B007C023F /* Fingerprintable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fingerprintable.swift; sourceTree = "<group>"; };
 		6A82A19A27D76CD6007C023F /* HardwareInfoHarvester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardwareInfoHarvester.swift; sourceTree = "<group>"; };
 		6A82A19D27D775AF007C023F /* SystemControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemControl.swift; sourceTree = "<group>"; };
@@ -56,19 +56,21 @@
 		6A82A1A127D8965D007C023F /* IdentifierHarvester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierHarvester.swift; sourceTree = "<group>"; };
 		6A82A1A327D897F2007C023F /* KeychainIdentifierStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainIdentifierStorage.swift; sourceTree = "<group>"; };
 		6A82A1A527D89817007C023F /* IdentifierStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierStorable.swift; sourceTree = "<group>"; };
-		6A82A1A927D94940007C023F /* IdentifierFingerprint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierFingerprint.swift; sourceTree = "<group>"; };
 		6A82A1AC27DA09E3007C023F /* SHA256FingerprintFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHA256FingerprintFunction.swift; sourceTree = "<group>"; };
 		6A82A1AE27DA0A18007C023F /* Digest+StringOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Digest+StringOutput.swift"; sourceTree = "<group>"; };
-		6A82A1B027DA3CC2007C023F /* DeviceFingerprint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceFingerprint.swift; sourceTree = "<group>"; };
 		6A82A1B227DB5941007C023F /* OSInfoHarvester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSInfoHarvester.swift; sourceTree = "<group>"; };
 		6A9B7CA427E206EC002B9939 /* DataConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataConvertible.swift; sourceTree = "<group>"; };
 		6A9B7CA627E207A9002B9939 /* SystemControlError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemControlError.swift; sourceTree = "<group>"; };
 		6A9B7CA927E214C5002B9939 /* FingerprinterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerprinterFactory.swift; sourceTree = "<group>"; };
-		6A9B7CAB27E214DA002B9939 /* FingerprinterConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerprinterConfiguration.swift; sourceTree = "<group>"; };
+		6A9B7CAB27E214DA002B9939 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		6A9B7CAD27E220F1002B9939 /* Fingerprinter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fingerprinter.swift; sourceTree = "<group>"; };
-		6A9B7CAF27E36F66002B9939 /* FingerprintTreeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerprintTreeBuilder.swift; sourceTree = "<group>"; };
-		6AC03F4A27DE574100EF9DB7 /* DeviceInfoProvidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoProvidable.swift; sourceTree = "<group>"; };
-		6AC03F5327E08C3A00EF9DB7 /* OSFingerprint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSFingerprint.swift; sourceTree = "<group>"; };
+		6A9B7CAF27E36F66002B9939 /* CompoundTreeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompoundTreeBuilder.swift; sourceTree = "<group>"; };
+		6A9B7CB127E7AA8E002B9939 /* DeviceInfoTreeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoTreeProvider.swift; sourceTree = "<group>"; };
+		6A9B7CB327E7AB6D002B9939 /* FingerprintFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerprintFunction.swift; sourceTree = "<group>"; };
+		6A9B7CB527E7AC55002B9939 /* CGSize+CustomStringConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+CustomStringConvertible.swift"; sourceTree = "<group>"; };
+		6A9B7CB727E7ADC8002B9939 /* FingerprintTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerprintTree.swift; sourceTree = "<group>"; };
+		6A9B7CB927E7B3D4002B9939 /* FingerprintTreeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerprintTreeCalculator.swift; sourceTree = "<group>"; };
+		6AC03F4A27DE574100EF9DB7 /* DeviceInfoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,11 +135,10 @@
 		6A82A19227D65E1C007C023F /* Fingerprints */ = {
 			isa = PBXGroup;
 			children = (
-				6A82A19327D65E3F007C023F /* HardwareFingerprint.swift */,
-				6A82A1A927D94940007C023F /* IdentifierFingerprint.swift */,
-				6A82A1B027DA3CC2007C023F /* DeviceFingerprint.swift */,
-				6AC03F5327E08C3A00EF9DB7 /* OSFingerprint.swift */,
-				6A9B7CAF27E36F66002B9939 /* FingerprintTreeBuilder.swift */,
+				6A9B7CAF27E36F66002B9939 /* CompoundTreeBuilder.swift */,
+				6A9B7CB127E7AA8E002B9939 /* DeviceInfoTreeProvider.swift */,
+				6A9B7CB727E7ADC8002B9939 /* FingerprintTree.swift */,
+				6A9B7CB927E7B3D4002B9939 /* FingerprintTreeCalculator.swift */,
 			);
 			path = Fingerprints;
 			sourceTree = "<group>";
@@ -147,7 +148,8 @@
 			children = (
 				6A82A1A727D89CB0007C023F /* Storage */,
 				6A82A19627D74D5B007C023F /* Fingerprintable.swift */,
-				6AC03F4A27DE574100EF9DB7 /* DeviceInfoProvidable.swift */,
+				6AC03F4A27DE574100EF9DB7 /* DeviceInfoItem.swift */,
+				6A9B7CB527E7AC55002B9939 /* CGSize+CustomStringConvertible.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -186,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				6A82A1AC27DA09E3007C023F /* SHA256FingerprintFunction.swift */,
+				6A9B7CB327E7AB6D002B9939 /* FingerprintFunction.swift */,
 				6A82A1AE27DA0A18007C023F /* Digest+StringOutput.swift */,
 			);
 			path = Hashing;
@@ -195,7 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				6A9B7CA927E214C5002B9939 /* FingerprinterFactory.swift */,
-				6A9B7CAB27E214DA002B9939 /* FingerprinterConfiguration.swift */,
+				6A9B7CAB27E214DA002B9939 /* Configuration.swift */,
 				6A9B7CAD27E220F1002B9939 /* Fingerprinter.swift */,
 			);
 			path = Library;
@@ -311,16 +314,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A82A1AA27D94940007C023F /* IdentifierFingerprint.swift in Sources */,
-				6AC03F4B27DE574100EF9DB7 /* DeviceInfoProvidable.swift in Sources */,
-				6AC03F5427E08C3A00EF9DB7 /* OSFingerprint.swift in Sources */,
-				6A9B7CB027E36F66002B9939 /* FingerprintTreeBuilder.swift in Sources */,
+				6AC03F4B27DE574100EF9DB7 /* DeviceInfoItem.swift in Sources */,
+				6A9B7CB227E7AA8E002B9939 /* DeviceInfoTreeProvider.swift in Sources */,
+				6A9B7CBA27E7B3D4002B9939 /* FingerprintTreeCalculator.swift in Sources */,
+				6A9B7CB627E7AC55002B9939 /* CGSize+CustomStringConvertible.swift in Sources */,
+				6A9B7CB027E36F66002B9939 /* CompoundTreeBuilder.swift in Sources */,
 				6A82A1A027D79618007C023F /* SystemControlFlag.swift in Sources */,
+				6A9B7CB427E7AB6D002B9939 /* FingerprintFunction.swift in Sources */,
+				6A9B7CB827E7ADC8002B9939 /* FingerprintTree.swift in Sources */,
 				6A82A19E27D775AF007C023F /* SystemControl.swift in Sources */,
 				6A82A1B327DB5941007C023F /* OSInfoHarvester.swift in Sources */,
 				6A82A1A627D89817007C023F /* IdentifierStorable.swift in Sources */,
 				6A9B7CA727E207A9002B9939 /* SystemControlError.swift in Sources */,
-				6A9B7CAC27E214DA002B9939 /* FingerprinterConfiguration.swift in Sources */,
+				6A9B7CAC27E214DA002B9939 /* Configuration.swift in Sources */,
 				6A9B7CA527E206EC002B9939 /* DataConvertible.swift in Sources */,
 				6A82A19727D74D5B007C023F /* Fingerprintable.swift in Sources */,
 				6A82A1AD27DA09E3007C023F /* SHA256FingerprintFunction.swift in Sources */,
@@ -328,8 +334,6 @@
 				6A9B7CAE27E220F1002B9939 /* Fingerprinter.swift in Sources */,
 				6A82A19B27D76CD6007C023F /* HardwareInfoHarvester.swift in Sources */,
 				6A82A1A427D897F2007C023F /* KeychainIdentifierStorage.swift in Sources */,
-				6A82A19427D65E3F007C023F /* HardwareFingerprint.swift in Sources */,
-				6A82A1B127DA3CC2007C023F /* DeviceFingerprint.swift in Sources */,
 				6A9B7CAA27E214C5002B9939 /* FingerprinterFactory.swift in Sources */,
 				6A82A1A227D8965D007C023F /* IdentifierHarvester.swift in Sources */,
 			);
