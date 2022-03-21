@@ -24,7 +24,7 @@ class CompoundTreeBuilder {
 }
 
 extension CompoundTreeBuilder: DeviceInfoTreeProvider {
-    public func buildTree(_ configuration: Configuration) -> DeviceInfoItem {
+    func buildTree(_ configuration: Configuration) -> DeviceInfoItem {
         let children = treeProviders.map { provider in
             return provider.buildTree(configuration)
         }

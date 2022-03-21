@@ -5,7 +5,7 @@
 //  Created by Petr Palata on 11.03.2022.
 //
 
-public protocol OSInfoHarvesting {
+protocol OSInfoHarvesting {
     var osBuild: String { get }
     
     var osVersion: String { get }
@@ -15,30 +15,30 @@ public protocol OSInfoHarvesting {
     var kernelVersion: String { get }
 }
 
-public class OSInfoHarvester {
+class OSInfoHarvester {
     private let systemControl = SystemControl()
     
     public init() {}
 }
 
 extension OSInfoHarvester: OSInfoHarvesting {
-    public var osType: String {
+    var osType: String {
         return systemControl.osType ?? "Undefined"
     }
     
-    public var osVersion: String {
+    var osVersion: String {
         return systemControl.osVersion ?? "Undefined"
     }
     
-    public var osRelease: String {
+    var osRelease: String {
         return systemControl.osRelease ?? "Undefined"
     }
     
-    public var kernelVersion: String {
+    var kernelVersion: String {
         return systemControl.kernelVersion ?? "Undefined"
     }
     
-    public var osBuild: String {
+    var osBuild: String {
         guard let osBuild = systemControl.osBuild else {
             return "Undefined"
         }

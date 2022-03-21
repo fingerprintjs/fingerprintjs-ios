@@ -8,9 +8,7 @@
 import Foundation
 import CryptoKit
 
-public class SHA256HashingFunction: FingerprintFunction {
-    public init() {}
-    
+class SHA256HashingFunction: FingerprintFunction {
     public func fingerprint(data: Data) -> String {
         let digest = SHA256.hash(data: data)
         return digest.hexStr

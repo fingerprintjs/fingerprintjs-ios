@@ -8,13 +8,14 @@
 import Foundation
 import SwiftUI
 
+/// Main `FingerprintKit` class that provides an interface to all library functions (device identifier and fingerprint retrieval)
 public class Fingerprinter {
     private let configuration: Configuration
     private let identifiers: IdentifierHarvesting
     private let treeProvider: DeviceInfoTreeProvider
     private let fingerprintCalculator: FingerprintTreeCalculator
     
-    public convenience init(_ configuration: Configuration) {
+    convenience init(_ configuration: Configuration) {
         self.init(
             configuration,
             identifiers: IdentifierHarvester(),
@@ -39,16 +40,29 @@ public class Fingerprinter {
 
 // MARK: - Public Interface
 public extension Fingerprinter {
+    /// Retrieves a stable device identifier that is tied to the current device/application combination
+    /// - Parameter completion: Block called with the device identifier `String` value or `nil` if an error occurs
+    /// - SeeAlso: [Device Identifier and Fingerprint Stability](https://github.com/fingerprintjs/fingerprintjs-ios#device_identifier_and_fingerprint_stability)
     func getDeviceId(_ completion: @escaping (String?) -> Void) {
         completion(self.identifiers.vendorIdentifier?.uuidString)
     }
     
+    /// Computes device fingerprint from a combination of hardware information and device identifiers.
+    ///
+    /// The fingerprint is computed with a hash function previously specified through the `Configuration`
+    /// object that was passed through the initializer
+    ///  - Parameter completion: Block called with a `String` representing the fingerprint or `nil` if any error occured
     func getFingerprint(_ completion: @escaping (String?) -> Void) {
         getFingerprintTree { deviceItem in
             completion(deviceItem.fingerprint)
         }
     }
     
+    /// Gets fingerprint information in its raw form (includes both the data and the fingerprint itself) as a tree of
+    /// fingerprinted `DeviceItemInfo` items.
+    ///
+    /// - Parameter completion: Block called with `FingerprintTree` object that encapsulates both
+    /// the hardware information as well as the final computed fingerprint.
     func getFingerprintTree(_ completion: @escaping (FingerprintTree) -> Void) {
         let inputTree = treeProvider.buildTree(configuration)
         let fingerprintTree = fingerprintCalculator.calculateFingerprints(
@@ -62,6 +76,9 @@ public extension Fingerprinter {
 // MARK: - Public Interface: Async/Await (iOS 13+)
 @available(iOS 13, macOS 11, *)
 public extension Fingerprinter {
+    /// Retrieves a stable device identifier that is tied to the current device/application combination
+    /// - Returns: Device identifier `String` value or `nil` if an error occurs
+    /// - SeeAlso: [Device Identifier and Fingerprint Stability](https://github.com/fingerprintjs/fingerprintjs-ios#device_identifier_and_fingerprint_stability)
     func getDeviceId() async -> String? {
         return await withCheckedContinuation({ continuation in
             self.getDeviceId { deviceId in
@@ -70,6 +87,10 @@ public extension Fingerprinter {
         })
     }
     
+    /// Gets fingerprint information in its raw form (includes both the data and the fingerprint itself) as a tree of
+    /// fingerprinted `DeviceItemInfo` items.
+    ///
+    /// - Returns: `FingerprintTree` object that encapsulates both the hardware information as well as the final computed fingerprint.
     func getFingerprintTree() async -> FingerprintTree  {
         return await withCheckedContinuation({ continuation in
             self.getFingerprintTree({ tree in
@@ -78,6 +99,12 @@ public extension Fingerprinter {
         })
     }
     
+  
+    /// Computes device fingerprint from a combination of hardware information and device identifiers.
+    ///
+    /// The fingerprint is computed with a hash function previously specified through the `Configuration`
+    /// object that was passed through the initializer
+    ///  - Returns: `String` representing the fingerprint or `nil` if any error occured
     func getFingerprint() async -> String? {
         return await withCheckedContinuation({ continuation in
             self.getFingerprint { fingerprint in

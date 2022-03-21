@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-public protocol HardwareInfoHarvesting {
+protocol HardwareInfoHarvesting {
     /// Returns high-level device type (e.g. iPhone)
     var deviceType: String { get }
     
@@ -19,7 +19,7 @@ public protocol HardwareInfoHarvesting {
     var deviceModel: String { get }
 }
 
-public class HardwareInfoHarvester {
+class HardwareInfoHarvester {
     private let device: UIDevice
     private let screen: UIScreen
     private let systemControl: SystemControl
@@ -36,38 +36,38 @@ public class HardwareInfoHarvester {
 }
 
 extension HardwareInfoHarvester: HardwareInfoHarvesting {
-    public var deviceType: String {
+    var deviceType: String {
         return device.model
     }
     
-    public var displayResolution: CGSize {
+    var displayResolution: CGSize {
         let nativeBounds = screen.nativeBounds
         return CGSize(width: nativeBounds.width, height: nativeBounds.height)
     }
     
-    public var deviceModel: String {
+    var deviceModel: String {
         return systemControl.hardwareModel ?? "Undefined"
     }
     
-    public var memorySize: String {
+    var memorySize: String {
         guard let memorySize = systemControl.memorySize else {
             return "Undefined"
         }
         return "\(memorySize)"
     }
     
-    public var physicalMemory: String {
+    var physicalMemory: String {
         guard let physicalMemory = systemControl.physicalMemory else {
             return "Undefined"
         }
         return "\(physicalMemory)"
     }
     
-    public var cpuCount: String {
+    var cpuCount: String {
         return "\(ProcessInfo.processInfo.processorCount)"
     }
     
-    public var cpuFrequency: String {
+    var cpuFrequency: String {
         guard let cpuFrequency = systemControl.cpuFrequency else {
             return "Undefined"
         }

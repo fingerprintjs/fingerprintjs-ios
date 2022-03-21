@@ -36,47 +36,47 @@ class SystemControl {
 }
 
 extension SystemControl {
-    public var hardwareModel: String? {
+    var hardwareModel: String? {
         return try? getSystemValue(.hardwareModel)
     }
     
-    public var hardwareMachine: String? {
+    var hardwareMachine: String? {
         return try? getSystemValue(.hardwareMachine)
     }
     
-    public var osRelease: String? {
+    var osRelease: String? {
         return try? getSystemValue(.osRelease)
     }
     
-    public var osType: String? {
+    var osType: String? {
         return try? getSystemValue(.osType)
     }
     
-    public var osVersion: String? {
+    var osVersion: String? {
         return try? getSystemValue(.osVersion)
     }
     
-    public var kernelVersion: String? {
+    var kernelVersion: String? {
         return try? getSystemValue(.kernelVersion)
     }
     
-    public var osBuild: Int32? {
+    var osBuild: Int32? {
         return try? getSystemValue(.osBuild)
     }
     
-    public var memorySize: Int64? {
+    var memorySize: Int64? {
         return try? getSystemValue(.memSize)
     }
     
-    public var physicalMemory: Int32? {
+    var physicalMemory: Int32? {
         return try? getSystemValue(.physicalMemory)
     }
     
-    public var cpuCount: Int32? {
+    var cpuCount: Int32? {
         return try? getSystemValue(.cpuCount)
     }
     
-    public var cpuFrequency: Int32? {
+    var cpuFrequency: Int32? {
         return try? getSystemValue(.cpuFrequency)
     }
 }

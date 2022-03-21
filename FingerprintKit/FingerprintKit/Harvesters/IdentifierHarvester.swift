@@ -12,9 +12,8 @@ protocol IdentifierHarvesting {
     var vendorIdentifier: UUID? { get }
 }
 
-public class IdentifierHarvester {
+class IdentifierHarvester {
     private let vendorIdentifierKey = "vendorIdentifier"
-    
     private let identifierStorage: IdentifierStorable
     private let device: UIDevice
     
@@ -23,13 +22,13 @@ public class IdentifierHarvester {
         self.device = device
     }
     
-    public convenience init() {
+    convenience init() {
         self.init(KeychainIdentifierStorage(), device: UIDevice.current)
     }
 }
 
 extension IdentifierHarvester: IdentifierHarvesting {
-    public var vendorIdentifier: UUID? {
+    var vendorIdentifier: UUID? {
         if let vendorIdentifier = identifierStorage.loadIdentifier(for: vendorIdentifierKey) {
             return vendorIdentifier
         } else {
