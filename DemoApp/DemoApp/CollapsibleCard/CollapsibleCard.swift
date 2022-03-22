@@ -26,12 +26,13 @@ struct CollapsibleCard<CollapsibleContent: View>: View {
                 collapsed = !collapsed
             }) {
                 HStack {
-                    VStack(alignment: .leading) {
-                        Text(title)
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text(title).font(.system(size: 20))
                         if let subtitle = subtitle {
                             Text(subtitle)
                                 .foregroundColor(.gray)
                                 .fontWeight(.medium)
+                                .padding(EdgeInsets(top: 8, leading: 0, bottom: 0, trailing: 0))
                         }
                     }
                     Spacer()

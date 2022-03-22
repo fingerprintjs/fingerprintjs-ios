@@ -12,9 +12,7 @@ import FingerprintKit
 struct DemoApp: App {
     var body: some Scene {
         WindowGroup {
-            ScrollView {
-                DeviceInfoView().padding()
-            }
+            FingerprintGeneratorView()
         }
     }
 }
