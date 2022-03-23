@@ -15,12 +15,14 @@ struct DeviceInfoItemView: View {
         Divider()
         VStack(alignment: .leading) {
             Text(label).bold()
-            Text(value).foregroundColor(.gray)
+            Text(value)
+                .foregroundColor(.gray)
+                .fixedSize(horizontal: false, vertical: true)
         }
         .frame(
             maxWidth: .infinity,
             maxHeight: .infinity,
-            alignment: .topLeading
+            alignment: .leading
         )
         .padding(EdgeInsets(top: 5, leading: 16, bottom: 5, trailing: 8))
     }

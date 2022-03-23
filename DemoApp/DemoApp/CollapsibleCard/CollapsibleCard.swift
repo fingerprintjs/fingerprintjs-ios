@@ -39,8 +39,8 @@ struct CollapsibleCard<CollapsibleContent: View>: View {
                     Image(systemName: collapsed ? "chevron.down" : "chevron.up")
                 }
                 .contentShape(Rectangle())
-                .padding()
             }
+            .padding()
             .buttonStyle(.plain)
             if !collapsed {
                 content

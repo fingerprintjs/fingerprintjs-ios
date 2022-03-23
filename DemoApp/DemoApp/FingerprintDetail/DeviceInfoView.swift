@@ -20,6 +20,8 @@ struct FingerprintDetailView: View {
                 .padding()
             
             InfoTreeView(tree: fingerprintTree)
-        }.navigationTitle("Details")
+            Spacer()
+        }
+        .navigationTitle("Details")
     }
 }

@@ -14,7 +14,7 @@ struct InfoTreeView: View {
     var body: some View {
         VStack {
             if let children = tree.children {
-                ForEach(children, id: \.fingerprint) { child in
+                ForEach(children) { child in
                     CollapsibleCard(child.info.label, subtitle: child.fingerprint) {
                         if let items = child.children {
                             VStack {
@@ -34,6 +34,6 @@ struct InfoTreeView: View {
 
 extension FingerprintTree: Identifiable {
     public var id: String {
-        return fingerprint
+        return fingerprint + info.label
     }
 }
