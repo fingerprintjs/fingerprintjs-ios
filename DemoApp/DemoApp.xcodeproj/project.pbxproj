@@ -15,6 +15,7 @@
 		6AB7145B27EA18A7004BBCF3 /* FingerprintGeneratorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB7145927EA18A7004BBCF3 /* FingerprintGeneratorViewModel.swift */; };
 		6AB7145C27EA18A7004BBCF3 /* FingerprintGeneratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB7145A27EA18A7004BBCF3 /* FingerprintGeneratorView.swift */; };
 		6AB7145F27EA1F85004BBCF3 /* FingerprintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB7145E27EA1F85004BBCF3 /* FingerprintView.swift */; };
+		6AB7146727EBBA3E004BBCF3 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AB7146627EBBA3E004BBCF3 /* Launch.storyboard */; };
 		6AC03F4927DE509B00EF9DB7 /* FingerprintDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC03F4827DE509B00EF9DB7 /* FingerprintDetailView.swift */; };
 		6AC03F5027DF2DCC00EF9DB7 /* DeviceInfoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC03F4F27DF2DCC00EF9DB7 /* DeviceInfoItemView.swift */; };
 		6AC2334C27E0FEE3007786F2 /* FingerprintKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AC03F4D27DE7FC700EF9DB7 /* FingerprintKit.framework */; };
@@ -44,6 +45,8 @@
 		6AB7145927EA18A7004BBCF3 /* FingerprintGeneratorViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FingerprintGeneratorViewModel.swift; path = DemoApp/FingeprintGenerator/FingerprintGeneratorViewModel.swift; sourceTree = SOURCE_ROOT; };
 		6AB7145A27EA18A7004BBCF3 /* FingerprintGeneratorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FingerprintGeneratorView.swift; path = DemoApp/FingeprintGenerator/FingerprintGeneratorView.swift; sourceTree = SOURCE_ROOT; };
 		6AB7145E27EA1F85004BBCF3 /* FingerprintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FingerprintView.swift; path = DemoApp/FingeprintGenerator/FingerprintView.swift; sourceTree = SOURCE_ROOT; };
+		6AB7146527EB8876004BBCF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		6AB7146627EBBA3E004BBCF3 /* Launch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		6AC03F4827DE509B00EF9DB7 /* FingerprintDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerprintDetailView.swift; sourceTree = "<group>"; };
 		6AC03F4D27DE7FC700EF9DB7 /* FingerprintKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FingerprintKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AC03F4F27DF2DCC00EF9DB7 /* DeviceInfoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoItemView.swift; sourceTree = "<group>"; };
@@ -64,6 +67,7 @@
 		6A82A1B427DB71A2007C023F = {
 			isa = PBXGroup;
 			children = (
+				6AB7146627EBBA3E004BBCF3 /* Launch.storyboard */,
 				6A82A1BF27DB71A2007C023F /* DemoApp */,
 				6A82A1BE27DB71A2007C023F /* Products */,
 				6AC03F4C27DE7FC700EF9DB7 /* Frameworks */,
@@ -81,6 +85,7 @@
 		6A82A1BF27DB71A2007C023F /* DemoApp */ = {
 			isa = PBXGroup;
 			children = (
+				6AB7146527EB8876004BBCF3 /* Info.plist */,
 				6AB7145827EA1888004BBCF3 /* FingerprintGenerator */,
 				6AC03F5227DF2F2700EF9DB7 /* CollapsibleCard */,
 				6AC03F5127DF2EFF00EF9DB7 /* FingerprintDetail */,
@@ -196,6 +201,7 @@
 			files = (
 				6A82A1C827DB71A3007C023F /* Preview Assets.xcassets in Resources */,
 				6A82A1C527DB71A3007C023F /* Assets.xcassets in Resources */,
+				6AB7146727EBBA3E004BBCF3 /* Launch.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,9 +353,9 @@
 				DEVELOPMENT_TEAM = K78JGMAWVU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DemoApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_DYLIB_INSTALL_NAME = "@rpath";
@@ -377,9 +383,9 @@
 				DEVELOPMENT_TEAM = K78JGMAWVU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DemoApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_DYLIB_INSTALL_NAME = "@rpath";
