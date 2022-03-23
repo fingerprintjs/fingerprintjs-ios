@@ -21,7 +21,7 @@ struct FingerprintView: View {
         }
         .padding()
         .background(Color.white)
-        .clipShape(RoundedRectangle(cornerRadius: 10))
-        .shadow(radius: 3)
+        .clipShape(RoundedRectangle(cornerRadius: 5))
+        .shadow(radius: 2, y: 2)
     }
 }

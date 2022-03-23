@@ -15,7 +15,7 @@
 		6AB7145B27EA18A7004BBCF3 /* FingerprintGeneratorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB7145927EA18A7004BBCF3 /* FingerprintGeneratorViewModel.swift */; };
 		6AB7145C27EA18A7004BBCF3 /* FingerprintGeneratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB7145A27EA18A7004BBCF3 /* FingerprintGeneratorView.swift */; };
 		6AB7145F27EA1F85004BBCF3 /* FingerprintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB7145E27EA1F85004BBCF3 /* FingerprintView.swift */; };
-		6AC03F4927DE509B00EF9DB7 /* DeviceInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC03F4827DE509B00EF9DB7 /* DeviceInfoView.swift */; };
+		6AC03F4927DE509B00EF9DB7 /* FingerprintDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC03F4827DE509B00EF9DB7 /* FingerprintDetailView.swift */; };
 		6AC03F5027DF2DCC00EF9DB7 /* DeviceInfoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC03F4F27DF2DCC00EF9DB7 /* DeviceInfoItemView.swift */; };
 		6AC2334C27E0FEE3007786F2 /* FingerprintKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AC03F4D27DE7FC700EF9DB7 /* FingerprintKit.framework */; };
 		6AC2334E27E100A9007786F2 /* FingerprintKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6AC03F4D27DE7FC700EF9DB7 /* FingerprintKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -44,7 +44,7 @@
 		6AB7145927EA18A7004BBCF3 /* FingerprintGeneratorViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FingerprintGeneratorViewModel.swift; path = DemoApp/FingeprintGenerator/FingerprintGeneratorViewModel.swift; sourceTree = SOURCE_ROOT; };
 		6AB7145A27EA18A7004BBCF3 /* FingerprintGeneratorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FingerprintGeneratorView.swift; path = DemoApp/FingeprintGenerator/FingerprintGeneratorView.swift; sourceTree = SOURCE_ROOT; };
 		6AB7145E27EA1F85004BBCF3 /* FingerprintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FingerprintView.swift; path = DemoApp/FingeprintGenerator/FingerprintView.swift; sourceTree = SOURCE_ROOT; };
-		6AC03F4827DE509B00EF9DB7 /* DeviceInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoView.swift; sourceTree = "<group>"; };
+		6AC03F4827DE509B00EF9DB7 /* FingerprintDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerprintDetailView.swift; sourceTree = "<group>"; };
 		6AC03F4D27DE7FC700EF9DB7 /* FingerprintKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FingerprintKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AC03F4F27DF2DCC00EF9DB7 /* DeviceInfoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -120,7 +120,7 @@
 		6AC03F5127DF2EFF00EF9DB7 /* FingerprintDetail */ = {
 			isa = PBXGroup;
 			children = (
-				6AC03F4827DE509B00EF9DB7 /* DeviceInfoView.swift */,
+				6AC03F4827DE509B00EF9DB7 /* FingerprintDetailView.swift */,
 				6AC03F4F27DF2DCC00EF9DB7 /* DeviceInfoItemView.swift */,
 				6AAFE32027E7C2340052941A /* InfoTreeView.swift */,
 			);
@@ -211,7 +211,7 @@
 				6AB7145F27EA1F85004BBCF3 /* FingerprintView.swift in Sources */,
 				6AB7145C27EA18A7004BBCF3 /* FingerprintGeneratorView.swift in Sources */,
 				6A82A1C127DB71A2007C023F /* DemoApp.swift in Sources */,
-				6AC03F4927DE509B00EF9DB7 /* DeviceInfoView.swift in Sources */,
+				6AC03F4927DE509B00EF9DB7 /* FingerprintDetailView.swift in Sources */,
 				6AC03F5027DF2DCC00EF9DB7 /* DeviceInfoItemView.swift in Sources */,
 				6A82A1CF27DB72F6007C023F /* CollapsibleCard.swift in Sources */,
 			);

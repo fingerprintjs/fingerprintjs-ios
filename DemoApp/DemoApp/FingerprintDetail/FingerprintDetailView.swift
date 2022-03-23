@@ -1,5 +1,5 @@
 //
-//  DeviceInfoView.swift
+//  FingerprintDetailView.swift
 //  DemoApp
 //
 //  Created by Petr Palata on 13.03.2022.

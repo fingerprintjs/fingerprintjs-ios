@@ -8,17 +8,28 @@
 import Combine
 import FingerprintKit
 
+enum FingerprintGeneratorState {
+    case notGenerated
+    case generating
+    case fingerprintReady(FingerprintTree)
+}
+
 class FingerprintGeneratorViewModel: ObservableObject {
     private let fingerprinter = FingerprinterFactory.getInstance()
     
+    @Published var state: FingerprintGeneratorState = .notGenerated
     @Published var loading: Bool = false
     @Published var fingerprintTree: FingerprintTree? = nil
     
     func generateTree() async {
-        loading = true
+        state = .generating
         fingerprintTree = await fingerprinter.getFingerprintTree()
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) {
-            self.loading = false
+        if let fingerprintTree = fingerprintTree {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) { [weak self] in
+                self?.state = .fingerprintReady(fingerprintTree)
+            }
+        } else {
+            state = .notGenerated
         }
     }
     
