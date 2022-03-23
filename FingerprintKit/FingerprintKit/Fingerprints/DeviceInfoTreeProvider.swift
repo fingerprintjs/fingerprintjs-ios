@@ -22,8 +22,8 @@ extension HardwareInfoHarvester: DeviceInfoTreeProvider {
                 DeviceInfoItem(label: "Display resolution", value: .info(self.displayResolution.description)),
                 DeviceInfoItem(label: "Physical memory", value: .info(memorySize)),
                 DeviceInfoItem(label: "Processor count", value: .info(cpuCount)),
-                DeviceInfoItem(label: "Physical memory 2", value: .info(physicalMemory)),
-                DeviceInfoItem(label: "CPU frequency", value: .info(cpuFrequency))
+                // DeviceInfoItem(label: "Physical memory 2", value: .info(physicalMemory)),
+                // DeviceInfoItem(label: "CPU frequency", value: .info(cpuFrequency))
             ]
         )
     }
@@ -50,7 +50,7 @@ extension OSInfoHarvester: DeviceInfoTreeProvider {
             label: "Operating System",
             value: .category,
             children: [
-                DeviceInfoItem(label: "OS build", value: .info(osBuild)),
+                // DeviceInfoItem(label: "OS build", value: .info(osBuild)),
                 DeviceInfoItem(label: "OS release", value: .info(osRelease)),
                 DeviceInfoItem(label: "OS type", value: .info(osType)),
                 DeviceInfoItem(label: "OS version", value: .info(osVersion)),
