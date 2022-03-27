@@ -16,10 +16,9 @@ public protocol FingerprinterInstanceProviding {
     static func getInstance(_ configuration: Configuration) -> Fingerprinter
 }
 
-/// *FingerprintKit* entry point that is supposed to be used to create an instance of the library's `Fingerprinter` class 
+/// *FingerprintKit* entry point that is supposed to be used to create an instance of the library's `Fingerprinter` class
 public class FingerprinterFactory: FingerprinterInstanceProviding {
     public static func getInstance(_ configuration: Configuration = Configuration()) -> Fingerprinter {
         return Fingerprinter(configuration)
     }
 }
-

@@ -9,15 +9,15 @@ import Foundation
 
 class CompoundTreeBuilder {
     private let treeProviders: [DeviceInfoTreeProvider]
-    
+
     convenience init() {
         self.init([
             HardwareInfoHarvester(),
             OSInfoHarvester(),
-            IdentifierHarvester()
+            IdentifierHarvester(),
         ])
     }
-    
+
     init(_ treeProviders: [DeviceInfoTreeProvider]) {
         self.treeProviders = treeProviders
     }
@@ -28,7 +28,7 @@ extension CompoundTreeBuilder: DeviceInfoTreeProvider {
         let children = treeProviders.map { provider in
             return provider.buildTree(configuration)
         }
-        
+
         return DeviceInfoItem(
             label: "Device Fingerprint",
             value: .category,

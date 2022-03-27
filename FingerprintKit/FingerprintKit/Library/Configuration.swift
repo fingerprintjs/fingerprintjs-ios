@@ -16,22 +16,22 @@ public enum FingerprintKitVersion {
 public enum FingerprintAlgorithm {
     /// Default fingerprinting function that uses the SHA256 algorithm to compute the fingerprint
     case sha256
-    
+
     /// Used for purposes where the library user wants to use their own `FingerprintFunction` algorithm
     case custom(FingerprintFunction)
-    
+
 }
 
 /// `FingerprintKit`'s configuration
 public struct Configuration {
     let version: FingerprintKitVersion
     let algorithm: FingerprintAlgorithm
-    
+
     public init(version: FingerprintKitVersion = .v1, algorithm: FingerprintAlgorithm = .sha256) {
         self.version = version
         self.algorithm = algorithm
     }
-    
+
     var hashFunction: FingerprintFunction {
         switch algorithm {
         case .sha256:

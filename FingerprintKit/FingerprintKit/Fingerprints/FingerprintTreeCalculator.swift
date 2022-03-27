@@ -13,11 +13,11 @@ class FingerprintTreeCalculator {
             let fingerprintedChildren = children.map {
                 calculateFingerprints(from: $0, hashFunction: hashFunction)
             }
-            
+
             let childrenFingeprintData = fingerprintedChildren.reduce(Data()) { prev, item in
                 return prev + item.fingerprintData
             }
-            
+
             let fingerprint = hashFunction.fingerprint(data: childrenFingeprintData)
             return FingerprintTree(
                 info: tree,

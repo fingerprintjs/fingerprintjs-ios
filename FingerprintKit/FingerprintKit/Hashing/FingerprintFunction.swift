@@ -14,4 +14,3 @@ public protocol FingerprintFunction {
     /// - Returns: Fingerprint computed from the input data in its `String` form
     func fingerprint(data: Data) -> String
 }
-

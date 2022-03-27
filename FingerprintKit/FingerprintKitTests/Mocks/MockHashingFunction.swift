@@ -9,7 +9,7 @@
 
 class MockFingerprintFunction: FingerprintFunction {
     var fakeHash: String = ""
-    
+
     func fingerprint(data: Data) -> String {
         return fakeHash
     }

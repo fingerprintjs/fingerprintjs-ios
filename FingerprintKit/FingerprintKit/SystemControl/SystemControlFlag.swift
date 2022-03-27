@@ -15,14 +15,14 @@ enum SystemControlFlag {
     case cpuCount
     case cpuFrequency
     case physicalMemory
-    
+
     // MARK: OS/Kernel Information
     case osBuild
     case osType
     case osRelease
     case osVersion
     case kernelVersion
-    
+
     var sysctlFlags: [Int32] {
         switch self {
         case .hardwareMachine:
@@ -50,4 +50,3 @@ enum SystemControlFlag {
         }
     }
 }
-

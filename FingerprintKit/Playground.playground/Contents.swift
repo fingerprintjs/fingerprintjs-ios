@@ -1,9 +1,7 @@
 import FingerprintKit
 import UIKit
 
-/**
- HardwareInfoHarvester
- */
+/// HardwareInfoHarvester
 let hardwareInfo = HardwareInfoHarvester()
 hardwareInfo.deviceType
 hardwareInfo.deviceModel

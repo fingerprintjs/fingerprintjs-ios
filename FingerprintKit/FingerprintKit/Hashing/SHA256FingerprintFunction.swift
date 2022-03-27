@@ -5,8 +5,8 @@
 //  Created by Petr Palata on 10.03.2022.
 //
 
-import Foundation
 import CryptoKit
+import Foundation
 
 class SHA256HashingFunction: FingerprintFunction {
     public func fingerprint(data: Data) -> String {
@@ -14,4 +14,3 @@ class SHA256HashingFunction: FingerprintFunction {
         return digest.hexStr
     }
 }
-

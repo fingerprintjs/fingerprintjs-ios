@@ -16,12 +16,12 @@ class IdentifierHarvester {
     private let vendorIdentifierKey = "vendorIdentifier"
     private let identifierStorage: IdentifierStorable
     private let device: UIDevice
-    
+
     init(_ identifierStorage: IdentifierStorable, device: UIDevice) {
         self.identifierStorage = identifierStorage
         self.device = device
     }
-    
+
     convenience init() {
         self.init(KeychainIdentifierStorage(), device: UIDevice.current)
     }
@@ -35,10 +35,9 @@ extension IdentifierHarvester: IdentifierHarvesting {
             guard let vendorIdentifier = device.identifierForVendor else {
                 return nil
             }
-            
+
             identifierStorage.storeIdentifier(vendorIdentifier, for: vendorIdentifierKey)
             return vendorIdentifier
         }
     }
 }
-

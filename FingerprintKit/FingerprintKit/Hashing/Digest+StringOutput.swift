@@ -5,8 +5,8 @@
 //  Created by Petr Palata on 10.03.2022.
 //
 
-import Foundation
 import CryptoKit
+import Foundation
 
 extension Digest {
     var bytes: [UInt8] { Array(makeIterator()) }

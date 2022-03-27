@@ -54,9 +54,8 @@ extension OSInfoHarvester: DeviceInfoTreeProvider {
                 DeviceInfoItem(label: "OS release", value: .info(osRelease)),
                 DeviceInfoItem(label: "OS type", value: .info(osType)),
                 DeviceInfoItem(label: "OS version", value: .info(osVersion)),
-                DeviceInfoItem(label: "Kernel version", value: .info(kernelVersion))
+                DeviceInfoItem(label: "Kernel version", value: .info(kernelVersion)),
             ]
         )
     }
 }
-

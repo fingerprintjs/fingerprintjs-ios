@@ -13,9 +13,9 @@ public struct FingerprintTree {
     public let info: DeviceInfoItem
     /// Optional list of child nodes, each representing either a fingerprinted category or fingerprinted info item
     public let children: [FingerprintTree]?
-    
+
     let fingerprintData: Data
-    
+
     /// Computed fingerprint for the current node in its `String` form
     public var fingerprint: String {
         return String.from(fingerprintData)

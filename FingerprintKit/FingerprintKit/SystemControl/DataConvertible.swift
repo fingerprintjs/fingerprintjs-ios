@@ -32,4 +32,3 @@ extension Int64: DataConvertible {
         }
     }
 }
-
