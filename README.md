@@ -73,3 +73,6 @@ let fingerprint = await fingerprinter.getFingerprint() // returns "42"
 ```
 
 Keep in mind that the change in the supplied hashing function will inevitably lead to the change of the output fingerprint.
+
+## License
+This library is MIT licensed. Copyright FingerprintJS, Inc. 2022.
