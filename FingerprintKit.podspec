@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
   # Name and version
   spec.name         = 'FingerprintKit'
-  spec.version      = '1.0.0'
+  spec.version      = '1.0.0rc1'
 
   # License
   spec.license      = { type: 'MIT', file: 'LICENSE' }
@@ -23,13 +23,13 @@ Pod::Spec.new do |spec|
 
   # Git location
   spec.source = {
-    git: 'https://github.com/fingerprintjs/fingerprintjs-ios.git',
-    branch: 'device-signals'
+    git: 'https://github.com/fingerprintjs/fingerprintjs-ios.git', tag: '1.0.0rc1'
   }
 
   # Build (source files, deployment target)
   spec.source_files = 'FingerprintKit/FingerprintKit/**/*.{swift,h,m}'
   spec.ios.deployment_target = '13.0'
+  spec.swift_versions = ['5.3', '5.4', '5.5', '5.6']
 
   # Tests
   spec.test_spec 'Tests' do |test_spec|
