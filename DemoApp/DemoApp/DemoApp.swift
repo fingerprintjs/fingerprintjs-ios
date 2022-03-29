@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import FingerprintKit
+import FingerprintJS
 
 @main
 struct DemoApp: App {

@@ -6,7 +6,7 @@
 //
 
 import Combine
-import FingerprintKit
+import FingerprintJS
 
 enum FingerprintGeneratorState {
     case notGenerated

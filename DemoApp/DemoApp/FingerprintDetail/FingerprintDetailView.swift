@@ -7,7 +7,7 @@
 
 import SwiftUI
 import Combine
-import FingerprintKit
+import FingerprintJS
 
 struct FingerprintDetailView: View {
     let fingerprintTree: FingerprintTree
