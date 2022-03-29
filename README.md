@@ -1,15 +1,13 @@
 <p align="center">
   <a href="https://fingerprintjs.com">
-    <img src="resources/logo.svg" alt="FingerprintJS" width="300px" />
+    <img src="logo.svg" alt="FingerprintJS" width="300px" />
   </a>
-  <p>Lightweight iOS library for local device fingerprinting.</p>
 </p>
+<p align="center">Lightweight iOS library for local device fingerprinting</p>
 
 
 <p align="center">
-  <a href="https://jitpack.io/#fingerprintjs/fingerprint-android">
     <img src="https://img.shields.io/cocoapods/p/ios" alt="Supported platforms">
-  </a>
 </p>
 
 <p align="center">
