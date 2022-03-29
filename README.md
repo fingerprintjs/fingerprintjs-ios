@@ -1,19 +1,35 @@
-# FingerprintKit
+<p align="center">
+  <a href="https://fingerprintjs.com">
+    <img src="resources/logo.svg" alt="FingerprintJS" width="300px" />
+  </a>
+  <p>Lightweight iOS library for local device fingerprinting.</p>
+</p>
 
-Lightweight iOS library for local device fingerprinting. 
+
+<p align="center">
+  <a href="https://jitpack.io/#fingerprintjs/fingerprint-android">
+    <img src="https://img.shields.io/cocoapods/p/ios" alt="Supported platforms">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://discord.gg/39EpE2neBg">
+    <img src="https://img.shields.io/discord/852099967190433792?style=for-the-badge&label=Discord&logo=Discord&logoColor=white" alt="Discord server">
+  </a>
+</p>
 
 # Installation (CocoaPods)
 
 ```ruby
 # Podfile
 
-pod 'FingerprintKit'
+pod 'FingerprintJS'
 ```
 
 # Quick Start (async/await - preferred)
 
 ```swift
-import FingerprintKit
+import FingerprintJS
  
 let fingerprinter = FingerprinterFactory.getInstance()
 async {
@@ -26,7 +42,7 @@ async {
 
 # Quick Start (closures - backwards compatibility)
 ```swift
-import FingerprintKit 
+import FingerprintJS 
 
 let fingerprinter = FingerprinterFactory.getInstance()
 fingerprinter.getFingerprint { fingerprint in
@@ -36,9 +52,9 @@ fingerprinter.getFingerprint { fingerprint in
 
 # Fingerprint vs. DeviceId
 
-`FingerprintKit` provides two main methods that return different kinds of identifiers:
+`FingerprintJS` provides two main methods that return different kinds of identifiers:
 
-1. Device identifier retrived by calling `FingerprintKit::getDeviceId()` that internally uses the `identifierForVendor()` method which return a unique identifier for the current application (tied to the device). `FingerprintKit` further remembers this identifier in the keychain, making the identifier stable even between app reinstallations. 
+1. Device identifier retrived by calling `Fingerprinter::getDeviceId()` that internally uses the `identifierForVendor()` method which return a unique identifier for the current application (tied to the device). `FingerprintJS` further remembers this identifier in the keychain, making the identifier stable even between app reinstallations. 
 
 2. `Fingerprinter::getFingerprint()` computes a device fingerprint by gathering device information (hardware, OS, device settings, etc.) and computing a compound hash value from available items. The fingerprint isn't currently as stable as the Device Identifier because the values might change between OS updates or when the user changes settings used to compute the previous value. Further library versions will provide an API with an option to customize the target stability of the fingerprint.
 
