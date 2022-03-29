@@ -24,9 +24,10 @@
 
 ```ruby
 # Podfile
-
 pod 'FingerprintJS'
 ```
+
+Note: If you've never used CocoaPods for dependency management, check out their [Using CocoaPods](https://guides.cocoapods.org/using/using-cocoapods.html) guide that will walk you through the setup process.
 
 # Quick Start (async/await - preferred)
 
