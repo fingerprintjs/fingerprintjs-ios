@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A7D016127F329950037E190 /* FingerprintJS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7D016027F329950037E190 /* FingerprintJS.framework */; };
+		6A7D016227F3299D0037E190 /* FingerprintJS.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6A7D016027F329950037E190 /* FingerprintJS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6A82A1C127DB71A2007C023F /* DemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A1C027DB71A2007C023F /* DemoApp.swift */; };
 		6A82A1C527DB71A3007C023F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A82A1C427DB71A3007C023F /* Assets.xcassets */; };
 		6A82A1C827DB71A3007C023F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A82A1C727DB71A3007C023F /* Preview Assets.xcassets */; };
@@ -18,8 +20,6 @@
 		6AB7146727EBBA3E004BBCF3 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AB7146627EBBA3E004BBCF3 /* Launch.storyboard */; };
 		6AC03F4927DE509B00EF9DB7 /* FingerprintDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC03F4827DE509B00EF9DB7 /* FingerprintDetailView.swift */; };
 		6AC03F5027DF2DCC00EF9DB7 /* DeviceInfoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC03F4F27DF2DCC00EF9DB7 /* DeviceInfoItemView.swift */; };
-		6AC2334C27E0FEE3007786F2 /* FingerprintKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AC03F4D27DE7FC700EF9DB7 /* FingerprintKit.framework */; };
-		6AC2334E27E100A9007786F2 /* FingerprintKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6AC03F4D27DE7FC700EF9DB7 /* FingerprintKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,13 +29,14 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				6AC2334E27E100A9007786F2 /* FingerprintKit.framework in CopyFiles */,
+				6A7D016227F3299D0037E190 /* FingerprintJS.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6A7D016027F329950037E190 /* FingerprintJS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FingerprintJS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A82A1BD27DB71A2007C023F /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A82A1C027DB71A2007C023F /* DemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoApp.swift; sourceTree = "<group>"; };
 		6A82A1C427DB71A3007C023F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,7 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6AC2334C27E0FEE3007786F2 /* FingerprintKit.framework in Frameworks */,
+				6A7D016127F329950037E190 /* FingerprintJS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,12 +112,14 @@
 				6AB7145927EA18A7004BBCF3 /* FingerprintGeneratorViewModel.swift */,
 				6AB7145E27EA1F85004BBCF3 /* FingerprintView.swift */,
 			);
-			path = FingerprintGenerator;
+			name = FingerprintGenerator;
+			path = FingeprintGenerator;
 			sourceTree = "<group>";
 		};
 		6AC03F4C27DE7FC700EF9DB7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6A7D016027F329950037E190 /* FingerprintJS.framework */,
 				6AC03F4D27DE7FC700EF9DB7 /* FingerprintKit.framework */,
 			);
 			name = Frameworks;

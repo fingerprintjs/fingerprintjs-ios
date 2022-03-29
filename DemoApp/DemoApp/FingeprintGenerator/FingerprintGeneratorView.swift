@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import FingerprintKit
+import FingerprintJS
 
 struct FingerprintGeneratorView: View {
     @ObservedObject var viewModel: FingerprintGeneratorViewModel = FingerprintGeneratorViewModel()

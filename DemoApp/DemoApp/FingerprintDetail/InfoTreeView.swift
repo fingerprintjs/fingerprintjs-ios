@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import FingerprintKit
+import FingerprintJS
 
 struct InfoTreeView: View {
     let tree: FingerprintTree
