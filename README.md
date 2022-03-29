@@ -5,9 +5,13 @@
 </p>
 <p align="center">Lightweight iOS library for local device fingerprinting</p>
 
-
 <p align="center">
-    <img src="https://img.shields.io/cocoapods/p/ios" alt="Supported platforms">
+    <a href="https://cocoapods.org/pods/FingerprintJS">
+        <img src="https://img.shields.io/cocoapods/p/ios" alt="Supported platforms">
+    </a>
+    <a href="https://cocoapods.org/pods/FingerprintJS">
+        <img src="https://img.shields.io/cocoapods/v/FingerprintJS" alt="Pod version">
+    </a>
 </p>
 
 <p align="center">
