@@ -57,9 +57,9 @@ fingerprinter.getFingerprint { fingerprint in
 
 `FingerprintJS` provides two main methods that return different kinds of identifiers:
 
-1. Device identifier retrived by calling `Fingerprinter::getDeviceId()` that internally uses the `identifierForVendor()` method which return a unique identifier for the current application (tied to the device). `FingerprintJS` further remembers this identifier in the keychain, making the identifier stable even between app reinstallations. 
+1. Device identifier retrieved by calling `Fingerprinter::getDeviceId()` that internally uses the `identifierForVendor()` method which returns a unique identifier for the current application (tied to the device). `FingerprintJS` further remembers this identifier in the keychain, making the identifier stable even between app reinstalls. 
 
-2. `Fingerprinter::getFingerprint()` computes a device fingerprint by gathering device information (hardware, OS, device settings, etc.) and computing a compound hash value from available items. The fingerprint isn't currently as stable as the Device Identifier because the values might change between OS updates or when the user changes settings used to compute the previous value. Further library versions will provide an API with an option to customize the target stability of the fingerprint.
+2. `Fingerprinter::getFingerprint()` computes a device fingerprint by gathering device information (hardware, OS, device settings, etc.) and computing a  hash value from available items. The fingerprint isn't currently as stable as the Device Identifier because the values might change between OS updates or when the user changes settings used to compute the previous value. Future library versions will provide an API with options to customize the stability of the fingerprint.
 
 # Configuration
 `Fingerprinter` instance can be configured through the `Configuration` structure that provides options to select the fingerprint version or change the algorithm that is used to compute the individual fingerprints.
