@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://fingerprintjs.com">
-    <img src="logo.svg" alt="FingerprintJS" width="300px" />
+    <img src="images/logo.svg" alt="FingerprintJS" width="300px" />
   </a>
 </p>
 <p align="center">Lightweight iOS library for local device fingerprinting</p>
@@ -19,6 +19,14 @@
     <img src="https://img.shields.io/discord/852099967190433792?style=for-the-badge&label=Discord&logo=Discord&logoColor=white" alt="Discord server">
   </a>
 </p>
+
+<p align="center">
+  <img src="images/demoapp.gif" width="195px">
+  <img src="images/demoapp1.png" width="195px">
+  <img src="images/demoapp2.png" width="195px">
+  <img src="images/demoapp3.png" width="195px">
+</p>
+
 
 # Installation (CocoaPods)
 
