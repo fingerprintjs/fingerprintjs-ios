@@ -17,21 +17,34 @@ protocol HardwareInfoHarvesting {
 
     /// Returns device model identifier (e.g. iPhone 13,3)
     var deviceModel: String { get }
+
+    /// Returns free disk space on the device or 0 if a permission problem occurs
+    var freeDiskSpace: UInt64 { get }
+
+    /// Returns total disk space on the device or 0 if a permission problem occurs
+    var totalDiskSpace: UInt64 { get }
 }
 
-class HardwareInfoHarvester {
+public class HardwareInfoHarvester {
     private let device: UIDevice
     private let screen: UIScreen
     private let systemControl: SystemControl
+    private let fileManager: FileManager
 
-    init(_ device: UIDevice, screen: UIScreen, systemControl: SystemControl) {
+    init(_ device: UIDevice, screen: UIScreen, systemControl: SystemControl, fileManager: FileManager) {
         self.device = device
         self.screen = screen
         self.systemControl = systemControl
+        self.fileManager = fileManager
     }
 
     public convenience init() {
-        self.init(UIDevice.current, screen: UIScreen.main, systemControl: SystemControl())
+        self.init(
+            UIDevice.current,
+            screen: UIScreen.main,
+            systemControl: SystemControl(),
+            fileManager: FileManager.default
+        )
     }
 }
 
@@ -73,4 +86,42 @@ extension HardwareInfoHarvester: HardwareInfoHarvesting {
         }
         return "\(cpuFrequency)"
     }
+
+    var freeDiskSpace: UInt64 {
+        return diskSpaceInfo?.freeDiskSpace ?? 0
+    }
+
+    var totalDiskSpace: UInt64 {
+        return diskSpaceInfo?.totalDiskSpace ?? 0
+    }
+}
+
+extension HardwareInfoHarvester {
+    var diskSpaceInfo: DiskSpaceInfo? {
+        let paths = FileManager.default.urls(
+            for: .documentDirectory,
+            in: .userDomainMask
+        )
+
+        guard let documentsPath = paths.first?.path else {
+            return nil
+        }
+
+        do {
+            let dict = try fileManager.attributesOfFileSystem(forPath: documentsPath)
+            if let fileSystemSizeInBytes = dict[FileAttributeKey.systemSize] as? UInt64,
+                let fileSystemFreeSizeInBytes = dict[FileAttributeKey.systemFreeSize] as? UInt64
+            {
+                return DiskSpaceInfo(
+                    freeDiskSpace: fileSystemFreeSizeInBytes,
+                    totalDiskSpace: fileSystemSizeInBytes
+                )
+            }
+        } catch {
+            print("Failed to obtain disk space info: \(error)")
+        }
+
+        return nil
+    }
+
 }

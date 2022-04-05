@@ -22,6 +22,8 @@ extension HardwareInfoHarvester: DeviceInfoTreeProvider {
                 DeviceInfoItem(label: "Display resolution", value: .info(self.displayResolution.description)),
                 DeviceInfoItem(label: "Physical memory", value: .info(memorySize)),
                 DeviceInfoItem(label: "Processor count", value: .info(cpuCount)),
+                DeviceInfoItem(label: "Free disk space (B)", value: .info(String(describing: freeDiskSpace))),
+                DeviceInfoItem(label: "Total disk space (B)", value: .info(String(describing: totalDiskSpace))),
                 // DeviceInfoItem(label: "Physical memory 2", value: .info(physicalMemory)),
                 // DeviceInfoItem(label: "CPU frequency", value: .info(cpuFrequency))
             ]

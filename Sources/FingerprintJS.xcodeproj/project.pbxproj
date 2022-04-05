@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A7D016527FB31A30037E190 /* DiskSpaceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D016427FB31A30037E190 /* DiskSpaceInfo.swift */; };
 		6A82A18327D65DB4007C023F /* FingerprintJS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A82A17A27D65DB4007C023F /* FingerprintJS.framework */; };
 		6A82A18927D65DB4007C023F /* FingerprintJS.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A82A17D27D65DB4007C023F /* FingerprintJS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6A82A19727D74D5B007C023F /* Fingerprintable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A19627D74D5B007C023F /* Fingerprintable.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6A7D016427FB31A30037E190 /* DiskSpaceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskSpaceInfo.swift; sourceTree = "<group>"; };
 		6A82A17A27D65DB4007C023F /* FingerprintJS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FingerprintJS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A82A17D27D65DB4007C023F /* FingerprintJS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FingerprintJS.h; sourceTree = "<group>"; };
 		6A82A18227D65DB4007C023F /* FingerprintJSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FingerprintJSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +96,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6A7D016327FB31940037E190 /* DataExchange */ = {
+			isa = PBXGroup;
+			children = (
+				6A7D016427FB31A30037E190 /* DiskSpaceInfo.swift */,
+			);
+			path = DataExchange;
+			sourceTree = "<group>";
+		};
 		6A82A17027D65DB4007C023F = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +170,7 @@
 		6A82A19827D76BFE007C023F /* Harvesters */ = {
 			isa = PBXGroup;
 			children = (
+				6A7D016327FB31940037E190 /* DataExchange */,
 				6A82A19A27D76CD6007C023F /* HardwareInfoHarvester.swift */,
 				6A82A1A127D8965D007C023F /* IdentifierHarvester.swift */,
 				6A82A1B227DB5941007C023F /* OSInfoHarvester.swift */,
@@ -377,6 +388,7 @@
 				6A82A1A627D89817007C023F /* IdentifierStorable.swift in Sources */,
 				6A9B7CA727E207A9002B9939 /* SystemControlError.swift in Sources */,
 				6A9B7CAC27E214DA002B9939 /* Configuration.swift in Sources */,
+				6A7D016527FB31A30037E190 /* DiskSpaceInfo.swift in Sources */,
 				6A9B7CA527E206EC002B9939 /* DataConvertible.swift in Sources */,
 				6A82A19727D74D5B007C023F /* Fingerprintable.swift in Sources */,
 				6A82A1AD27DA09E3007C023F /* SHA256FingerprintFunction.swift in Sources */,
