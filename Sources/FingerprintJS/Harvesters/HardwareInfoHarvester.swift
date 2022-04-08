@@ -25,26 +25,53 @@ protocol HardwareInfoHarvesting {
     var totalDiskSpace: UInt64 { get }
 }
 
-public class HardwareInfoHarvester {
+class HardwareInfoHarvester {
     private let device: UIDevice
     private let screen: UIScreen
-    private let systemControl: SystemControl
-    private let fileManager: FileManager
+    private let systemControl: SystemControlValuesProviding
+    private let fileManager: DocumentsDirectoryAttributesProviding
+    private let processInfo: ProcessInfo
 
-    init(_ device: UIDevice, screen: UIScreen, systemControl: SystemControl, fileManager: FileManager) {
+    init(
+        _ device: UIDevice,
+        screen: UIScreen,
+        systemControl: SystemControlValuesProviding,
+        fileManager: DocumentsDirectoryAttributesProviding,
+        processInfo: ProcessInfo
+    ) {
         self.device = device
         self.screen = screen
         self.systemControl = systemControl
         self.fileManager = fileManager
+        self.processInfo = processInfo
     }
 
-    public convenience init() {
+    convenience init() {
         self.init(
             UIDevice.current,
             screen: UIScreen.main,
             systemControl: SystemControl(),
-            fileManager: FileManager.default
+            fileManager: FileManager.default,
+            processInfo: ProcessInfo.processInfo
         )
+    }
+
+    private var diskSpaceInfo: DiskSpaceInfo? {
+        do {
+            let dict = try fileManager.documentsDirectoryAttributes()
+            if let fileSystemSizeInBytes = dict[FileAttributeKey.systemSize] as? UInt64,
+                let fileSystemFreeSizeInBytes = dict[FileAttributeKey.systemFreeSize] as? UInt64
+            {
+                return DiskSpaceInfo(
+                    freeDiskSpace: fileSystemFreeSizeInBytes,
+                    totalDiskSpace: fileSystemSizeInBytes
+                )
+            }
+        } catch {
+            print("Failed to obtain disk space info: \(error)")
+        }
+
+        return nil
     }
 }
 
@@ -77,7 +104,7 @@ extension HardwareInfoHarvester: HardwareInfoHarvesting {
     }
 
     var cpuCount: String {
-        return "\(ProcessInfo.processInfo.processorCount)"
+        return "\(processInfo.processorCount)"
     }
 
     var cpuFrequency: String {
@@ -94,34 +121,4 @@ extension HardwareInfoHarvester: HardwareInfoHarvesting {
     var totalDiskSpace: UInt64 {
         return diskSpaceInfo?.totalDiskSpace ?? 0
     }
-}
-
-extension HardwareInfoHarvester {
-    var diskSpaceInfo: DiskSpaceInfo? {
-        let paths = FileManager.default.urls(
-            for: .documentDirectory,
-            in: .userDomainMask
-        )
-
-        guard let documentsPath = paths.first?.path else {
-            return nil
-        }
-
-        do {
-            let dict = try fileManager.attributesOfFileSystem(forPath: documentsPath)
-            if let fileSystemSizeInBytes = dict[FileAttributeKey.systemSize] as? UInt64,
-                let fileSystemFreeSizeInBytes = dict[FileAttributeKey.systemFreeSize] as? UInt64
-            {
-                return DiskSpaceInfo(
-                    freeDiskSpace: fileSystemFreeSizeInBytes,
-                    totalDiskSpace: fileSystemSizeInBytes
-                )
-            }
-        } catch {
-            print("Failed to obtain disk space info: \(error)")
-        }
-
-        return nil
-    }
-
 }

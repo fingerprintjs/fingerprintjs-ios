@@ -7,6 +7,20 @@
 
 import Foundation
 
+protocol SystemControlValuesProviding {
+    var hardwareModel: String? { get }
+    var hardwareMachine: String? { get }
+    var osRelease: String? { get }
+    var osType: String? { get }
+    var osVersion: String? { get }
+    var kernelVersion: String? { get }
+    var osBuild: Int32? { get }
+    var memorySize: Int64? { get }
+    var physicalMemory: Int32? { get }
+    var cpuCount: Int32? { get }
+    var cpuFrequency: Int32? { get }
+}
+
 class SystemControl {
     // Get a system value through a sysctl call
     private func getSystemValue<T: DataConvertible>(_ flag: SystemControlFlag) throws -> T {
@@ -35,7 +49,7 @@ class SystemControl {
     }
 }
 
-extension SystemControl {
+extension SystemControl: SystemControlValuesProviding {
     var hardwareModel: String? {
         return try? getSystemValue(.hardwareModel)
     }
