@@ -26,18 +26,18 @@ protocol HardwareInfoHarvesting {
 }
 
 class HardwareInfoHarvester {
-    private let device: UIDevice
-    private let screen: UIScreen
+    private let device: DeviceModelProviding
+    private let screen: ScreenSizeProviding
     private let systemControl: SystemControlValuesProviding
     private let fileManager: DocumentsDirectoryAttributesProviding
-    private let processInfo: ProcessInfo
+    private let processInfo: CPUInfoProviding
 
     init(
-        _ device: UIDevice,
-        screen: UIScreen,
+        _ device: DeviceModelProviding,
+        screen: ScreenSizeProviding,
         systemControl: SystemControlValuesProviding,
         fileManager: DocumentsDirectoryAttributesProviding,
-        processInfo: ProcessInfo
+        processInfo: CPUInfoProviding
     ) {
         self.device = device
         self.screen = screen
@@ -59,8 +59,8 @@ class HardwareInfoHarvester {
     private var diskSpaceInfo: DiskSpaceInfo? {
         do {
             let dict = try fileManager.documentsDirectoryAttributes()
-            if let fileSystemSizeInBytes = dict[FileAttributeKey.systemSize] as? UInt64,
-                let fileSystemFreeSizeInBytes = dict[FileAttributeKey.systemFreeSize] as? UInt64
+            if let fileSystemSizeInBytes = dict[.systemSize] as? UInt64,
+                let fileSystemFreeSizeInBytes = dict[.systemFreeSize] as? UInt64
             {
                 return DiskSpaceInfo(
                     freeDiskSpace: fileSystemFreeSizeInBytes,
@@ -122,3 +122,21 @@ extension HardwareInfoHarvester: HardwareInfoHarvesting {
         return diskSpaceInfo?.totalDiskSpace ?? 0
     }
 }
+
+protocol CPUInfoProviding {
+    var processorCount: Int { get }
+}
+
+extension ProcessInfo: CPUInfoProviding {}
+
+protocol DeviceModelProviding {
+    var model: String { get }
+}
+
+extension UIDevice: DeviceModelProviding {}
+
+protocol ScreenSizeProviding {
+    var nativeBounds: CGRect { get }
+}
+
+extension UIScreen: ScreenSizeProviding {}

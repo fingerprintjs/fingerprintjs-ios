@@ -12,11 +12,103 @@ import XCTest
 class HardwareInfoHarvesterTests: XCTestCase {
     private var sut: HardwareInfoHarvester!
 
+    private var mockScreenSizeProvider = ScreenSizeProvidingMock()
+    private var mockDeviceModelProvider = DeviceModelProvidingMock()
+    private var mockSystemControl = SystemControlMock()
+    private var mockDocumentDirectoryAttributesProvider =
+        DocumentsDirectoryAttributesProvidingMock()
+    private var mockCpuInfoProvider = CPUInfoProvidingMock()
+
     override func setUp() {
-        sut = HardwareInfoHarvester()
+        sut = HardwareInfoHarvester(
+            mockDeviceModelProvider,
+            screen: mockScreenSizeProvider,
+            systemControl: mockSystemControl,
+            fileManager: mockDocumentDirectoryAttributesProvider,
+            processInfo: mockCpuInfoProvider
+        )
     }
 
-    func test() {
+    override func tearDown() {
+        sut = nil
+    }
 
+    func testFreeDiskSpaceReturnsZeroIfDocumentsDirAttributesEmpty() {
+        XCTAssertEqual(sut.freeDiskSpace, 0)
+    }
+
+    func testFreeDiskSpaceReturnsZeroIfDocumentsAttributesThrowsError() {
+        mockDocumentDirectoryAttributesProvider.mockDocumentsDirectoryAttributesError =
+            DocumentsDirectoryError.documentsDirectoryNotFound
+        XCTAssertEqual(sut.freeDiskSpace, 0)
+    }
+
+    func testFreeDiskSpaceReturnsZeroIfDocumentsAttributesPresentButThrowError() {
+        mockDocumentDirectoryAttributesProvider.mockDocumentsDirectoryAttributes = [
+            .systemFreeSize: UInt64(100),
+            .systemSize: UInt64(100),
+        ]
+
+        mockDocumentDirectoryAttributesProvider.mockDocumentsDirectoryAttributesError =
+            DocumentsDirectoryError.documentsDirectoryNotFound
+
+        XCTAssertEqual(sut.freeDiskSpace, 0)
+    }
+
+    func testFreeDiskSpaceReturnsCorrectValuesOnSuccess() {
+        mockDocumentDirectoryAttributesProvider.mockDocumentsDirectoryAttributes = [
+            .systemFreeSize: UInt64(100),
+            .systemSize: UInt64(100),
+        ]
+
+        XCTAssertEqual(sut.freeDiskSpace, 100)
+    }
+
+    func testFreeDiskSpaceReturnsZeroIfOtherValueMissing() {
+        mockDocumentDirectoryAttributesProvider.mockDocumentsDirectoryAttributes = [
+            .systemFreeSize: UInt64(100)
+        ]
+
+        XCTAssertEqual(sut.freeDiskSpace, 0)
+    }
+
+    // MARK: totalDiskSpace
+    func testTotalDiskSpaceReturnsZeroIfDocumentsDirAttributesEmpty() {
+        XCTAssertEqual(sut.totalDiskSpace, 0)
+    }
+
+    func testTotalDiskSpaceReturnsZeroIfDocumentsAttributesThrowsError() {
+        mockDocumentDirectoryAttributesProvider.mockDocumentsDirectoryAttributesError =
+            DocumentsDirectoryError.documentsDirectoryNotFound
+        XCTAssertEqual(sut.totalDiskSpace, 0)
+    }
+
+    func testTotalDiskSpaceReturnsZeroIfDocumentsAttributesPresentButThrowError() {
+        mockDocumentDirectoryAttributesProvider.mockDocumentsDirectoryAttributes = [
+            .systemFreeSize: UInt64(100),
+            .systemSize: UInt64(100),
+        ]
+
+        mockDocumentDirectoryAttributesProvider.mockDocumentsDirectoryAttributesError =
+            DocumentsDirectoryError.documentsDirectoryNotFound
+
+        XCTAssertEqual(sut.totalDiskSpace, 0)
+    }
+
+    func testTotalDiskSpaceReturnsCorrectValuesOnSuccess() {
+        mockDocumentDirectoryAttributesProvider.mockDocumentsDirectoryAttributes = [
+            .systemFreeSize: UInt64(100),
+            .systemSize: UInt64(100),
+        ]
+
+        XCTAssertEqual(sut.totalDiskSpace, 100)
+    }
+
+    func testTotalDiskSpaceReturnZeroIfOneValueMissing() {
+        mockDocumentDirectoryAttributesProvider.mockDocumentsDirectoryAttributes = [
+            .systemSize: UInt64(100)
+        ]
+
+        XCTAssertEqual(sut.totalDiskSpace, 0)
     }
 }

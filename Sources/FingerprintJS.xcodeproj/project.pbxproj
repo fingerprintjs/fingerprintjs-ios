@@ -36,6 +36,7 @@
 		6AC03F4B27DE574100EF9DB7 /* DeviceInfoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC03F4A27DE574100EF9DB7 /* DeviceInfoItem.swift */; };
 		6AC362AB280013E200C4768A /* HardwareInfoHarvesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC362AA280013E200C4768A /* HardwareInfoHarvesterTests.swift */; };
 		6AC362AE28001E7D00C4768A /* FileManager+DocumentsDirectoryAttributesProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC362AD28001E7D00C4768A /* FileManager+DocumentsDirectoryAttributesProviding.swift */; };
+		6AC362B028005C8D00C4768A /* DeviceModelProvidingMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC362AF28005C8D00C4768A /* DeviceModelProvidingMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		6AC03F4A27DE574100EF9DB7 /* DeviceInfoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoItem.swift; sourceTree = "<group>"; };
 		6AC362AA280013E200C4768A /* HardwareInfoHarvesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardwareInfoHarvesterTests.swift; sourceTree = "<group>"; };
 		6AC362AD28001E7D00C4768A /* FileManager+DocumentsDirectoryAttributesProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+DocumentsDirectoryAttributesProviding.swift"; sourceTree = "<group>"; };
+		6AC362AF28005C8D00C4768A /* DeviceModelProvidingMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModelProvidingMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				6AB7146327EB65B1004BBCF3 /* MockHashingFunction.swift */,
+				6AC362AF28005C8D00C4768A /* DeviceModelProvidingMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -422,6 +425,7 @@
 			files = (
 				6AB7146427EB65B1004BBCF3 /* MockHashingFunction.swift in Sources */,
 				6AC362AB280013E200C4768A /* HardwareInfoHarvesterTests.swift in Sources */,
+				6AC362B028005C8D00C4768A /* DeviceModelProvidingMock.swift in Sources */,
 				6AB7146127EB612D004BBCF3 /* FingerprintTreeCalculatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
