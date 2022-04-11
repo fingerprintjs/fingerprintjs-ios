@@ -10,6 +10,7 @@ import Foundation
 /// Enumeration of available FingerprintJS versions
 public enum FingerprintJSVersion {
     case v1
+    case v2
 }
 
 /// Enumeration of available fingerprinting algorithms
@@ -27,7 +28,7 @@ public struct Configuration {
     let version: FingerprintJSVersion
     let algorithm: FingerprintAlgorithm
 
-    public init(version: FingerprintJSVersion = .v1, algorithm: FingerprintAlgorithm = .sha256) {
+    public init(version: FingerprintJSVersion = .v2, algorithm: FingerprintAlgorithm = .sha256) {
         self.version = version
         self.algorithm = algorithm
     }

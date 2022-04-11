@@ -111,4 +111,21 @@ class HardwareInfoHarvesterTests: XCTestCase {
 
         XCTAssertEqual(sut.totalDiskSpace, 0)
     }
+
+    // MARK - buildTree
+    func testBuildTreeReturnsCollectNumberOfItemsForVersionOne() {
+        let config = Configuration(version: .v1)
+
+        let tree = sut.buildTree(config)
+
+        XCTAssertEqual(tree.children?.count, 5)
+    }
+
+    func testBuildTreeReturnsCollectNumberOfItemsForVersionTwo() {
+        let config = Configuration(version: .v2)
+
+        let tree = sut.buildTree(config)
+
+        XCTAssertEqual(tree.children?.count, 7)
+    }
 }

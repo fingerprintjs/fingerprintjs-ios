@@ -16,7 +16,22 @@ extension HardwareInfoHarvester: DeviceInfoTreeProvider {
         return DeviceInfoItem(
             label: "Hardware",
             value: .category,
-            children: [
+            children: itemsForVersion(configuration.version)
+        )
+    }
+
+    private func itemsForVersion(_ version: FingerprintJSVersion) -> [DeviceInfoItem] {
+        switch version {
+        case .v1:
+            return [
+                DeviceInfoItem(label: "Device type", value: .info(deviceType)),
+                DeviceInfoItem(label: "Device model", value: .info(deviceModel)),
+                DeviceInfoItem(label: "Display resolution", value: .info(self.displayResolution.description)),
+                DeviceInfoItem(label: "Physical memory", value: .info(memorySize)),
+                DeviceInfoItem(label: "Processor count", value: .info(cpuCount)),
+            ]
+        case .v2:
+            return [
                 DeviceInfoItem(label: "Device type", value: .info(deviceType)),
                 DeviceInfoItem(label: "Device model", value: .info(deviceModel)),
                 DeviceInfoItem(label: "Display resolution", value: .info(self.displayResolution.description)),
@@ -24,10 +39,8 @@ extension HardwareInfoHarvester: DeviceInfoTreeProvider {
                 DeviceInfoItem(label: "Processor count", value: .info(cpuCount)),
                 DeviceInfoItem(label: "Free disk space (B)", value: .info(String(describing: freeDiskSpace))),
                 DeviceInfoItem(label: "Total disk space (B)", value: .info(String(describing: totalDiskSpace))),
-                // DeviceInfoItem(label: "Physical memory 2", value: .info(physicalMemory)),
-                // DeviceInfoItem(label: "CPU frequency", value: .info(cpuFrequency))
             ]
-        )
+        }
     }
 }
 
