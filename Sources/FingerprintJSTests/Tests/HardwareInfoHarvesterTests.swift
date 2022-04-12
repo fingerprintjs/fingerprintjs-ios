@@ -113,7 +113,7 @@ class HardwareInfoHarvesterTests: XCTestCase {
     }
 
     // MARK - buildTree
-    func testBuildTreeReturnsCollectNumberOfItemsForVersionOne() {
+    func testBuildTreeReturnsCorrectNumberOfItemsForVersionOne() {
         let config = Configuration(version: .v1)
 
         let tree = sut.buildTree(config)
@@ -121,11 +121,46 @@ class HardwareInfoHarvesterTests: XCTestCase {
         XCTAssertEqual(tree.children?.count, 5)
     }
 
-    func testBuildTreeReturnsCollectNumberOfItemsForVersionTwo() {
+    func testBuildTreeReturnsCorrectItemsForVersionOne() {
+        let config = Configuration(version: .v1)
+        let versionOneLabels = [
+            "Device type",
+            "Device model",
+            "Display resolution",
+            "Physical memory",
+            "Processor count",
+        ]
+
+        let tree = sut.buildTree(config)
+        let itemLabels = tree.children?.map { $0.label }
+
+        XCTAssertEqual(itemLabels, versionOneLabels)
+    }
+
+    func testBuildTreeReturnsCorrectNumberOfItemsForVersionTwo() {
         let config = Configuration(version: .v2)
 
         let tree = sut.buildTree(config)
 
         XCTAssertEqual(tree.children?.count, 7)
     }
+
+    func testBuildTreeReturnsCorrectItemsForVersionTwo() {
+        let config = Configuration(version: .v2)
+        let versionTwoLabels = [
+            "Device type",
+            "Device model",
+            "Display resolution",
+            "Physical memory",
+            "Processor count",
+            "Free disk space (B)",
+            "Total disk space (B)",
+        ]
+
+        let tree = sut.buildTree(config)
+        let itemLabels = tree.children?.map { $0.label }
+
+        XCTAssertEqual(itemLabels, versionTwoLabels)
+    }
+
 }
