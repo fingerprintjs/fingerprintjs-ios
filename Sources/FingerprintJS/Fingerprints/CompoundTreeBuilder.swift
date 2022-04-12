@@ -35,4 +35,8 @@ extension CompoundTreeBuilder: DeviceInfoTreeProvider {
             children: children
         )
     }
+
+    var versionedItems: [VersionedInfoItem] {
+        return []
+    }
 }
