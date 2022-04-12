@@ -11,6 +11,8 @@ protocol DeviceInfoTreeProvider {
     func buildTree(_ configuration: Configuration) -> DeviceInfoItem
 }
 
+typealias VersionedInfoItem = (item: DeviceInfoItem, versions: [FingerprintJSVersion])
+
 extension HardwareInfoHarvester: DeviceInfoTreeProvider {
     func buildTree(_ configuration: Configuration) -> DeviceInfoItem {
         return DeviceInfoItem(
@@ -21,26 +23,63 @@ extension HardwareInfoHarvester: DeviceInfoTreeProvider {
     }
 
     private func itemsForVersion(_ version: FingerprintJSVersion) -> [DeviceInfoItem] {
-        switch version {
-        case .v1:
-            return [
-                DeviceInfoItem(label: "Device type", value: .info(deviceType)),
-                DeviceInfoItem(label: "Device model", value: .info(deviceModel)),
-                DeviceInfoItem(label: "Display resolution", value: .info(self.displayResolution.description)),
-                DeviceInfoItem(label: "Physical memory", value: .info(memorySize)),
-                DeviceInfoItem(label: "Processor count", value: .info(cpuCount)),
-            ]
-        case .v2:
-            return [
-                DeviceInfoItem(label: "Device type", value: .info(deviceType)),
-                DeviceInfoItem(label: "Device model", value: .info(deviceModel)),
-                DeviceInfoItem(label: "Display resolution", value: .info(self.displayResolution.description)),
-                DeviceInfoItem(label: "Physical memory", value: .info(memorySize)),
-                DeviceInfoItem(label: "Processor count", value: .info(cpuCount)),
-                DeviceInfoItem(label: "Free disk space (B)", value: .info(String(describing: freeDiskSpace))),
-                DeviceInfoItem(label: "Total disk space (B)", value: .info(String(describing: totalDiskSpace))),
-            ]
-        }
+        return itemsWithVersions()
+            .filter { $0.versions.contains(version) }
+            .map { $0.item }
+    }
+
+    private func itemsWithVersions() -> [VersionedInfoItem] {
+        return [
+            VersionedInfoItem(
+                item: DeviceInfoItem(
+                    label: "Device type",
+                    value: .info(deviceType)
+                ),
+                versions: [.v1, .v2]
+            ),
+            VersionedInfoItem(
+                item: DeviceInfoItem(
+                    label: "Device model",
+                    value: .info(deviceModel)
+                ),
+                versions: [.v1, .v2]
+            ),
+            VersionedInfoItem(
+                item: DeviceInfoItem(
+                    label: "Display resolution",
+                    value: .info(self.displayResolution.description)
+                ),
+                versions: [.v1, .v2]
+            ),
+            VersionedInfoItem(
+                item: DeviceInfoItem(
+                    label: "Physical memory",
+                    value: .info(memorySize)
+                ),
+                versions: [.v1, .v2]
+            ),
+            VersionedInfoItem(
+                item: DeviceInfoItem(
+                    label: "Processor count",
+                    value: .info(cpuCount)
+                ),
+                versions: [.v1, .v2]
+            ),
+            VersionedInfoItem(
+                DeviceInfoItem(
+                    label: "Free disk space (B)",
+                    value: .info(String(describing: freeDiskSpace))
+                ),
+                versions: [.v2]
+            ),
+            VersionedInfoItem(
+                DeviceInfoItem(
+                    label: "Total disk space (B)",
+                    value: .info(String(describing: totalDiskSpace))
+                ),
+                versions: [.v2]
+            ),
+        ]
     }
 }
 
