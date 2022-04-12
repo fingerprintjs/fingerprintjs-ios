@@ -16,9 +16,11 @@ protocol OSInfoHarvesting {
 }
 
 class OSInfoHarvester {
-    private let systemControl = SystemControl()
+    private let systemControl: SystemControlValuesProviding
 
-    public init() {}
+    init(_ systemControl: SystemControlValuesProviding = SystemControl()) {
+        self.systemControl = systemControl
+    }
 }
 
 extension OSInfoHarvester: OSInfoHarvesting {

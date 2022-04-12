@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6A23866328042DFB002D09F3 /* DocumentsDirectoryAttributesProvidingMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A23866228042DFB002D09F3 /* DocumentsDirectoryAttributesProvidingMock.swift */; };
+		6A3BB827280588FD00D2EBB9 /* OSInfoHarvesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3BB826280588FD00D2EBB9 /* OSInfoHarvesterTests.swift */; };
+		6A3BB82928058B4900D2EBB9 /* IdentifierHarvesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3BB82828058B4900D2EBB9 /* IdentifierHarvesterTests.swift */; };
 		6A7D016527FB31A30037E190 /* DiskSpaceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D016427FB31A30037E190 /* DiskSpaceInfo.swift */; };
 		6A82A18327D65DB4007C023F /* FingerprintJS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A82A17A27D65DB4007C023F /* FingerprintJS.framework */; };
 		6A82A18927D65DB4007C023F /* FingerprintJS.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A82A17D27D65DB4007C023F /* FingerprintJS.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -55,6 +57,8 @@
 
 /* Begin PBXFileReference section */
 		6A23866228042DFB002D09F3 /* DocumentsDirectoryAttributesProvidingMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsDirectoryAttributesProvidingMock.swift; sourceTree = "<group>"; };
+		6A3BB826280588FD00D2EBB9 /* OSInfoHarvesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSInfoHarvesterTests.swift; sourceTree = "<group>"; };
+		6A3BB82828058B4900D2EBB9 /* IdentifierHarvesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierHarvesterTests.swift; sourceTree = "<group>"; };
 		6A7D016427FB31A30037E190 /* DiskSpaceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskSpaceInfo.swift; sourceTree = "<group>"; };
 		6A82A17A27D65DB4007C023F /* FingerprintJS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FingerprintJS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A82A17D27D65DB4007C023F /* FingerprintJS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FingerprintJS.h; sourceTree = "<group>"; };
@@ -251,6 +255,8 @@
 			children = (
 				6AB7146027EB612D004BBCF3 /* FingerprintTreeCalculatorTests.swift */,
 				6AC362AA280013E200C4768A /* HardwareInfoHarvesterTests.swift */,
+				6A3BB826280588FD00D2EBB9 /* OSInfoHarvesterTests.swift */,
+				6A3BB82828058B4900D2EBB9 /* IdentifierHarvesterTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -435,6 +441,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A3BB827280588FD00D2EBB9 /* OSInfoHarvesterTests.swift in Sources */,
+				6A3BB82928058B4900D2EBB9 /* IdentifierHarvesterTests.swift in Sources */,
 				6AB7146427EB65B1004BBCF3 /* MockHashingFunction.swift in Sources */,
 				6AC362AB280013E200C4768A /* HardwareInfoHarvesterTests.swift in Sources */,
 				6AC362B028005C8D00C4768A /* DeviceModelProvidingMock.swift in Sources */,
