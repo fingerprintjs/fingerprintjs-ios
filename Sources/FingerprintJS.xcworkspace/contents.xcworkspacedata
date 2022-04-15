@@ -5,9 +5,6 @@
       location = "group:../DemoApp/DemoApp.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Playground.playground">
-   </FileRef>
-   <FileRef
       location = "container:FingerprintJS.xcodeproj">
    </FileRef>
 </Workspace>

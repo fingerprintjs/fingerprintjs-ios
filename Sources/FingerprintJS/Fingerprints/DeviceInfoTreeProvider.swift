@@ -9,6 +9,19 @@ import Foundation
 
 protocol DeviceInfoTreeProvider {
     func buildTree(_ configuration: Configuration) -> DeviceInfoItem
+
+    typealias VersionedInfoItem = (item: DeviceInfoItem, versions: [FingerprintJSVersion])
+
+    var versionedItems: [VersionedInfoItem] { get }
+}
+
+extension DeviceInfoTreeProvider {
+    func itemsForVersion(_ version: FingerprintJSVersion) -> [DeviceInfoItem] {
+        return
+            versionedItems
+            .filter { $0.versions.contains(version) }
+            .map { $0.item }
+    }
 }
 
 extension HardwareInfoHarvester: DeviceInfoTreeProvider {
@@ -16,16 +29,62 @@ extension HardwareInfoHarvester: DeviceInfoTreeProvider {
         return DeviceInfoItem(
             label: "Hardware",
             value: .category,
-            children: [
-                DeviceInfoItem(label: "Device type", value: .info(deviceType)),
-                DeviceInfoItem(label: "Device model", value: .info(deviceModel)),
-                DeviceInfoItem(label: "Display resolution", value: .info(self.displayResolution.description)),
-                DeviceInfoItem(label: "Physical memory", value: .info(memorySize)),
-                DeviceInfoItem(label: "Processor count", value: .info(cpuCount)),
-                // DeviceInfoItem(label: "Physical memory 2", value: .info(physicalMemory)),
-                // DeviceInfoItem(label: "CPU frequency", value: .info(cpuFrequency))
-            ]
+            children: itemsForVersion(configuration.version)
         )
+    }
+
+    var versionedItems: [VersionedInfoItem] {
+        return [
+            VersionedInfoItem(
+                item: DeviceInfoItem(
+                    label: "Device type",
+                    value: .info(deviceType)
+                ),
+                versions: [.v1, .v2]
+            ),
+            VersionedInfoItem(
+                item: DeviceInfoItem(
+                    label: "Device model",
+                    value: .info(deviceModel)
+                ),
+                versions: [.v1, .v2]
+            ),
+            VersionedInfoItem(
+                item: DeviceInfoItem(
+                    label: "Display resolution",
+                    value: .info(self.displayResolution.description)
+                ),
+                versions: [.v1, .v2]
+            ),
+            VersionedInfoItem(
+                item: DeviceInfoItem(
+                    label: "Physical memory",
+                    value: .info(memorySize)
+                ),
+                versions: [.v1, .v2]
+            ),
+            VersionedInfoItem(
+                item: DeviceInfoItem(
+                    label: "Processor count",
+                    value: .info(cpuCount)
+                ),
+                versions: [.v1, .v2]
+            ),
+            VersionedInfoItem(
+                DeviceInfoItem(
+                    label: "Free disk space (B)",
+                    value: .info(String(describing: freeDiskSpace))
+                ),
+                versions: [.v2]
+            ),
+            VersionedInfoItem(
+                DeviceInfoItem(
+                    label: "Total disk space (B)",
+                    value: .info(String(describing: totalDiskSpace))
+                ),
+                versions: [.v2]
+            ),
+        ]
     }
 }
 
@@ -34,13 +93,20 @@ extension IdentifierHarvester: DeviceInfoTreeProvider {
         return DeviceInfoItem(
             label: "Identifiers",
             value: .category,
-            children: [
-                DeviceInfoItem(
+            children: itemsForVersion(configuration.version)
+        )
+    }
+
+    var versionedItems: [VersionedInfoItem] {
+        return [
+            VersionedInfoItem(
+                item: DeviceInfoItem(
                     label: "Vendor identifier",
                     value: .info(vendorIdentifier?.uuidString ?? "No identifier")
-                )
-            ]
-        )
+                ),
+                versions: [.v1, .v2]
+            )
+        ]
     }
 }
 
@@ -49,13 +115,28 @@ extension OSInfoHarvester: DeviceInfoTreeProvider {
         return DeviceInfoItem(
             label: "Operating System",
             value: .category,
-            children: [
-                // DeviceInfoItem(label: "OS build", value: .info(osBuild)),
-                DeviceInfoItem(label: "OS release", value: .info(osRelease)),
-                DeviceInfoItem(label: "OS type", value: .info(osType)),
-                DeviceInfoItem(label: "OS version", value: .info(osVersion)),
-                DeviceInfoItem(label: "Kernel version", value: .info(kernelVersion)),
-            ]
+            children: itemsForVersion(configuration.version)
         )
+    }
+
+    var versionedItems: [VersionedInfoItem] {
+        return [
+            VersionedInfoItem(
+                item: DeviceInfoItem(label: "OS release", value: .info(osRelease)),
+                versions: [.v1, .v2]
+            ),
+            VersionedInfoItem(
+                item: DeviceInfoItem(label: "OS type", value: .info(osType)),
+                versions: [.v1, .v2]
+            ),
+            VersionedInfoItem(
+                item: DeviceInfoItem(label: "OS version", value: .info(osVersion)),
+                versions: [.v1, .v2]
+            ),
+            VersionedInfoItem(
+                item: DeviceInfoItem(label: "Kernel version", value: .info(kernelVersion)),
+                versions: [.v1, .v2]
+            ),
+        ]
     }
 }
