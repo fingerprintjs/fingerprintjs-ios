@@ -12,6 +12,8 @@ protocol OSInfoHarvesting {
 
     var osType: String { get }
 
+    var osRelease: String { get }
+
     var kernelVersion: String { get }
 }
 
