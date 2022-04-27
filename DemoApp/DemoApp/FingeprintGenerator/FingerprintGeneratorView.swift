@@ -57,8 +57,12 @@ struct FingerprintGeneratorView: View {
                 case .fingerprintReady(let tree):
                     VStack(alignment: .center, spacing: 20) {
                         FingerprintView(fingerprintTree: tree)
+                        let detailView = FingerprintDetailView(
+                            fingerprintTree: tree,
+                            rawInfo: viewModel.deviceInfo.debugDescription
+                        )
                         
-                        NavigationLink(destination: FingerprintDetailView(fingerprintTree: tree, rawInfo: viewModel.deviceInfo.debugDescription)) {
+                        NavigationLink(destination: detailView) {
                             HStack {
                                 Text("Show details")
                                 Image(systemName: "arrow.right")

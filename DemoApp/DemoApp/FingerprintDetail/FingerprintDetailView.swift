@@ -21,11 +21,13 @@ struct FingerprintDetailView: View {
                 .padding()
             
             InfoTreeView(tree: fingerprintTree)
+#if targetEnvironment(simulator)
             if let info = rawInfo {
-                CollapsibleCard("Raw JSON") {
-                    Text(info)
-                }
+                CollapsibleCard("Raw data") {
+                    Text(info).padding()
+                }.padding()
             }
+#endif
             Spacer()
         }
         .navigationTitle("Details")
