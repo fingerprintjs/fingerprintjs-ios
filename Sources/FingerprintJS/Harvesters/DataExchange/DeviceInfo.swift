@@ -24,24 +24,4 @@ public struct DeviceInfo {
     let osType: String?
     let osRelease: String?
     let kernelVersion: String?
-
-    /*
-    init() {
-        self.vendorIdentifier = nil
-
-        self.diskSpace = nil
-        self.screenResolution = nil
-        self.deviceType = nil
-        self.deviceModel = nil
-        self.memorySize = nil
-        self.physicalMemory = nil
-        self.cpuCount = nil
-
-        self.osBuild = nil
-        self.osVersion = nil
-        self.osType = nil
-        self.osRelease = nil
-        self.kernelVersion = nil
-    }
-     */
 }

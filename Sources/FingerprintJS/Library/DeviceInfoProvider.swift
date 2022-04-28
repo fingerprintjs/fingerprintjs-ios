@@ -8,7 +8,12 @@
 import Foundation
 
 public protocol DeviceInfoProviding {
+    /// Gathers and returns all information about the device
+    /// - Returns: `DeviceInfo` object that contains typed representation of device information values
     func getDeviceInfo() async -> DeviceInfo
+    
+    /// Gathers all information about the device and reports it through the completion block
+    /// - Parameter completion: Completion block reporting the `DeviceInfo` object
     func getDeviceInfo(_ completion: @escaping (DeviceInfo) -> Void)
 }
 
