@@ -9,20 +9,29 @@ import Foundation
 import UIKit
 
 protocol HardwareInfoHarvesting {
-    /// Returns high-level device type (e.g. iPhone)
+    /// High-level device type (e.g. iPhone)
     var deviceType: String { get }
 
-    /// Returns physical resolution (in pixels) for the current device
+    /// Physical resolution (in pixels) for the current device
     var displayResolution: CGSize { get }
 
-    /// Returns device model identifier (e.g. iPhone 13,3)
+    /// Device model identifier (e.g. iPhone 13,3)
     var deviceModel: String { get }
 
-    /// Returns free disk space on the device or 0 if a permission problem occurs
+    /// Free disk space on the device or 0 if a permission problem occurs
     var freeDiskSpace: UInt64 { get }
 
-    /// Returns total disk space on the device or 0 if a permission problem occurs
+    /// Total disk space on the device or 0 if a permission problem occurs
     var totalDiskSpace: UInt64 { get }
+
+    /// Disk space information (free and total)
+    var diskSpaceInfo: DiskSpaceInfo? { get }
+
+    /// Number of physical CPU cores
+    var cpuCount: String { get }
+
+    /// Memory (RAM) size in bytes
+    var memorySize: String { get }
 }
 
 class HardwareInfoHarvester {
@@ -56,7 +65,7 @@ class HardwareInfoHarvester {
         )
     }
 
-    private var diskSpaceInfo: DiskSpaceInfo? {
+    var diskSpaceInfo: DiskSpaceInfo? {
         do {
             let dict = try fileManager.documentsDirectoryAttributes()
             if let fileSystemSizeInBytes = dict[.systemSize] as? UInt64,
@@ -122,6 +131,8 @@ extension HardwareInfoHarvester: HardwareInfoHarvesting {
         return diskSpaceInfo?.totalDiskSpace ?? 0
     }
 }
+
+// MARK: Protocol wrappers and extensions
 
 protocol CPUInfoProviding {
     var processorCount: Int { get }

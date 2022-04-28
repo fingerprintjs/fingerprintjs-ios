@@ -11,6 +11,7 @@ import FingerprintJS
 
 struct FingerprintDetailView: View {
     let fingerprintTree: FingerprintTree
+    let rawInfo: String?
     
     var body: some View {
         ScrollView {
@@ -20,6 +21,13 @@ struct FingerprintDetailView: View {
                 .padding()
             
             InfoTreeView(tree: fingerprintTree)
+#if targetEnvironment(simulator)
+            if let info = rawInfo {
+                CollapsibleCard("Raw data") {
+                    Text(info).padding()
+                }.padding()
+            }
+#endif
             Spacer()
         }
         .navigationTitle("Details")
