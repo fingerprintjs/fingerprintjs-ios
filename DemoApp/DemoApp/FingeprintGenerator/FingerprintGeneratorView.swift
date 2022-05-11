@@ -58,8 +58,8 @@ struct FingerprintGeneratorView: View {
                     VStack(alignment: .center, spacing: 20) {
                         FingerprintView(fingerprintTree: tree)
                         let detailView = FingerprintDetailView(
-                            fingerprintTree: tree,
-                            rawInfo: viewModel.deviceInfo.debugDescription
+                            fingerprintTree: tree // ,
+                            // rawInfo: viewModel.deviceInfo.debugDescription
                         )
                         
                         NavigationLink(destination: detailView) {
@@ -82,7 +82,7 @@ struct FingerprintGeneratorView: View {
             }
             .navigationBarTitleDisplayMode(.large)
             .navigationBarHidden(false)
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
     
     private func computeFingerprint() {
