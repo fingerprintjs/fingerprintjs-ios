@@ -20,7 +20,19 @@
 		6AB7146727EBBA3E004BBCF3 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AB7146627EBBA3E004BBCF3 /* Launch.storyboard */; };
 		6AC03F4927DE509B00EF9DB7 /* FingerprintDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC03F4827DE509B00EF9DB7 /* FingerprintDetailView.swift */; };
 		6AC03F5027DF2DCC00EF9DB7 /* DeviceInfoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC03F4F27DF2DCC00EF9DB7 /* DeviceInfoItemView.swift */; };
+		6AD70B1A281AF34E003657F6 /* DemoAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD70B19281AF34E003657F6 /* DemoAppUITests.swift */; };
+		6AD70B1C281AF34E003657F6 /* DemoAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD70B1B281AF34E003657F6 /* DemoAppUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6AD70B1D281AF34E003657F6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6A82A1B527DB71A2007C023F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6A82A1BC27DB71A2007C023F;
+			remoteInfo = DemoApp;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		6AC2334D27E10094007786F2 /* CopyFiles */ = {
@@ -51,6 +63,9 @@
 		6AC03F4827DE509B00EF9DB7 /* FingerprintDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerprintDetailView.swift; sourceTree = "<group>"; };
 		6AC03F4D27DE7FC700EF9DB7 /* FingerprintKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FingerprintKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AC03F4F27DF2DCC00EF9DB7 /* DeviceInfoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoItemView.swift; sourceTree = "<group>"; };
+		6AD70B17281AF34E003657F6 /* DemoAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AD70B19281AF34E003657F6 /* DemoAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppUITests.swift; sourceTree = "<group>"; };
+		6AD70B1B281AF34E003657F6 /* DemoAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +77,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6AD70B14281AF34E003657F6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -70,6 +92,7 @@
 			children = (
 				6AB7146627EBBA3E004BBCF3 /* Launch.storyboard */,
 				6A82A1BF27DB71A2007C023F /* DemoApp */,
+				6AD70B18281AF34E003657F6 /* DemoAppUITests */,
 				6A82A1BE27DB71A2007C023F /* Products */,
 				6AC03F4C27DE7FC700EF9DB7 /* Frameworks */,
 			);
@@ -79,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				6A82A1BD27DB71A2007C023F /* DemoApp.app */,
+				6AD70B17281AF34E003657F6 /* DemoAppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -143,6 +167,15 @@
 			path = CollapsibleCard;
 			sourceTree = "<group>";
 		};
+		6AD70B18281AF34E003657F6 /* DemoAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				6AD70B19281AF34E003657F6 /* DemoAppUITests.swift */,
+				6AD70B1B281AF34E003657F6 /* DemoAppUITestsLaunchTests.swift */,
+			);
+			path = DemoAppUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -164,6 +197,24 @@
 			productReference = 6A82A1BD27DB71A2007C023F /* DemoApp.app */;
 			productType = "com.apple.product-type.application";
 		};
+		6AD70B16281AF34E003657F6 /* DemoAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6AD70B21281AF34E003657F6 /* Build configuration list for PBXNativeTarget "DemoAppUITests" */;
+			buildPhases = (
+				6AD70B13281AF34E003657F6 /* Sources */,
+				6AD70B14281AF34E003657F6 /* Frameworks */,
+				6AD70B15281AF34E003657F6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6AD70B1E281AF34E003657F6 /* PBXTargetDependency */,
+			);
+			name = DemoAppUITests;
+			productName = DemoAppUITests;
+			productReference = 6AD70B17281AF34E003657F6 /* DemoAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -171,11 +222,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1320;
+				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					6A82A1BC27DB71A2007C023F = {
 						CreatedOnToolsVersion = 13.2.1;
+					};
+					6AD70B16281AF34E003657F6 = {
+						CreatedOnToolsVersion = 13.3;
+						TestTargetID = 6A82A1BC27DB71A2007C023F;
 					};
 				};
 			};
@@ -193,6 +248,7 @@
 			projectRoot = "";
 			targets = (
 				6A82A1BC27DB71A2007C023F /* DemoApp */,
+				6AD70B16281AF34E003657F6 /* DemoAppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -205,6 +261,13 @@
 				6A82A1C827DB71A3007C023F /* Preview Assets.xcassets in Resources */,
 				6A82A1C527DB71A3007C023F /* Assets.xcassets in Resources */,
 				6AB7146727EBBA3E004BBCF3 /* Launch.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6AD70B15281AF34E003657F6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,7 +289,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6AD70B13281AF34E003657F6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6AD70B1A281AF34E003657F6 /* DemoAppUITests.swift in Sources */,
+				6AD70B1C281AF34E003657F6 /* DemoAppUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6AD70B1E281AF34E003657F6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6A82A1BC27DB71A2007C023F /* DemoApp */;
+			targetProxy = 6AD70B1D281AF34E003657F6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		6A82A1C927DB71A3007C023F /* Debug */ = {
@@ -351,16 +431,19 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"DemoApp/Preview Content\"";
-				DEVELOPMENT_TEAM = K78JGMAWVU;
+				DEVELOPMENT_TEAM = AQ93X82PXZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DemoApp/Info.plist;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = Launch;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_DYLIB_INSTALL_NAME = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -380,17 +463,21 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"DemoApp/Preview Content\"";
-				DEVELOPMENT_TEAM = K78JGMAWVU;
+				DEVELOPMENT_TEAM = AQ93X82PXZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DemoApp/Info.plist;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = Launch;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_DYLIB_INSTALL_NAME = "@rpath";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -399,9 +486,48 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fingerprintjs.DemoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.fingerprintjs.DemoApp";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		6AD70B1F281AF34E003657F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fingerprintjs.DemoAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DemoApp;
+			};
+			name = Debug;
+		};
+		6AD70B20281AF34E003657F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fingerprintjs.DemoAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DemoApp;
 			};
 			name = Release;
 		};
@@ -422,6 +548,15 @@
 			buildConfigurations = (
 				6A82A1CC27DB71A3007C023F /* Debug */,
 				6A82A1CD27DB71A3007C023F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6AD70B21281AF34E003657F6 /* Build configuration list for PBXNativeTarget "DemoAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6AD70B1F281AF34E003657F6 /* Debug */,
+				6AD70B20281AF34E003657F6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
