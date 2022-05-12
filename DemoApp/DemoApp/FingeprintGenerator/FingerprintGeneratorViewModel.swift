@@ -20,11 +20,11 @@ class FingerprintGeneratorViewModel: ObservableObject {
     @Published var state: FingerprintGeneratorState = .notGenerated
     @Published var loading: Bool = false
     @Published var fingerprintTree: FingerprintTree? = nil
-    @Published var deviceInfo: DeviceInfo? = nil
+    // @Published var deviceInfo: DeviceInfo? = nil
     
     func generateTree() async {
-        let deviceInfoProvider = DeviceInfoProvider()
-        deviceInfo = await deviceInfoProvider.getDeviceInfo()
+        // let deviceInfoProvider = DeviceInfoProvider()
+        // deviceInfo = await deviceInfoProvider.getDeviceInfo()
         state = .generating
         fingerprintTree = await fingerprinter.getFingerprintTree()
         if let fingerprintTree = fingerprintTree {

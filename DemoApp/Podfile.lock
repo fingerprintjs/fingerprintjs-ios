@@ -1,0 +1,16 @@
+PODS:
+  - FingerprintJS (1.0.0)
+
+DEPENDENCIES:
+  - FingerprintJS (~> 1.0)
+
+SPEC REPOS:
+  trunk:
+    - FingerprintJS
+
+SPEC CHECKSUMS:
+  FingerprintJS: 2c0bae1d2f1b65c3c46098edbdefca4a0e72c76d
+
+PODFILE CHECKSUM: f501a0d0aaa742f83340245876e881fc1d89f6c6
+
+COCOAPODS: 1.11.3
