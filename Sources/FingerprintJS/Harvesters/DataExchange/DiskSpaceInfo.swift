@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DiskSpaceInfo {
-    let freeDiskSpace: UInt64
-    let totalDiskSpace: UInt64
+public struct DiskSpaceInfo {
+    public let freeDiskSpace: UInt64
+    public let totalDiskSpace: UInt64
 }

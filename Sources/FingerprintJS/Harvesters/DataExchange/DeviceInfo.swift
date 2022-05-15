@@ -9,19 +9,19 @@ import CoreGraphics
 import Foundation
 
 public struct DeviceInfo {
-    let vendorIdentifier: UUID?
+    public let vendorIdentifier: UUID?
 
-    let diskSpace: DiskSpaceInfo?
-    let screenResolution: CGSize?
-    let deviceType: String?
-    let deviceModel: String?
-    let memorySize: String?
-    let physicalMemory: String?
-    let cpuCount: String?
+    public let diskSpace: DiskSpaceInfo?
+    public let screenResolution: CGSize?
+    public let deviceType: String?
+    public let deviceModel: String?
+    public let memorySize: String?
+    public let physicalMemory: String?
+    public let cpuCount: String?
 
-    let osBuild: String?
-    let osVersion: String?
-    let osType: String?
-    let osRelease: String?
-    let kernelVersion: String?
+    public let osBuild: String?
+    public let osVersion: String?
+    public let osType: String?
+    public let osRelease: String?
+    public let kernelVersion: String?
 }
