@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
   # Name and version
   spec.name         = 'FingerprintJS'
-  spec.version      = '1.0.0'
+  spec.version      = '1.1.0'
 
   # License
   spec.license      = { type: 'MIT', file: 'LICENSE' }
@@ -23,7 +23,7 @@ Pod::Spec.new do |spec|
 
   # Git location
   spec.source = {
-    git: 'https://github.com/fingerprintjs/fingerprintjs-ios.git', tag: '1.0.0'
+    git: 'https://github.com/fingerprintjs/fingerprintjs-ios.git', tag: spec.version
   }
 
   # Build (source files, deployment target)
