@@ -10,6 +10,7 @@ import FingerprintJS
 
 struct FingerprintGeneratorView: View {
     @ObservedObject var viewModel: FingerprintGeneratorViewModel = FingerprintGeneratorViewModel()
+    @State var showPrivacyPolicy: Bool = false
     
     var body: some View {
         NavigationView {
@@ -79,6 +80,7 @@ struct FingerprintGeneratorView: View {
                     .padding()
                 }
                 Spacer()
+                PrivacyPolicyView(showPrivacyPolicy: $showPrivacyPolicy)
             }
             .navigationBarTitleDisplayMode(.large)
             .navigationBarHidden(false)
