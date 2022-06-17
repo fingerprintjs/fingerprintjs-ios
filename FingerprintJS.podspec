@@ -7,10 +7,10 @@ Pod::Spec.new do |spec|
   spec.license      = { type: 'MIT', file: 'LICENSE' }
 
   # Contact information
-  spec.homepage     = 'https://fingerprintjs.com/'
+  spec.homepage     = 'https://fingerprint.com/'
   spec.authors      = {
-    'FingerprintJS': 'fingerprintkit@fingerprintjs.com',
-    'Petr Palata': 'petr.palata@fingerprintjs.com'
+    'Fingerprint': 'fingerprintkit@fingerprint.com',
+    'Petr Palata': 'petr.palata@fingerprint.com'
   }
 
   # FingerprintJS description
