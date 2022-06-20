@@ -26,10 +26,10 @@
 </p>
 
 <p align="center">
-  <img src="images/demoapp.gif" width="195px">
-  <img src="images/demoapp1.png" width="195px">
-  <img src="images/demoapp2.png" width="195px">
-  <img src="images/demoapp3.png" width="195px">
+  <img src="images/demoapp.gif" width="195">
+  <img src="images/demoapp1.png" width="195">
+  <img src="images/demoapp2.png" width="195">
+  <img src="images/demoapp3.png" width="195">
 </p>
 
 
