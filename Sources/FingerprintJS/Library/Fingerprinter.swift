@@ -74,7 +74,7 @@ extension Fingerprinter {
 }
 
 // MARK: - Public Interface: Async/Await (iOS 13+)
-@available(iOS 13, macOS 11, *)
+@available(iOS 13.0, tvOS 13.0, macOS 11.0, *)
 extension Fingerprinter {
     /// Retrieves a stable device identifier that is tied to the current device/application combination
     /// - Returns: Device identifier `String` value or `nil` if an error occurs
