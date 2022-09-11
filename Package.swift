@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "FingerprintJS",
-    platforms: [.iOS(.v13), .tvOS(.v13)],
+    platforms: [.iOS(.v12), .tvOS(.v12)],
     products: [
         .library(
             name: "FingerprintJS",

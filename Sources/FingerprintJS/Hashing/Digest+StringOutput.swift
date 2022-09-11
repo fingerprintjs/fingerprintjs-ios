@@ -8,6 +8,7 @@
 import CryptoKit
 import Foundation
 
+@available(iOS 13.0, tvOS 13, *)
 extension Digest {
     var bytes: [UInt8] { Array(makeIterator()) }
     var data: Data { Data(bytes) }

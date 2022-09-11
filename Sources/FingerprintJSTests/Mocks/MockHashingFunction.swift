@@ -5,6 +5,7 @@
 //  Created by Petr Palata on 23.03.2022.
 //
 import Foundation
+
 @testable import FingerprintJS
 
 class MockFingerprintFunction: FingerprintFunction {
