@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
   # Name and version
   spec.name         = 'FingerprintJS'
-  spec.version      = '1.1.1'
+  spec.version      = '1.1.2'
 
   # License
   spec.license      = { type: 'MIT', file: 'LICENSE' }
@@ -9,7 +9,7 @@ Pod::Spec.new do |spec|
   # Contact information
   spec.homepage     = 'https://fingerprint.com/'
   spec.authors      = {
-    'Fingerprint': 'fingerprintkit@fingerprint.com',
+    'Fingerprint': 'ios@fingerprint.com',
     'Petr Palata': 'petr.palata@fingerprint.com'
   }
 
@@ -28,8 +28,8 @@ Pod::Spec.new do |spec|
 
   # Build (source files, deployment target)
   spec.source_files = 'Sources/FingerprintJS/**/*.{swift,h,m}'
-  spec.ios.deployment_target = '13.0'
-  spec.tvos.deployment_target = '13.0'
+  spec.ios.deployment_target = '12.0'
+  spec.tvos.deployment_target = '12.0'
   spec.swift_versions = ['5.3', '5.4', '5.5', '5.6']
 
   # Tests

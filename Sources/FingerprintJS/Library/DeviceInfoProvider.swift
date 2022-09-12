@@ -10,8 +10,9 @@ import Foundation
 public protocol DeviceInfoProviding {
     /// Gathers and returns all information about the device
     /// - Returns: `DeviceInfo` object that contains typed representation of device information values
+    @available(iOS 13.0, tvOS 13.0, *)
     func getDeviceInfo() async -> DeviceInfo
-    
+
     /// Gathers all information about the device and reports it through the completion block
     /// - Parameter completion: Completion block reporting the `DeviceInfo` object
     func getDeviceInfo(_ completion: @escaping (DeviceInfo) -> Void)
@@ -43,8 +44,17 @@ public class DeviceInfoProvider {
 
 extension DeviceInfoProvider: DeviceInfoProviding {
 
+    @available(iOS 13.0, tvOS 13.0, *)
     public func getDeviceInfo() async -> DeviceInfo {
-        return DeviceInfo(
+        return await withCheckedContinuation { continuation in
+            self.getDeviceInfo { deviceInfo in
+                continuation.resume(returning: deviceInfo)
+            }
+        }
+    }
+
+    public func getDeviceInfo(_ completion: @escaping (DeviceInfo) -> Void) {
+        let deviceInfo = DeviceInfo(
             vendorIdentifier: identifierHarvester.vendorIdentifier,
             diskSpace: hardwareInfoHarvester.diskSpaceInfo,
             screenResolution: hardwareInfoHarvester.displayResolution,
@@ -59,12 +69,7 @@ extension DeviceInfoProvider: DeviceInfoProviding {
             osRelease: osInfoHarvester.osRelease,
             kernelVersion: osInfoHarvester.kernelVersion
         )
-    }
 
-    public func getDeviceInfo(_ completion: @escaping (DeviceInfo) -> Void) {
-        Task.init {
-            let deviceInfo = await getDeviceInfo()
-            completion(deviceInfo)
-        }
+        completion(deviceInfo)
     }
 }
