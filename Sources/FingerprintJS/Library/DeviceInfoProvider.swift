@@ -46,21 +46,11 @@ extension DeviceInfoProvider: DeviceInfoProviding {
 
     @available(iOS 13, tvOS 13, *)
     public func getDeviceInfo() async -> DeviceInfo {
-        return DeviceInfo(
-            vendorIdentifier: identifierHarvester.vendorIdentifier,
-            diskSpace: hardwareInfoHarvester.diskSpaceInfo,
-            screenResolution: hardwareInfoHarvester.displayResolution,
-            deviceType: hardwareInfoHarvester.deviceType,
-            deviceModel: hardwareInfoHarvester.deviceModel,
-            memorySize: hardwareInfoHarvester.memorySize,
-            physicalMemory: hardwareInfoHarvester.memorySize,
-            cpuCount: hardwareInfoHarvester.cpuCount,
-            osBuild: osInfoHarvester.osBuild,
-            osVersion: osInfoHarvester.osVersion,
-            osType: osInfoHarvester.osType,
-            osRelease: osInfoHarvester.osRelease,
-            kernelVersion: osInfoHarvester.kernelVersion
-        )
+        return await withCheckedContinuation { continuation in
+            self.getDeviceInfo { deviceInfo in
+                continuation.resume(returning: deviceInfo)
+            }
+        }
     }
 
     public func getDeviceInfo(_ completion: @escaping (DeviceInfo) -> Void) {
