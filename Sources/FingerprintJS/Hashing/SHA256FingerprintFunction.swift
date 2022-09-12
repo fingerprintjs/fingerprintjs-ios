@@ -17,13 +17,13 @@ class SHA256HashingFunction: FingerprintFunction {
             return computeSHA256CommonCrypto(data)
         }
     }
-    
+
     @available(iOS 13.0, tvOS 13.0, *)
     func computeSHA256CryptoKit(_ data: Data) -> String {
         let digest = SHA256.hash(data: data)
         return digest.hexStr
     }
-    
+
     func computeSHA256CommonCrypto(_ data: Data) -> String {
         var hash = [UInt8](repeating: 0, count: Int(CC_SHA256_DIGEST_LENGTH))
         data.withUnsafeBytes {
