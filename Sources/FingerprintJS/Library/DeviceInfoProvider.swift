@@ -1,12 +1,3 @@
-//
-//  DeviceInfoProvider.swift
-//  FingerprintJS
-//
-//  Created by Petr Palata on 19.04.2022.
-//
-
-import Foundation
-
 public protocol DeviceInfoProviding {
     /// Gathers and returns all information about the device
     /// - Returns: `DeviceInfo` object that contains typed representation of device information values
@@ -19,24 +10,28 @@ public protocol DeviceInfoProviding {
 }
 
 public class DeviceInfoProvider {
-    let hardwareInfoHarvester: HardwareInfoHarvesting
-    let osInfoHarvester: OSInfoHarvesting
-    let identifierHarvester: IdentifierHarvesting
+    private let identifierHarvester: IdentifierHarvesting
+    private let appInfoHarvester: AppInfoHarvesting
+    private let hardwareInfoHarvester: HardwareInfoHarvesting
+    private let osInfoHarvester: OSInfoHarvesting
 
     public convenience init() {
         self.init(
-            IdentifierHarvester(),
+            identifierHarvester: IdentifierHarvester(),
+            appInfoHarvester: AppInfoHarvester(),
             hardwareInfoHarvester: HardwareInfoHarvester(),
             osInfoHarvester: OSInfoHarvester()
         )
     }
 
     init(
-        _ identifierHarvester: IdentifierHarvesting,
+        identifierHarvester: IdentifierHarvesting,
+        appInfoHarvester: AppInfoHarvesting,
         hardwareInfoHarvester: HardwareInfoHarvesting,
         osInfoHarvester: OSInfoHarvesting
     ) {
         self.identifierHarvester = identifierHarvester
+        self.appInfoHarvester = appInfoHarvester
         self.hardwareInfoHarvester = hardwareInfoHarvester
         self.osInfoHarvester = osInfoHarvester
     }
@@ -56,6 +51,7 @@ extension DeviceInfoProvider: DeviceInfoProviding {
     public func getDeviceInfo(_ completion: @escaping (DeviceInfo) -> Void) {
         let deviceInfo = DeviceInfo(
             vendorIdentifier: identifierHarvester.vendorIdentifier,
+            userInterfaceStyle: appInfoHarvester.userInterfaceStyle,
             diskSpace: hardwareInfoHarvester.diskSpaceInfo,
             screenResolution: hardwareInfoHarvester.displayResolution,
             deviceType: hardwareInfoHarvester.deviceType,

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		159E0BAA292CD1C600E2C38A /* AppInfoHarvester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159E0BA9292CD1C600E2C38A /* AppInfoHarvester.swift */; };
+		159E0BAC292CE35700E2C38A /* UserInterfaceStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159E0BAB292CE35700E2C38A /* UserInterfaceStyle.swift */; };
+		159E0BAE292D149700E2C38A /* AppInfoHarvesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159E0BAD292D149700E2C38A /* AppInfoHarvesterTests.swift */; };
+		159E0BB2292D18B800E2C38A /* UserInterfaceTraitsProvidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159E0BB1292D18B800E2C38A /* UserInterfaceTraitsProvidable.swift */; };
+		159E0BB6292D19B700E2C38A /* UserInterfaceTraitsProvidableSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159E0BB5292D19B700E2C38A /* UserInterfaceTraitsProvidableSpy.swift */; };
 		6A1D11412809DBDE00566F75 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1D11402809DBDE00566F75 /* DeviceInfo.swift */; };
 		6A1D1143280F1B6600566F75 /* DeviceInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1D1142280F1B6600566F75 /* DeviceInfoProvider.swift */; };
 		6A23866328042DFB002D09F3 /* DocumentsDirectoryAttributesProvidingMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A23866228042DFB002D09F3 /* DocumentsDirectoryAttributesProvidingMock.swift */; };
@@ -59,6 +64,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		159E0BA9292CD1C600E2C38A /* AppInfoHarvester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoHarvester.swift; sourceTree = "<group>"; };
+		159E0BAB292CE35700E2C38A /* UserInterfaceStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInterfaceStyle.swift; sourceTree = "<group>"; };
+		159E0BAD292D149700E2C38A /* AppInfoHarvesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoHarvesterTests.swift; sourceTree = "<group>"; };
+		159E0BB1292D18B800E2C38A /* UserInterfaceTraitsProvidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInterfaceTraitsProvidable.swift; sourceTree = "<group>"; };
+		159E0BB5292D19B700E2C38A /* UserInterfaceTraitsProvidableSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInterfaceTraitsProvidableSpy.swift; sourceTree = "<group>"; };
 		6A1D11402809DBDE00566F75 /* DeviceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
 		6A1D1142280F1B6600566F75 /* DeviceInfoProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoProvider.swift; sourceTree = "<group>"; };
 		6A23866228042DFB002D09F3 /* DocumentsDirectoryAttributesProvidingMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsDirectoryAttributesProvidingMock.swift; sourceTree = "<group>"; };
@@ -120,11 +130,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		159E0BAF292D17E500E2C38A /* AppInfoHarvester */ = {
+			isa = PBXGroup;
+			children = (
+				159E0BB0292D181F00E2C38A /* Providers */,
+				159E0BA9292CD1C600E2C38A /* AppInfoHarvester.swift */,
+			);
+			path = AppInfoHarvester;
+			sourceTree = "<group>";
+		};
+		159E0BB0292D181F00E2C38A /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				159E0BB1292D18B800E2C38A /* UserInterfaceTraitsProvidable.swift */,
+			);
+			path = Providers;
+			sourceTree = "<group>";
+		};
+		159E0BB3292D194400E2C38A /* TestDoubles */ = {
+			isa = PBXGroup;
+			children = (
+				159E0BB4292D196400E2C38A /* Spies */,
+				6AB7146227EB636E004BBCF3 /* Mocks */,
+			);
+			path = TestDoubles;
+			sourceTree = "<group>";
+		};
+		159E0BB4292D196400E2C38A /* Spies */ = {
+			isa = PBXGroup;
+			children = (
+				159E0BB5292D19B700E2C38A /* UserInterfaceTraitsProvidableSpy.swift */,
+			);
+			path = Spies;
+			sourceTree = "<group>";
+		};
 		6A7D016327FB31940037E190 /* DataExchange */ = {
 			isa = PBXGroup;
 			children = (
 				6A7D016427FB31A30037E190 /* DiskSpaceInfo.swift */,
 				6A1D11402809DBDE00566F75 /* DeviceInfo.swift */,
+				159E0BAB292CE35700E2C38A /* UserInterfaceStyle.swift */,
 			);
 			path = DataExchange;
 			sourceTree = "<group>";
@@ -164,8 +209,8 @@
 		6A82A18627D65DB4007C023F /* FingerprintJSTests */ = {
 			isa = PBXGroup;
 			children = (
+				159E0BB3292D194400E2C38A /* TestDoubles */,
 				6AC362AC280013F300C4768A /* Tests */,
-				6AB7146227EB636E004BBCF3 /* Mocks */,
 			);
 			path = FingerprintJSTests;
 			sourceTree = "<group>";
@@ -196,6 +241,7 @@
 		6A82A19827D76BFE007C023F /* Harvesters */ = {
 			isa = PBXGroup;
 			children = (
+				159E0BAF292D17E500E2C38A /* AppInfoHarvester */,
 				6A7D016327FB31940037E190 /* DataExchange */,
 				6A82A19A27D76CD6007C023F /* HardwareInfoHarvester.swift */,
 				6A82A1A127D8965D007C023F /* IdentifierHarvester.swift */,
@@ -266,6 +312,7 @@
 				6AC362AA280013E200C4768A /* HardwareInfoHarvesterTests.swift */,
 				6A3BB826280588FD00D2EBB9 /* OSInfoHarvesterTests.swift */,
 				6A3BB82828058B4900D2EBB9 /* IdentifierHarvesterTests.swift */,
+				159E0BAD292D149700E2C38A /* AppInfoHarvesterTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -419,6 +466,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				159E0BAC292CE35700E2C38A /* UserInterfaceStyle.swift in Sources */,
 				6AC03F4B27DE574100EF9DB7 /* DeviceInfoItem.swift in Sources */,
 				6A9B7CB227E7AA8E002B9939 /* DeviceInfoTreeProvider.swift in Sources */,
 				6A1D1143280F1B6600566F75 /* DeviceInfoProvider.swift in Sources */,
@@ -426,7 +474,9 @@
 				6A9B7CB627E7AC55002B9939 /* CGSize+CustomStringConvertible.swift in Sources */,
 				6A9B7CB027E36F66002B9939 /* CompoundTreeBuilder.swift in Sources */,
 				6A82A1A027D79618007C023F /* SystemControlFlag.swift in Sources */,
+				159E0BAA292CD1C600E2C38A /* AppInfoHarvester.swift in Sources */,
 				6A9B7CB427E7AB6D002B9939 /* FingerprintFunction.swift in Sources */,
+				159E0BB2292D18B800E2C38A /* UserInterfaceTraitsProvidable.swift in Sources */,
 				6A9B7CB827E7ADC8002B9939 /* FingerprintTree.swift in Sources */,
 				6AC362AE28001E7D00C4768A /* FileManager+DocumentsDirectoryAttributesProviding.swift in Sources */,
 				6A82A19E27D775AF007C023F /* SystemControl.swift in Sources */,
@@ -458,11 +508,13 @@
 				6AC362AB280013E200C4768A /* HardwareInfoHarvesterTests.swift in Sources */,
 				6AC362B028005C8D00C4768A /* DeviceModelProvidingMock.swift in Sources */,
 				6AC362B228042B7C00C4768A /* SystemControlMock.swift in Sources */,
+				159E0BAE292D149700E2C38A /* AppInfoHarvesterTests.swift in Sources */,
 				6A23866328042DFB002D09F3 /* DocumentsDirectoryAttributesProvidingMock.swift in Sources */,
 				6AB7146127EB612D004BBCF3 /* FingerprintTreeCalculatorTests.swift in Sources */,
 				6AC362B428042BB900C4768A /* ScreenSizeProviding.swift in Sources */,
 				6A44A31928CF8FAF0026DCD8 /* SHA256HashingFunctionTests.swift in Sources */,
 				6AC362B628042C1500C4768A /* CPUInfoProvidingMock.swift in Sources */,
+				159E0BB6292D19B700E2C38A /* UserInterfaceTraitsProvidableSpy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

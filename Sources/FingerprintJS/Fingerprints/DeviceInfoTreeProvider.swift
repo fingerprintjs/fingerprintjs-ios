@@ -1,12 +1,3 @@
-//
-//  DeviceInfoTreeProvider.swift
-//  FingerprintJS
-//
-//  Created by Petr Palata on 20.03.2022.
-//
-
-import Foundation
-
 protocol DeviceInfoTreeProvider {
     func buildTree(_ configuration: Configuration) -> DeviceInfoItem
 
@@ -21,6 +12,20 @@ extension DeviceInfoTreeProvider {
             versionedItems
             .filter { $0.versions.contains(version) }
             .map { $0.item }
+    }
+}
+
+extension AppInfoHarvester: DeviceInfoTreeProvider {
+    func buildTree(_ configuration: Configuration) -> DeviceInfoItem {
+        return DeviceInfoItem(
+            label: "App",
+            value: .category,
+            children: itemsForVersion(configuration.version)
+        )
+    }
+
+    var versionedItems: [VersionedInfoItem] {
+        []
     }
 }
 
