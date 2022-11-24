@@ -3,6 +3,7 @@ import Foundation
 public struct DeviceInfo {
     public let vendorIdentifier: UUID?
 
+    /// The style associated with the user interface of the app.
     public let userInterfaceStyle: UserInterfaceStyle
 
     public let diskSpace: DiskSpaceInfo?
