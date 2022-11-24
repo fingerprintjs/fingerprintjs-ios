@@ -1,33 +1,23 @@
-//
-//  FingerprintTreeBuilder.swift
-//  FingerprintJS
-//
-//  Created by Petr Palata on 17.03.2022.
-//
+struct CompoundTreeBuilder {
+    private let providers: [DeviceInfoTreeProvider]
 
-import Foundation
-
-class CompoundTreeBuilder {
-    private let treeProviders: [DeviceInfoTreeProvider]
-
-    convenience init() {
-        self.init([
+    init() {
+        self.init(providers: [
+            AppInfoHarvester(),
             HardwareInfoHarvester(),
             OSInfoHarvester(),
             IdentifierHarvester(),
         ])
     }
 
-    init(_ treeProviders: [DeviceInfoTreeProvider]) {
-        self.treeProviders = treeProviders
+    init(providers: [DeviceInfoTreeProvider]) {
+        self.providers = providers
     }
 }
 
 extension CompoundTreeBuilder: DeviceInfoTreeProvider {
     func buildTree(_ configuration: Configuration) -> DeviceInfoItem {
-        let children = treeProviders.map { provider in
-            return provider.buildTree(configuration)
-        }
+        let children = providers.map { $0.buildTree(configuration) }
 
         return DeviceInfoItem(
             label: "Device Fingerprint",
