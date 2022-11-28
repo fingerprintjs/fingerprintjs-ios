@@ -15,6 +15,9 @@ protocol HardwareInfoHarvesting {
     /// Physical resolution (in pixels) for the current device
     var displayResolution: CGSize { get }
 
+    /// The native scale factor for the display.
+    var displayScale: CGFloat { get }
+
     /// Device model identifier (e.g. iPhone 13,3)
     var deviceModel: String { get }
 
@@ -36,14 +39,14 @@ protocol HardwareInfoHarvesting {
 
 class HardwareInfoHarvester {
     private let device: DeviceModelProviding
-    private let screen: ScreenSizeProviding
+    private let screen: ScreenInfoProviding
     private let systemControl: SystemControlValuesProviding
     private let fileManager: DocumentsDirectoryAttributesProviding
     private let processInfo: CPUInfoProviding
 
     init(
         _ device: DeviceModelProviding,
-        screen: ScreenSizeProviding,
+        screen: ScreenInfoProviding,
         systemControl: SystemControlValuesProviding,
         fileManager: DocumentsDirectoryAttributesProviding,
         processInfo: CPUInfoProviding
@@ -92,6 +95,10 @@ extension HardwareInfoHarvester: HardwareInfoHarvesting {
     var displayResolution: CGSize {
         let nativeBounds = screen.nativeBounds
         return CGSize(width: nativeBounds.width, height: nativeBounds.height)
+    }
+
+    var displayScale: CGFloat {
+        screen.nativeScale
     }
 
     var deviceModel: String {
@@ -146,8 +153,9 @@ protocol DeviceModelProviding {
 
 extension UIDevice: DeviceModelProviding {}
 
-protocol ScreenSizeProviding {
+protocol ScreenInfoProviding {
     var nativeBounds: CGRect { get }
+    var nativeScale: CGFloat { get }
 }
 
-extension UIScreen: ScreenSizeProviding {}
+extension UIScreen: ScreenInfoProviding {}

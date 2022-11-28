@@ -54,6 +54,7 @@ extension DeviceInfoProvider: DeviceInfoProviding {
             userInterfaceStyle: appInfoHarvester.userInterfaceStyle,
             diskSpace: hardwareInfoHarvester.diskSpaceInfo,
             screenResolution: hardwareInfoHarvester.displayResolution,
+            screenScale: hardwareInfoHarvester.displayScale,
             deviceType: hardwareInfoHarvester.deviceType,
             deviceModel: hardwareInfoHarvester.deviceModel,
             memorySize: hardwareInfoHarvester.memorySize,

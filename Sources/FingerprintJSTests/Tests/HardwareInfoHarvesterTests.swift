@@ -9,20 +9,25 @@ import XCTest
 
 @testable import FingerprintJS
 
-class HardwareInfoHarvesterTests: XCTestCase {
+final class HardwareInfoHarvesterTests: XCTestCase {
     private var sut: HardwareInfoHarvester!
 
-    private var mockScreenSizeProvider = ScreenSizeProvidingMock()
-    private var mockDeviceModelProvider = DeviceModelProvidingMock()
-    private var mockSystemControl = SystemControlMock()
-    private var mockDocumentDirectoryAttributesProvider =
-        DocumentsDirectoryAttributesProvidingMock()
-    private var mockCpuInfoProvider = CPUInfoProvidingMock()
+    private var screenInfoProviderSpy: ScreenInfoProvidingSpy!
+    private var mockDeviceModelProvider: DeviceModelProvidingMock!
+    private var mockSystemControl: SystemControlMock!
+    private var mockDocumentDirectoryAttributesProvider: DocumentsDirectoryAttributesProvidingMock!
+    private var mockCpuInfoProvider: CPUInfoProvidingMock!
 
     override func setUp() {
+        super.setUp()
+        screenInfoProviderSpy = .init()
+        mockDeviceModelProvider = .init()
+        mockSystemControl = .init()
+        mockDocumentDirectoryAttributesProvider = .init()
+        mockCpuInfoProvider = .init()
         sut = HardwareInfoHarvester(
             mockDeviceModelProvider,
-            screen: mockScreenSizeProvider,
+            screen: screenInfoProviderSpy,
             systemControl: mockSystemControl,
             fileManager: mockDocumentDirectoryAttributesProvider,
             processInfo: mockCpuInfoProvider
@@ -31,6 +36,41 @@ class HardwareInfoHarvesterTests: XCTestCase {
 
     override func tearDown() {
         sut = nil
+        mockCpuInfoProvider = nil
+        mockDocumentDirectoryAttributesProvider = nil
+        mockSystemControl = nil
+        mockDeviceModelProvider = nil
+        screenInfoProviderSpy = nil
+        super.tearDown()
+    }
+
+    func test_givenSuperRetinaDisplay_whenDisplayResolution_thenReturnsExpectedResolution() {
+        // given
+        let superRetinaBounds: CGRect = .init(x: .zero, y: .zero, width: 1170, height: 2532)
+        screenInfoProviderSpy.nativeBoundsReturnValue = superRetinaBounds
+
+        // when
+        let displayResolution = sut.displayResolution
+
+        // then
+        let expectedResolution = superRetinaBounds.size
+        XCTAssertEqual(expectedResolution, displayResolution)
+        XCTAssertEqual(1, screenInfoProviderSpy.nativeBoundsCallCount)
+        XCTAssertEqual(0, screenInfoProviderSpy.nativeScaleCallCount)
+    }
+
+    func test_givenSuperRetinaDisplay_whenDisplayScale_thenReturnsExpectedScale() {
+        // given
+        let superRetinaScale: CGFloat = 3.0
+        screenInfoProviderSpy.nativeScaleReturnValue = superRetinaScale
+
+        // when
+        let displayScale = sut.displayScale
+
+        // then
+        XCTAssertEqual(superRetinaScale, displayScale)
+        XCTAssertEqual(0, screenInfoProviderSpy.nativeBoundsCallCount)
+        XCTAssertEqual(1, screenInfoProviderSpy.nativeScaleCallCount)
     }
 
     func testFreeDiskSpaceReturnsZeroIfDocumentsDirAttributesEmpty() {
@@ -162,5 +202,4 @@ class HardwareInfoHarvesterTests: XCTestCase {
 
         XCTAssertEqual(itemLabels, versionTwoLabels)
     }
-
 }
