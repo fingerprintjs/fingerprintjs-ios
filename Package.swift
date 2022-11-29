@@ -10,7 +10,7 @@ let package = Package(
         .library(
             name: "FingerprintJS",
             targets: ["FingerprintJS"]
-        ),
+        )
     ],
     targets: [
         .target(name: "FingerprintJS"),
@@ -18,6 +18,6 @@ let package = Package(
             name: "FingerprintJSTests",
             dependencies: ["FingerprintJS"],
             path: "./Sources/FingerprintJSTests"
-        )
+        ),
     ]
 )
