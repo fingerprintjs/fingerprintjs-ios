@@ -2,9 +2,11 @@
 
 set -Eeuo pipefail
 
-source "$(dirname "$0")"/Commons/common.sh
+readonly SCRIPT_REL_PATH="$(dirname "$0")"
 
-readonly SCRIPT_ABS_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd -P)"
+source "$SCRIPT_REL_PATH"/Commons/common.sh
+
+readonly SCRIPT_ABS_PATH="$(cd "$SCRIPT_REL_PATH" &>/dev/null && pwd -P)"
 
 readonly PROJECT_ROOT_PATH="$SCRIPT_ABS_PATH/.."
 
