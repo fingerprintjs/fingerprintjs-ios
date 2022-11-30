@@ -57,9 +57,16 @@ extension HardwareInfoHarvester: DeviceInfoTreeProvider {
             VersionedInfoItem(
                 item: DeviceInfoItem(
                     label: "Display resolution",
-                    value: .info(self.displayResolution.description)
+                    value: .info(displayResolution.description)
                 ),
                 versions: [.v1, .v2]
+            ),
+            VersionedInfoItem(
+                item: DeviceInfoItem(
+                    label: "Display scale",
+                    value: .info(displayScale.description)
+                ),
+                versions: []
             ),
             VersionedInfoItem(
                 item: DeviceInfoItem(

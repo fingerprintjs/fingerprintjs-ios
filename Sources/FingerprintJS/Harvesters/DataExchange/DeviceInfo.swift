@@ -8,6 +8,8 @@ public struct DeviceInfo {
 
     public let diskSpace: DiskSpaceInfo?
     public let screenResolution: CGSize?
+    /// The native scale factor for the screen.
+    public let screenScale: CGFloat
     public let deviceType: String?
     public let deviceModel: String?
     public let memorySize: String?
