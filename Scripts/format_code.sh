@@ -24,8 +24,8 @@ fi
 
 cd "$PROJECT_ROOT_PATH"
 
-swift-format lint \
+swift-format format \
         --configuration ./.swift-format \
+        --in-place \
         --recursive \
-        --strict \
         ./Package.swift ./Sources

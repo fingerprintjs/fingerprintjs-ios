@@ -335,7 +335,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6A82A18C27D65DB4007C023F /* Build configuration list for PBXNativeTarget "FingerprintJS" */;
 			buildPhases = (
-				6A58225A27F0D885002EA33E /* ShellScript */,
 				6A82A17527D65DB4007C023F /* Headers */,
 				6A82A17627D65DB4007C023F /* Sources */,
 				6A82A17727D65DB4007C023F /* Frameworks */,
@@ -422,26 +421,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		6A58225A27F0D885002EA33E /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export PATH=$PATH:/opt/homebrew/bin\n\nif which swift-format >/dev/null; then\n     swift-format format \\\n        --configuration ${PROJECT_DIR}/../.swift-format \\\n        --in-place \\\n        --recursive \\\n        ${PROJECT_DIR}\nelse\n    echo \"warning: swift-format not installed\"\nfi\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6A82A17627D65DB4007C023F /* Sources */ = {
