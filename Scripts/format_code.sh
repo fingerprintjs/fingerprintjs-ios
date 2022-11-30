@@ -24,8 +24,17 @@ fi
 
 cd "$PROJECT_ROOT_PATH"
 
-swift-format format \
+if [[ $# -eq 0 ]]
+then
+    swift-format format \
         --configuration ./.swift-format \
         --in-place \
         --recursive \
         ./Package.swift ./Sources
+else
+    readonly SWIFT_FILE=$1
+    swift-format format \
+        --configuration ./.swift-format \
+        --in-place \
+        "${SWIFT_FILE}"
+fi

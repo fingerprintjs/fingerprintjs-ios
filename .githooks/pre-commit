@@ -11,13 +11,12 @@ function changed_swift_files() {
 
 changed_swift_files | while read swift_file;
 do
-    swift-format format \
-        --in-place \
-        "${swift_file}";
+    ./Scripts/format_code.sh "${swift_file}"
 
-    if [[ $? -ne 0 ]]; then
+    if [[ $? -ne 0 ]]
+    then
         echo "Failed to process Swift file: ${swift_file}. Pre-commit hook failed"
-        exit 1;
+        exit 1
     fi
 
     git add "${swift_file}";
