@@ -1,9 +1,9 @@
 .DEFAULT_GOAL := help
 
-.PHONY: help lint tests
+.PHONY: help lint tests environment
 
-ROOT_DIR:=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
-GITHOOKS_DIR="$(ROOT_DIR)/.githooks/"
+ROOT_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
+GITHOOKS_DIR := "$(ROOT_DIR)/.githooks"
 
 help:
 	@cat $(MAKEFILE_LIST)
