@@ -60,6 +60,7 @@ extension DeviceInfoProvider: DeviceInfoProviding {
             memorySize: hardwareInfoHarvester.memorySize,
             physicalMemory: hardwareInfoHarvester.memorySize,
             cpuCount: hardwareInfoHarvester.cpuCount,
+            osTimeZone: osInfoHarvester.osTimeZone,
             osBuild: osInfoHarvester.osBuild,
             osVersion: osInfoHarvester.osVersion,
             osType: osInfoHarvester.osType,

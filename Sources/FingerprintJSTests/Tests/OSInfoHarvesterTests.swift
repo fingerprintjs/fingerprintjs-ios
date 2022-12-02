@@ -9,16 +9,40 @@ import XCTest
 
 @testable import FingerprintJS
 
-class OSInfoHarvesterTests: XCTestCase {
+final class OSInfoHarvesterTests: XCTestCase {
     private var sut: OSInfoHarvester!
-    private let systemControlMock = SystemControlMock()
 
-    override func setUpWithError() throws {
-        sut = OSInfoHarvester(systemControlMock)
+    private var systemControlMock: SystemControlMock!
+    private var timeZoneProviderSpy: TimeZoneProvidableSpy!
+
+    override func setUp() {
+        super.setUp()
+        systemControlMock = .init()
+        timeZoneProviderSpy = .init()
+        sut = OSInfoHarvester(
+            systemControl: systemControlMock,
+            timeZoneProvider: timeZoneProviderSpy
+        )
     }
 
-    override func tearDownWithError() throws {
+    override func tearDown() {
         sut = nil
+        systemControlMock = nil
+        timeZoneProviderSpy = nil
+        super.tearDown()
+    }
+
+    func test_givenCentralEuropeanTimeZone_whenOSTimeZone_thenReturnsExpectedTimeZone() {
+        // given
+        let cet = TimeZone(secondsFromGMT: 3600)!
+        timeZoneProviderSpy.currentReturnValue = cet
+
+        // when
+        let timeZone = sut.osTimeZone
+
+        // then
+        XCTAssertEqual(cet, timeZone)
+        XCTAssertEqual(1, timeZoneProviderSpy.currentCallCount)
     }
 
     // MARK: buildTree
