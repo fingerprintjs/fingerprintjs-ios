@@ -12,29 +12,27 @@ readonly PROJECT_ROOT_PATH="$SCRIPT_ABS_PATH/.."
 
 if ! setup_homebrew
 then
-    echo "$ERROR_HOMEBREW_NOT_INSTALLED"
+    echo "$ERROR_HOMEBREW_NOT_INSTALLED" 1>&2
     exit 1
 fi
 
 if ! command_exists "swift-format"
 then
-    echo "$ERROR_SWIFTFORMAT_CMD_MISSING"
+    echo "$ERROR_SWIFTFORMAT_CMD_MISSING" 1>&2
     exit 1
 fi
 
 cd "$PROJECT_ROOT_PATH"
 
-if [[ $# -eq 0 ]]
+SWIFT_FORMAT_INPUT_FILENAMES="./Package.swift ./Sources"
+
+if [[ $# -ne 0 ]]
 then
-    swift-format format \
-        --configuration ./.swift-format \
-        --in-place \
-        --recursive \
-        ./Package.swift ./Sources
-else
-    readonly SWIFT_FILE=$1
-    swift-format format \
-        --configuration ./.swift-format \
-        --in-place \
-        "${SWIFT_FILE}"
+    SWIFT_FORMAT_INPUT_FILENAMES="$*"
 fi
+
+echo "${SWIFT_FORMAT_INPUT_FILENAMES[@]}" | xargs \
+        swift-format format \
+        --configuration ./.swift-format \
+        --in-place \
+        --recursive

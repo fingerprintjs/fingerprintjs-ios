@@ -1,23 +1,21 @@
 #!/bin/bash
 
-readonly SWIFT_FILE_REGEX="\(.*\).swift$"
-
 function changed_swift_files() {
     git diff \
         --diff-filter=d \
         --staged \
-        --name-only | grep -e "$SWIFT_FILE_REGEX"
+        --name-only \
+        -- '*.swift' |
+        awk '{ print "\""$0"\""; }' |
+        tr '\n' ' '
 }
 
-changed_swift_files | while read swift_file;
-do
-    ./Scripts/format_code.sh "${swift_file}"
+SWIFT_FILES="$(changed_swift_files)"
 
-    if [[ $? -ne 0 ]]
-    then
-        echo "Failed to process Swift file: ${swift_file}. Pre-commit hook failed"
-        exit 1
-    fi
+if ! ./Scripts/format_code.sh "${SWIFT_FILES[@]}"
+then
+    echo "Pre-commit hook failed" 1>&2
+    exit 1
+fi
 
-    git add "${swift_file}";
-done
+echo "${SWIFT_FILES[@]}" | xargs git add
