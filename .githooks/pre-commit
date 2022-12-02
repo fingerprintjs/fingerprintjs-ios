@@ -1,0 +1,21 @@
+#!/bin/bash
+
+function changed_swift_files() {
+    git diff \
+        --diff-filter=d \
+        --staged \
+        --name-only \
+        -- '*.swift' |
+        awk '{ print "\""$0"\""; }' |
+        tr '\n' ' '
+}
+
+SWIFT_FILES="$(changed_swift_files)"
+
+if ! ./Scripts/format_code.sh "${SWIFT_FILES[@]}"
+then
+    echo "Pre-commit hook failed" 1>&2
+    exit 1
+fi
+
+echo "${SWIFT_FILES[@]}" | xargs git add
