@@ -336,6 +336,7 @@
 			buildConfigurationList = 6A82A18C27D65DB4007C023F /* Build configuration list for PBXNativeTarget "FingerprintJS" */;
 			buildPhases = (
 				6A82A17527D65DB4007C023F /* Headers */,
+				159E0BB92937B7C800E2C38A /* Lint Code */,
 				6A82A17627D65DB4007C023F /* Sources */,
 				6A82A17727D65DB4007C023F /* Frameworks */,
 				6A82A17827D65DB4007C023F /* Resources */,
@@ -421,6 +422,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		159E0BB92937B7C800E2C38A /* Lint Code */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Lint Code";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\n\"${PROJECT_DIR}/../Scripts/lint_code.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6A82A17627D65DB4007C023F /* Sources */ = {

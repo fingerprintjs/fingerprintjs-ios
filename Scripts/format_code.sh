@@ -3,10 +3,9 @@
 set -Eeuo pipefail
 
 readonly SCRIPT_REL_PATH="$(dirname "$0")"
+readonly SCRIPT_ABS_PATH="$(cd "$SCRIPT_REL_PATH" &>/dev/null && pwd -P)"
 
 source "$SCRIPT_REL_PATH"/Commons/common.sh
-
-readonly SCRIPT_ABS_PATH="$(cd "$SCRIPT_REL_PATH" &>/dev/null && pwd -P)"
 
 readonly PROJECT_ROOT_PATH="$SCRIPT_ABS_PATH/.."
 
@@ -18,7 +17,7 @@ fi
 
 if ! command_exists "swift-format"
 then
-    echo "$ERROR_SWIFTFORMAT_CMD_MISSING" 1>&2
+    echo "error: $MSG_SWIFT_FORMAT_CMD_MISSING" 1>&2
     exit 1
 fi
 

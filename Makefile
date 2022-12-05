@@ -9,7 +9,7 @@ help:
 	@cat $(MAKEFILE_LIST)
 
 lint:
-	@./Scripts/lint_code.sh
+	@./Scripts/lint_code.sh --strict
 
 tests:
 	@./Scripts/run_tests.sh

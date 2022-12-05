@@ -9,8 +9,8 @@ error: Homebrew not installed. See https://brew.sh/ for installation instruction
 MSG
 )
 
-readonly ERROR_SWIFTFORMAT_CMD_MISSING=$(cat << MSG
-error: 'swift-format' command not found.
+readonly MSG_SWIFT_FORMAT_CMD_MISSING=$(cat << MSG
+'swift-format' command not found.
 MSG
 )
 
