@@ -51,6 +51,7 @@ extension DeviceInfoProvider: DeviceInfoProviding {
     public func getDeviceInfo(_ completion: @escaping (DeviceInfo) -> Void) {
         let deviceInfo = DeviceInfo(
             vendorIdentifier: identifierHarvester.vendorIdentifier,
+            localeIdentifier: appInfoHarvester.localeIdentifier,
             userInterfaceStyle: appInfoHarvester.userInterfaceStyle,
             diskSpace: hardwareInfoHarvester.diskSpaceInfo,
             screenResolution: hardwareInfoHarvester.displayResolution,

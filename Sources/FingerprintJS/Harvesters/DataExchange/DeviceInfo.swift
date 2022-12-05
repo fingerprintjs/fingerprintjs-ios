@@ -3,6 +3,8 @@ import Foundation
 public struct DeviceInfo {
     public let vendorIdentifier: UUID?
 
+    /// The identifier for the locale representing the user's region settings.
+    public let localeIdentifier: String
     /// The style associated with the user interface of the app.
     public let userInterfaceStyle: UserInterfaceStyle
 

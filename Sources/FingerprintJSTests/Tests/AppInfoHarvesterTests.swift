@@ -3,14 +3,17 @@ import XCTest
 @testable import FingerprintJS
 
 final class AppInfoHarvesterTests: XCTestCase {
+    private var localeInfoProviderSpy: LocaleInfoProvidableSpy!
     private var userInterfaceTraitsProviderSpy: UserInterfaceTraitsProvidableSpy!
 
     private var sut: AppInfoHarvester!
 
     override func setUp() {
         super.setUp()
+        localeInfoProviderSpy = .init()
         userInterfaceTraitsProviderSpy = .init()
         sut = .init(
+            localeInfoProvider: localeInfoProviderSpy,
             userInterfaceTraitsProvider: userInterfaceTraitsProviderSpy
         )
     }
@@ -18,7 +21,21 @@ final class AppInfoHarvesterTests: XCTestCase {
     override func tearDown() {
         sut = nil
         userInterfaceTraitsProviderSpy = nil
+        localeInfoProviderSpy = nil
         super.tearDown()
+    }
+
+    func test_givenEnUsLocale_whenLocaleIdentifier_thenReturnsExpectedLocaleIdentifier() {
+        // given
+        let enUsLocaleIdentifier = "en-US"
+        localeInfoProviderSpy.identifierReturnValue = enUsLocaleIdentifier
+
+        // when
+        let localeIdentifier = sut.localeIdentifier
+
+        // then
+        XCTAssertEqual(enUsLocaleIdentifier, localeIdentifier)
+        XCTAssertEqual(1, localeInfoProviderSpy.identifierCallCount)
     }
 
     func test_givenLightInterfaceStyle_whenUserInterfaceStyle_thenReturnsExpectedInterfaceStyle() {

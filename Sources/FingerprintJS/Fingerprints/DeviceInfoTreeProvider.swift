@@ -25,7 +25,22 @@ extension AppInfoHarvester: DeviceInfoTreeProvider {
     }
 
     var versionedItems: [VersionedInfoItem] {
-        []
+        [
+            VersionedInfoItem(
+                item: DeviceInfoItem(
+                    label: "Locale identifier",
+                    value: .info(localeIdentifier)
+                ),
+                versions: []
+            ),
+            VersionedInfoItem(
+                item: DeviceInfoItem(
+                    label: "User interface style",
+                    value: .info(userInterfaceStyle.rawValue)
+                ),
+                versions: []
+            ),
+        ]
     }
 }
 

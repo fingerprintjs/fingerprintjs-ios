@@ -1,14 +1,21 @@
 import UIKit
 
 protocol AppInfoHarvesting {
+    var localeIdentifier: String { get }
+
     var userInterfaceStyle: UserInterfaceStyle { get }
 }
 
 struct AppInfoHarvester {
 
+    private let localeInfoProvider: LocaleInfoProvidable
     private let userInterfaceTraitsProvider: UserInterfaceTraitsProvidable
 
-    init(userInterfaceTraitsProvider: UserInterfaceTraitsProvidable) {
+    init(
+        localeInfoProvider: LocaleInfoProvidable,
+        userInterfaceTraitsProvider: UserInterfaceTraitsProvidable
+    ) {
+        self.localeInfoProvider = localeInfoProvider
         self.userInterfaceTraitsProvider = userInterfaceTraitsProvider
     }
 }
@@ -16,19 +23,24 @@ struct AppInfoHarvester {
 extension AppInfoHarvester {
 
     init() {
+        let traitCollection: UITraitCollection
         if #available(iOS 13.0, tvOS 13.0, *) {
-            self.init(
-                userInterfaceTraitsProvider: UITraitCollection.current
-            )
+            traitCollection = .current
         } else {
-            self.init(
-                userInterfaceTraitsProvider: UITraitCollection(userInterfaceStyle: .light)
-            )
+            traitCollection = .init(userInterfaceStyle: .light)
         }
+        self.init(
+            localeInfoProvider: Locale.current,
+            userInterfaceTraitsProvider: traitCollection
+        )
     }
 }
 
 extension AppInfoHarvester: AppInfoHarvesting {
+
+    var localeIdentifier: String {
+        localeInfoProvider.identifier
+    }
 
     var userInterfaceStyle: UserInterfaceStyle {
         .init(userInterfaceTraitsProvider.userInterfaceStyle)
