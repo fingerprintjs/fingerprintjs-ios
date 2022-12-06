@@ -5,7 +5,11 @@
 //  Created by Petr Palata on 11.03.2022.
 //
 
+import Foundation
+
 protocol OSInfoHarvesting {
+    var osTimeZoneIdentifier: String { get }
+
     var osBuild: String { get }
 
     var osVersion: String { get }
@@ -17,15 +21,24 @@ protocol OSInfoHarvesting {
     var kernelVersion: String { get }
 }
 
-class OSInfoHarvester {
+struct OSInfoHarvester {
     private let systemControl: SystemControlValuesProviding
+    private let timeZoneInfoProvider: TimeZoneInfoProvidable
 
-    init(_ systemControl: SystemControlValuesProviding = SystemControl()) {
+    init(
+        systemControl: SystemControlValuesProviding = SystemControl(),
+        timeZoneInfoProvider: TimeZoneInfoProvidable = TimeZone.current
+    ) {
         self.systemControl = systemControl
+        self.timeZoneInfoProvider = timeZoneInfoProvider
     }
 }
 
 extension OSInfoHarvester: OSInfoHarvesting {
+    var osTimeZoneIdentifier: String {
+        timeZoneInfoProvider.identifier
+    }
+
     var osType: String {
         return systemControl.osType ?? "Undefined"
     }

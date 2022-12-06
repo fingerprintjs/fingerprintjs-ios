@@ -134,19 +134,38 @@ extension OSInfoHarvester: DeviceInfoTreeProvider {
     var versionedItems: [VersionedInfoItem] {
         return [
             VersionedInfoItem(
-                item: DeviceInfoItem(label: "OS release", value: .info(osRelease)),
+                item: DeviceInfoItem(
+                    label: "OS time zone identifier",
+                    value: .info(osTimeZoneIdentifier)
+                ),
+                versions: []
+            ),
+            VersionedInfoItem(
+                item: DeviceInfoItem(
+                    label: "OS release",
+                    value: .info(osRelease)
+                ),
                 versions: [.v1, .v2]
             ),
             VersionedInfoItem(
-                item: DeviceInfoItem(label: "OS type", value: .info(osType)),
+                item: DeviceInfoItem(
+                    label: "OS type",
+                    value: .info(osType)
+                ),
                 versions: [.v1, .v2]
             ),
             VersionedInfoItem(
-                item: DeviceInfoItem(label: "OS version", value: .info(osVersion)),
+                item: DeviceInfoItem(
+                    label: "OS version",
+                    value: .info(osVersion)
+                ),
                 versions: [.v1, .v2]
             ),
             VersionedInfoItem(
-                item: DeviceInfoItem(label: "Kernel version", value: .info(kernelVersion)),
+                item: DeviceInfoItem(
+                    label: "Kernel version",
+                    value: .info(kernelVersion)
+                ),
                 versions: [.v1, .v2]
             ),
         ]

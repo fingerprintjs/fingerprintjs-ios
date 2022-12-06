@@ -9,16 +9,40 @@ import XCTest
 
 @testable import FingerprintJS
 
-class OSInfoHarvesterTests: XCTestCase {
+final class OSInfoHarvesterTests: XCTestCase {
     private var sut: OSInfoHarvester!
-    private let systemControlMock = SystemControlMock()
 
-    override func setUpWithError() throws {
-        sut = OSInfoHarvester(systemControlMock)
+    private var systemControlMock: SystemControlMock!
+    private var timeZoneInfoProviderSpy: TimeZoneInfoProvidableSpy!
+
+    override func setUp() {
+        super.setUp()
+        systemControlMock = .init()
+        timeZoneInfoProviderSpy = .init()
+        sut = OSInfoHarvester(
+            systemControl: systemControlMock,
+            timeZoneInfoProvider: timeZoneInfoProviderSpy
+        )
     }
 
-    override func tearDownWithError() throws {
+    override func tearDown() {
         sut = nil
+        systemControlMock = nil
+        timeZoneInfoProviderSpy = nil
+        super.tearDown()
+    }
+
+    func test_givenAmericaChicagoTimeZoneIdentifier_whenOSTimeZoneIdentifier_thenReturnsExpectedIdentifier() {
+        // given
+        let americaChicagoIdentifier = "America/Chicago"
+        timeZoneInfoProviderSpy.identifierReturnValue = americaChicagoIdentifier
+
+        // when
+        let timeZoneIdentifier = sut.osTimeZoneIdentifier
+
+        // then
+        XCTAssertEqual(americaChicagoIdentifier, timeZoneIdentifier)
+        XCTAssertEqual(1, timeZoneInfoProviderSpy.identifierCallCount)
     }
 
     // MARK: buildTree
