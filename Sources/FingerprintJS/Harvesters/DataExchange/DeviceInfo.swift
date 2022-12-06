@@ -16,8 +16,8 @@ public struct DeviceInfo {
     public let physicalMemory: String?
     public let cpuCount: String?
 
-    /// The operating system's current time zone.
-    public let osTimeZone: TimeZone
+    /// The geopolitical region identifier of the operating system's current time zone.
+    public let osTimeZoneIdentifier: String
     public let osBuild: String?
     public let osVersion: String?
     public let osType: String?

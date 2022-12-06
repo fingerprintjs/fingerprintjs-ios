@@ -13,36 +13,36 @@ final class OSInfoHarvesterTests: XCTestCase {
     private var sut: OSInfoHarvester!
 
     private var systemControlMock: SystemControlMock!
-    private var timeZoneProviderSpy: TimeZoneProvidableSpy!
+    private var timeZoneInfoProviderSpy: TimeZoneInfoProvidableSpy!
 
     override func setUp() {
         super.setUp()
         systemControlMock = .init()
-        timeZoneProviderSpy = .init()
+        timeZoneInfoProviderSpy = .init()
         sut = OSInfoHarvester(
             systemControl: systemControlMock,
-            timeZoneProvider: timeZoneProviderSpy
+            timeZoneInfoProvider: timeZoneInfoProviderSpy
         )
     }
 
     override func tearDown() {
         sut = nil
         systemControlMock = nil
-        timeZoneProviderSpy = nil
+        timeZoneInfoProviderSpy = nil
         super.tearDown()
     }
 
-    func test_givenCentralEuropeanTimeZone_whenOSTimeZone_thenReturnsExpectedTimeZone() {
+    func test_givenAmericaChicagoTimeZoneIdentifier_whenOSTimeZoneIdentifier_thenReturnsExpectedIdentifier() {
         // given
-        let cet = TimeZone(secondsFromGMT: 3600)!
-        timeZoneProviderSpy.currentReturnValue = cet
+        let americaChicagoIdentifier = "America/Chicago"
+        timeZoneInfoProviderSpy.identifierReturnValue = americaChicagoIdentifier
 
         // when
-        let timeZone = sut.osTimeZone
+        let timeZoneIdentifier = sut.osTimeZoneIdentifier
 
         // then
-        XCTAssertEqual(cet, timeZone)
-        XCTAssertEqual(1, timeZoneProviderSpy.currentCallCount)
+        XCTAssertEqual(americaChicagoIdentifier, timeZoneIdentifier)
+        XCTAssertEqual(1, timeZoneInfoProviderSpy.identifierCallCount)
     }
 
     // MARK: buildTree

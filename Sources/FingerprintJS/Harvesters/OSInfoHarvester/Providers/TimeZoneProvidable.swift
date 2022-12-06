@@ -1,9 +1,7 @@
 import Foundation
 
-protocol TimeZoneProvidable {
-    var current: TimeZone { get }
+protocol TimeZoneInfoProvidable {
+    var identifier: String { get }
 }
 
-struct TimeZoneProvider: TimeZoneProvidable {
-    var current: TimeZone { .current }
-}
+extension TimeZone: TimeZoneInfoProvidable {}

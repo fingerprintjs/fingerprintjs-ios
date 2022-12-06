@@ -135,8 +135,8 @@ extension OSInfoHarvester: DeviceInfoTreeProvider {
         return [
             VersionedInfoItem(
                 item: DeviceInfoItem(
-                    label: "OS time zone",
-                    value: .info(osTimeZone.secondsFromGMT().description)
+                    label: "OS time zone identifier",
+                    value: .info(osTimeZoneIdentifier)
                 ),
                 versions: []
             ),

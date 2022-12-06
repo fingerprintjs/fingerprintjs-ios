@@ -14,7 +14,7 @@
 		159E0BB6292D19B700E2C38A /* UserInterfaceTraitsProvidableSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159E0BB5292D19B700E2C38A /* UserInterfaceTraitsProvidableSpy.swift */; };
 		159E0BB82934A2C100E2C38A /* ScreenInfoProvidingSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159E0BB72934A2C100E2C38A /* ScreenInfoProvidingSpy.swift */; };
 		159E0BBF293A5DE500E2C38A /* TimeZoneProvidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159E0BBE293A5DE500E2C38A /* TimeZoneProvidable.swift */; };
-		159E0BC1293A6C6F00E2C38A /* TimeZoneProvidableSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159E0BC0293A6C6F00E2C38A /* TimeZoneProvidableSpy.swift */; };
+		159E0BC1293A6C6F00E2C38A /* TimeZoneInfoProvidableSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159E0BC0293A6C6F00E2C38A /* TimeZoneInfoProvidableSpy.swift */; };
 		6A1D11412809DBDE00566F75 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1D11402809DBDE00566F75 /* DeviceInfo.swift */; };
 		6A1D1143280F1B6600566F75 /* DeviceInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1D1142280F1B6600566F75 /* DeviceInfoProvider.swift */; };
 		6A23866328042DFB002D09F3 /* DocumentsDirectoryAttributesProvidingMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A23866228042DFB002D09F3 /* DocumentsDirectoryAttributesProvidingMock.swift */; };
@@ -73,7 +73,7 @@
 		159E0BB5292D19B700E2C38A /* UserInterfaceTraitsProvidableSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInterfaceTraitsProvidableSpy.swift; sourceTree = "<group>"; };
 		159E0BB72934A2C100E2C38A /* ScreenInfoProvidingSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenInfoProvidingSpy.swift; sourceTree = "<group>"; };
 		159E0BBE293A5DE500E2C38A /* TimeZoneProvidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeZoneProvidable.swift; sourceTree = "<group>"; };
-		159E0BC0293A6C6F00E2C38A /* TimeZoneProvidableSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeZoneProvidableSpy.swift; sourceTree = "<group>"; };
+		159E0BC0293A6C6F00E2C38A /* TimeZoneInfoProvidableSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeZoneInfoProvidableSpy.swift; sourceTree = "<group>"; };
 		6A1D11402809DBDE00566F75 /* DeviceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
 		6A1D1142280F1B6600566F75 /* DeviceInfoProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoProvider.swift; sourceTree = "<group>"; };
 		6A23866228042DFB002D09F3 /* DocumentsDirectoryAttributesProvidingMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsDirectoryAttributesProvidingMock.swift; sourceTree = "<group>"; };
@@ -165,7 +165,7 @@
 			children = (
 				159E0BB5292D19B700E2C38A /* UserInterfaceTraitsProvidableSpy.swift */,
 				159E0BB72934A2C100E2C38A /* ScreenInfoProvidingSpy.swift */,
-				159E0BC0293A6C6F00E2C38A /* TimeZoneProvidableSpy.swift */,
+				159E0BC0293A6C6F00E2C38A /* TimeZoneInfoProvidableSpy.swift */,
 			);
 			path = Spies;
 			sourceTree = "<group>";
@@ -514,7 +514,7 @@
 				6AB7146427EB65B1004BBCF3 /* MockHashingFunction.swift in Sources */,
 				6AC362AB280013E200C4768A /* HardwareInfoHarvesterTests.swift in Sources */,
 				6AC362B028005C8D00C4768A /* DeviceModelProvidingMock.swift in Sources */,
-				159E0BC1293A6C6F00E2C38A /* TimeZoneProvidableSpy.swift in Sources */,
+				159E0BC1293A6C6F00E2C38A /* TimeZoneInfoProvidableSpy.swift in Sources */,
 				6AC362B228042B7C00C4768A /* SystemControlMock.swift in Sources */,
 				159E0BAE292D149700E2C38A /* AppInfoHarvesterTests.swift in Sources */,
 				6A23866328042DFB002D09F3 /* DocumentsDirectoryAttributesProvidingMock.swift in Sources */,

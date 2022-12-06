@@ -8,7 +8,7 @@
 import Foundation
 
 protocol OSInfoHarvesting {
-    var osTimeZone: TimeZone { get }
+    var osTimeZoneIdentifier: String { get }
 
     var osBuild: String { get }
 
@@ -23,20 +23,20 @@ protocol OSInfoHarvesting {
 
 struct OSInfoHarvester {
     private let systemControl: SystemControlValuesProviding
-    private let timeZoneProvider: TimeZoneProvidable
+    private let timeZoneInfoProvider: TimeZoneInfoProvidable
 
     init(
         systemControl: SystemControlValuesProviding = SystemControl(),
-        timeZoneProvider: TimeZoneProvidable = TimeZoneProvider()
+        timeZoneInfoProvider: TimeZoneInfoProvidable = TimeZone.current
     ) {
         self.systemControl = systemControl
-        self.timeZoneProvider = timeZoneProvider
+        self.timeZoneInfoProvider = timeZoneInfoProvider
     }
 }
 
 extension OSInfoHarvester: OSInfoHarvesting {
-    var osTimeZone: TimeZone {
-        timeZoneProvider.current
+    var osTimeZoneIdentifier: String {
+        timeZoneInfoProvider.identifier
     }
 
     var osType: String {
