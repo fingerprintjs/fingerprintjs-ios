@@ -186,3 +186,34 @@ extension OSInfoHarvester: DeviceInfoTreeProvider {
         ]
     }
 }
+
+#if os(iOS)
+extension CellularNetworkInfoHarvester: DeviceInfoTreeProvider {
+    func buildTree(_ configuration: Configuration) -> DeviceInfoItem {
+        return DeviceInfoItem(
+            label: "Cellular Network",
+            value: .category,
+            children: itemsForVersion(configuration.version)
+        )
+    }
+
+    var versionedItems: [VersionedInfoItem] {
+        return [
+            VersionedInfoItem(
+                item: DeviceInfoItem(
+                    label: "Mobile country codes",
+                    value: .info(mobileCountryCodes.description)
+                ),
+                versions: []
+            ),
+            VersionedInfoItem(
+                item: DeviceInfoItem(
+                    label: "Mobile network codes",
+                    value: .info(mobileNetworkCodes.description)
+                ),
+                versions: []
+            ),
+        ]
+    }
+}
+#endif
