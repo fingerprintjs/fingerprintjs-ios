@@ -15,6 +15,8 @@
 		159E0BB82934A2C100E2C38A /* ScreenInfoProvidingSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159E0BB72934A2C100E2C38A /* ScreenInfoProvidingSpy.swift */; };
 		159E0BBF293A5DE500E2C38A /* TimeZoneProvidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159E0BBE293A5DE500E2C38A /* TimeZoneProvidable.swift */; };
 		159E0BC1293A6C6F00E2C38A /* TimeZoneInfoProvidableSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159E0BC0293A6C6F00E2C38A /* TimeZoneInfoProvidableSpy.swift */; };
+		159E0BC3293E4B7A00E2C38A /* LocaleInfoProvidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159E0BC2293E4B7A00E2C38A /* LocaleInfoProvidable.swift */; };
+		159E0BC5293E4FF900E2C38A /* LocaleInfoProvidableSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159E0BC4293E4FF900E2C38A /* LocaleInfoProvidableSpy.swift */; };
 		6A1D11412809DBDE00566F75 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1D11402809DBDE00566F75 /* DeviceInfo.swift */; };
 		6A1D1143280F1B6600566F75 /* DeviceInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1D1142280F1B6600566F75 /* DeviceInfoProvider.swift */; };
 		6A23866328042DFB002D09F3 /* DocumentsDirectoryAttributesProvidingMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A23866228042DFB002D09F3 /* DocumentsDirectoryAttributesProvidingMock.swift */; };
@@ -74,6 +76,8 @@
 		159E0BB72934A2C100E2C38A /* ScreenInfoProvidingSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenInfoProvidingSpy.swift; sourceTree = "<group>"; };
 		159E0BBE293A5DE500E2C38A /* TimeZoneProvidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeZoneProvidable.swift; sourceTree = "<group>"; };
 		159E0BC0293A6C6F00E2C38A /* TimeZoneInfoProvidableSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeZoneInfoProvidableSpy.swift; sourceTree = "<group>"; };
+		159E0BC2293E4B7A00E2C38A /* LocaleInfoProvidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleInfoProvidable.swift; sourceTree = "<group>"; };
+		159E0BC4293E4FF900E2C38A /* LocaleInfoProvidableSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleInfoProvidableSpy.swift; sourceTree = "<group>"; };
 		6A1D11402809DBDE00566F75 /* DeviceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
 		6A1D1142280F1B6600566F75 /* DeviceInfoProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoProvider.swift; sourceTree = "<group>"; };
 		6A23866228042DFB002D09F3 /* DocumentsDirectoryAttributesProvidingMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsDirectoryAttributesProvidingMock.swift; sourceTree = "<group>"; };
@@ -146,6 +150,7 @@
 		159E0BB0292D181F00E2C38A /* Providers */ = {
 			isa = PBXGroup;
 			children = (
+				159E0BC2293E4B7A00E2C38A /* LocaleInfoProvidable.swift */,
 				159E0BB1292D18B800E2C38A /* UserInterfaceTraitsProvidable.swift */,
 			);
 			path = Providers;
@@ -163,9 +168,10 @@
 		159E0BB4292D196400E2C38A /* Spies */ = {
 			isa = PBXGroup;
 			children = (
-				159E0BB5292D19B700E2C38A /* UserInterfaceTraitsProvidableSpy.swift */,
+				159E0BC4293E4FF900E2C38A /* LocaleInfoProvidableSpy.swift */,
 				159E0BB72934A2C100E2C38A /* ScreenInfoProvidingSpy.swift */,
 				159E0BC0293A6C6F00E2C38A /* TimeZoneInfoProvidableSpy.swift */,
+				159E0BB5292D19B700E2C38A /* UserInterfaceTraitsProvidableSpy.swift */,
 			);
 			path = Spies;
 			sourceTree = "<group>";
@@ -317,11 +323,11 @@
 		6AB7146227EB636E004BBCF3 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
-				6AB7146327EB65B1004BBCF3 /* MockHashingFunction.swift */,
-				6AC362AF28005C8D00C4768A /* DeviceModelProvidingMock.swift */,
-				6AC362B128042B7C00C4768A /* SystemControlMock.swift */,
 				6AC362B528042C1500C4768A /* CPUInfoProvidingMock.swift */,
+				6AC362AF28005C8D00C4768A /* DeviceModelProvidingMock.swift */,
 				6A23866228042DFB002D09F3 /* DocumentsDirectoryAttributesProvidingMock.swift */,
+				6AB7146327EB65B1004BBCF3 /* MockHashingFunction.swift */,
+				6AC362B128042B7C00C4768A /* SystemControlMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -329,12 +335,12 @@
 		6AC362AC280013F300C4768A /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				6A44A31828CF8FAF0026DCD8 /* SHA256HashingFunctionTests.swift */,
+				159E0BAD292D149700E2C38A /* AppInfoHarvesterTests.swift */,
 				6AB7146027EB612D004BBCF3 /* FingerprintTreeCalculatorTests.swift */,
 				6AC362AA280013E200C4768A /* HardwareInfoHarvesterTests.swift */,
-				6A3BB826280588FD00D2EBB9 /* OSInfoHarvesterTests.swift */,
 				6A3BB82828058B4900D2EBB9 /* IdentifierHarvesterTests.swift */,
-				159E0BAD292D149700E2C38A /* AppInfoHarvesterTests.swift */,
+				6A3BB826280588FD00D2EBB9 /* OSInfoHarvesterTests.swift */,
+				6A44A31828CF8FAF0026DCD8 /* SHA256HashingFunctionTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -473,6 +479,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				159E0BAC292CE35700E2C38A /* UserInterfaceStyle.swift in Sources */,
+				159E0BC3293E4B7A00E2C38A /* LocaleInfoProvidable.swift in Sources */,
 				6AC03F4B27DE574100EF9DB7 /* DeviceInfoItem.swift in Sources */,
 				6A9B7CB227E7AA8E002B9939 /* DeviceInfoTreeProvider.swift in Sources */,
 				6A1D1143280F1B6600566F75 /* DeviceInfoProvider.swift in Sources */,
@@ -518,6 +525,7 @@
 				6AC362B228042B7C00C4768A /* SystemControlMock.swift in Sources */,
 				159E0BAE292D149700E2C38A /* AppInfoHarvesterTests.swift in Sources */,
 				6A23866328042DFB002D09F3 /* DocumentsDirectoryAttributesProvidingMock.swift in Sources */,
+				159E0BC5293E4FF900E2C38A /* LocaleInfoProvidableSpy.swift in Sources */,
 				6AB7146127EB612D004BBCF3 /* FingerprintTreeCalculatorTests.swift in Sources */,
 				6A44A31928CF8FAF0026DCD8 /* SHA256HashingFunctionTests.swift in Sources */,
 				6AC362B628042C1500C4768A /* CPUInfoProvidingMock.swift in Sources */,
