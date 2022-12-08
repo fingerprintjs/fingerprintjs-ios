@@ -1,6 +1,6 @@
 import Foundation
 
-public struct DeviceInfo {
+public struct DeviceInfo: Equatable, Encodable {
     public let vendorIdentifier: UUID?
 
     /// The identifier for the locale representing the user's region settings.
