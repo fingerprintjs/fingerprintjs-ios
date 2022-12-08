@@ -5,21 +5,23 @@
 //  Created by Petr Palata on 08.03.2022.
 //
 
-import Foundation
 import UIKit
 
 protocol HardwareInfoHarvesting {
-    /// High-level device type (e.g. iPhone)
+    /// The user-assigned device name.
+    var deviceName: String { get }
+
+    /// High-level device type (e.g. iPhone).
     var deviceType: String { get }
+
+    /// Device model identifier (e.g. iPhone 13,3).
+    var deviceModel: String { get }
 
     /// Physical resolution (in pixels) for the current device
     var displayResolution: CGSize { get }
 
     /// The native scale factor for the display.
     var displayScale: CGFloat { get }
-
-    /// Device model identifier (e.g. iPhone 13,3)
-    var deviceModel: String { get }
 
     /// Free disk space on the device or 0 if a permission problem occurs
     var freeDiskSpace: UInt64 { get }
@@ -37,15 +39,15 @@ protocol HardwareInfoHarvesting {
     var memorySize: String { get }
 }
 
-class HardwareInfoHarvester {
-    private let device: DeviceModelProviding
+struct HardwareInfoHarvester {
+    private let device: DeviceIdentificationInfoProviding
     private let screen: ScreenInfoProviding
     private let systemControl: SystemControlValuesProviding
     private let fileManager: DocumentsDirectoryAttributesProviding
     private let processInfo: CPUInfoProviding
 
     init(
-        _ device: DeviceModelProviding,
+        device: DeviceIdentificationInfoProviding,
         screen: ScreenInfoProviding,
         systemControl: SystemControlValuesProviding,
         fileManager: DocumentsDirectoryAttributesProviding,
@@ -58,9 +60,9 @@ class HardwareInfoHarvester {
         self.processInfo = processInfo
     }
 
-    convenience init() {
+    init() {
         self.init(
-            UIDevice.current,
+            device: UIDevice.current,
             screen: UIScreen.main,
             systemControl: SystemControl(),
             fileManager: FileManager.default,
@@ -88,8 +90,16 @@ class HardwareInfoHarvester {
 }
 
 extension HardwareInfoHarvester: HardwareInfoHarvesting {
+    var deviceName: String {
+        device.userAssignedName
+    }
+
     var deviceType: String {
-        return device.model
+        device.model
+    }
+
+    var deviceModel: String {
+        systemControl.hardwareModel ?? "Undefined"
     }
 
     var displayResolution: CGSize {
@@ -99,10 +109,6 @@ extension HardwareInfoHarvester: HardwareInfoHarvesting {
 
     var displayScale: CGFloat {
         screen.nativeScale
-    }
-
-    var deviceModel: String {
-        return systemControl.hardwareModel ?? "Undefined"
     }
 
     var memorySize: String {
@@ -138,24 +144,3 @@ extension HardwareInfoHarvester: HardwareInfoHarvesting {
         return diskSpaceInfo?.totalDiskSpace ?? 0
     }
 }
-
-// MARK: Protocol wrappers and extensions
-
-protocol CPUInfoProviding {
-    var processorCount: Int { get }
-}
-
-extension ProcessInfo: CPUInfoProviding {}
-
-protocol DeviceModelProviding {
-    var model: String { get }
-}
-
-extension UIDevice: DeviceModelProviding {}
-
-protocol ScreenInfoProviding {
-    var nativeBounds: CGRect { get }
-    var nativeScale: CGFloat { get }
-}
-
-extension UIScreen: ScreenInfoProviding {}

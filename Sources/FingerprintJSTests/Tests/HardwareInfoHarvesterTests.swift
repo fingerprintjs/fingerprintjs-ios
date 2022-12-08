@@ -13,7 +13,7 @@ final class HardwareInfoHarvesterTests: XCTestCase {
     private var sut: HardwareInfoHarvester!
 
     private var screenInfoProviderSpy: ScreenInfoProvidingSpy!
-    private var mockDeviceModelProvider: DeviceModelProvidingMock!
+    private var deviceIdentificationInfoProviderSpy: DeviceIdentificationInfoProvidingSpy!
     private var mockSystemControl: SystemControlMock!
     private var mockDocumentDirectoryAttributesProvider: DocumentsDirectoryAttributesProvidingMock!
     private var mockCpuInfoProvider: CPUInfoProvidingMock!
@@ -21,12 +21,12 @@ final class HardwareInfoHarvesterTests: XCTestCase {
     override func setUp() {
         super.setUp()
         screenInfoProviderSpy = .init()
-        mockDeviceModelProvider = .init()
+        deviceIdentificationInfoProviderSpy = .init()
         mockSystemControl = .init()
         mockDocumentDirectoryAttributesProvider = .init()
         mockCpuInfoProvider = .init()
         sut = HardwareInfoHarvester(
-            mockDeviceModelProvider,
+            device: deviceIdentificationInfoProviderSpy,
             screen: screenInfoProviderSpy,
             systemControl: mockSystemControl,
             fileManager: mockDocumentDirectoryAttributesProvider,
@@ -39,9 +39,37 @@ final class HardwareInfoHarvesterTests: XCTestCase {
         mockCpuInfoProvider = nil
         mockDocumentDirectoryAttributesProvider = nil
         mockSystemControl = nil
-        mockDeviceModelProvider = nil
+        deviceIdentificationInfoProviderSpy = nil
         screenInfoProviderSpy = nil
         super.tearDown()
+    }
+
+    func test_givenUserAssignedDeviceName_whenDeviceName_thenReturnsExpectedName() {
+        // given
+        let customDeviceName = "My iPhone"
+        deviceIdentificationInfoProviderSpy.userAssignedNameReturnValue = customDeviceName
+
+        // when
+        let deviceName = sut.deviceName
+
+        // then
+        XCTAssertEqual(customDeviceName, deviceName)
+        XCTAssertEqual(0, deviceIdentificationInfoProviderSpy.modelCallCount)
+        XCTAssertEqual(1, deviceIdentificationInfoProviderSpy.userAssignedNameCallCount)
+    }
+
+    func test_givenIPhoneModelString_whenDeviceType_thenReturnsExpectedTypeString() {
+        // given
+        let iPhoneModelString = "iPhone"
+        deviceIdentificationInfoProviderSpy.modelReturnValue = iPhoneModelString
+
+        // when
+        let deviceType = sut.deviceType
+
+        // then
+        XCTAssertEqual(iPhoneModelString, deviceType)
+        XCTAssertEqual(1, deviceIdentificationInfoProviderSpy.modelCallCount)
+        XCTAssertEqual(0, deviceIdentificationInfoProviderSpy.userAssignedNameCallCount)
     }
 
     func test_givenSuperRetinaDisplay_whenDisplayResolution_thenReturnsExpectedResolution() {

@@ -12,6 +12,18 @@ public struct DeviceInfo {
     public let screenResolution: CGSize?
     /// The native scale factor for the screen.
     public let screenScale: CGFloat
+    /// The user-assigned device name.
+    @available(
+        iOS,
+        deprecated: 16.0,
+        message: "User-assigned device name cannot be used for fingerprinting in iOS 16 and later."
+    )
+    @available(
+        tvOS,
+        deprecated: 16.0,
+        message: "User-assigned device name cannot be used for fingerprinting in tvOS 16 and later."
+    )
+    public let deviceName: String
     public let deviceType: String?
     public let deviceModel: String?
     public let memorySize: String?
