@@ -1,10 +1,3 @@
-//
-//  SHA256FingerprintFunction.swift
-//  FingerprintJS
-//
-//  Created by Petr Palata on 10.03.2022.
-//
-
 import CommonCrypto
 import CryptoKit
 import Foundation

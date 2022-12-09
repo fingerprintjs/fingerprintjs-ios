@@ -1,10 +1,3 @@
-//
-//  SHA256HashingFunctionTests.swift
-//
-//
-//  Created by Petr Palata on 12.09.2022.
-//
-
 import XCTest
 
 @testable import FingerprintJS

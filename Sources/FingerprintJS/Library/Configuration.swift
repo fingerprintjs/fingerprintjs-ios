@@ -1,12 +1,3 @@
-//
-//  Configuration.swift
-//  FingerprintJS
-//
-//  Created by Petr Palata on 16.03.2022.
-//
-
-import Foundation
-
 /// Enumeration of available FingerprintJS versions
 public enum FingerprintJSVersion {
     case v1

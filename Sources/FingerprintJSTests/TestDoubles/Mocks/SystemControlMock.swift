@@ -1,12 +1,3 @@
-//
-//  SystemControlMock.swift
-//  FingerprintJSTests
-//
-//  Created by Petr Palata on 11.04.2022.
-//
-
-import Foundation
-
 @testable import FingerprintJS
 
 class SystemControlMock: SystemControlValuesProviding {

@@ -1,10 +1,3 @@
-//
-//  FingerprintTreeCalculatorTests.swift
-//  FingerprintJSTests
-//
-//  Created by Petr Palata on 23.03.2022.
-//
-
 import XCTest
 
 @testable import FingerprintJS

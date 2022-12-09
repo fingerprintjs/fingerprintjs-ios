@@ -1,10 +1,3 @@
-//
-//  FingerprintTree.swift
-//  FingerprintJS
-//
-//  Created by Petr Palata on 20.03.2022.
-//
-
 import Foundation
 
 /// Entity representing the entire tree/set of device information along with its computed fingerprints

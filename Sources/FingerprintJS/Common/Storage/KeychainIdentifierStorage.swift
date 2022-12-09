@@ -1,10 +1,3 @@
-//
-//  KeychainIdentifierStorage.swift
-//  FingerprintJS
-//
-//  Created by Petr Palata on 09.03.2022.
-//
-
 import Foundation
 
 class KeychainIdentifierStorage {
