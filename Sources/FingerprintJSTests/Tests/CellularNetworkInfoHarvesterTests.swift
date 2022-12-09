@@ -46,10 +46,10 @@ final class CellularNetworkInfoHarvesterTests: XCTestCase {
         XCTAssertEqual(1, cellularServiceInfoProviderSpy.cellularProvidersCallCount)
     }
 
-    func test_givenTwoCelluarProviders_whenMobileCountryCodes_thenReturnsArrayWithTwoElements() {
+    func test_givenTwoCelluarProviders_whenMobileCountryCodes_thenReturnsArrayWithTwoElementsInAscendingOrder() {
         // given
-        let firstProvider = CarrierInfoProvidingSpy(mobileCountryCode: "001")
-        let secondProvider = CarrierInfoProvidingSpy(mobileCountryCode: "048")
+        let firstProvider = CarrierInfoProvidingSpy(mobileCountryCode: "048")
+        let secondProvider = CarrierInfoProvidingSpy(mobileCountryCode: "001")
         cellularServiceInfoProviderSpy.cellularProvidersReturnValue = [
             firstProvider,
             secondProvider,
@@ -67,10 +67,10 @@ final class CellularNetworkInfoHarvesterTests: XCTestCase {
         XCTAssertEqual(0, secondProvider.mobileNetworkCodeCallCount)
     }
 
-    func test_givenTwoCelluarProviders_whenMobileNetworkCodes_thenReturnsArrayWithTwoElements() {
+    func test_givenTwoCelluarProviders_whenMobileNetworkCodes_thenReturnsArrayWithTwoElementsInAscendingOrder() {
         // given
-        let firstProvider = CarrierInfoProvidingSpy(mobileNetworkCode: "01")
-        let secondProvider = CarrierInfoProvidingSpy(mobileNetworkCode: "06")
+        let firstProvider = CarrierInfoProvidingSpy(mobileNetworkCode: "06")
+        let secondProvider = CarrierInfoProvidingSpy(mobileNetworkCode: "01")
         cellularServiceInfoProviderSpy.cellularProvidersReturnValue = [
             firstProvider,
             secondProvider,

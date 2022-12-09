@@ -32,12 +32,14 @@ extension CellularNetworkInfoHarvester: CellularNetworkInfoHarvesting {
         cellularServiceInfoProvider
             .cellularProviders
             .compactMap(\.mobileCountryCode)
+            .sorted()
     }
 
     var mobileNetworkCodes: [String] {
         cellularServiceInfoProvider
             .cellularProviders
             .compactMap(\.mobileNetworkCode)
+            .sorted()
     }
 }
 #endif
