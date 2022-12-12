@@ -14,7 +14,33 @@ public class DeviceInfoProvider {
     private let appInfoHarvester: AppInfoHarvesting
     private let hardwareInfoHarvester: HardwareInfoHarvesting
     private let osInfoHarvester: OSInfoHarvesting
+    #if os(iOS)
+    private let cellularNetworkInfoHarvester: CellularNetworkInfoHarvesting
 
+    public convenience init() {
+        self.init(
+            identifierHarvester: IdentifierHarvester(),
+            appInfoHarvester: AppInfoHarvester(),
+            hardwareInfoHarvester: HardwareInfoHarvester(),
+            osInfoHarvester: OSInfoHarvester(),
+            cellularNetworkInfoHarvester: CellularNetworkInfoHarvester()
+        )
+    }
+
+    init(
+        identifierHarvester: IdentifierHarvesting,
+        appInfoHarvester: AppInfoHarvesting,
+        hardwareInfoHarvester: HardwareInfoHarvesting,
+        osInfoHarvester: OSInfoHarvesting,
+        cellularNetworkInfoHarvester: CellularNetworkInfoHarvesting
+    ) {
+        self.identifierHarvester = identifierHarvester
+        self.appInfoHarvester = appInfoHarvester
+        self.hardwareInfoHarvester = hardwareInfoHarvester
+        self.osInfoHarvester = osInfoHarvester
+        self.cellularNetworkInfoHarvester = cellularNetworkInfoHarvester
+    }
+    #else
     public convenience init() {
         self.init(
             identifierHarvester: IdentifierHarvester(),
@@ -35,6 +61,7 @@ public class DeviceInfoProvider {
         self.hardwareInfoHarvester = hardwareInfoHarvester
         self.osInfoHarvester = osInfoHarvester
     }
+    #endif
 }
 
 extension DeviceInfoProvider: DeviceInfoProviding {
@@ -49,7 +76,12 @@ extension DeviceInfoProvider: DeviceInfoProviding {
     }
 
     public func getDeviceInfo(_ completion: @escaping (DeviceInfo) -> Void) {
-        let deviceInfo = DeviceInfo(
+        completion(deviceInfo)
+    }
+
+    #if os(iOS)
+    private var deviceInfo: DeviceInfo {
+        .init(
             vendorIdentifier: identifierHarvester.vendorIdentifier,
             localeIdentifier: appInfoHarvester.localeIdentifier,
             userInterfaceStyle: appInfoHarvester.userInterfaceStyle,
@@ -67,9 +99,35 @@ extension DeviceInfoProvider: DeviceInfoProviding {
             osVersion: osInfoHarvester.osVersion,
             osType: osInfoHarvester.osType,
             osRelease: osInfoHarvester.osRelease,
-            kernelVersion: osInfoHarvester.kernelVersion
+            kernelVersion: osInfoHarvester.kernelVersion,
+            mobileCountryCodes: cellularNetworkInfoHarvester.mobileCountryCodes,
+            mobileNetworkCodes: cellularNetworkInfoHarvester.mobileNetworkCodes
         )
-
-        completion(deviceInfo)
     }
+    #else
+    private var deviceInfo: DeviceInfo {
+        .init(
+            vendorIdentifier: identifierHarvester.vendorIdentifier,
+            localeIdentifier: appInfoHarvester.localeIdentifier,
+            userInterfaceStyle: appInfoHarvester.userInterfaceStyle,
+            diskSpace: hardwareInfoHarvester.diskSpaceInfo,
+            screenResolution: hardwareInfoHarvester.displayResolution,
+            screenScale: hardwareInfoHarvester.displayScale,
+            deviceName: hardwareInfoHarvester.deviceName,
+            deviceType: hardwareInfoHarvester.deviceType,
+            deviceModel: hardwareInfoHarvester.deviceModel,
+            memorySize: hardwareInfoHarvester.memorySize,
+            physicalMemory: hardwareInfoHarvester.memorySize,
+            cpuCount: hardwareInfoHarvester.cpuCount,
+            osTimeZoneIdentifier: osInfoHarvester.osTimeZoneIdentifier,
+            osBuild: osInfoHarvester.osBuild,
+            osVersion: osInfoHarvester.osVersion,
+            osType: osInfoHarvester.osType,
+            osRelease: osInfoHarvester.osRelease,
+            kernelVersion: osInfoHarvester.kernelVersion,
+            mobileCountryCodes: [],
+            mobileNetworkCodes: []
+        )
+    }
+    #endif
 }

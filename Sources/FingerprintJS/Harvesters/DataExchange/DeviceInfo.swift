@@ -37,4 +37,21 @@ public struct DeviceInfo: Equatable, Encodable {
     public let osType: String?
     public let osRelease: String?
     public let kernelVersion: String?
+
+    /// The mobile country codes (MCCs) for the user’s cellular service providers.
+    @available(
+        iOS,
+        deprecated: 16.0,
+        message: "The return value is undefined and no guarantee can be made on its stability."
+    )
+    @available(tvOS, unavailable)
+    public let mobileCountryCodes: [String]
+    /// The mobile network codes (MNCs) for the user’s cellular service providers.
+    @available(
+        iOS,
+        deprecated: 16.0,
+        message: "The return value is undefined and no guarantee can be made on its stability."
+    )
+    @available(tvOS, unavailable)
+    public let mobileNetworkCodes: [String]
 }
