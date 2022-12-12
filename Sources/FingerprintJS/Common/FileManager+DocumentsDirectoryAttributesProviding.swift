@@ -1,9 +1,3 @@
-//
-//  FileManager+DocumentsDirectoryAttributesProviding.swift
-//  FingerprintJS
-//
-//  Created by Petr Palata on 08.04.2022.
-//
 import Foundation
 
 protocol DocumentsDirectoryAttributesProviding {

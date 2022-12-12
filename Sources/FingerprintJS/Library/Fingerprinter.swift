@@ -1,13 +1,3 @@
-//
-//  Fingerprinter.swift
-//  FingerprintJS
-//
-//  Created by Petr Palata on 16.03.2022.
-//
-
-import Foundation
-import SwiftUI
-
 /// Main `FingerprintJS` class that provides an interface to all library functions (device identifier and fingerprint retrieval)
 public class Fingerprinter {
     private let configuration: Configuration

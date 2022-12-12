@@ -1,5 +1,3 @@
-import Foundation
-
 protocol CPUInfoProviding {
     var processorCount: Int { get }
 }

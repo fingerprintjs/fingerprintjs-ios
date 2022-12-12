@@ -1,10 +1,3 @@
-//
-//  HardwareInfoHarvester.swift
-//  FingerprintJS
-//
-//  Created by Petr Palata on 08.03.2022.
-//
-
 import UIKit
 
 protocol HardwareInfoHarvesting {

@@ -1,12 +1,3 @@
-//
-//  FingerprinterFactory.swift
-//  FingerprintJS
-//
-//  Created by Petr Palata on 16.03.2022.
-//
-
-import Foundation
-
 public protocol FingerprinterInstanceProviding {
     /// Creates an instance of `Fingerprinter` with the given `Configuration`
     /// - Parameter configuration: `Configuration` object that instructs the `Fingerprinter` to use

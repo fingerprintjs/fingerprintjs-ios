@@ -1,10 +1,3 @@
-//
-//  IdentifierStorable.swift
-//  FingerprintJS
-//
-//  Created by Petr Palata on 09.03.2022.
-//
-
 import Foundation
 
 protocol IdentifierStorable {

@@ -1,10 +1,3 @@
-//
-//  Digest+StringOutput.swift
-//  FingerprintJS
-//
-//  Created by Petr Palata on 10.03.2022.
-//
-
 import CryptoKit
 import Foundation
 

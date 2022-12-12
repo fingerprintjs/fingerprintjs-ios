@@ -1,12 +1,3 @@
-//
-//  DeviceInfoProvidable.swift
-//  FingerprintJS
-//
-//  Created by Petr Palata on 13.03.2022.
-//
-
-import Foundation
-
 /// Types of `DeviceInfoItem` values
 public enum DeviceInfoValueType {
     /// `DeviceInfoItem` that contains category information and child items

@@ -1,5 +1,3 @@
-import Foundation
-
 @testable import FingerprintJS
 
 final class TimeZoneInfoProvidableSpy: TimeZoneInfoProvidable {

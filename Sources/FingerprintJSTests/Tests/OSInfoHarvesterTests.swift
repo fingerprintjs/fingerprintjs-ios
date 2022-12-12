@@ -1,10 +1,3 @@
-//
-//  OSInfoHarvesterTests.swift
-//  FingerprintJSTests
-//
-//  Created by Petr Palata on 12.04.2022.
-//
-
 import XCTest
 
 @testable import FingerprintJS
