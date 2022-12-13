@@ -1,7 +1,11 @@
-/// Enumeration of available FingerprintJS versions
+/// Enumeration of available FingerprintJS versions.
 public enum FingerprintJSVersion {
+    /// Version 1.
     case v1
+    /// Version 2.
     case v2
+    /// Version 3.
+    case v3
 }
 
 /// Enumeration of available fingerprinting algorithms
@@ -11,7 +15,6 @@ public enum FingerprintAlgorithm {
 
     /// Used for purposes where the library user wants to use their own `FingerprintFunction` algorithm
     case custom(FingerprintFunction)
-
 }
 
 /// `FingerprintJS`'s configuration
@@ -19,7 +22,7 @@ public struct Configuration {
     let version: FingerprintJSVersion
     let algorithm: FingerprintAlgorithm
 
-    public init(version: FingerprintJSVersion = .v2, algorithm: FingerprintAlgorithm = .sha256) {
+    public init(version: FingerprintJSVersion = .v3, algorithm: FingerprintAlgorithm = .sha256) {
         self.version = version
         self.algorithm = algorithm
     }

@@ -31,14 +31,14 @@ extension AppInfoHarvester: DeviceInfoTreeProvider {
                     label: "Locale identifier",
                     value: .info(localeIdentifier)
                 ),
-                versions: []
+                versions: [.v3]
             ),
             VersionedInfoItem(
                 item: DeviceInfoItem(
                     label: "User interface style",
                     value: .info(userInterfaceStyle.rawValue)
                 ),
-                versions: []
+                versions: [.v3]
             ),
         ]
     }
@@ -57,59 +57,66 @@ extension HardwareInfoHarvester: DeviceInfoTreeProvider {
         return [
             VersionedInfoItem(
                 item: DeviceInfoItem(
+                    label: "Device name",
+                    value: .info(deviceName)
+                ),
+                versions: [.v3]
+            ),
+            VersionedInfoItem(
+                item: DeviceInfoItem(
                     label: "Device type",
                     value: .info(deviceType)
                 ),
-                versions: [.v1, .v2]
+                versions: [.v1, .v2, .v3]
             ),
             VersionedInfoItem(
                 item: DeviceInfoItem(
                     label: "Device model",
                     value: .info(deviceModel)
                 ),
-                versions: [.v1, .v2]
+                versions: [.v1, .v2, .v3]
             ),
             VersionedInfoItem(
                 item: DeviceInfoItem(
                     label: "Display resolution",
                     value: .info(displayResolution.description)
                 ),
-                versions: [.v1, .v2]
+                versions: [.v1, .v2, .v3]
             ),
             VersionedInfoItem(
                 item: DeviceInfoItem(
                     label: "Display scale",
                     value: .info(displayScale.description)
                 ),
-                versions: []
+                versions: [.v3]
             ),
             VersionedInfoItem(
                 item: DeviceInfoItem(
                     label: "Physical memory",
                     value: .info(memorySize)
                 ),
-                versions: [.v1, .v2]
+                versions: [.v1, .v2, .v3]
             ),
             VersionedInfoItem(
                 item: DeviceInfoItem(
                     label: "Processor count",
                     value: .info(cpuCount)
                 ),
-                versions: [.v1, .v2]
+                versions: [.v1, .v2, .v3]
             ),
             VersionedInfoItem(
                 DeviceInfoItem(
                     label: "Free disk space (B)",
                     value: .info(String(describing: freeDiskSpace))
                 ),
-                versions: [.v2]
+                versions: [.v2, .v3]
             ),
             VersionedInfoItem(
                 DeviceInfoItem(
                     label: "Total disk space (B)",
                     value: .info(String(describing: totalDiskSpace))
                 ),
-                versions: [.v2]
+                versions: [.v2, .v3]
             ),
         ]
     }
@@ -131,7 +138,7 @@ extension IdentifierHarvester: DeviceInfoTreeProvider {
                     label: "Vendor identifier",
                     value: .info(vendorIdentifier?.uuidString ?? "No identifier")
                 ),
-                versions: [.v1, .v2]
+                versions: [.v1, .v2, .v3]
             )
         ]
     }
@@ -153,35 +160,35 @@ extension OSInfoHarvester: DeviceInfoTreeProvider {
                     label: "OS time zone identifier",
                     value: .info(osTimeZoneIdentifier)
                 ),
-                versions: []
+                versions: [.v3]
             ),
             VersionedInfoItem(
                 item: DeviceInfoItem(
                     label: "OS release",
                     value: .info(osRelease)
                 ),
-                versions: [.v1, .v2]
+                versions: [.v1, .v2, .v3]
             ),
             VersionedInfoItem(
                 item: DeviceInfoItem(
                     label: "OS type",
                     value: .info(osType)
                 ),
-                versions: [.v1, .v2]
+                versions: [.v1, .v2, .v3]
             ),
             VersionedInfoItem(
                 item: DeviceInfoItem(
                     label: "OS version",
                     value: .info(osVersion)
                 ),
-                versions: [.v1, .v2]
+                versions: [.v1, .v2, .v3]
             ),
             VersionedInfoItem(
                 item: DeviceInfoItem(
                     label: "Kernel version",
                     value: .info(kernelVersion)
                 ),
-                versions: [.v1, .v2]
+                versions: [.v1, .v2, .v3]
             ),
         ]
     }
@@ -204,14 +211,14 @@ extension CellularNetworkInfoHarvester: DeviceInfoTreeProvider {
                     label: "Mobile country codes",
                     value: .info(mobileCountryCodes.description)
                 ),
-                versions: []
+                versions: [.v3]
             ),
             VersionedInfoItem(
                 item: DeviceInfoItem(
                     label: "Mobile network codes",
                     value: .info(mobileNetworkCodes.description)
                 ),
-                versions: []
+                versions: [.v3]
             ),
         ]
     }

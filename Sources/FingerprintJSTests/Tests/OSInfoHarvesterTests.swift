@@ -71,4 +71,23 @@ final class OSInfoHarvesterTests: XCTestCase {
         // Subject to change when items are added/removed in version 2
         testBuildTreeReturnsCorrectNumberOfItemsForVersionOne()
     }
+
+    func test_givenConfigurationWithVersionThree_whenBuildTree_thenReturnsExpectedItems() {
+        // given
+        let config = Configuration(version: .v3)
+
+        // when
+        let itemsTree = sut.buildTree(config)
+
+        // then
+        let itemLabels = itemsTree.children?.map { $0.label }
+        let expectedItemLabels = [
+            "OS time zone identifier",
+            "OS release",
+            "OS type",
+            "OS version",
+            "Kernel version",
+        ]
+        XCTAssertEqual(expectedItemLabels, itemLabels)
+    }
 }
