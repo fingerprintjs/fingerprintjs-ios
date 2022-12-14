@@ -90,4 +90,20 @@ final class AppInfoHarvesterTests: XCTestCase {
         }
         XCTAssertEqual(expectedInterfaceStyle, interfaceStyle)
     }
+
+    func test_givenConfigurationWithVersionThree_whenBuildTree_thenReturnsExpectedItems() {
+        // given
+        let config = Configuration(version: .v3)
+
+        // when
+        let itemsTree = sut.buildTree(config)
+
+        // then
+        let itemLabels = itemsTree.children?.map { $0.label }
+        let expectedItemLabels = [
+            "Locale identifier",
+            "User interface style",
+        ]
+        XCTAssertEqual(expectedItemLabels, itemLabels)
+    }
 }

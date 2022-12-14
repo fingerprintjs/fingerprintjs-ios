@@ -223,4 +223,27 @@ final class HardwareInfoHarvesterTests: XCTestCase {
 
         XCTAssertEqual(itemLabels, versionTwoLabels)
     }
+
+    func test_givenConfigurationWithVersionThree_whenBuildTree_thenReturnsExpectedItems() {
+        // given
+        let config = Configuration(version: .v3)
+
+        // when
+        let itemsTree = sut.buildTree(config)
+
+        // then
+        let itemLabels = itemsTree.children?.map { $0.label }
+        let expectedItemLabels = [
+            "Device name",
+            "Device type",
+            "Device model",
+            "Display resolution",
+            "Display scale",
+            "Physical memory",
+            "Processor count",
+            "Free disk space (B)",
+            "Total disk space (B)",
+        ]
+        XCTAssertEqual(expectedItemLabels, itemLabels)
+    }
 }

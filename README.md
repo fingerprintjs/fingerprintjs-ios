@@ -81,10 +81,10 @@ fingerprinter.getFingerprint { fingerprint in
 // note that this example exists only to illustrate the available options
 // and that its outcome mirrors the current default configuration
 
-let configuration = Configuration(version: .v1, algorithm: .sha256)
+let configuration = Configuration(version: .v3, algorithm: .sha256)
 let fingerprinter = FingerprinterFactory.getInstance(config)
 
-// fingerprinter uses version 1 of the fingerprint and SHA256 algorithm
+// fingerprinter uses version 3 of the fingerprint and SHA256 algorithm
 ```
 
 ## Creating Custom Fingerprinting Function
@@ -98,7 +98,7 @@ class HitchhikersFunction: FingerprintFunction {
 }
 
 let fingerprintFunction = HitchhikersFunction()
-let config = Configuration(version: .v1, algorithm: .custom(fingerprintFunction))
+let config = Configuration(version: .v3, algorithm: .custom(fingerprintFunction))
 let fingerprinter = FingerprinterFactory.getInstance(config)
 
 let fingerprint = await fingerprinter.getFingerprint() // returns "42"

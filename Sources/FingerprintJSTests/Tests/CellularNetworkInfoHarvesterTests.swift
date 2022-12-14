@@ -121,5 +121,21 @@ final class CellularNetworkInfoHarvesterTests: XCTestCase {
         XCTAssertEqual(0, unknownProvider.mobileCountryCodeCallCount)
         XCTAssertEqual(1, unknownProvider.mobileNetworkCodeCallCount)
     }
+
+    func test_givenConfigurationWithVersionThree_whenBuildTree_thenReturnsExpectedItems() {
+        // given
+        let config = Configuration(version: .v3)
+
+        // when
+        let itemsTree = sut.buildTree(config)
+
+        // then
+        let itemLabels = itemsTree.children?.map { $0.label }
+        let expectedItemLabels = [
+            "Mobile country codes",
+            "Mobile network codes",
+        ]
+        XCTAssertEqual(expectedItemLabels, itemLabels)
+    }
 }
 #endif
