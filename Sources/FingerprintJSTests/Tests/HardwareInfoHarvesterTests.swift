@@ -133,7 +133,6 @@ final class HardwareInfoHarvesterTests: XCTestCase {
         XCTAssertEqual(sut.freeDiskSpace, 0)
     }
 
-    // MARK: totalDiskSpace
     func testTotalDiskSpaceReturnsZeroIfDocumentsDirAttributesEmpty() {
         XCTAssertEqual(sut.totalDiskSpace, 0)
     }
@@ -173,42 +172,73 @@ final class HardwareInfoHarvesterTests: XCTestCase {
         XCTAssertEqual(sut.totalDiskSpace, 0)
     }
 
-    // MARK - buildTree
-    func testBuildTreeReturnsCorrectNumberOfItemsForVersionOne() {
-        let config = Configuration(version: .v1)
+    func test_givenConfigurationWithVersionOneAndUniqueStabilityLevel_whenBuildTree_thenReturnsExpectedItems() {
+        // given
+        let config = Configuration(version: .v1, stabilityLevel: .unique)
 
-        let tree = sut.buildTree(config)
+        // when
+        let itemsTree = sut.buildTree(config)
 
-        XCTAssertEqual(tree.children?.count, 5)
-    }
-
-    func testBuildTreeReturnsCorrectItemsForVersionOne() {
-        let config = Configuration(version: .v1)
-        let versionOneLabels = [
+        // then
+        let itemLabels = itemsTree.children?.map(\.label)
+        let expectedItemLabels = [
             "Device type",
             "Device model",
             "Display resolution",
             "Physical memory",
             "Processor count",
         ]
-
-        let tree = sut.buildTree(config)
-        let itemLabels = tree.children?.map { $0.label }
-
-        XCTAssertEqual(itemLabels, versionOneLabels)
+        XCTAssertEqual(expectedItemLabels, itemLabels)
     }
 
-    func testBuildTreeReturnsCorrectNumberOfItemsForVersionTwo() {
-        let config = Configuration(version: .v2)
+    func test_givenConfigurationWithVersionOneAndOptimalStabilityLevel_whenBuildTree_thenReturnsExpectedItems() {
+        // given
+        let config = Configuration(version: .v1, stabilityLevel: .optimal)
 
-        let tree = sut.buildTree(config)
+        // when
+        let itemsTree = sut.buildTree(config)
 
-        XCTAssertEqual(tree.children?.count, 7)
+        // then
+        let itemLabels = itemsTree.children?.map(\.label)
+        let expectedItemLabels = [
+            "Device type",
+            "Device model",
+            "Display resolution",
+            "Physical memory",
+            "Processor count",
+        ]
+        XCTAssertEqual(expectedItemLabels, itemLabels)
     }
 
-    func testBuildTreeReturnsCorrectItemsForVersionTwo() {
-        let config = Configuration(version: .v2)
-        let versionTwoLabels = [
+    func test_givenConfigurationWithVersionOneAndStableStabilityLevel_whenBuildTree_thenReturnsExpectedItems() {
+        // given
+        let config = Configuration(version: .v1, stabilityLevel: .stable)
+
+        // when
+        let itemsTree = sut.buildTree(config)
+
+        // then
+        let itemLabels = itemsTree.children?.map(\.label)
+        let expectedItemLabels = [
+            "Device type",
+            "Device model",
+            "Display resolution",
+            "Physical memory",
+            "Processor count",
+        ]
+        XCTAssertEqual(expectedItemLabels, itemLabels)
+    }
+
+    func test_givenConfigurationWithVersionTwoAndUniqueStabilityLevel_whenBuildTree_thenReturnsExpectedItems() {
+        // given
+        let config = Configuration(version: .v2, stabilityLevel: .unique)
+
+        // when
+        let itemsTree = sut.buildTree(config)
+
+        // then
+        let itemLabels = itemsTree.children?.map(\.label)
+        let expectedItemLabels = [
             "Device type",
             "Device model",
             "Display resolution",
@@ -217,22 +247,58 @@ final class HardwareInfoHarvesterTests: XCTestCase {
             "Free disk space (B)",
             "Total disk space (B)",
         ]
-
-        let tree = sut.buildTree(config)
-        let itemLabels = tree.children?.map { $0.label }
-
-        XCTAssertEqual(itemLabels, versionTwoLabels)
+        XCTAssertEqual(expectedItemLabels, itemLabels)
     }
 
-    func test_givenConfigurationWithVersionThree_whenBuildTree_thenReturnsExpectedItems() {
+    func test_givenConfigurationWithVersionTwoAndOptimalStabilityLevel_whenBuildTree_thenReturnsExpectedItems() {
         // given
-        let config = Configuration(version: .v3)
+        let config = Configuration(version: .v2, stabilityLevel: .optimal)
 
         // when
         let itemsTree = sut.buildTree(config)
 
         // then
-        let itemLabels = itemsTree.children?.map { $0.label }
+        let itemLabels = itemsTree.children?.map(\.label)
+        let expectedItemLabels = [
+            "Device type",
+            "Device model",
+            "Display resolution",
+            "Physical memory",
+            "Processor count",
+            "Total disk space (B)",
+        ]
+        XCTAssertEqual(expectedItemLabels, itemLabels)
+    }
+
+    func test_givenConfigurationWithVersionTwoAndStableStabilityLevel_whenBuildTree_thenReturnsExpectedItems() {
+        // given
+        let config = Configuration(version: .v2, stabilityLevel: .stable)
+
+        // when
+        let itemsTree = sut.buildTree(config)
+
+        // then
+        let itemLabels = itemsTree.children?.map(\.label)
+        let expectedItemLabels = [
+            "Device type",
+            "Device model",
+            "Display resolution",
+            "Physical memory",
+            "Processor count",
+            "Total disk space (B)",
+        ]
+        XCTAssertEqual(expectedItemLabels, itemLabels)
+    }
+
+    func test_givenConfigurationWithVersionThreeAndUniqueStabilityLevel_whenBuildTree_thenReturnsExpectedItems() {
+        // given
+        let config = Configuration(version: .v3, stabilityLevel: .unique)
+
+        // when
+        let itemsTree = sut.buildTree(config)
+
+        // then
+        let itemLabels = itemsTree.children?.map(\.label)
         let expectedItemLabels = [
             "Device name",
             "Device type",
@@ -242,6 +308,48 @@ final class HardwareInfoHarvesterTests: XCTestCase {
             "Physical memory",
             "Processor count",
             "Free disk space (B)",
+            "Total disk space (B)",
+        ]
+        XCTAssertEqual(expectedItemLabels, itemLabels)
+    }
+
+    func test_givenConfigurationWithVersionThreeAndOptimalStabilityLevel_whenBuildTree_thenReturnsExpectedItems() {
+        // given
+        let config = Configuration(version: .v3, stabilityLevel: .optimal)
+
+        // when
+        let itemsTree = sut.buildTree(config)
+
+        // then
+        let itemLabels = itemsTree.children?.map(\.label)
+        let expectedItemLabels = [
+            "Device type",
+            "Device model",
+            "Display resolution",
+            "Display scale",
+            "Physical memory",
+            "Processor count",
+            "Total disk space (B)",
+        ]
+        XCTAssertEqual(expectedItemLabels, itemLabels)
+    }
+
+    func test_givenConfigurationWithVersionThreeAndStableStabilityLevel_whenBuildTree_thenReturnsExpectedItems() {
+        // given
+        let config = Configuration(version: .v3, stabilityLevel: .stable)
+
+        // when
+        let itemsTree = sut.buildTree(config)
+
+        // then
+        let itemLabels = itemsTree.children?.map(\.label)
+        let expectedItemLabels = [
+            "Device type",
+            "Device model",
+            "Display resolution",
+            "Display scale",
+            "Physical memory",
+            "Processor count",
             "Total disk space (B)",
         ]
         XCTAssertEqual(expectedItemLabels, itemLabels)

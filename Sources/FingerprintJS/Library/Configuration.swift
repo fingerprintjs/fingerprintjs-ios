@@ -8,22 +8,32 @@ public enum FingerprintJSVersion {
     case v3
 }
 
-/// Enumeration of available fingerprinting algorithms
+/// Enumeration of available fingerprinting algorithms.
 public enum FingerprintAlgorithm {
-    /// Default fingerprinting function that uses the SHA256 algorithm to compute the fingerprint
+    /// Default fingerprinting function that uses the SHA256 algorithm to compute the fingerprint.
     case sha256
-
-    /// Used for purposes where the library user wants to use their own `FingerprintFunction` algorithm
+    /// Used for purposes where the library user wants to use their own `FingerprintFunction` algorithm.
     case custom(FingerprintFunction)
 }
 
-/// `FingerprintJS`'s configuration
+/// `FingerprintJS`'s configuration.
 public struct Configuration {
     let version: FingerprintJSVersion
+    let stabilityLevel: FingerprintStabilityLevel
     let algorithm: FingerprintAlgorithm
 
-    public init(version: FingerprintJSVersion = .v3, algorithm: FingerprintAlgorithm = .sha256) {
+    /// Creates configuration object with the specified options.
+    /// - Parameters:
+    ///   - version: The FingerprintJS API version.
+    ///   - stabilityLevel: The desired stability level of the computed fingerprint.
+    ///   - algorithm: The algorithm used for computing the fingerprint.
+    public init(
+        version: FingerprintJSVersion = .v3,
+        stabilityLevel: FingerprintStabilityLevel = .optimal,
+        algorithm: FingerprintAlgorithm = .sha256
+    ) {
         self.version = version
+        self.stabilityLevel = stabilityLevel
         self.algorithm = algorithm
     }
 

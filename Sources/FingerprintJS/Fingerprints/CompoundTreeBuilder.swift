@@ -30,7 +30,7 @@ extension CompoundTreeBuilder: DeviceInfoTreeProvider {
         )
     }
 
-    var versionedItems: [VersionedInfoItem] {
+    var annotatedItems: [AnnotatedInfoItem] {
         return []
     }
 }
