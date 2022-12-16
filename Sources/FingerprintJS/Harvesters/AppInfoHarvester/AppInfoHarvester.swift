@@ -8,12 +8,12 @@ protocol AppInfoHarvesting {
 
 struct AppInfoHarvester {
 
-    private let localeInfoProvider: LocaleInfoProvidable
-    private let userInterfaceTraitsProvider: UserInterfaceTraitsProvidable
+    private let localeInfoProvider: LocaleInfoProviding
+    private let userInterfaceTraitsProvider: UserInterfaceTraitsProviding
 
     init(
-        localeInfoProvider: LocaleInfoProvidable,
-        userInterfaceTraitsProvider: UserInterfaceTraitsProvidable
+        localeInfoProvider: LocaleInfoProviding,
+        userInterfaceTraitsProvider: UserInterfaceTraitsProviding
     ) {
         self.localeInfoProvider = localeInfoProvider
         self.userInterfaceTraitsProvider = userInterfaceTraitsProvider

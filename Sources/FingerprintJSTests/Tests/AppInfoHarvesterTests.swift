@@ -3,8 +3,8 @@ import XCTest
 @testable import FingerprintJS
 
 final class AppInfoHarvesterTests: XCTestCase {
-    private var localeInfoProviderSpy: LocaleInfoProvidableSpy!
-    private var userInterfaceTraitsProviderSpy: UserInterfaceTraitsProvidableSpy!
+    private var localeInfoProviderSpy: LocaleInfoProvidingSpy!
+    private var userInterfaceTraitsProviderSpy: UserInterfaceTraitsProvidingSpy!
 
     private var sut: AppInfoHarvester!
 

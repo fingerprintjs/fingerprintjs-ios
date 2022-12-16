@@ -1,6 +1,6 @@
 @testable import FingerprintJS
 
-final class TimeZoneInfoProvidableSpy: TimeZoneInfoProvidable {
+final class LocaleInfoProvidingSpy: LocaleInfoProviding {
 
     var identifierReturnValue: String = ""
 
