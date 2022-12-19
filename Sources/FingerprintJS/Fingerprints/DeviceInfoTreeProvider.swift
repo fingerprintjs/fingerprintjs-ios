@@ -11,14 +11,23 @@ protocol DeviceInfoTreeProvider {
 }
 
 extension DeviceInfoTreeProvider {
-    fileprivate func itemsMatching(
-        stabilityLevel: FingerprintStabilityLevel,
-        version: FingerprintJSVersion
-    ) -> [DeviceInfoItem] {
-        annotatedItems
-            .filter { item in
-                item.stabilityLevel >= stabilityLevel && item.versions.contains(version)
+    fileprivate func itemsMatching(configuration: Configuration) -> [DeviceInfoItem] {
+        let isMatchingItem: (AnnotatedInfoItem) -> Bool
+        switch configuration.version {
+        case .v1, .v2:
+            isMatchingItem = { annotatedItem in
+                annotatedItem.versions.contains(configuration.version)
             }
+        default:
+            isMatchingItem = { annotatedItem in
+                annotatedItem.stabilityLevel >= configuration.stabilityLevel
+                    && annotatedItem.versions.contains(configuration.version)
+            }
+        }
+
+        return
+            annotatedItems
+            .filter(isMatchingItem)
             .map(\.item)
     }
 }
@@ -28,10 +37,7 @@ extension AppInfoHarvester: DeviceInfoTreeProvider {
         .init(
             label: "App",
             value: .category,
-            children: itemsMatching(
-                stabilityLevel: configuration.stabilityLevel,
-                version: configuration.version
-            )
+            children: itemsMatching(configuration: configuration)
         )
     }
 
@@ -62,10 +68,7 @@ extension HardwareInfoHarvester: DeviceInfoTreeProvider {
         .init(
             label: "Hardware",
             value: .category,
-            children: itemsMatching(
-                stabilityLevel: configuration.stabilityLevel,
-                version: configuration.version
-            )
+            children: itemsMatching(configuration: configuration)
         )
     }
 
@@ -130,7 +133,7 @@ extension HardwareInfoHarvester: DeviceInfoTreeProvider {
             AnnotatedInfoItem(
                 DeviceInfoItem(
                     label: "Free disk space (B)",
-                    value: .info(.init(describing: freeDiskSpace))
+                    value: .info(String(describing: freeDiskSpace))
                 ),
                 stabilityLevel: .unique,
                 versions: [.v2, .v3]
@@ -138,7 +141,7 @@ extension HardwareInfoHarvester: DeviceInfoTreeProvider {
             AnnotatedInfoItem(
                 DeviceInfoItem(
                     label: "Total disk space (B)",
-                    value: .info(.init(describing: totalDiskSpace))
+                    value: .info(String(describing: totalDiskSpace))
                 ),
                 stabilityLevel: .stable,
                 versions: [.v2, .v3]
@@ -152,10 +155,7 @@ extension IdentifierHarvester: DeviceInfoTreeProvider {
         .init(
             label: "Identifiers",
             value: .category,
-            children: itemsMatching(
-                stabilityLevel: configuration.stabilityLevel,
-                version: configuration.version
-            )
+            children: itemsMatching(configuration: configuration)
         )
     }
 
@@ -178,10 +178,7 @@ extension OSInfoHarvester: DeviceInfoTreeProvider {
         .init(
             label: "Operating System",
             value: .category,
-            children: itemsMatching(
-                stabilityLevel: configuration.stabilityLevel,
-                version: configuration.version
-            )
+            children: itemsMatching(configuration: configuration)
         )
     }
 
@@ -237,10 +234,7 @@ extension CellularNetworkInfoHarvester: DeviceInfoTreeProvider {
         .init(
             label: "Cellular Network",
             value: .category,
-            children: itemsMatching(
-                stabilityLevel: configuration.stabilityLevel,
-                version: configuration.version
-            )
+            children: itemsMatching(configuration: configuration)
         )
     }
 

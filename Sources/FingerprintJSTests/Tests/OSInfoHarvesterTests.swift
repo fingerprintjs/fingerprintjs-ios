@@ -74,7 +74,7 @@ final class OSInfoHarvesterTests: XCTestCase {
         XCTAssertEqual(expectedItemLabels, itemLabels)
     }
 
-    func test_givenConfigurationWithVersionOneAndStableStabilityLevel_whenBuildTree_thenReturnsNoItems() {
+    func test_givenConfigurationWithVersionOneAndStableStabilityLevel_whenBuildTree_thenReturnsExpectedItems() {
         // given
         let config = Configuration(version: .v1, stabilityLevel: .stable)
 
@@ -82,8 +82,14 @@ final class OSInfoHarvesterTests: XCTestCase {
         let itemsTree = sut.buildTree(config)
 
         // then
-        let itemLabels = itemsTree.children?.map(\.label) ?? []
-        XCTAssertTrue(itemLabels.isEmpty)
+        let itemLabels = itemsTree.children?.map(\.label)
+        let expectedItemLabels = [
+            "OS release",
+            "OS type",
+            "OS version",
+            "Kernel version",
+        ]
+        XCTAssertEqual(expectedItemLabels, itemLabels)
     }
 
     func test_givenConfigurationWithVersionTwoAndUniqueStabilityLevel_whenBuildTree_thenReturnsExpectedItems() {
@@ -122,7 +128,7 @@ final class OSInfoHarvesterTests: XCTestCase {
         XCTAssertEqual(expectedItemLabels, itemLabels)
     }
 
-    func test_givenConfigurationWithVersionTwoAndStableStabilityLevel_whenBuildTree_thenReturnsNoItems() {
+    func test_givenConfigurationWithVersionTwoAndStableStabilityLevel_whenBuildTree_thenReturnsExpectedItems() {
         // given
         let config = Configuration(version: .v2, stabilityLevel: .stable)
 
@@ -130,8 +136,14 @@ final class OSInfoHarvesterTests: XCTestCase {
         let itemsTree = sut.buildTree(config)
 
         // then
-        let itemLabels = itemsTree.children?.map(\.label) ?? []
-        XCTAssertTrue(itemLabels.isEmpty)
+        let itemLabels = itemsTree.children?.map(\.label)
+        let expectedItemLabels = [
+            "OS release",
+            "OS type",
+            "OS version",
+            "Kernel version",
+        ]
+        XCTAssertEqual(expectedItemLabels, itemLabels)
     }
 
     func test_givenConfigurationWithVersionThreeAndUniqueStabilityLevel_whenBuildTree_thenReturnsExpectedItems() {

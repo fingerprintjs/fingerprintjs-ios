@@ -265,6 +265,7 @@ final class HardwareInfoHarvesterTests: XCTestCase {
             "Display resolution",
             "Physical memory",
             "Processor count",
+            "Free disk space (B)",
             "Total disk space (B)",
         ]
         XCTAssertEqual(expectedItemLabels, itemLabels)
@@ -285,6 +286,7 @@ final class HardwareInfoHarvesterTests: XCTestCase {
             "Display resolution",
             "Physical memory",
             "Processor count",
+            "Free disk space (B)",
             "Total disk space (B)",
         ]
         XCTAssertEqual(expectedItemLabels, itemLabels)

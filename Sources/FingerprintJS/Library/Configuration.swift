@@ -1,4 +1,4 @@
-/// Enumeration of available FingerprintJS versions.
+/// Enumeration of available fingerprint versions.
 public enum FingerprintJSVersion {
     /// Version 1.
     case v1
@@ -24,8 +24,8 @@ public struct Configuration {
 
     /// Creates configuration object with the specified options.
     /// - Parameters:
-    ///   - version: The FingerprintJS API version.
-    ///   - stabilityLevel: The desired stability level of the computed fingerprint.
+    ///   - version: The fingerprint version.
+    ///   - stabilityLevel: The desired stability level of the computed fingerprint. Note that in fingerprint versions ``FingerprintJSVersion/v1`` and ``FingerprintJSVersion/v2``, the value of this parameter is ignored.
     ///   - algorithm: The algorithm used for computing the fingerprint.
     public init(
         version: FingerprintJSVersion = .v3,
