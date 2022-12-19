@@ -2,7 +2,7 @@ import UIKit
 
 @testable import FingerprintJS
 
-final class UserInterfaceTraitsProvidableSpy: UserInterfaceTraitsProvidable {
+final class UserInterfaceTraitsProvidingSpy: UserInterfaceTraitsProviding {
 
     var userInterfaceStyleReturnValue: UIUserInterfaceStyle = .unspecified
 

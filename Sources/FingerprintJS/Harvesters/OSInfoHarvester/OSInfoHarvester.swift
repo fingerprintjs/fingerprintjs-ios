@@ -16,11 +16,11 @@ protocol OSInfoHarvesting {
 
 struct OSInfoHarvester {
     private let systemControl: SystemControlValuesProviding
-    private let timeZoneInfoProvider: TimeZoneInfoProvidable
+    private let timeZoneInfoProvider: TimeZoneInfoProviding
 
     init(
         systemControl: SystemControlValuesProviding = SystemControl(),
-        timeZoneInfoProvider: TimeZoneInfoProvidable = TimeZone.current
+        timeZoneInfoProvider: TimeZoneInfoProviding = TimeZone.current
     ) {
         self.systemControl = systemControl
         self.timeZoneInfoProvider = timeZoneInfoProvider

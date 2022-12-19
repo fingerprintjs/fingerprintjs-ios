@@ -6,7 +6,7 @@ final class OSInfoHarvesterTests: XCTestCase {
     private var sut: OSInfoHarvester!
 
     private var systemControlMock: SystemControlMock!
-    private var timeZoneInfoProviderSpy: TimeZoneInfoProvidableSpy!
+    private var timeZoneInfoProviderSpy: TimeZoneInfoProvidingSpy!
 
     override func setUp() {
         super.setUp()
