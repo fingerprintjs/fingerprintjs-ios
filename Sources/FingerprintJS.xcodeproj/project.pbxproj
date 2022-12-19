@@ -322,7 +322,6 @@
 				6AC03F4A27DE574100EF9DB7 /* DeviceInfoItem.swift */,
 				6AC362AD28001E7D00C4768A /* FileManager+DocumentsDirectoryAttributesProviding.swift */,
 				6A82A19627D74D5B007C023F /* Fingerprintable.swift */,
-				15D7C629294A6B010025CE74 /* FingerprintStabilityLevel.swift */,
 				6A82A1A727D89CB0007C023F /* Storage */,
 			);
 			path = Common;
@@ -378,6 +377,7 @@
 				6A1D1142280F1B6600566F75 /* DeviceInfoProvider.swift */,
 				6A9B7CAD27E220F1002B9939 /* Fingerprinter.swift */,
 				6A9B7CA927E214C5002B9939 /* FingerprinterFactory.swift */,
+				15D7C629294A6B010025CE74 /* FingerprintStabilityLevel.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
