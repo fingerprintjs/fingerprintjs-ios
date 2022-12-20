@@ -36,7 +36,6 @@
 		6A44A31928CF8FAF0026DCD8 /* SHA256HashingFunctionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A44A31828CF8FAF0026DCD8 /* SHA256HashingFunctionTests.swift */; };
 		6A7D016527FB31A30037E190 /* DiskSpaceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D016427FB31A30037E190 /* DiskSpaceInfo.swift */; };
 		6A82A18327D65DB4007C023F /* FingerprintJS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A82A17A27D65DB4007C023F /* FingerprintJS.framework */; };
-		6A82A18927D65DB4007C023F /* FingerprintJS.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A82A17D27D65DB4007C023F /* FingerprintJS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6A82A19727D74D5B007C023F /* Fingerprintable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A19627D74D5B007C023F /* Fingerprintable.swift */; };
 		6A82A19B27D76CD6007C023F /* HardwareInfoHarvester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A19A27D76CD6007C023F /* HardwareInfoHarvester.swift */; };
 		6A82A19E27D775AF007C023F /* SystemControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A19D27D775AF007C023F /* SystemControl.swift */; };
@@ -107,7 +106,6 @@
 		6A44A31828CF8FAF0026DCD8 /* SHA256HashingFunctionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHA256HashingFunctionTests.swift; sourceTree = "<group>"; };
 		6A7D016427FB31A30037E190 /* DiskSpaceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskSpaceInfo.swift; sourceTree = "<group>"; };
 		6A82A17A27D65DB4007C023F /* FingerprintJS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FingerprintJS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6A82A17D27D65DB4007C023F /* FingerprintJS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FingerprintJS.h; sourceTree = "<group>"; };
 		6A82A18227D65DB4007C023F /* FingerprintJSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FingerprintJSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A82A19627D74D5B007C023F /* Fingerprintable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fingerprintable.swift; sourceTree = "<group>"; };
 		6A82A19A27D76CD6007C023F /* HardwareInfoHarvester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardwareInfoHarvester.swift; sourceTree = "<group>"; };
@@ -290,7 +288,6 @@
 				6A82A19827D76BFE007C023F /* Harvesters */,
 				6A82A19527D74D23007C023F /* Common */,
 				6A82A19227D65E1C007C023F /* Fingerprints */,
-				6A82A17D27D65DB4007C023F /* FingerprintJS.h */,
 			);
 			path = FingerprintJS;
 			sourceTree = "<group>";
@@ -414,7 +411,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A82A18927D65DB4007C023F /* FingerprintJS.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -747,7 +743,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
+				DEFINES_MODULE = NO;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -781,7 +777,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
+				DEFINES_MODULE = NO;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";

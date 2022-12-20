@@ -1,3 +1,5 @@
+import Foundation
+
 protocol TimeZoneInfoProviding {
     var identifier: String { get }
 }
