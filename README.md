@@ -99,6 +99,8 @@ There are three different fingerprint stability levels, as defined in `Fingerpri
 * `optimal` that indicates the use of a combination of signals that don’t change and signals that might change, though not very often. This is the default stability level and it is recommended as providing the best balance between fingerprint stability and fingerprint accuracy.
 * `stable` that indicates the use of hardware signals or signals that aren’t supposed to change at all. This stability level is recommended for obtaining the most stable fingerprint.
 
+> **NOTE:** The supplied stability level is only applicable in fingerprint version `v3` and later, such that it is ignored if you use fingerprint versions `v1` or `v2`.
+
 ### Creating Custom Fingerprinting Function
 
 The default hashing function which computes the fingerprint from the content data is SHA256. The `Configuration` object offers a way to inject a custom hashing function by specifying `.custom(YourCustomFingerprintFunctionInstance)` in the `algorithm` variable:
