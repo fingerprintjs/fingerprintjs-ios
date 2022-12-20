@@ -38,43 +38,117 @@ final class OSInfoHarvesterTests: XCTestCase {
         XCTAssertEqual(1, timeZoneInfoProviderSpy.identifierCallCount)
     }
 
-    // MARK: buildTree
-    func testBuildTreeReturnsCorrectNumberOfItemsForVersionOne() {
-        let config = Configuration(version: .v1)
+    func test_givenConfigurationWithVersionOneAndUniqueStabilityLevel_whenBuildTree_thenReturnsExpectedItems() {
+        // given
+        let config = Configuration(version: .v1, stabilityLevel: .unique)
 
-        let tree = sut.buildTree(config)
+        // when
+        let itemsTree = sut.buildTree(config)
 
-        XCTAssertEqual(tree.children?.count, 4)
-    }
-
-    func testBuildTreeReturnsCorrectItemsForVersionOne() {
-        let config = Configuration(version: .v1)
-        let expectedLabels = [
+        // then
+        let itemLabels = itemsTree.children?.map(\.label)
+        let expectedItemLabels = [
             "OS release",
             "OS type",
             "OS version",
             "Kernel version",
         ]
-
-        let tree = sut.buildTree(config)
-        let labels = tree.children?.map { $0.label }
-
-        XCTAssertEqual(expectedLabels, labels)
+        XCTAssertEqual(expectedItemLabels, itemLabels)
     }
 
-    func testBuildTreeReturnsCorrectNumberOfItemsForVersionTwo() {
-        // Subject to change when items are added/removed in version 2
-        testBuildTreeReturnsCorrectItemsForVersionOne()
-    }
-
-    func testBuildTreeReturnsCorrectItemsForVersionTwo() {
-        // Subject to change when items are added/removed in version 2
-        testBuildTreeReturnsCorrectNumberOfItemsForVersionOne()
-    }
-
-    func test_givenConfigurationWithVersionThree_whenBuildTree_thenReturnsExpectedItems() {
+    func test_givenConfigurationWithVersionOneAndOptimalStabilityLevel_whenBuildTree_thenReturnsExpectedItems() {
         // given
-        let config = Configuration(version: .v3)
+        let config = Configuration(version: .v1, stabilityLevel: .optimal)
+
+        // when
+        let itemsTree = sut.buildTree(config)
+
+        // then
+        let itemLabels = itemsTree.children?.map(\.label)
+        let expectedItemLabels = [
+            "OS release",
+            "OS type",
+            "OS version",
+            "Kernel version",
+        ]
+        XCTAssertEqual(expectedItemLabels, itemLabels)
+    }
+
+    func test_givenConfigurationWithVersionOneAndStableStabilityLevel_whenBuildTree_thenReturnsExpectedItems() {
+        // given
+        let config = Configuration(version: .v1, stabilityLevel: .stable)
+
+        // when
+        let itemsTree = sut.buildTree(config)
+
+        // then
+        let itemLabels = itemsTree.children?.map(\.label)
+        let expectedItemLabels = [
+            "OS release",
+            "OS type",
+            "OS version",
+            "Kernel version",
+        ]
+        XCTAssertEqual(expectedItemLabels, itemLabels)
+    }
+
+    func test_givenConfigurationWithVersionTwoAndUniqueStabilityLevel_whenBuildTree_thenReturnsExpectedItems() {
+        // given
+        let config = Configuration(version: .v2, stabilityLevel: .unique)
+
+        // when
+        let itemsTree = sut.buildTree(config)
+
+        // then
+        let itemLabels = itemsTree.children?.map(\.label)
+        let expectedItemLabels = [
+            "OS release",
+            "OS type",
+            "OS version",
+            "Kernel version",
+        ]
+        XCTAssertEqual(expectedItemLabels, itemLabels)
+    }
+
+    func test_givenConfigurationWithVersionTwoAndOptimalStabilityLevel_whenBuildTree_thenReturnsExpectedItems() {
+        // given
+        let config = Configuration(version: .v2, stabilityLevel: .optimal)
+
+        // when
+        let itemsTree = sut.buildTree(config)
+
+        // then
+        let itemLabels = itemsTree.children?.map(\.label)
+        let expectedItemLabels = [
+            "OS release",
+            "OS type",
+            "OS version",
+            "Kernel version",
+        ]
+        XCTAssertEqual(expectedItemLabels, itemLabels)
+    }
+
+    func test_givenConfigurationWithVersionTwoAndStableStabilityLevel_whenBuildTree_thenReturnsExpectedItems() {
+        // given
+        let config = Configuration(version: .v2, stabilityLevel: .stable)
+
+        // when
+        let itemsTree = sut.buildTree(config)
+
+        // then
+        let itemLabels = itemsTree.children?.map(\.label)
+        let expectedItemLabels = [
+            "OS release",
+            "OS type",
+            "OS version",
+            "Kernel version",
+        ]
+        XCTAssertEqual(expectedItemLabels, itemLabels)
+    }
+
+    func test_givenConfigurationWithVersionThreeAndUniqueStabilityLevel_whenBuildTree_thenReturnsExpectedItems() {
+        // given
+        let config = Configuration(version: .v3, stabilityLevel: .unique)
 
         // when
         let itemsTree = sut.buildTree(config)
@@ -89,5 +163,36 @@ final class OSInfoHarvesterTests: XCTestCase {
             "Kernel version",
         ]
         XCTAssertEqual(expectedItemLabels, itemLabels)
+    }
+
+    func test_givenConfigurationWithVersionThreeAndOptimalStabilityLevel_whenBuildTree_thenReturnsExpectedItems() {
+        // given
+        let config = Configuration(version: .v3, stabilityLevel: .optimal)
+
+        // when
+        let itemsTree = sut.buildTree(config)
+
+        // then
+        let itemLabels = itemsTree.children?.map(\.label)
+        let expectedItemLabels = [
+            "OS time zone identifier",
+            "OS release",
+            "OS type",
+            "OS version",
+            "Kernel version",
+        ]
+        XCTAssertEqual(expectedItemLabels, itemLabels)
+    }
+
+    func test_givenConfigurationWithVersionThreeAndStableStabilityLevel_whenBuildTree_thenReturnsNoItems() {
+        // given
+        let config = Configuration(version: .v3, stabilityLevel: .stable)
+
+        // when
+        let itemsTree = sut.buildTree(config)
+
+        // then
+        let itemLabels = itemsTree.children?.map(\.label) ?? []
+        XCTAssertTrue(itemLabels.isEmpty)
     }
 }

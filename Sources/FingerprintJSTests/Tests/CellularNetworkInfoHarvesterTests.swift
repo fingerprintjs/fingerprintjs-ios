@@ -122,20 +122,44 @@ final class CellularNetworkInfoHarvesterTests: XCTestCase {
         XCTAssertEqual(1, unknownProvider.mobileNetworkCodeCallCount)
     }
 
-    func test_givenConfigurationWithVersionThree_whenBuildTree_thenReturnsExpectedItems() {
+    func test_givenConfigurationWithVersionThreeAndUniqueStabilityLevel_whenBuildTree_thenReturnsExpectedItems() {
         // given
-        let config = Configuration(version: .v3)
+        let config = Configuration(version: .v3, stabilityLevel: .unique)
 
         // when
         let itemsTree = sut.buildTree(config)
 
         // then
-        let itemLabels = itemsTree.children?.map { $0.label }
+        let itemLabels = itemsTree.children?.map(\.label)
         let expectedItemLabels = [
             "Mobile country codes",
             "Mobile network codes",
         ]
         XCTAssertEqual(expectedItemLabels, itemLabels)
+    }
+
+    func test_givenConfigurationWithVersionThreeAndOptimalStabilityLevel_whenBuildTree_thenReturnsNoItems() {
+        // given
+        let config = Configuration(version: .v3, stabilityLevel: .optimal)
+
+        // when
+        let itemsTree = sut.buildTree(config)
+
+        // then
+        let itemLabels = itemsTree.children?.map(\.label) ?? []
+        XCTAssertTrue(itemLabels.isEmpty)
+    }
+
+    func test_givenConfigurationWithVersionThreeAndStableStabilityLevel_whenBuildTree_thenReturnsNoItems() {
+        // given
+        let config = Configuration(version: .v3, stabilityLevel: .stable)
+
+        // when
+        let itemsTree = sut.buildTree(config)
+
+        // then
+        let itemLabels = itemsTree.children?.map(\.label) ?? []
+        XCTAssertTrue(itemLabels.isEmpty)
     }
 }
 #endif

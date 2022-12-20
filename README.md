@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://fingerprintjs.com">
+  <a href="https://fingerprint.com">
     <img src="images/logo.svg" alt="FingerprintJS" width="300px" />
   </a>
 </p>
@@ -19,8 +19,10 @@
     <img src="https://img.shields.io/discord/852099967190433792?style=for-the-badge&label=Discord&logo=Discord&logoColor=white" alt="Discord server">
   </a>
 </p>
-  
-<h3 align="center">Demo application on the App Store</h3>
+
+<p align="center">
+    <b>Demo application on the App Store</b>
+</p>
 <p align="center">
   <a href="https://apps.apple.com/us/app/fingerprintjs-showcase/id1621330481?itsct=apps_box_badge&amp;itscg=30200" style="display: inline-block; overflow: hidden; border-radius: 13px; width: 250px; height: 83px;"><img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&amp;releaseDate=1653436800&h=6f4dc95fe89ec63aa1fa67305e369224" alt="Download on the App Store" style="border-radius: 13px; width: 250px; height: 83px;"></a>
 </p>
@@ -33,7 +35,7 @@
 </p>
 
 
-# Installation (CocoaPods)
+## Installation (CocoaPods)
 
 ```ruby
 # Podfile
@@ -42,7 +44,7 @@ pod 'FingerprintJS'
 
 Note: If you've never used CocoaPods for dependency management, check out their [Using CocoaPods](https://guides.cocoapods.org/using/using-cocoapods.html) guide that will walk you through the setup process.
 
-# Quick Start (async/await - preferred)
+## Quick Start (async/await - preferred)
 
 ```swift
 import FingerprintJS
@@ -56,7 +58,8 @@ async {
 }
 ```
 
-# Quick Start (closures - backwards compatibility)
+## Quick Start (closures - backwards compatibility)
+
 ```swift
 import FingerprintJS 
 
@@ -66,39 +69,51 @@ fingerprinter.getFingerprint { fingerprint in
 }
 ```
 
-# Fingerprint vs. DeviceId
+## Fingerprint vs. DeviceId
 
 `FingerprintJS` provides two main methods that return different kinds of identifiers:
 
 1. Device identifier retrieved by calling `Fingerprinter::getDeviceId()` that internally uses the `identifierForVendor()` method which returns a unique identifier for the current application (tied to the device). `FingerprintJS` further remembers this identifier in the keychain, making the identifier stable even between app reinstalls. 
 
-2. `Fingerprinter::getFingerprint()` computes a device fingerprint by gathering device information (hardware, OS, device settings, etc.) and computing a  hash value from available items. The fingerprint isn't currently as stable as the Device Identifier because the values might change between OS updates or when the user changes settings used to compute the previous value. Future library versions will provide an API with options to customize the stability of the fingerprint.
+2. `Fingerprinter::getFingerprint()` computes a device fingerprint by gathering device information (hardware, OS, device settings, etc.) and computing a  hash value from available items. The fingerprint isn't currently as stable as the Device Identifier, because the values might change between OS updates or when the user changes settings used to compute the previous value. Furthermore, the fingerprint stability can be customized by supplying the `stabilityLevel` option to the `Configuration` object.
 
-# Configuration
-`Fingerprinter` instance can be configured through the `Configuration` structure that provides options to select the fingerprint version or change the algorithm that is used to compute the individual fingerprints.
+## Configuration
+
+`Fingerprinter` instance can be configured through the `Configuration` object that provides options to select the fingerprint version, set the desired fingerprint stability level, or change the algorithm that is used to compute the individual fingerprints.
 
 ```swift
 // note that this example exists only to illustrate the available options
 // and that its outcome mirrors the current default configuration
 
-let configuration = Configuration(version: .v3, algorithm: .sha256)
+let configuration = Configuration(version: .v3, stabilityLevel: .optimal, algorithm: .sha256)
 let fingerprinter = FingerprinterFactory.getInstance(config)
 
-// fingerprinter uses version 3 of the fingerprint and SHA256 algorithm
+// fingerprinter uses fingerprint version 3 with OPTIMAL stability level and SHA256 algorithm
 ```
 
-## Creating Custom Fingerprinting Function
-The default hashing function which computes the fingerprint from the content data is SHA256. The `Configuration` structure offers a way to inject a custom hashing function by specifying `.custom(YourCustomFingerprintFunctionInstance)` in the `algorithm` variable:
+### Fingerprint Stability Levels
+
+There are three different fingerprint stability levels, as defined in `FingerprintStabilityLevel` enum.
+
+* `unique` that indicates the use of every signal the library is able to collect. This stability level is recommended for obtaining the most accurate fingerprint.
+* `optimal` that indicates the use of a combination of signals that don’t change and signals that might change, though not very often. This is the default stability level and it is recommended as providing the best balance between fingerprint stability and fingerprint accuracy.
+* `stable` that indicates the use of hardware signals or signals that aren’t supposed to change at all. This stability level is recommended for obtaining the most stable fingerprint.
+
+> **NOTE:** The supplied stability level is only applicable in fingerprint version `v3` and later, such that it is ignored if you use fingerprint versions `v1` or `v2`.
+
+### Creating Custom Fingerprinting Function
+
+The default hashing function which computes the fingerprint from the content data is SHA256. The `Configuration` object offers a way to inject a custom hashing function by specifying `.custom(YourCustomFingerprintFunctionInstance)` in the `algorithm` variable:
 
 ```swift
-class HitchhikersFunction: FingerprintFunction {
+struct HitchhikersFunction: FingerprintFunction {
     func fingerprint(_ data: Data) -> String {
         return "42"
     }
 }
 
 let fingerprintFunction = HitchhikersFunction()
-let config = Configuration(version: .v3, algorithm: .custom(fingerprintFunction))
+let config = Configuration(version: .v3, stabilityLevel: .optimal, algorithm: .custom(fingerprintFunction))
 let fingerprinter = FingerprinterFactory.getInstance(config)
 
 let fingerprint = await fingerprinter.getFingerprint() // returns "42"
@@ -107,4 +122,5 @@ let fingerprint = await fingerprinter.getFingerprint() // returns "42"
 Keep in mind that the change in the supplied hashing function will inevitably lead to the change of the output fingerprint.
 
 ## License
+
 This library is MIT licensed. Copyright FingerprintJS, Inc. 2022.
