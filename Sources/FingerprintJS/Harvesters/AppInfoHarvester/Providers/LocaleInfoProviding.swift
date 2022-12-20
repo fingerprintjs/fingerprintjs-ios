@@ -1,3 +1,5 @@
+import Foundation
+
 protocol LocaleInfoProviding {
     var identifier: String { get }
 }
