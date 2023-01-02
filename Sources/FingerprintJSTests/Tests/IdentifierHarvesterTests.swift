@@ -4,14 +4,17 @@ import XCTest
 
 final class IdentifierHarvesterTests: XCTestCase {
     private var sut: IdentifierHarvester!
+    private var identifierStorableSpy: IdentifierStorableSpy!
 
     override func setUp() {
         super.setUp()
-        sut = .init()
+        identifierStorableSpy = .init()
+        sut = .init(identifierStorableSpy, device: .current)
     }
 
     override func tearDown() {
         sut = nil
+        identifierStorableSpy = nil
         super.tearDown()
     }
 
@@ -145,5 +148,37 @@ final class IdentifierHarvesterTests: XCTestCase {
         // then
         let itemLabels = itemsTree.children?.map(\.label) ?? []
         XCTAssertTrue(itemLabels.isEmpty)
+    }
+
+    func
+        test_givenIdentifierMissingLegacyIdentifierPresent_whenVendorIdentifier_thenMigratesLegacyIdentifierToNewStorage()
+    {
+        // given
+        let legacyIdentifier = UUID(uuidString: "a1084045-c9da-4e82-ae9b-8521379b0d07")!
+        identifierStorableSpy.loadIdentifierReturnDictionary = [
+            "vendorIdentifier": legacyIdentifier
+        ]
+
+        // when
+        let identifier = sut.vendorIdentifier
+
+        // then
+        XCTAssertEqual(
+            identifierStorableSpy.storeIdentifierInputs,
+            ["vendorIdentifierBackground": legacyIdentifier]
+        )
+        XCTAssertEqual(identifier, legacyIdentifier)
+    }
+
+    func test_givenBgIdentifierPresent_whenVendorIdentifier_thenReturnsBgIdentifier() {
+        // given
+        let bgIdentifier = UUID(uuidString: "a1084045-c9da-4e82-ae9b-8521379b0d07")!
+        identifierStorableSpy.loadIdentifierReturnDictionary = ["vendorIdentifierBackground": bgIdentifier]
+
+        // when
+        let identifier = sut.vendorIdentifier
+
+        // then
+        XCTAssertEqual(identifier, bgIdentifier)
     }
 }
