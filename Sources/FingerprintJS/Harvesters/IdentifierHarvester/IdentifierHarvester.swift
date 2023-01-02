@@ -9,15 +9,14 @@ struct IdentifierHarvester {
     private let vendorIdentifierKey = "id.vendor"
 
     private let identifierStorage: IdentifierStorable
-    private let device: UIDevice
+    private let vendorIdentifierProvider: VendorIdentifierProviding
 
-    init(_ identifierStorage: IdentifierStorable, device: UIDevice) {
+    init(
+        identifierStorage: IdentifierStorable,
+        vendorIdentifierProvider: VendorIdentifierProviding
+    ) {
         self.identifierStorage = identifierStorage
-        self.device = device
-    }
-
-    init() {
-        self.init(KeychainIdentifierStorage(), device: .current)
+        self.vendorIdentifierProvider = vendorIdentifierProvider
     }
 }
 
@@ -25,17 +24,28 @@ extension IdentifierHarvester: IdentifierHarvesting {
     var vendorIdentifier: UUID? {
         if let vendorIdentifier = identifierStorage.loadIdentifier(for: vendorIdentifierKey) {
             return vendorIdentifier
-        } else {
-            guard let vendorIdentifier = legacyVendorIdentifier ?? device.identifierForVendor else {
-                return nil
-            }
-
+        } else if let vendorIdentifier = legacyVendorIdentifier ?? systemVendorIdentifier {
             identifierStorage.storeIdentifier(vendorIdentifier, for: vendorIdentifierKey)
             return vendorIdentifier
         }
+
+        return nil
+    }
+}
+
+extension IdentifierHarvester {
+    init() {
+        self.init(
+            identifierStorage: KeychainIdentifierStorage(),
+            vendorIdentifierProvider: UIDevice.current
+        )
     }
 
     private var legacyVendorIdentifier: UUID? {
         identifierStorage.loadIdentifier(for: vendorIdentifierLegacyKey)
+    }
+
+    private var systemVendorIdentifier: UUID? {
+        vendorIdentifierProvider.identifierForVendor
     }
 }

@@ -1,13 +1,14 @@
+import Foundation
+
 @testable import FingerprintJS
 
 final class IdentifierStorableSpy: IdentifierStorable {
-    var storeIdentifierInputs: [String: UUID] = [:]
+    private(set) var storeIdentifierCallCount: Int = .zero
+    private(set) var loadIdentifierCallCount: Int = .zero
 
-    var loadIdentifierReturnValue: UUID? = nil
+    private(set) var storeIdentifierInputs: [String: UUID] = [:]
+
     var loadIdentifierReturnDictionary: [String: UUID] = [:]
-
-    var storeIdentifierCallCount: Int = .zero
-    var loadIdentifierCallCount: Int = .zero
 
     func storeIdentifier(_ identifier: UUID, for key: String) {
         storeIdentifierInputs[key] = identifier
@@ -16,9 +17,6 @@ final class IdentifierStorableSpy: IdentifierStorable {
 
     func loadIdentifier(for key: String) -> UUID? {
         loadIdentifierCallCount += 1
-        guard let loadIdentifierReturnValue = loadIdentifierReturnValue else {
-            return loadIdentifierReturnDictionary[key]
-        }
-        return loadIdentifierReturnValue
+        return loadIdentifierReturnDictionary[key]
     }
 }

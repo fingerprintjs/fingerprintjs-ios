@@ -32,6 +32,8 @@
 		6A1D1143280F1B6600566F75 /* DeviceInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1D1142280F1B6600566F75 /* DeviceInfoProvider.swift */; };
 		6A23866328042DFB002D09F3 /* DocumentsDirectoryAttributesProvidingMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A23866228042DFB002D09F3 /* DocumentsDirectoryAttributesProvidingMock.swift */; };
 		6A2E484A29630DB200753ACD /* IdentifierStorableSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2E484929630DB200753ACD /* IdentifierStorableSpy.swift */; };
+		6A2E484E2963355B00753ACD /* VendorIdentifierProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2E484D2963355B00753ACD /* VendorIdentifierProviding.swift */; };
+		6A2E4850296336AC00753ACD /* VendorIdentifierProvidingSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2E484F296336AC00753ACD /* VendorIdentifierProvidingSpy.swift */; };
 		6A3BB827280588FD00D2EBB9 /* OSInfoHarvesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3BB826280588FD00D2EBB9 /* OSInfoHarvesterTests.swift */; };
 		6A3BB82928058B4900D2EBB9 /* IdentifierHarvesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3BB82828058B4900D2EBB9 /* IdentifierHarvesterTests.swift */; };
 		6A44A31928CF8FAF0026DCD8 /* SHA256HashingFunctionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A44A31828CF8FAF0026DCD8 /* SHA256HashingFunctionTests.swift */; };
@@ -103,6 +105,8 @@
 		6A1D1142280F1B6600566F75 /* DeviceInfoProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoProvider.swift; sourceTree = "<group>"; };
 		6A23866228042DFB002D09F3 /* DocumentsDirectoryAttributesProvidingMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsDirectoryAttributesProvidingMock.swift; sourceTree = "<group>"; };
 		6A2E484929630DB200753ACD /* IdentifierStorableSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierStorableSpy.swift; sourceTree = "<group>"; };
+		6A2E484D2963355B00753ACD /* VendorIdentifierProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorIdentifierProviding.swift; sourceTree = "<group>"; };
+		6A2E484F296336AC00753ACD /* VendorIdentifierProvidingSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorIdentifierProvidingSpy.swift; sourceTree = "<group>"; };
 		6A3BB826280588FD00D2EBB9 /* OSInfoHarvesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSInfoHarvesterTests.swift; sourceTree = "<group>"; };
 		6A3BB82828058B4900D2EBB9 /* IdentifierHarvesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierHarvesterTests.swift; sourceTree = "<group>"; };
 		6A44A31828CF8FAF0026DCD8 /* SHA256HashingFunctionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHA256HashingFunctionTests.swift; sourceTree = "<group>"; };
@@ -196,6 +200,7 @@
 				159E0BDA294107AE00E2C38A /* CellularServiceInfoProvidingSpy.swift */,
 				159E0BDC294108E900E2C38A /* CarrierInfoProvidingSpy.swift */,
 				6A2E484929630DB200753ACD /* IdentifierStorableSpy.swift */,
+				6A2E484F296336AC00753ACD /* VendorIdentifierProvidingSpy.swift */,
 			);
 			path = Spies;
 			sourceTree = "<group>";
@@ -250,6 +255,23 @@
 			children = (
 				159E0BD42940D41600E2C38A /* CarrierInfoProviding.swift */,
 				159E0BD62940D66600E2C38A /* CellularServiceInfoProviding.swift */,
+			);
+			path = Providers;
+			sourceTree = "<group>";
+		};
+		6A2E484B2963352000753ACD /* IdentifierHarvester */ = {
+			isa = PBXGroup;
+			children = (
+				6A2E484C2963354B00753ACD /* Providers */,
+				6A82A1A127D8965D007C023F /* IdentifierHarvester.swift */,
+			);
+			path = IdentifierHarvester;
+			sourceTree = "<group>";
+		};
+		6A2E484C2963354B00753ACD /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				6A2E484D2963355B00753ACD /* VendorIdentifierProviding.swift */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -330,12 +352,12 @@
 		6A82A19827D76BFE007C023F /* Harvesters */ = {
 			isa = PBXGroup;
 			children = (
+				6A2E484B2963352000753ACD /* IdentifierHarvester */,
 				159E0BD02940D2FD00E2C38A /* CellularNetworkInfoHarvester */,
 				159E0BBC293A5DB100E2C38A /* OSInfoHarvester */,
 				159E0BC6293F795E00E2C38A /* HardwareInfoHarvester */,
 				159E0BAF292D17E500E2C38A /* AppInfoHarvester */,
 				6A7D016327FB31940037E190 /* DataExchange */,
-				6A82A1A127D8965D007C023F /* IdentifierHarvester.swift */,
 			);
 			path = Harvesters;
 			sourceTree = "<group>";
@@ -548,6 +570,7 @@
 				159E0BD72940D66600E2C38A /* CellularServiceInfoProviding.swift in Sources */,
 				6A9B7CB627E7AC55002B9939 /* CGSize+CustomStringConvertible.swift in Sources */,
 				6A9B7CB027E36F66002B9939 /* CompoundTreeBuilder.swift in Sources */,
+				6A2E484E2963355B00753ACD /* VendorIdentifierProviding.swift in Sources */,
 				6A82A1A027D79618007C023F /* SystemControlFlag.swift in Sources */,
 				159E0BAA292CD1C600E2C38A /* AppInfoHarvester.swift in Sources */,
 				6A9B7CB427E7AB6D002B9939 /* FingerprintFunction.swift in Sources */,
@@ -592,6 +615,7 @@
 				159E0BC1293A6C6F00E2C38A /* TimeZoneInfoProvidingSpy.swift in Sources */,
 				159E0BDB294107AE00E2C38A /* CellularServiceInfoProvidingSpy.swift in Sources */,
 				6A2E484A29630DB200753ACD /* IdentifierStorableSpy.swift in Sources */,
+				6A2E4850296336AC00753ACD /* VendorIdentifierProvidingSpy.swift in Sources */,
 				6AC362B228042B7C00C4768A /* SystemControlMock.swift in Sources */,
 				159E0BAE292D149700E2C38A /* AppInfoHarvesterTests.swift in Sources */,
 				159E0BDD294108E900E2C38A /* CarrierInfoProvidingSpy.swift in Sources */,
