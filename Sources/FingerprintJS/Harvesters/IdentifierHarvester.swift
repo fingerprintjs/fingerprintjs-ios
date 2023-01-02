@@ -4,8 +4,10 @@ protocol IdentifierHarvesting {
     var vendorIdentifier: UUID? { get }
 }
 
-class IdentifierHarvester {
-    private let vendorIdentifierKey = "vendorIdentifier"
+struct IdentifierHarvester {
+    private let vendorIdentifierLegacyKey = "vendorIdentifier"
+    private let vendorIdentifierKey = "id.vendor"
+
     private let identifierStorage: IdentifierStorable
     private let device: UIDevice
 
@@ -14,8 +16,8 @@ class IdentifierHarvester {
         self.device = device
     }
 
-    convenience init() {
-        self.init(KeychainIdentifierStorage(), device: UIDevice.current)
+    init() {
+        self.init(KeychainIdentifierStorage(), device: .current)
     }
 }
 
@@ -24,12 +26,16 @@ extension IdentifierHarvester: IdentifierHarvesting {
         if let vendorIdentifier = identifierStorage.loadIdentifier(for: vendorIdentifierKey) {
             return vendorIdentifier
         } else {
-            guard let vendorIdentifier = device.identifierForVendor else {
+            guard let vendorIdentifier = legacyVendorIdentifier ?? device.identifierForVendor else {
                 return nil
             }
 
             identifierStorage.storeIdentifier(vendorIdentifier, for: vendorIdentifierKey)
             return vendorIdentifier
         }
+    }
+
+    private var legacyVendorIdentifier: UUID? {
+        identifierStorage.loadIdentifier(for: vendorIdentifierLegacyKey)
     }
 }
