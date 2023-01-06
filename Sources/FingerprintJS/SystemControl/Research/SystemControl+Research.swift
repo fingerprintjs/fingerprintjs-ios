@@ -1,3 +1,5 @@
+import Foundation
+
 extension SystemControl {
     var allNames: [String] {
         [
@@ -287,8 +289,6 @@ extension SystemControl {
             "kern.vm_page_speculative_q_age_ms",
             "kern.vm_max_delayed_work_limit",
             "kern.vm_max_batch",
-            "kern.bootsessionuuid",
-            "kern.bootuuid",
             "kern.apfsprebootuuid",
             "kern.imgsrcdev",
             "kern.imgsrcinfo",
@@ -1687,7 +1687,7 @@ extension SystemControl {
         ]
     }
 
-    func dumpAllNames() -> [String] {
+    public func dumpAllNames() -> [String] {
         return allNames.compactMap { name in
             do {
                 var keysBufferSize = Int(CTL_MAXNAME)
@@ -1705,8 +1705,10 @@ extension SystemControl {
                 }
 
                 let value: Int32 = try getSystemValue(.custom(keysBuffer))
+                print("\(name) - \(keysBuffer): \(value)")
                 return "\(name) - \(keysBuffer): \(value)"
             } catch {
+                // print("\(name): ERROR \(error.localizedDescription)")
                 return "\(name): ERROR \(error.localizedDescription)"
             }
         }

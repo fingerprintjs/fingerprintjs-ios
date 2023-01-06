@@ -15,7 +15,9 @@ protocol SystemControlValuesProviding {
     var boottime: Date? { get }
 }
 
-class SystemControl {
+public class SystemControl {
+    public init() {}
+
     // Get a system value through a sysctl call
     func getSystemValue<T>(_ flag: SystemControlFlag) throws -> T {
         var size = 0
@@ -44,7 +46,7 @@ class SystemControl {
         }
     }
 
-    private func getSystemString(_ flag: SystemControlFlag) throws -> String {
+    public func getSystemString(_ flag: SystemControlFlag) throws -> String {
         var size = 0
 
         var sysctlFlags = flag.sysctlFlags
@@ -58,6 +60,28 @@ class SystemControl {
                 return String(cString: &cString)
             } else {
                 throw SystemControlError.genericError(errno: errno)
+            }
+        } else {
+            throw SystemControlError.genericError(errno: errno)
+        }
+    }
+
+    public func getSystemValue<T: Subsystem>(_ subsystem: T) throws -> T.ValueType? {
+        var size = 0
+
+        var sysctlFlags = subsystem.flags
+        let flagCount = u_int(sysctlFlags.count)
+
+        var errno = sysctl(&sysctlFlags, flagCount, nil, &size, nil, 0)
+        if errno == ERR_SUCCESS {
+            return try T.ValueType.withMemoryInput(of: size) { valuePtr in
+                var rr = valuePtr
+                errno = sysctl(&sysctlFlags, flagCount, &rr, &size, nil, 0)
+                if errno == ERR_SUCCESS {
+                    return T.ValueType.loadValue(&rr, bytes: size)
+                } else {
+                    throw SystemControlError.genericError(errno: errno)
+                }
             }
         } else {
             throw SystemControlError.genericError(errno: errno)

@@ -1,6 +1,6 @@
 import Foundation
 
-enum SystemControlFlag {
+public enum SystemControlFlag {
     // MARK: Device HW Information
     case hardwareModel
     case hardwareMachine
