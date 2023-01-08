@@ -19,7 +19,7 @@ struct OSInfoHarvester {
     private let timeZoneInfoProvider: TimeZoneInfoProviding
 
     init(
-        systemControl: SystemControlValuesProviding = SystemControl(),
+        systemControl: SystemControlValuesProviding = SystemControlValuesProvider(),
         timeZoneInfoProvider: TimeZoneInfoProviding = TimeZone.current
     ) {
         self.systemControl = systemControl

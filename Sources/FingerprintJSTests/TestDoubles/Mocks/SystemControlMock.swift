@@ -1,6 +1,8 @@
+import Foundation
+
 @testable import FingerprintJS
 
-class SystemControlMock: SystemControlValuesProviding {
+final class SystemControlMock: SystemControlValuesProviding {
     var mockHardwareModel: String?
     var mockHardwareMachine: String?
     var mockOsRelease: String?
@@ -12,7 +14,8 @@ class SystemControlMock: SystemControlValuesProviding {
     var mockPhysicalMemory: Int32?
     var mockCpuCount: Int32?
     var mockCpuFrequency: Int32?
-    var mockBoottime: Date?
+    var mockBootTime: Date?
+    var mockHostname: String?
 
     var hardwareModel: String? {
         return mockHardwareModel
@@ -58,7 +61,11 @@ class SystemControlMock: SystemControlValuesProviding {
         return mockCpuFrequency
     }
 
-    var boottime: Date? {
-        return mockBoottime
+    var bootTime: Date? {
+        return mockBootTime
+    }
+
+    var hostname: String? {
+        return mockHostname
     }
 }

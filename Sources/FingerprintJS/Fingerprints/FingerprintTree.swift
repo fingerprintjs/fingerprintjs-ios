@@ -11,6 +11,6 @@ public struct FingerprintTree {
 
     /// Computed fingerprint for the current node in its `String` form
     public var fingerprint: String {
-        return String.from(fingerprintData)
+        String(data: fingerprintData, encoding: .ascii) ?? "Undefined"
     }
 }
