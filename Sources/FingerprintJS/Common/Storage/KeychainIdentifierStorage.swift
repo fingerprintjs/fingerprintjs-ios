@@ -32,7 +32,7 @@ class KeychainIdentifierStorage {
             [
                 kSecClass: kSecClassGenericPassword as CFString,
                 kSecValueData: stringData,
-                kSecAttrAccessible: kSecAttrAccessibleWhenUnlockedThisDeviceOnly as CFString,
+                kSecAttrAccessible: kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly as CFString,
                 kSecAttrService: fingerPrintJSService as CFString,
                 kSecAttrAccount: key as CFString,
             ] as CFDictionary
