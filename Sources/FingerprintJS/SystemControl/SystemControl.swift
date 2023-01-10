@@ -12,11 +12,12 @@ protocol SystemControlValuesProviding {
     var physicalMemory: Int32? { get }
     var cpuCount: Int32? { get }
     var cpuFrequency: Int32? { get }
+    var boottime: Date? { get }
 }
 
 class SystemControl {
     // Get a system value through a sysctl call
-    private func getSystemValue<T: DataConvertible>(_ flag: SystemControlFlag) throws -> T {
+    func getSystemValue<T>(_ flag: SystemControlFlag) throws -> T {
         var size = 0
 
         var sysctlFlags = flag.sysctlFlags
@@ -24,15 +25,37 @@ class SystemControl {
 
         var errno = sysctl(&sysctlFlags, flagCount, nil, &size, nil, 0)
         if errno == ERR_SUCCESS {
-            let valueMemory = UnsafeMutableRawPointer.allocate(byteCount: size, alignment: 1)
+            let valueMemory = UnsafeMutableRawPointer.allocate(
+                byteCount: size,
+                alignment: MemoryLayout<T>.alignment
+            )
             defer {
                 valueMemory.deallocate()
             }
 
             errno = sysctl(&sysctlFlags, flagCount, valueMemory, &size, nil, 0)
             if errno == ERR_SUCCESS {
-                let data = Data(bytesNoCopy: valueMemory, count: size, deallocator: .none)
-                return T.from(data)
+                return valueMemory.load(as: T.self)
+            } else {
+                throw SystemControlError.genericError(errno: errno)
+            }
+        } else {
+            throw SystemControlError.genericError(errno: errno)
+        }
+    }
+
+    private func getSystemString(_ flag: SystemControlFlag) throws -> String {
+        var size = 0
+
+        var sysctlFlags = flag.sysctlFlags
+        let flagCount = u_int(sysctlFlags.count)
+
+        var errno = sysctl(&sysctlFlags, flagCount, nil, &size, nil, 0)
+        if errno == ERR_SUCCESS {
+            var cString = [CChar](repeating: 0, count: size)
+            errno = sysctl(&sysctlFlags, flagCount, &cString, &size, nil, 0)
+            if errno == ERR_SUCCESS {
+                return String(cString: &cString)
             } else {
                 throw SystemControlError.genericError(errno: errno)
             }
@@ -44,27 +67,27 @@ class SystemControl {
 
 extension SystemControl: SystemControlValuesProviding {
     var hardwareModel: String? {
-        return try? getSystemValue(.hardwareModel)
+        return try? getSystemString(.hardwareModel)
     }
 
     var hardwareMachine: String? {
-        return try? getSystemValue(.hardwareMachine)
+        return try? getSystemString(.hardwareMachine)
     }
 
     var osRelease: String? {
-        return try? getSystemValue(.osRelease)
+        return try? getSystemString(.osRelease)
     }
 
     var osType: String? {
-        return try? getSystemValue(.osType)
+        return try? getSystemString(.osType)
     }
 
     var osVersion: String? {
-        return try? getSystemValue(.osVersion)
+        return try? getSystemString(.osVersion)
     }
 
     var kernelVersion: String? {
-        return try? getSystemValue(.kernelVersion)
+        return try? getSystemString(.kernelVersion)
     }
 
     var osBuild: Int32? {
@@ -85,5 +108,12 @@ extension SystemControl: SystemControlValuesProviding {
 
     var cpuFrequency: Int32? {
         return try? getSystemValue(.cpuFrequency)
+    }
+
+    var boottime: Date? {
+        guard let boottime: timeval = try? getSystemValue(.boottime) else {
+            return nil
+        }
+        return Date(timeIntervalSince1970: Double(boottime.tv_sec))
     }
 }

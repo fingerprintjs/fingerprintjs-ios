@@ -16,6 +16,10 @@ enum SystemControlFlag {
     case osVersion
     case kernelVersion
 
+    case boottime
+
+    case custom([Int32])
+
     var sysctlFlags: [Int32] {
         switch self {
         case .hardwareMachine:
@@ -40,6 +44,10 @@ enum SystemControlFlag {
             return [CTL_HW, HW_NCPU]
         case .physicalMemory:
             return [CTL_HW, HW_PHYSMEM]
+        case .boottime:
+            return [CTL_KERN, KERN_BOOTTIME]
+        case .custom(let sysctlFlags):
+            return sysctlFlags
         }
     }
 }

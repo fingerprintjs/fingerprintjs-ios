@@ -12,6 +12,7 @@ class SystemControlMock: SystemControlValuesProviding {
     var mockPhysicalMemory: Int32?
     var mockCpuCount: Int32?
     var mockCpuFrequency: Int32?
+    var mockBoottime: Date?
 
     var hardwareModel: String? {
         return mockHardwareModel
@@ -55,5 +56,9 @@ class SystemControlMock: SystemControlValuesProviding {
 
     var cpuFrequency: Int32? {
         return mockCpuFrequency
+    }
+
+    var boottime: Date? {
+        return mockBoottime
     }
 }

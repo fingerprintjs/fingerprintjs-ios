@@ -31,6 +31,9 @@
 		6A1D11412809DBDE00566F75 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1D11402809DBDE00566F75 /* DeviceInfo.swift */; };
 		6A1D1143280F1B6600566F75 /* DeviceInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1D1142280F1B6600566F75 /* DeviceInfoProvider.swift */; };
 		6A23866328042DFB002D09F3 /* DocumentsDirectoryAttributesProvidingMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A23866228042DFB002D09F3 /* DocumentsDirectoryAttributesProvidingMock.swift */; };
+		6A2E484A29630DB200753ACD /* IdentifierStorableSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2E484929630DB200753ACD /* IdentifierStorableSpy.swift */; };
+		6A2E484E2963355B00753ACD /* VendorIdentifierProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2E484D2963355B00753ACD /* VendorIdentifierProviding.swift */; };
+		6A2E4850296336AC00753ACD /* VendorIdentifierProvidingSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2E484F296336AC00753ACD /* VendorIdentifierProvidingSpy.swift */; };
 		6A3BB827280588FD00D2EBB9 /* OSInfoHarvesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3BB826280588FD00D2EBB9 /* OSInfoHarvesterTests.swift */; };
 		6A3BB82928058B4900D2EBB9 /* IdentifierHarvesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3BB82828058B4900D2EBB9 /* IdentifierHarvesterTests.swift */; };
 		6A44A31928CF8FAF0026DCD8 /* SHA256HashingFunctionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A44A31828CF8FAF0026DCD8 /* SHA256HashingFunctionTests.swift */; };
@@ -46,6 +49,9 @@
 		6A82A1AD27DA09E3007C023F /* SHA256FingerprintFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A1AC27DA09E3007C023F /* SHA256FingerprintFunction.swift */; };
 		6A82A1AF27DA0A19007C023F /* Digest+StringOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A1AE27DA0A18007C023F /* Digest+StringOutput.swift */; };
 		6A82A1B327DB5941007C023F /* OSInfoHarvester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A1B227DB5941007C023F /* OSInfoHarvester.swift */; };
+		6A89B218296655D800107604 /* Subsystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A89B217296655D800107604 /* Subsystem.swift */; };
+		6A89B21A296659D800107604 /* DumpAllValuesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A89B219296659D800107604 /* DumpAllValuesTests.swift */; };
+		6A89B21D296781D200107604 /* SystemControl+Research.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A89B21C296781D200107604 /* SystemControl+Research.swift */; };
 		6A9B7CA527E206EC002B9939 /* DataConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9B7CA427E206EC002B9939 /* DataConvertible.swift */; };
 		6A9B7CA727E207A9002B9939 /* SystemControlError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9B7CA627E207A9002B9939 /* SystemControlError.swift */; };
 		6A9B7CAA27E214C5002B9939 /* FingerprinterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9B7CA927E214C5002B9939 /* FingerprinterFactory.swift */; };
@@ -101,6 +107,9 @@
 		6A1D11402809DBDE00566F75 /* DeviceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
 		6A1D1142280F1B6600566F75 /* DeviceInfoProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoProvider.swift; sourceTree = "<group>"; };
 		6A23866228042DFB002D09F3 /* DocumentsDirectoryAttributesProvidingMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsDirectoryAttributesProvidingMock.swift; sourceTree = "<group>"; };
+		6A2E484929630DB200753ACD /* IdentifierStorableSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierStorableSpy.swift; sourceTree = "<group>"; };
+		6A2E484D2963355B00753ACD /* VendorIdentifierProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorIdentifierProviding.swift; sourceTree = "<group>"; };
+		6A2E484F296336AC00753ACD /* VendorIdentifierProvidingSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorIdentifierProvidingSpy.swift; sourceTree = "<group>"; };
 		6A3BB826280588FD00D2EBB9 /* OSInfoHarvesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSInfoHarvesterTests.swift; sourceTree = "<group>"; };
 		6A3BB82828058B4900D2EBB9 /* IdentifierHarvesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierHarvesterTests.swift; sourceTree = "<group>"; };
 		6A44A31828CF8FAF0026DCD8 /* SHA256HashingFunctionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHA256HashingFunctionTests.swift; sourceTree = "<group>"; };
@@ -117,6 +126,9 @@
 		6A82A1AC27DA09E3007C023F /* SHA256FingerprintFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHA256FingerprintFunction.swift; sourceTree = "<group>"; };
 		6A82A1AE27DA0A18007C023F /* Digest+StringOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Digest+StringOutput.swift"; sourceTree = "<group>"; };
 		6A82A1B227DB5941007C023F /* OSInfoHarvester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSInfoHarvester.swift; sourceTree = "<group>"; };
+		6A89B217296655D800107604 /* Subsystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subsystem.swift; sourceTree = "<group>"; };
+		6A89B219296659D800107604 /* DumpAllValuesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DumpAllValuesTests.swift; sourceTree = "<group>"; };
+		6A89B21C296781D200107604 /* SystemControl+Research.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SystemControl+Research.swift"; sourceTree = "<group>"; };
 		6A9B7CA427E206EC002B9939 /* DataConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataConvertible.swift; sourceTree = "<group>"; };
 		6A9B7CA627E207A9002B9939 /* SystemControlError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemControlError.swift; sourceTree = "<group>"; };
 		6A9B7CA927E214C5002B9939 /* FingerprinterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerprinterFactory.swift; sourceTree = "<group>"; };
@@ -193,6 +205,8 @@
 				159E0BCE293FA8F400E2C38A /* DeviceIdentificationInfoProvidingSpy.swift */,
 				159E0BDA294107AE00E2C38A /* CellularServiceInfoProvidingSpy.swift */,
 				159E0BDC294108E900E2C38A /* CarrierInfoProvidingSpy.swift */,
+				6A2E484929630DB200753ACD /* IdentifierStorableSpy.swift */,
+				6A2E484F296336AC00753ACD /* VendorIdentifierProvidingSpy.swift */,
 			);
 			path = Spies;
 			sourceTree = "<group>";
@@ -247,6 +261,23 @@
 			children = (
 				159E0BD42940D41600E2C38A /* CarrierInfoProviding.swift */,
 				159E0BD62940D66600E2C38A /* CellularServiceInfoProviding.swift */,
+			);
+			path = Providers;
+			sourceTree = "<group>";
+		};
+		6A2E484B2963352000753ACD /* IdentifierHarvester */ = {
+			isa = PBXGroup;
+			children = (
+				6A2E484C2963354B00753ACD /* Providers */,
+				6A82A1A127D8965D007C023F /* IdentifierHarvester.swift */,
+			);
+			path = IdentifierHarvester;
+			sourceTree = "<group>";
+		};
+		6A2E484C2963354B00753ACD /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				6A2E484D2963355B00753ACD /* VendorIdentifierProviding.swift */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -327,12 +358,12 @@
 		6A82A19827D76BFE007C023F /* Harvesters */ = {
 			isa = PBXGroup;
 			children = (
+				6A2E484B2963352000753ACD /* IdentifierHarvester */,
 				159E0BD02940D2FD00E2C38A /* CellularNetworkInfoHarvester */,
 				159E0BBC293A5DB100E2C38A /* OSInfoHarvester */,
 				159E0BC6293F795E00E2C38A /* HardwareInfoHarvester */,
 				159E0BAF292D17E500E2C38A /* AppInfoHarvester */,
 				6A7D016327FB31940037E190 /* DataExchange */,
-				6A82A1A127D8965D007C023F /* IdentifierHarvester.swift */,
 			);
 			path = Harvesters;
 			sourceTree = "<group>";
@@ -340,6 +371,8 @@
 		6A82A19C27D775A2007C023F /* SystemControl */ = {
 			isa = PBXGroup;
 			children = (
+				6A89B21B2967809200107604 /* Research */,
+				6A89B216296655C800107604 /* Subsystems */,
 				6A82A19D27D775AF007C023F /* SystemControl.swift */,
 				6A82A19F27D79618007C023F /* SystemControlFlag.swift */,
 				6A9B7CA427E206EC002B9939 /* DataConvertible.swift */,
@@ -365,6 +398,22 @@
 				6A82A1AE27DA0A18007C023F /* Digest+StringOutput.swift */,
 			);
 			path = Hashing;
+			sourceTree = "<group>";
+		};
+		6A89B216296655C800107604 /* Subsystems */ = {
+			isa = PBXGroup;
+			children = (
+				6A89B217296655D800107604 /* Subsystem.swift */,
+			);
+			path = Subsystems;
+			sourceTree = "<group>";
+		};
+		6A89B21B2967809200107604 /* Research */ = {
+			isa = PBXGroup;
+			children = (
+				6A89B21C296781D200107604 /* SystemControl+Research.swift */,
+			);
+			path = Research;
 			sourceTree = "<group>";
 		};
 		6A9B7CA827E21493002B9939 /* Library */ = {
@@ -394,6 +443,8 @@
 			isa = PBXGroup;
 			children = (
 				159E0BAD292D149700E2C38A /* AppInfoHarvesterTests.swift */,
+				6A89B219296659D800107604 /* DumpAllValuesTests.swift */,
+				6A44A31828CF8FAF0026DCD8 /* SHA256HashingFunctionTests.swift */,
 				6AB7146027EB612D004BBCF3 /* FingerprintTreeCalculatorTests.swift */,
 				6AC362AA280013E200C4768A /* HardwareInfoHarvesterTests.swift */,
 				6A3BB82828058B4900D2EBB9 /* IdentifierHarvesterTests.swift */,
@@ -543,8 +594,10 @@
 				6A1D1143280F1B6600566F75 /* DeviceInfoProvider.swift in Sources */,
 				6A9B7CBA27E7B3D4002B9939 /* FingerprintTreeCalculator.swift in Sources */,
 				159E0BD72940D66600E2C38A /* CellularServiceInfoProviding.swift in Sources */,
+				6A89B21D296781D200107604 /* SystemControl+Research.swift in Sources */,
 				6A9B7CB627E7AC55002B9939 /* CGSize+CustomStringConvertible.swift in Sources */,
 				6A9B7CB027E36F66002B9939 /* CompoundTreeBuilder.swift in Sources */,
+				6A2E484E2963355B00753ACD /* VendorIdentifierProviding.swift in Sources */,
 				6A82A1A027D79618007C023F /* SystemControlFlag.swift in Sources */,
 				159E0BAA292CD1C600E2C38A /* AppInfoHarvester.swift in Sources */,
 				6A9B7CB427E7AB6D002B9939 /* FingerprintFunction.swift in Sources */,
@@ -569,6 +622,7 @@
 				6A82A19B27D76CD6007C023F /* HardwareInfoHarvester.swift in Sources */,
 				159E0BCB293F7A3F00E2C38A /* DeviceIdentificationInfoProviding.swift in Sources */,
 				159E0BD52940D41600E2C38A /* CarrierInfoProviding.swift in Sources */,
+				6A89B218296655D800107604 /* Subsystem.swift in Sources */,
 				6A82A1A427D897F2007C023F /* KeychainIdentifierStorage.swift in Sources */,
 				6A9B7CAA27E214C5002B9939 /* FingerprinterFactory.swift in Sources */,
 				159E0BC9293F79B000E2C38A /* CPUInfoProviding.swift in Sources */,
@@ -588,6 +642,9 @@
 				6AC362AB280013E200C4768A /* HardwareInfoHarvesterTests.swift in Sources */,
 				159E0BC1293A6C6F00E2C38A /* TimeZoneInfoProvidingSpy.swift in Sources */,
 				159E0BDB294107AE00E2C38A /* CellularServiceInfoProvidingSpy.swift in Sources */,
+				6A2E484A29630DB200753ACD /* IdentifierStorableSpy.swift in Sources */,
+				6A2E4850296336AC00753ACD /* VendorIdentifierProvidingSpy.swift in Sources */,
+				6A89B21A296659D800107604 /* DumpAllValuesTests.swift in Sources */,
 				6AC362B228042B7C00C4768A /* SystemControlMock.swift in Sources */,
 				159E0BAE292D149700E2C38A /* AppInfoHarvesterTests.swift in Sources */,
 				159E0BDD294108E900E2C38A /* CarrierInfoProvidingSpy.swift in Sources */,
