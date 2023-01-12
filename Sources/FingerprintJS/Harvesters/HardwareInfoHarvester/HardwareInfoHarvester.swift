@@ -57,7 +57,7 @@ struct HardwareInfoHarvester {
         self.init(
             device: UIDevice.current,
             screen: UIScreen.main,
-            systemControl: SystemControl(),
+            systemControl: SystemControlValuesProvider(),
             fileManager: FileManager.default,
             processInfo: ProcessInfo.processInfo
         )

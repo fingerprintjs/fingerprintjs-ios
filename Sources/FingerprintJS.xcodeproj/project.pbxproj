@@ -37,19 +37,23 @@
 		6A3BB827280588FD00D2EBB9 /* OSInfoHarvesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3BB826280588FD00D2EBB9 /* OSInfoHarvesterTests.swift */; };
 		6A3BB82928058B4900D2EBB9 /* IdentifierHarvesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3BB82828058B4900D2EBB9 /* IdentifierHarvesterTests.swift */; };
 		6A44A31928CF8FAF0026DCD8 /* SHA256HashingFunctionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A44A31828CF8FAF0026DCD8 /* SHA256HashingFunctionTests.swift */; };
+		6A47E06B296CA9E300717C22 /* VirtualMemorySubsystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A47E068296CA9E300717C22 /* VirtualMemorySubsystem.swift */; };
+		6A47E06C296CA9E300717C22 /* KernelSubsystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A47E069296CA9E300717C22 /* KernelSubsystem.swift */; };
+		6A47E06D296CA9E300717C22 /* HardwareSubsystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A47E06A296CA9E300717C22 /* HardwareSubsystem.swift */; };
+		6A47E06F296CA9EC00717C22 /* RawPointerConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A47E06E296CA9EC00717C22 /* RawPointerConvertible.swift */; };
+		6A47E072296CA9FA00717C22 /* SystemControlValueDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A47E070296CA9FA00717C22 /* SystemControlValueDefinition.swift */; };
+		6A47E073296CA9FA00717C22 /* SystemControlValuesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A47E071296CA9FA00717C22 /* SystemControlValuesProvider.swift */; };
 		6A7D016527FB31A30037E190 /* DiskSpaceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D016427FB31A30037E190 /* DiskSpaceInfo.swift */; };
 		6A82A18327D65DB4007C023F /* FingerprintJS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A82A17A27D65DB4007C023F /* FingerprintJS.framework */; };
 		6A82A19727D74D5B007C023F /* Fingerprintable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A19627D74D5B007C023F /* Fingerprintable.swift */; };
 		6A82A19B27D76CD6007C023F /* HardwareInfoHarvester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A19A27D76CD6007C023F /* HardwareInfoHarvester.swift */; };
 		6A82A19E27D775AF007C023F /* SystemControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A19D27D775AF007C023F /* SystemControl.swift */; };
-		6A82A1A027D79618007C023F /* SystemControlFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A19F27D79618007C023F /* SystemControlFlag.swift */; };
 		6A82A1A227D8965D007C023F /* IdentifierHarvester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A1A127D8965D007C023F /* IdentifierHarvester.swift */; };
 		6A82A1A427D897F2007C023F /* KeychainIdentifierStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A1A327D897F2007C023F /* KeychainIdentifierStorage.swift */; };
 		6A82A1A627D89817007C023F /* IdentifierStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A1A527D89817007C023F /* IdentifierStorable.swift */; };
 		6A82A1AD27DA09E3007C023F /* SHA256FingerprintFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A1AC27DA09E3007C023F /* SHA256FingerprintFunction.swift */; };
 		6A82A1AF27DA0A19007C023F /* Digest+StringOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A1AE27DA0A18007C023F /* Digest+StringOutput.swift */; };
 		6A82A1B327DB5941007C023F /* OSInfoHarvester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A1B227DB5941007C023F /* OSInfoHarvester.swift */; };
-		6A9B7CA527E206EC002B9939 /* DataConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9B7CA427E206EC002B9939 /* DataConvertible.swift */; };
 		6A9B7CA727E207A9002B9939 /* SystemControlError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9B7CA627E207A9002B9939 /* SystemControlError.swift */; };
 		6A9B7CAA27E214C5002B9939 /* FingerprinterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9B7CA927E214C5002B9939 /* FingerprinterFactory.swift */; };
 		6A9B7CAC27E214DA002B9939 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9B7CAB27E214DA002B9939 /* Configuration.swift */; };
@@ -110,20 +114,24 @@
 		6A3BB826280588FD00D2EBB9 /* OSInfoHarvesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSInfoHarvesterTests.swift; sourceTree = "<group>"; };
 		6A3BB82828058B4900D2EBB9 /* IdentifierHarvesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierHarvesterTests.swift; sourceTree = "<group>"; };
 		6A44A31828CF8FAF0026DCD8 /* SHA256HashingFunctionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHA256HashingFunctionTests.swift; sourceTree = "<group>"; };
+		6A47E068296CA9E300717C22 /* VirtualMemorySubsystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualMemorySubsystem.swift; sourceTree = "<group>"; };
+		6A47E069296CA9E300717C22 /* KernelSubsystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KernelSubsystem.swift; sourceTree = "<group>"; };
+		6A47E06A296CA9E300717C22 /* HardwareSubsystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HardwareSubsystem.swift; sourceTree = "<group>"; };
+		6A47E06E296CA9EC00717C22 /* RawPointerConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawPointerConvertible.swift; sourceTree = "<group>"; };
+		6A47E070296CA9FA00717C22 /* SystemControlValueDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemControlValueDefinition.swift; sourceTree = "<group>"; };
+		6A47E071296CA9FA00717C22 /* SystemControlValuesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemControlValuesProvider.swift; sourceTree = "<group>"; };
 		6A7D016427FB31A30037E190 /* DiskSpaceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskSpaceInfo.swift; sourceTree = "<group>"; };
 		6A82A17A27D65DB4007C023F /* FingerprintJS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FingerprintJS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A82A18227D65DB4007C023F /* FingerprintJSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FingerprintJSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A82A19627D74D5B007C023F /* Fingerprintable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fingerprintable.swift; sourceTree = "<group>"; };
 		6A82A19A27D76CD6007C023F /* HardwareInfoHarvester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardwareInfoHarvester.swift; sourceTree = "<group>"; };
 		6A82A19D27D775AF007C023F /* SystemControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemControl.swift; sourceTree = "<group>"; };
-		6A82A19F27D79618007C023F /* SystemControlFlag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemControlFlag.swift; sourceTree = "<group>"; };
 		6A82A1A127D8965D007C023F /* IdentifierHarvester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierHarvester.swift; sourceTree = "<group>"; };
 		6A82A1A327D897F2007C023F /* KeychainIdentifierStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainIdentifierStorage.swift; sourceTree = "<group>"; };
 		6A82A1A527D89817007C023F /* IdentifierStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierStorable.swift; sourceTree = "<group>"; };
 		6A82A1AC27DA09E3007C023F /* SHA256FingerprintFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHA256FingerprintFunction.swift; sourceTree = "<group>"; };
 		6A82A1AE27DA0A18007C023F /* Digest+StringOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Digest+StringOutput.swift"; sourceTree = "<group>"; };
 		6A82A1B227DB5941007C023F /* OSInfoHarvester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSInfoHarvester.swift; sourceTree = "<group>"; };
-		6A9B7CA427E206EC002B9939 /* DataConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataConvertible.swift; sourceTree = "<group>"; };
 		6A9B7CA627E207A9002B9939 /* SystemControlError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemControlError.swift; sourceTree = "<group>"; };
 		6A9B7CA927E214C5002B9939 /* FingerprinterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerprinterFactory.swift; sourceTree = "<group>"; };
 		6A9B7CAB27E214DA002B9939 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
@@ -365,10 +373,12 @@
 		6A82A19C27D775A2007C023F /* SystemControl */ = {
 			isa = PBXGroup;
 			children = (
+				6A89B216296655C800107604 /* Subsystems */,
 				6A82A19D27D775AF007C023F /* SystemControl.swift */,
-				6A82A19F27D79618007C023F /* SystemControlFlag.swift */,
-				6A9B7CA427E206EC002B9939 /* DataConvertible.swift */,
 				6A9B7CA627E207A9002B9939 /* SystemControlError.swift */,
+				6A47E070296CA9FA00717C22 /* SystemControlValueDefinition.swift */,
+				6A47E071296CA9FA00717C22 /* SystemControlValuesProvider.swift */,
+				6A47E06E296CA9EC00717C22 /* RawPointerConvertible.swift */,
 			);
 			path = SystemControl;
 			sourceTree = "<group>";
@@ -390,6 +400,16 @@
 				6A82A1AE27DA0A18007C023F /* Digest+StringOutput.swift */,
 			);
 			path = Hashing;
+			sourceTree = "<group>";
+		};
+		6A89B216296655C800107604 /* Subsystems */ = {
+			isa = PBXGroup;
+			children = (
+				6A47E06A296CA9E300717C22 /* HardwareSubsystem.swift */,
+				6A47E069296CA9E300717C22 /* KernelSubsystem.swift */,
+				6A47E068296CA9E300717C22 /* VirtualMemorySubsystem.swift */,
+			);
+			path = Subsystems;
 			sourceTree = "<group>";
 		};
 		6A9B7CA827E21493002B9939 /* Library */ = {
@@ -563,15 +583,16 @@
 			files = (
 				159E0BAC292CE35700E2C38A /* UserInterfaceStyle.swift in Sources */,
 				159E0BC3293E4B7A00E2C38A /* LocaleInfoProviding.swift in Sources */,
+				6A47E06B296CA9E300717C22 /* VirtualMemorySubsystem.swift in Sources */,
 				6AC03F4B27DE574100EF9DB7 /* DeviceInfoItem.swift in Sources */,
 				6A9B7CB227E7AA8E002B9939 /* DeviceInfoTreeProvider.swift in Sources */,
 				6A1D1143280F1B6600566F75 /* DeviceInfoProvider.swift in Sources */,
 				6A9B7CBA27E7B3D4002B9939 /* FingerprintTreeCalculator.swift in Sources */,
 				159E0BD72940D66600E2C38A /* CellularServiceInfoProviding.swift in Sources */,
+				6A47E06F296CA9EC00717C22 /* RawPointerConvertible.swift in Sources */,
 				6A9B7CB627E7AC55002B9939 /* CGSize+CustomStringConvertible.swift in Sources */,
 				6A9B7CB027E36F66002B9939 /* CompoundTreeBuilder.swift in Sources */,
 				6A2E484E2963355B00753ACD /* VendorIdentifierProviding.swift in Sources */,
-				6A82A1A027D79618007C023F /* SystemControlFlag.swift in Sources */,
 				159E0BAA292CD1C600E2C38A /* AppInfoHarvester.swift in Sources */,
 				6A9B7CB427E7AB6D002B9939 /* FingerprintFunction.swift in Sources */,
 				159E0BB2292D18B800E2C38A /* UserInterfaceTraitsProviding.swift in Sources */,
@@ -586,17 +607,20 @@
 				6A9B7CA727E207A9002B9939 /* SystemControlError.swift in Sources */,
 				6A9B7CAC27E214DA002B9939 /* Configuration.swift in Sources */,
 				159E0BCD293F7A7900E2C38A /* ScreenInfoProviding.swift in Sources */,
+				6A47E073296CA9FA00717C22 /* SystemControlValuesProvider.swift in Sources */,
 				6A7D016527FB31A30037E190 /* DiskSpaceInfo.swift in Sources */,
-				6A9B7CA527E206EC002B9939 /* DataConvertible.swift in Sources */,
 				6A82A19727D74D5B007C023F /* Fingerprintable.swift in Sources */,
+				6A47E06D296CA9E300717C22 /* HardwareSubsystem.swift in Sources */,
 				6A82A1AD27DA09E3007C023F /* SHA256FingerprintFunction.swift in Sources */,
 				6A82A1AF27DA0A19007C023F /* Digest+StringOutput.swift in Sources */,
 				6A9B7CAE27E220F1002B9939 /* Fingerprinter.swift in Sources */,
 				6A82A19B27D76CD6007C023F /* HardwareInfoHarvester.swift in Sources */,
+				6A47E06C296CA9E300717C22 /* KernelSubsystem.swift in Sources */,
 				159E0BCB293F7A3F00E2C38A /* DeviceIdentificationInfoProviding.swift in Sources */,
 				159E0BD52940D41600E2C38A /* CarrierInfoProviding.swift in Sources */,
 				6A82A1A427D897F2007C023F /* KeychainIdentifierStorage.swift in Sources */,
 				6A9B7CAA27E214C5002B9939 /* FingerprinterFactory.swift in Sources */,
+				6A47E072296CA9FA00717C22 /* SystemControlValueDefinition.swift in Sources */,
 				159E0BC9293F79B000E2C38A /* CPUInfoProviding.swift in Sources */,
 				6A1D11412809DBDE00566F75 /* DeviceInfo.swift in Sources */,
 				6A82A1A227D8965D007C023F /* IdentifierHarvester.swift in Sources */,

@@ -1,89 +1,37 @@
 import Foundation
 
-protocol SystemControlValuesProviding {
-    var hardwareModel: String? { get }
-    var hardwareMachine: String? { get }
-    var osRelease: String? { get }
-    var osType: String? { get }
-    var osVersion: String? { get }
-    var kernelVersion: String? { get }
-    var osBuild: Int32? { get }
-    var memorySize: Int64? { get }
-    var physicalMemory: Int32? { get }
-    var cpuCount: Int32? { get }
-    var cpuFrequency: Int32? { get }
+protocol SystemControlValuesRetrieving {
+    func getSystemValue<T: SystemControlValueDefining>(_ definition: T) throws -> T.ValueType
 }
 
-class SystemControl {
-    // Get a system value through a sysctl call
-    private func getSystemValue<T: DataConvertible>(_ flag: SystemControlFlag) throws -> T {
+struct SystemControl: SystemControlValuesRetrieving {
+    func getSystemValue<T: SystemControlValueDefining>(_ definition: T) throws -> T.ValueType {
         var size = 0
 
-        var sysctlFlags = flag.sysctlFlags
+        var sysctlFlags = definition.flags
         let flagCount = u_int(sysctlFlags.count)
 
         var errno = sysctl(&sysctlFlags, flagCount, nil, &size, nil, 0)
-        if errno == ERR_SUCCESS {
-            let valueMemory = UnsafeMutableRawPointer.allocate(byteCount: size, alignment: 1)
-            defer {
-                valueMemory.deallocate()
-            }
-
-            errno = sysctl(&sysctlFlags, flagCount, valueMemory, &size, nil, 0)
-            if errno == ERR_SUCCESS {
-                let data = Data(bytesNoCopy: valueMemory, count: size, deallocator: .none)
-                return T.from(data)
-            } else {
-                throw SystemControlError.genericError(errno: errno)
-            }
-        } else {
+        guard errno == ERR_SUCCESS else {
             throw SystemControlError.genericError(errno: errno)
         }
-    }
-}
 
-extension SystemControl: SystemControlValuesProviding {
-    var hardwareModel: String? {
-        return try? getSystemValue(.hardwareModel)
-    }
+        return try T.ValueType.withRawMemory(of: size) {
+            var mutableMemPtr = $0
+            errno = sysctl(
+                &sysctlFlags,
+                flagCount,
+                &mutableMemPtr,
+                &size,
+                nil,
+                0
+            )
 
-    var hardwareMachine: String? {
-        return try? getSystemValue(.hardwareMachine)
-    }
+            guard errno == ERR_SUCCESS else {
+                throw SystemControlError.genericError(errno: errno)
+            }
 
-    var osRelease: String? {
-        return try? getSystemValue(.osRelease)
-    }
-
-    var osType: String? {
-        return try? getSystemValue(.osType)
-    }
-
-    var osVersion: String? {
-        return try? getSystemValue(.osVersion)
-    }
-
-    var kernelVersion: String? {
-        return try? getSystemValue(.kernelVersion)
-    }
-
-    var osBuild: Int32? {
-        return try? getSystemValue(.osBuild)
-    }
-
-    var memorySize: Int64? {
-        return try? getSystemValue(.memSize)
-    }
-
-    var physicalMemory: Int32? {
-        return try? getSystemValue(.physicalMemory)
-    }
-
-    var cpuCount: Int32? {
-        return try? getSystemValue(.cpuCount)
-    }
-
-    var cpuFrequency: Int32? {
-        return try? getSystemValue(.cpuFrequency)
+            return T.ValueType.loadValue(&mutableMemPtr)
+        }
     }
 }
