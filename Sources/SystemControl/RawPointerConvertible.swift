@@ -1,6 +1,6 @@
 import Foundation
 
-protocol RawPointerConvertible {
+public protocol RawPointerConvertible {
     static func loadValue(_ from: UnsafeMutableRawPointer) -> Self
     static func withRawMemory(
         of size: Int,
@@ -9,7 +9,7 @@ protocol RawPointerConvertible {
 }
 
 extension RawPointerConvertible {
-    static func withRawMemory(
+    public static func withRawMemory(
         of size: Int,
         body: (UnsafeMutableRawPointer) throws -> Self
     ) rethrows -> Self {
@@ -25,7 +25,7 @@ extension RawPointerConvertible {
         return try body(&mem)
     }
 
-    static func loadValue(_ from: UnsafeMutableRawPointer) -> Self {
+    public static func loadValue(_ from: UnsafeMutableRawPointer) -> Self {
         from.load(as: Self.self)
     }
 }
@@ -36,7 +36,7 @@ extension Int32: RawPointerConvertible {}
 extension Int64: RawPointerConvertible {}
 
 extension String: RawPointerConvertible {
-    static func withRawMemory(
+    public static func withRawMemory(
         of size: Int,
         body: (UnsafeMutableRawPointer) throws -> Self
     ) rethrows -> Self {
@@ -46,7 +46,7 @@ extension String: RawPointerConvertible {
         }
     }
 
-    static func loadValue(_ from: UnsafeMutableRawPointer) -> String {
+    public static func loadValue(_ from: UnsafeMutableRawPointer) -> String {
         let chars = from.assumingMemoryBound(to: CChar.self)
         return String(cString: chars)
     }

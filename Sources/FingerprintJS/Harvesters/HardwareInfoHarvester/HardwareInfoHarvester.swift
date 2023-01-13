@@ -1,3 +1,4 @@
+import SystemControl
 import UIKit
 
 protocol HardwareInfoHarvesting {

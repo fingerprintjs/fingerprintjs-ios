@@ -1,4 +1,5 @@
 import Foundation
+import SystemControl
 
 protocol OSInfoHarvesting {
     var osTimeZoneIdentifier: String { get }

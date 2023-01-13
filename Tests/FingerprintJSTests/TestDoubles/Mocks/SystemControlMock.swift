@@ -1,6 +1,7 @@
 import Foundation
 
 @testable import FingerprintJS
+@testable import SystemControl
 
 final class SystemControlMock: SystemControlValuesProviding {
     var mockHardwareModel: String?

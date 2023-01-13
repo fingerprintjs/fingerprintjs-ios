@@ -1,11 +1,13 @@
 import Foundation
 
-protocol SystemControlValuesRetrieving {
+public protocol SystemControlValuesRetrieving {
     func getSystemValue<T: SystemControlValueDefining>(_ definition: T) throws -> T.ValueType
 }
 
-struct SystemControl: SystemControlValuesRetrieving {
-    func getSystemValue<T: SystemControlValueDefining>(_ definition: T) throws -> T.ValueType {
+public struct SystemControl: SystemControlValuesRetrieving {
+    public init() {}
+
+    public func getSystemValue<T: SystemControlValueDefining>(_ definition: T) throws -> T.ValueType {
         var size = 0
 
         var sysctlFlags = definition.flags

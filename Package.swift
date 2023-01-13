@@ -9,14 +9,24 @@ let package = Package(
         .library(
             name: "FingerprintJS",
             targets: ["FingerprintJS"]
-        )
+        ),
+        .library(
+            name: "SystemControl",
+            targets: ["SystemControl"]
+        ),
     ],
     targets: [
-        .target(name: "FingerprintJS"),
+        .target(
+            name: "FingerprintJS",
+            dependencies: ["SystemControl"]
+        ),
+        .target(
+            name: "SystemControl",
+            dependencies: []
+        ),
         .testTarget(
             name: "FingerprintJSTests",
-            dependencies: ["FingerprintJS"],
-            path: "./Sources/FingerprintJSTests"
+            dependencies: ["FingerprintJS"]
         ),
     ]
 )
