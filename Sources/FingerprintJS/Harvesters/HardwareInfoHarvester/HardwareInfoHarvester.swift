@@ -1,5 +1,8 @@
-import SystemControl
 import UIKit
+
+#if !COCOAPODS
+import SystemControl
+#endif
 
 protocol HardwareInfoHarvesting {
     /// The user-assigned device name.

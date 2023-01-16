@@ -1,5 +1,8 @@
 import Foundation
+
+#if !COCOAPODS
 import SystemControl
+#endif
 
 protocol OSInfoHarvesting {
     var osTimeZoneIdentifier: String { get }

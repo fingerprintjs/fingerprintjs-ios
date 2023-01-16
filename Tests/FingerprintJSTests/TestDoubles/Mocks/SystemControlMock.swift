@@ -1,7 +1,10 @@
 import Foundation
 
 @testable import FingerprintJS
+
+#if !COCOAPODS
 @testable import SystemControl
+#endif
 
 final class SystemControlMock: SystemControlValuesProviding {
     var mockHardwareModel: String?
