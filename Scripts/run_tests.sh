@@ -16,7 +16,7 @@ cd "$PROJECT_ROOT_PATH"
 
 function xcodebuild_test() {
     xcodebuild test \
-        -project "Sources/$XCODE_PROJECT" \
+        -project "$XCODE_PROJECT" \
         -scheme "$XCODE_SCHEME" \
         -destination platform="$1"
 }

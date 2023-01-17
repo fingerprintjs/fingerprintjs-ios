@@ -1,11 +1,13 @@
 import Foundation
 
-protocol SystemControlValuesRetrieving {
+public protocol SystemControlValuesRetrieving {
     func getSystemValue<T: SystemControlValueDefining>(_ definition: T) throws -> T.ValueType
 }
 
-struct SystemControl: SystemControlValuesRetrieving {
-    func getSystemValue<T: SystemControlValueDefining>(_ definition: T) throws -> T.ValueType {
+public struct SystemControl: SystemControlValuesRetrieving {
+    public init() {}
+
+    public func getSystemValue<T: SystemControlValueDefining>(_ definition: T) throws -> T.ValueType {
         var size = 0
 
         var sysctlFlags = definition.flags
@@ -13,7 +15,7 @@ struct SystemControl: SystemControlValuesRetrieving {
 
         var errno = sysctl(&sysctlFlags, flagCount, nil, &size, nil, 0)
         guard errno == ERR_SUCCESS else {
-            throw SystemControlError.genericError(errno: errno)
+            throw SystemControlError(errno: errno)
         }
 
         return try T.ValueType.withRawMemory(of: size) {
@@ -28,7 +30,7 @@ struct SystemControl: SystemControlValuesRetrieving {
             )
 
             guard errno == ERR_SUCCESS else {
-                throw SystemControlError.genericError(errno: errno)
+                throw SystemControlError(errno: errno)
             }
 
             return T.ValueType.loadValue(&mutableMemPtr)

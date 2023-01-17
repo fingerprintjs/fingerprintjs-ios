@@ -1,5 +1,9 @@
 import UIKit
 
+#if !COCOAPODS
+import SystemControl
+#endif
+
 protocol HardwareInfoHarvesting {
     /// The user-assigned device name.
     var deviceName: String { get }
