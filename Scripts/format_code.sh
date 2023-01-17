@@ -23,7 +23,7 @@ fi
 
 cd "$PROJECT_ROOT_PATH"
 
-SWIFT_FORMAT_INPUT_FILENAMES="./Package.swift ./Sources"
+SWIFT_FORMAT_INPUT_FILENAMES="./Package.swift ./Sources ./Tests"
 
 if [[ $# -ne 0 ]]
 then

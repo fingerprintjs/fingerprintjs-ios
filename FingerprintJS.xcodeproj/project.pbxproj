@@ -620,7 +620,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\n\n\"${PROJECT_DIR}/../Scripts/lint_code.sh\"\n";
+			shellScript = "set -e\n\n\"${PROJECT_DIR}/Scripts/lint_code.sh\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
