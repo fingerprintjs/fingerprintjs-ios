@@ -1,3 +1,3 @@
-public enum SystemControlError: Error {
-    case genericError(errno: Int32)
+public struct SystemControlError: Error, Equatable {
+    public let errno: Int32
 }
