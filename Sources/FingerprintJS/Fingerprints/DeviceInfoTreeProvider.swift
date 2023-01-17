@@ -49,7 +49,7 @@ extension AppInfoHarvester: DeviceInfoTreeProvider {
                     value: .info(localeIdentifier)
                 ),
                 stabilityLevel: .unique,
-                versions: [.v3]
+                versions: .since(.v3)
             ),
             AnnotatedInfoItem(
                 item: DeviceInfoItem(
@@ -57,7 +57,7 @@ extension AppInfoHarvester: DeviceInfoTreeProvider {
                     value: .info(userInterfaceStyle.rawValue)
                 ),
                 stabilityLevel: .unique,
-                versions: [.v3]
+                versions: .since(.v3)
             ),
         ]
     }
@@ -80,7 +80,7 @@ extension HardwareInfoHarvester: DeviceInfoTreeProvider {
                     value: .info(deviceName)
                 ),
                 stabilityLevel: .unique,
-                versions: [.v3]
+                versions: .since(.v3)
             ),
             AnnotatedInfoItem(
                 item: DeviceInfoItem(
@@ -88,7 +88,7 @@ extension HardwareInfoHarvester: DeviceInfoTreeProvider {
                     value: .info(deviceType)
                 ),
                 stabilityLevel: .stable,
-                versions: [.v1, .v2, .v3]
+                versions: .all
             ),
             AnnotatedInfoItem(
                 item: DeviceInfoItem(
@@ -96,7 +96,7 @@ extension HardwareInfoHarvester: DeviceInfoTreeProvider {
                     value: .info(deviceModel)
                 ),
                 stabilityLevel: .stable,
-                versions: [.v1, .v2, .v3]
+                versions: .all
             ),
             AnnotatedInfoItem(
                 item: DeviceInfoItem(
@@ -104,7 +104,7 @@ extension HardwareInfoHarvester: DeviceInfoTreeProvider {
                     value: .info(displayResolution.description)
                 ),
                 stabilityLevel: .stable,
-                versions: [.v1, .v2, .v3]
+                versions: .all
             ),
             AnnotatedInfoItem(
                 item: DeviceInfoItem(
@@ -112,7 +112,7 @@ extension HardwareInfoHarvester: DeviceInfoTreeProvider {
                     value: .info(displayScale.description)
                 ),
                 stabilityLevel: .stable,
-                versions: [.v3]
+                versions: .since(.v3)
             ),
             AnnotatedInfoItem(
                 item: DeviceInfoItem(
@@ -120,7 +120,7 @@ extension HardwareInfoHarvester: DeviceInfoTreeProvider {
                     value: .info(memorySize)
                 ),
                 stabilityLevel: .stable,
-                versions: [.v1, .v2, .v3]
+                versions: .all
             ),
             AnnotatedInfoItem(
                 item: DeviceInfoItem(
@@ -128,7 +128,7 @@ extension HardwareInfoHarvester: DeviceInfoTreeProvider {
                     value: .info(cpuCount)
                 ),
                 stabilityLevel: .stable,
-                versions: [.v1, .v2, .v3]
+                versions: .all
             ),
             AnnotatedInfoItem(
                 DeviceInfoItem(
@@ -136,7 +136,7 @@ extension HardwareInfoHarvester: DeviceInfoTreeProvider {
                     value: .info(String(describing: freeDiskSpace))
                 ),
                 stabilityLevel: .unique,
-                versions: [.v2, .v3]
+                versions: .since(.v2)
             ),
             AnnotatedInfoItem(
                 DeviceInfoItem(
@@ -144,7 +144,7 @@ extension HardwareInfoHarvester: DeviceInfoTreeProvider {
                     value: .info(String(describing: totalDiskSpace))
                 ),
                 stabilityLevel: .stable,
-                versions: [.v2, .v3]
+                versions: .since(.v2)
             ),
             AnnotatedInfoItem(
                 DeviceInfoItem(
@@ -153,7 +153,7 @@ extension HardwareInfoHarvester: DeviceInfoTreeProvider {
 
                 ),
                 stabilityLevel: .unique,
-                versions: []
+                versions: .since(.v4)
             ),
         ]
     }
@@ -176,7 +176,7 @@ extension IdentifierHarvester: DeviceInfoTreeProvider {
                     value: .info(vendorIdentifier?.uuidString ?? "No identifier")
                 ),
                 stabilityLevel: .optimal,
-                versions: [.v1, .v2, .v3]
+                versions: .all
             )
         ]
     }
@@ -199,7 +199,7 @@ extension OSInfoHarvester: DeviceInfoTreeProvider {
                     value: .info(osTimeZoneIdentifier)
                 ),
                 stabilityLevel: .optimal,
-                versions: [.v3]
+                versions: .since(.v3)
             ),
             AnnotatedInfoItem(
                 item: DeviceInfoItem(
@@ -207,7 +207,7 @@ extension OSInfoHarvester: DeviceInfoTreeProvider {
                     value: .info(osRelease)
                 ),
                 stabilityLevel: .optimal,
-                versions: [.v1, .v2, .v3]
+                versions: .all
             ),
             AnnotatedInfoItem(
                 item: DeviceInfoItem(
@@ -215,7 +215,7 @@ extension OSInfoHarvester: DeviceInfoTreeProvider {
                     value: .info(osType)
                 ),
                 stabilityLevel: .optimal,
-                versions: [.v1, .v2, .v3]
+                versions: .all
             ),
             AnnotatedInfoItem(
                 item: DeviceInfoItem(
@@ -223,7 +223,7 @@ extension OSInfoHarvester: DeviceInfoTreeProvider {
                     value: .info(osVersion)
                 ),
                 stabilityLevel: .optimal,
-                versions: [.v1, .v2, .v3]
+                versions: .all
             ),
             AnnotatedInfoItem(
                 item: DeviceInfoItem(
@@ -231,7 +231,7 @@ extension OSInfoHarvester: DeviceInfoTreeProvider {
                     value: .info(kernelVersion)
                 ),
                 stabilityLevel: .optimal,
-                versions: [.v1, .v2, .v3]
+                versions: .all
             ),
             AnnotatedInfoItem(
                 DeviceInfoItem(
@@ -240,7 +240,7 @@ extension OSInfoHarvester: DeviceInfoTreeProvider {
 
                 ),
                 stabilityLevel: .optimal,
-                versions: []
+                versions: .since(.v4)
             ),
         ]
     }
@@ -264,7 +264,7 @@ extension CellularNetworkInfoHarvester: DeviceInfoTreeProvider {
                     value: .info(mobileCountryCodes.description)
                 ),
                 stabilityLevel: .unique,
-                versions: [.v3]
+                versions: .since(.v3)
             ),
             AnnotatedInfoItem(
                 item: DeviceInfoItem(
@@ -272,7 +272,7 @@ extension CellularNetworkInfoHarvester: DeviceInfoTreeProvider {
                     value: .info(mobileNetworkCodes.description)
                 ),
                 stabilityLevel: .unique,
-                versions: [.v3]
+                versions: .since(.v3)
             ),
         ]
     }

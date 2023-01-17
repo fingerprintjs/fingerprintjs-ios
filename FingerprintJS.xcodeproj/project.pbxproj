@@ -47,6 +47,7 @@
 		6A3BB82928058B4900D2EBB9 /* IdentifierHarvesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3BB82828058B4900D2EBB9 /* IdentifierHarvesterTests.swift */; };
 		6A44A31928CF8FAF0026DCD8 /* SHA256HashingFunctionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A44A31828CF8FAF0026DCD8 /* SHA256HashingFunctionTests.swift */; };
 		6A69CA8029789C0C005AF63F /* SubsystemValueRetrievalIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A69CA7F29789C09005AF63F /* SubsystemValueRetrievalIntegrationTests.swift */; };
+		6A53B7332976ECD400DD6872 /* FingerprintJSVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A53B7322976ECD400DD6872 /* FingerprintJSVersion.swift */; };
 		6A7D016527FB31A30037E190 /* DiskSpaceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D016427FB31A30037E190 /* DiskSpaceInfo.swift */; };
 		6A82A18327D65DB4007C023F /* FingerprintJS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A82A17A27D65DB4007C023F /* FingerprintJS.framework */; };
 		6A82A19727D74D5B007C023F /* Fingerprintable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A19627D74D5B007C023F /* Fingerprintable.swift */; };
@@ -140,6 +141,7 @@
 		6A47E070296CA9FA00717C22 /* SystemControlValueDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemControlValueDefinition.swift; sourceTree = "<group>"; };
 		6A47E071296CA9FA00717C22 /* SystemControlValuesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemControlValuesProvider.swift; sourceTree = "<group>"; };
 		6A69CA7F29789C09005AF63F /* SubsystemValueRetrievalIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubsystemValueRetrievalIntegrationTests.swift; sourceTree = "<group>"; };
+		6A53B7322976ECD400DD6872 /* FingerprintJSVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerprintJSVersion.swift; sourceTree = "<group>"; };
 		6A7D016427FB31A30037E190 /* DiskSpaceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskSpaceInfo.swift; sourceTree = "<group>"; };
 		6A82A17A27D65DB4007C023F /* FingerprintJS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FingerprintJS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A82A18227D65DB4007C023F /* FingerprintJSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FingerprintJSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -485,6 +487,7 @@
 				6A9B7CAD27E220F1002B9939 /* Fingerprinter.swift */,
 				6A9B7CA927E214C5002B9939 /* FingerprinterFactory.swift */,
 				15D7C629294A6B010025CE74 /* FingerprintStabilityLevel.swift */,
+				6A53B7322976ECD400DD6872 /* FingerprintJSVersion.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -745,6 +748,7 @@
 				159E0BCD293F7A7900E2C38A /* ScreenInfoProviding.swift in Sources */,
 				6A7D016527FB31A30037E190 /* DiskSpaceInfo.swift in Sources */,
 				6A82A19727D74D5B007C023F /* Fingerprintable.swift in Sources */,
+				6A53B7332976ECD400DD6872 /* FingerprintJSVersion.swift in Sources */,
 				6A82A1AD27DA09E3007C023F /* SHA256FingerprintFunction.swift in Sources */,
 				6A82A1AF27DA0A19007C023F /* Digest+StringOutput.swift in Sources */,
 				6A9B7CAE27E220F1002B9939 /* Fingerprinter.swift in Sources */,
