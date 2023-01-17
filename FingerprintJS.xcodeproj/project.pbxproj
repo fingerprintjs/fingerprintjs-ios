@@ -338,17 +338,24 @@
 				6A82A19527D74D23007C023F /* Common */,
 				6A82A19227D65E1C007C023F /* Fingerprints */,
 			);
-			path = FingerprintJS;
+			name = FingerprintJS;
+			path = Sources/FingerprintJS;
 			sourceTree = "<group>";
 		};
 		6A82A18627D65DB4007C023F /* FingerprintJSTests */ = {
 			isa = PBXGroup;
 			children = (
+				159E0BAD292D149700E2C38A /* AppInfoHarvesterTests.swift */,
+				6AB7146027EB612D004BBCF3 /* FingerprintTreeCalculatorTests.swift */,
+				6AC362AA280013E200C4768A /* HardwareInfoHarvesterTests.swift */,
+				6A3BB82828058B4900D2EBB9 /* IdentifierHarvesterTests.swift */,
+				6A3BB826280588FD00D2EBB9 /* OSInfoHarvesterTests.swift */,
+				6A44A31828CF8FAF0026DCD8 /* SHA256HashingFunctionTests.swift */,
+				159E0BD82940DBCB00E2C38A /* CellularNetworkInfoHarvesterTests.swift */,
 				159E0BB3292D194400E2C38A /* TestDoubles */,
-				6AC362AC280013F300C4768A /* Tests */,
 			);
 			name = FingerprintJSTests;
-			path = ../Tests/FingerprintJSTests;
+			path = Tests/FingerprintJSTests;
 			sourceTree = "<group>";
 		};
 		6A82A19227D65E1C007C023F /* Fingerprints */ = {
@@ -397,7 +404,8 @@
 				6A47E071296CA9FA00717C22 /* SystemControlValuesProvider.swift */,
 				6A47E06E296CA9EC00717C22 /* RawPointerConvertible.swift */,
 			);
-			path = SystemControl;
+			name = SystemControl;
+			path = Sources/SystemControl;
 			sourceTree = "<group>";
 		};
 		6A82A1A727D89CB0007C023F /* Storage */ = {
@@ -450,20 +458,6 @@
 				6AC362B128042B7C00C4768A /* SystemControlMock.swift */,
 			);
 			path = Mocks;
-			sourceTree = "<group>";
-		};
-		6AC362AC280013F300C4768A /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				159E0BAD292D149700E2C38A /* AppInfoHarvesterTests.swift */,
-				6AB7146027EB612D004BBCF3 /* FingerprintTreeCalculatorTests.swift */,
-				6AC362AA280013E200C4768A /* HardwareInfoHarvesterTests.swift */,
-				6A3BB82828058B4900D2EBB9 /* IdentifierHarvesterTests.swift */,
-				6A3BB826280588FD00D2EBB9 /* OSInfoHarvesterTests.swift */,
-				6A44A31828CF8FAF0026DCD8 /* SHA256HashingFunctionTests.swift */,
-				159E0BD82940DBCB00E2C38A /* CellularNetworkInfoHarvesterTests.swift */,
-			);
-			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
