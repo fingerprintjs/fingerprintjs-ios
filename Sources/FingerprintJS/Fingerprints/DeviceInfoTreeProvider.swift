@@ -146,6 +146,15 @@ extension HardwareInfoHarvester: DeviceInfoTreeProvider {
                 stabilityLevel: .stable,
                 versions: [.v2, .v3]
             ),
+            AnnotatedInfoItem(
+                DeviceInfoItem(
+                    label: "Device hostname",
+                    value: .info(kernelHostname)
+
+                ),
+                stabilityLevel: .unique,
+                versions: []
+            ),
         ]
     }
 }
@@ -223,6 +232,15 @@ extension OSInfoHarvester: DeviceInfoTreeProvider {
                 ),
                 stabilityLevel: .optimal,
                 versions: [.v1, .v2, .v3]
+            ),
+            AnnotatedInfoItem(
+                DeviceInfoItem(
+                    label: "Boot time",
+                    value: .info(bootTime)
+
+                ),
+                stabilityLevel: .optimal,
+                versions: []
             ),
         ]
     }
