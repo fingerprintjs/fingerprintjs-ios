@@ -30,7 +30,7 @@
 		15D7C62A294A6B010025CE74 /* FingerprintStabilityLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D7C629294A6B010025CE74 /* FingerprintStabilityLevel.swift */; };
 		6A1D11412809DBDE00566F75 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1D11402809DBDE00566F75 /* DeviceInfo.swift */; };
 		6A1D1143280F1B6600566F75 /* DeviceInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1D1142280F1B6600566F75 /* DeviceInfoProvider.swift */; };
-		6A2047FD2971AD19008EC677 /* SystemControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A19D27D775AF007C023F /* SystemControl.swift */; };
+		6A2047FD2971AD19008EC677 /* SystemControlValuesRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A19D27D775AF007C023F /* SystemControlValuesRetriever.swift */; };
 		6A2047FE2971AD19008EC677 /* SystemControlValueDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A47E070296CA9FA00717C22 /* SystemControlValueDefinition.swift */; };
 		6A2047FF2971AD19008EC677 /* SystemControlValuesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A47E071296CA9FA00717C22 /* SystemControlValuesProvider.swift */; };
 		6A2048002971AD19008EC677 /* HardwareSubsystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A47E06A296CA9E300717C22 /* HardwareSubsystem.swift */; };
@@ -133,7 +133,7 @@
 		6A82A18227D65DB4007C023F /* FingerprintJSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FingerprintJSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A82A19627D74D5B007C023F /* Fingerprintable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fingerprintable.swift; sourceTree = "<group>"; };
 		6A82A19A27D76CD6007C023F /* HardwareInfoHarvester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardwareInfoHarvester.swift; sourceTree = "<group>"; };
-		6A82A19D27D775AF007C023F /* SystemControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemControl.swift; sourceTree = "<group>"; };
+		6A82A19D27D775AF007C023F /* SystemControlValuesRetriever.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemControlValuesRetriever.swift; sourceTree = "<group>"; };
 		6A82A1A127D8965D007C023F /* IdentifierHarvester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierHarvester.swift; sourceTree = "<group>"; };
 		6A82A1A327D897F2007C023F /* KeychainIdentifierStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainIdentifierStorage.swift; sourceTree = "<group>"; };
 		6A82A1A527D89817007C023F /* IdentifierStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierStorable.swift; sourceTree = "<group>"; };
@@ -398,7 +398,7 @@
 			isa = PBXGroup;
 			children = (
 				6A89B216296655C800107604 /* Subsystems */,
-				6A82A19D27D775AF007C023F /* SystemControl.swift */,
+				6A82A19D27D775AF007C023F /* SystemControlValuesRetriever.swift */,
 				6A9B7CA627E207A9002B9939 /* SystemControlError.swift */,
 				6A47E070296CA9FA00717C22 /* SystemControlValueDefinition.swift */,
 				6A47E071296CA9FA00717C22 /* SystemControlValuesProvider.swift */,
@@ -630,7 +630,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A2048032971AD19008EC677 /* KernelSubsystem.swift in Sources */,
-				6A2047FD2971AD19008EC677 /* SystemControl.swift in Sources */,
+				6A2047FD2971AD19008EC677 /* SystemControlValuesRetriever.swift in Sources */,
 				6A2047FF2971AD19008EC677 /* SystemControlValuesProvider.swift in Sources */,
 				6A2048022971AD19008EC677 /* RawPointerConvertible.swift in Sources */,
 				6A2048012971AD19008EC677 /* SystemControlError.swift in Sources */,

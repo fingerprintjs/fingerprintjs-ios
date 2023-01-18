@@ -4,7 +4,7 @@ public protocol SystemControlValuesRetrieving {
     func getSystemValue<T: SystemControlValueDefining>(_ definition: T) throws -> T.ValueType
 }
 
-public struct SystemControl: SystemControlValuesRetrieving {
+public struct SystemControlValuesRetriever: SystemControlValuesRetrieving {
     public init() {}
 
     public func getSystemValue<T: SystemControlValueDefining>(_ definition: T) throws -> T.ValueType {

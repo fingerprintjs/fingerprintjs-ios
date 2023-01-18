@@ -3,7 +3,7 @@ import Foundation
 struct HardwareSubsystem {
     private let systemControl: SystemControlValuesRetrieving
 
-    init(systemControl: SystemControlValuesRetrieving = SystemControl()) {
+    init(systemControl: SystemControlValuesRetrieving = SystemControlValuesRetriever()) {
         self.systemControl = systemControl
     }
 }
