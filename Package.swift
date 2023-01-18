@@ -28,5 +28,9 @@ let package = Package(
             name: "FingerprintJSTests",
             dependencies: ["FingerprintJS"]
         ),
+        .testTarget(
+            name: "SystemControlTests",
+            dependencies: ["SystemControl"]
+        ),
     ]
 )
