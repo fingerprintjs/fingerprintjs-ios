@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
   # Name and version
   spec.name         = 'FingerprintJS'
-  spec.version      = '1.2.1'
+  spec.version      = '1.2.2'
 
   # License
   spec.license      = { type: 'MIT', file: 'LICENSE' }
@@ -45,5 +45,8 @@ Pod::Spec.new do |spec|
   # SystemControl
   spec.subspec 'SystemControl' do |sysctl|
     sysctl.source_files = 'Sources/SystemControl/**/*.{swift,h,m}'
+    sysctl.test_spec 'Tests' do |test_spec|
+      test_spec.source_files = 'Tests/SystemControlTests/**/*.{swift,h,m}'
+    end
   end
 end
