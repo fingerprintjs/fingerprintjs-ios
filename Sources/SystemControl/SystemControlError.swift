@@ -1,3 +1,4 @@
-public struct SystemControlError: Error, Equatable {
-    public let errno: Int32
+public enum SystemControlError: Error, Equatable {
+    case osError(Int32)
+    case valueHasZeroSize
 }

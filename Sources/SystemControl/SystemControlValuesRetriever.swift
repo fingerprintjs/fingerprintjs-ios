@@ -4,7 +4,7 @@ public protocol SystemControlValuesRetrieving {
     func getSystemValue<T: SystemControlValueDefining>(_ definition: T) throws -> T.ValueType
 }
 
-public struct SystemControl: SystemControlValuesRetrieving {
+public struct SystemControlValuesRetriever: SystemControlValuesRetrieving {
     public init() {}
 
     public func getSystemValue<T: SystemControlValueDefining>(_ definition: T) throws -> T.ValueType {
@@ -15,25 +15,26 @@ public struct SystemControl: SystemControlValuesRetrieving {
 
         var errno = sysctl(&sysctlFlags, flagCount, nil, &size, nil, 0)
         guard errno == ERR_SUCCESS else {
-            throw SystemControlError(errno: errno)
+            throw SystemControlError.osError(errno)
         }
 
-        return try T.ValueType.withRawMemory(of: size) {
-            var mutableMemPtr = $0
+        guard size > 0 else { throw SystemControlError.valueHasZeroSize }
+
+        return try T.ValueType.withRawMemory(of: size) { mem in
             errno = sysctl(
                 &sysctlFlags,
                 flagCount,
-                &mutableMemPtr,
+                mem,
                 &size,
                 nil,
                 0
             )
 
             guard errno == ERR_SUCCESS else {
-                throw SystemControlError(errno: errno)
+                throw SystemControlError.osError(errno)
             }
 
-            return T.ValueType.loadValue(&mutableMemPtr)
+            return T.ValueType.loadValue(mem, of: size)
         }
     }
 }

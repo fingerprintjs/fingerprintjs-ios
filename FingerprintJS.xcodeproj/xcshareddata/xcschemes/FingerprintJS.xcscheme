@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "1330"
-   version = "1.3">
+   version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
@@ -38,6 +38,12 @@
             ReferencedContainer = "container:FingerprintJS.xcodeproj">
          </BuildableReference>
       </CodeCoverageTargets>
+      <TestPlans>
+         <TestPlanReference
+            reference = "container:Tests/FingerprintJS.xctestplan"
+            default = "YES">
+         </TestPlanReference>
+      </TestPlans>
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -46,6 +52,16 @@
                BlueprintIdentifier = "6A82A18127D65DB4007C023F"
                BuildableName = "FingerprintJSTests.xctest"
                BlueprintName = "FingerprintJSTests"
+               ReferencedContainer = "container:FingerprintJS.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "6A0F5C81297898430068BD4D"
+               BuildableName = "SystemControlTests.xctest"
+               BlueprintName = "SystemControlTests"
                ReferencedContainer = "container:FingerprintJS.xcodeproj">
             </BuildableReference>
          </TestableReference>
