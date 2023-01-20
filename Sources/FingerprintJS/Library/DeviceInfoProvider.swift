@@ -94,12 +94,14 @@ extension DeviceInfoProvider: DeviceInfoProviding {
             memorySize: hardwareInfoHarvester.memorySize,
             physicalMemory: hardwareInfoHarvester.memorySize,
             cpuCount: hardwareInfoHarvester.cpuCount,
+            kernelHostname: hardwareInfoHarvester.kernelHostname,
             osTimeZoneIdentifier: osInfoHarvester.osTimeZoneIdentifier,
             osBuild: osInfoHarvester.osBuild,
             osVersion: osInfoHarvester.osVersion,
             osType: osInfoHarvester.osType,
             osRelease: osInfoHarvester.osRelease,
             kernelVersion: osInfoHarvester.kernelVersion,
+            bootTime: osInfoHarvester.bootTime,
             mobileCountryCodes: cellularNetworkInfoHarvester.mobileCountryCodes,
             mobileNetworkCodes: cellularNetworkInfoHarvester.mobileNetworkCodes
         )
@@ -119,12 +121,14 @@ extension DeviceInfoProvider: DeviceInfoProviding {
             memorySize: hardwareInfoHarvester.memorySize,
             physicalMemory: hardwareInfoHarvester.memorySize,
             cpuCount: hardwareInfoHarvester.cpuCount,
+            kernelHostname: hardwareInfoHarvester.kernelHostname,
             osTimeZoneIdentifier: osInfoHarvester.osTimeZoneIdentifier,
             osBuild: osInfoHarvester.osBuild,
             osVersion: osInfoHarvester.osVersion,
             osType: osInfoHarvester.osType,
             osRelease: osInfoHarvester.osRelease,
             kernelVersion: osInfoHarvester.kernelVersion,
+            bootTime: osInfoHarvester.bootTime,
             mobileCountryCodes: [],
             mobileNetworkCodes: []
         )
