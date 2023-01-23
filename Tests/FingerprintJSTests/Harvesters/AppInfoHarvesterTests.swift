@@ -130,4 +130,44 @@ final class AppInfoHarvesterTests: XCTestCase {
         let itemLabels = itemsTree.children?.map(\.label) ?? []
         XCTAssertTrue(itemLabels.isEmpty)
     }
+
+    func test_givenConfigurationWithVersionFourAndUniqueStabilityLevel_whenBuildTree_thenReturnsExpectedItems() {
+        // given
+        let config = Configuration(version: .v4, stabilityLevel: .unique)
+
+        // when
+        let itemsTree = sut.buildTree(config)
+
+        // then
+        let itemLabels = itemsTree.children?.map(\.label)
+        let expectedItemLabels = [
+            "Locale identifier",
+            "User interface style",
+        ]
+        XCTAssertEqual(expectedItemLabels, itemLabels)
+    }
+
+    func test_givenConfigurationWithVersionFourAndOptimalStabilityLevel_whenBuildTree_thenReturnsNoItems() {
+        // given
+        let config = Configuration(version: .v4, stabilityLevel: .optimal)
+
+        // when
+        let itemsTree = sut.buildTree(config)
+
+        // then
+        let itemLabels = itemsTree.children?.map(\.label) ?? []
+        XCTAssertTrue(itemLabels.isEmpty)
+    }
+
+    func test_givenConfigurationWithVersionFourAndStableStabilityLevel_whenBuildTree_thenReturnsNoItems() {
+        // given
+        let config = Configuration(version: .v4, stabilityLevel: .stable)
+
+        // when
+        let itemsTree = sut.buildTree(config)
+
+        // then
+        let itemLabels = itemsTree.children?.map(\.label) ?? []
+        XCTAssertTrue(itemLabels.isEmpty)
+    }
 }

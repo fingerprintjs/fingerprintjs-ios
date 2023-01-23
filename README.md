@@ -85,10 +85,10 @@ fingerprinter.getFingerprint { fingerprint in
 // note that this example exists only to illustrate the available options
 // and that its outcome mirrors the current default configuration
 
-let configuration = Configuration(version: .v3, stabilityLevel: .optimal, algorithm: .sha256)
+let configuration = Configuration(version: .latest, stabilityLevel: .optimal, algorithm: .sha256)
 let fingerprinter = FingerprinterFactory.getInstance(config)
 
-// fingerprinter uses fingerprint version 3 with OPTIMAL stability level and SHA256 algorithm
+// fingerprinter uses latest fingerprint version with OPTIMAL stability level and SHA256 algorithm
 ```
 
 ### Fingerprint Stability Levels
@@ -113,7 +113,7 @@ struct HitchhikersFunction: FingerprintFunction {
 }
 
 let fingerprintFunction = HitchhikersFunction()
-let config = Configuration(version: .v3, stabilityLevel: .optimal, algorithm: .custom(fingerprintFunction))
+let config = Configuration(version: .latest, stabilityLevel: .optimal, algorithm: .custom(fingerprintFunction))
 let fingerprinter = FingerprinterFactory.getInstance(config)
 
 let fingerprint = await fingerprinter.getFingerprint() // returns "42"

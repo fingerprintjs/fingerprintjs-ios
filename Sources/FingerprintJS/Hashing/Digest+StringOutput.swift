@@ -7,6 +7,6 @@ extension Digest {
     var data: Data { Data(bytes) }
 
     var hexStr: String {
-        bytes.map { String(format: "%02x", $0) }.joined()
+        bytes.map { .init(format: "%02x", $0) }.joined()
     }
 }

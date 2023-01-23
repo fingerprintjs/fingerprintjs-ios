@@ -154,7 +154,7 @@ final class OSInfoHarvesterTests: XCTestCase {
         let itemsTree = sut.buildTree(config)
 
         // then
-        let itemLabels = itemsTree.children?.map { $0.label }
+        let itemLabels = itemsTree.children?.map(\.label)
         let expectedItemLabels = [
             "OS time zone identifier",
             "OS release",
@@ -187,6 +187,58 @@ final class OSInfoHarvesterTests: XCTestCase {
     func test_givenConfigurationWithVersionThreeAndStableStabilityLevel_whenBuildTree_thenReturnsNoItems() {
         // given
         let config = Configuration(version: .v3, stabilityLevel: .stable)
+
+        // when
+        let itemsTree = sut.buildTree(config)
+
+        // then
+        let itemLabels = itemsTree.children?.map(\.label) ?? []
+        XCTAssertTrue(itemLabels.isEmpty)
+    }
+
+    func test_givenConfigurationWithVersionFourAndUniqueStabilityLevel_whenBuildTree_thenReturnsExpectedItems() {
+        // given
+        let config = Configuration(version: .v4, stabilityLevel: .unique)
+
+        // when
+        let itemsTree = sut.buildTree(config)
+
+        // then
+        let itemLabels = itemsTree.children?.map(\.label)
+        let expectedItemLabels = [
+            "OS time zone identifier",
+            "OS release",
+            "OS type",
+            "OS version",
+            "Kernel version",
+            "Boot time",
+        ]
+        XCTAssertEqual(expectedItemLabels, itemLabels)
+    }
+
+    func test_givenConfigurationWithVersionFourAndOptimalStabilityLevel_whenBuildTree_thenReturnsExpectedItems() {
+        // given
+        let config = Configuration(version: .v4, stabilityLevel: .optimal)
+
+        // when
+        let itemsTree = sut.buildTree(config)
+
+        // then
+        let itemLabels = itemsTree.children?.map(\.label)
+        let expectedItemLabels = [
+            "OS time zone identifier",
+            "OS release",
+            "OS type",
+            "OS version",
+            "Kernel version",
+            "Boot time",
+        ]
+        XCTAssertEqual(expectedItemLabels, itemLabels)
+    }
+
+    func test_givenConfigurationWithVersionFourAndStableStabilityLevel_whenBuildTree_thenReturnsNoItems() {
+        // given
+        let config = Configuration(version: .v4, stabilityLevel: .stable)
 
         // when
         let itemsTree = sut.buildTree(config)

@@ -356,4 +356,70 @@ final class HardwareInfoHarvesterTests: XCTestCase {
         ]
         XCTAssertEqual(expectedItemLabels, itemLabels)
     }
+
+    func test_givenConfigurationWithVersionFourAndUniqueStabilityLevel_whenBuildTree_thenReturnsExpectedItems() {
+        // given
+        let config = Configuration(version: .v4, stabilityLevel: .unique)
+
+        // when
+        let itemsTree = sut.buildTree(config)
+
+        // then
+        let itemLabels = itemsTree.children?.map(\.label)
+        let expectedItemLabels = [
+            "Device name",
+            "Device type",
+            "Device model",
+            "Display resolution",
+            "Display scale",
+            "Physical memory",
+            "Processor count",
+            "Free disk space (B)",
+            "Total disk space (B)",
+            "Device hostname",
+        ]
+        XCTAssertEqual(expectedItemLabels, itemLabels)
+    }
+
+    func test_givenConfigurationWithVersionFourAndOptimalStabilityLevel_whenBuildTree_thenReturnsExpectedItems() {
+        // given
+        let config = Configuration(version: .v4, stabilityLevel: .optimal)
+
+        // when
+        let itemsTree = sut.buildTree(config)
+
+        // then
+        let itemLabels = itemsTree.children?.map(\.label)
+        let expectedItemLabels = [
+            "Device type",
+            "Device model",
+            "Display resolution",
+            "Display scale",
+            "Physical memory",
+            "Processor count",
+            "Total disk space (B)",
+        ]
+        XCTAssertEqual(expectedItemLabels, itemLabels)
+    }
+
+    func test_givenConfigurationWithVersionFourAndStableStabilityLevel_whenBuildTree_thenReturnsExpectedItems() {
+        // given
+        let config = Configuration(version: .v4, stabilityLevel: .stable)
+
+        // when
+        let itemsTree = sut.buildTree(config)
+
+        // then
+        let itemLabels = itemsTree.children?.map(\.label)
+        let expectedItemLabels = [
+            "Device type",
+            "Device model",
+            "Display resolution",
+            "Display scale",
+            "Physical memory",
+            "Processor count",
+            "Total disk space (B)",
+        ]
+        XCTAssertEqual(expectedItemLabels, itemLabels)
+    }
 }

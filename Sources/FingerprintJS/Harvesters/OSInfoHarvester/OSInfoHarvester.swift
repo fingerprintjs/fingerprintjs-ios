@@ -16,6 +16,8 @@ protocol OSInfoHarvesting {
     var osRelease: String { get }
 
     var kernelVersion: String { get }
+
+    var bootTime: String { get }
 }
 
 struct OSInfoHarvester {
@@ -57,5 +59,15 @@ extension OSInfoHarvester: OSInfoHarvesting {
             return "Undefined"
         }
         return "\(osBuild)"
+    }
+
+    var bootTime: String {
+        guard let bootTime = systemControl.bootTime else {
+            return "Undefined"
+        }
+
+        let dateFormatter = ISO8601DateFormatter()
+        dateFormatter.formatOptions = .withInternetDateTime
+        return dateFormatter.string(from: bootTime)
     }
 }

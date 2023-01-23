@@ -34,6 +34,9 @@ protocol HardwareInfoHarvesting {
 
     /// Memory (RAM) size in bytes
     var memorySize: String { get }
+
+    /// Kernel hostname obtained through sysctl API
+    var kernelHostname: String { get }
 }
 
 struct HardwareInfoHarvester {
@@ -139,5 +142,9 @@ extension HardwareInfoHarvester: HardwareInfoHarvesting {
 
     var totalDiskSpace: UInt64 {
         return diskSpaceInfo?.totalDiskSpace ?? 0
+    }
+
+    var kernelHostname: String {
+        systemControl.hostname ?? "Undefined"
     }
 }

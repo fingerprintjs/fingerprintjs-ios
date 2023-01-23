@@ -30,6 +30,9 @@ public struct DeviceInfo: Equatable, Encodable {
     public let physicalMemory: String?
     public let cpuCount: String?
 
+    /// Hostname of the device.
+    public let kernelHostname: String
+
     /// The geopolitical region identifier of the operating system's current time zone.
     public let osTimeZoneIdentifier: String
     public let osBuild: String?
@@ -37,6 +40,9 @@ public struct DeviceInfo: Equatable, Encodable {
     public let osType: String?
     public let osRelease: String?
     public let kernelVersion: String?
+
+    /// Last device boot time in RFC3339 format.
+    public let bootTime: String
 
     /// The mobile country codes (MCCs) for the user’s cellular service providers.
     @available(
