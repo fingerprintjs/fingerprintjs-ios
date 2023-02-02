@@ -10,6 +10,7 @@ struct CompoundTreeBuilder {
         ]
         #if os(iOS)
         providers.append(CellularNetworkInfoHarvester())
+        providers.append(LocalAuthenticationInfoHarvester())
         #endif
         self.init(providers: providers)
     }

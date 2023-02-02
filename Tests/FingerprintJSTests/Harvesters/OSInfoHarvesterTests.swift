@@ -247,4 +247,56 @@ final class OSInfoHarvesterTests: XCTestCase {
         let itemLabels = itemsTree.children?.map(\.label) ?? []
         XCTAssertTrue(itemLabels.isEmpty)
     }
+
+    func test_givenConfigurationWithVersionFiveAndUniqueStabilityLevel_whenBuildTree_thenReturnsExpectedItems() {
+        // given
+        let config = Configuration(version: .v5, stabilityLevel: .unique)
+
+        // when
+        let itemsTree = sut.buildTree(config)
+
+        // then
+        let itemLabels = itemsTree.children?.map(\.label)
+        let expectedItemLabels = [
+            "OS time zone identifier",
+            "OS release",
+            "OS type",
+            "OS version",
+            "Kernel version",
+            "Boot time",
+        ]
+        XCTAssertEqual(expectedItemLabels, itemLabels)
+    }
+
+    func test_givenConfigurationWithVersionFiveAndOptimalStabilityLevel_whenBuildTree_thenReturnsExpectedItems() {
+        // given
+        let config = Configuration(version: .v5, stabilityLevel: .optimal)
+
+        // when
+        let itemsTree = sut.buildTree(config)
+
+        // then
+        let itemLabels = itemsTree.children?.map(\.label)
+        let expectedItemLabels = [
+            "OS time zone identifier",
+            "OS release",
+            "OS type",
+            "OS version",
+            "Kernel version",
+            "Boot time",
+        ]
+        XCTAssertEqual(expectedItemLabels, itemLabels)
+    }
+
+    func test_givenConfigurationWithVersionFiveAndStableStabilityLevel_whenBuildTree_thenReturnsNoItems() {
+        // given
+        let config = Configuration(version: .v5, stabilityLevel: .stable)
+
+        // when
+        let itemsTree = sut.buildTree(config)
+
+        // then
+        let itemLabels = itemsTree.children?.map(\.label) ?? []
+        XCTAssertTrue(itemLabels.isEmpty)
+    }
 }

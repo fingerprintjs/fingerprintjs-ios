@@ -3,7 +3,7 @@ import Foundation
 public struct DeviceInfo: Equatable, Encodable {
     public let vendorIdentifier: UUID?
 
-    /// The identifier for the locale representing the user's region settings.
+    /// The identifier for the locale representing the user's language and region settings.
     public let localeIdentifier: String
     /// The style associated with the user interface of the app.
     public let userInterfaceStyle: UserInterfaceStyle
@@ -60,4 +60,8 @@ public struct DeviceInfo: Equatable, Encodable {
     )
     @available(tvOS, unavailable)
     public let mobileNetworkCodes: [String]
+
+    /// The information about the local authentication settings.
+    @available(tvOS, unavailable)
+    public let localAuthentication: LocalAuthenticationInfo
 }

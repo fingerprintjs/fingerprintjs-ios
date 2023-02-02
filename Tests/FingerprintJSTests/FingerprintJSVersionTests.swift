@@ -22,7 +22,7 @@ final class FingerprintJSVersionTests: XCTestCase {
         let versions = [FingerprintJSVersion].since(fromVersion)
 
         // then
-        XCTAssertEqual(versions, [.v2, .v3, .v4])
+        XCTAssertEqual(versions, [.v2, .v3, .v4, .v5])
     }
 
     func test_whenAll_thenReturnsAllVersions() {
@@ -30,7 +30,7 @@ final class FingerprintJSVersionTests: XCTestCase {
         let versions = [FingerprintJSVersion].all
 
         // then
-        XCTAssertEqual(versions, [.v1, .v2, .v3, .v4])
+        XCTAssertEqual(versions, [.v1, .v2, .v3, .v4, .v5])
     }
 
     func test_whenLatest_thenReturnsVersionFour() {
@@ -38,6 +38,6 @@ final class FingerprintJSVersionTests: XCTestCase {
         let latest = FingerprintJSVersion.latest
 
         // then
-        XCTAssertEqual(latest, .v4)
+        XCTAssertEqual(latest, .v5)
     }
 }

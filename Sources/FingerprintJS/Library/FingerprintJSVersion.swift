@@ -8,11 +8,13 @@ public enum FingerprintJSVersion {
     case v3
     /// Version 4.
     case v4
+    /// Version 5.
+    case v5
 }
 
 extension FingerprintJSVersion {
     /// Latest fingerprint version.
-    public static var latest: Self { .v4 }
+    public static var latest: Self { .v5 }
 }
 
 extension FingerprintJSVersion: CaseIterable, Equatable {}

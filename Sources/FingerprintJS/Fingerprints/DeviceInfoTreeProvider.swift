@@ -277,4 +277,43 @@ extension CellularNetworkInfoHarvester: DeviceInfoTreeProvider {
         ]
     }
 }
+
+extension LocalAuthenticationInfoHarvester: DeviceInfoTreeProvider {
+    func buildTree(_ configuration: Configuration) -> DeviceInfoItem {
+        .init(
+            label: "Local Authentication",
+            value: .category,
+            children: itemsMatching(configuration: configuration)
+        )
+    }
+
+    var annotatedItems: [AnnotatedInfoItem] {
+        [
+            AnnotatedInfoItem(
+                item: DeviceInfoItem(
+                    label: "Passcode",
+                    value: .info(isPasscodeEnabled ? "Enabled" : "Disabled")
+                ),
+                stabilityLevel: .optimal,
+                versions: .since(.v5)
+            ),
+            AnnotatedInfoItem(
+                item: DeviceInfoItem(
+                    label: "Biometrics",
+                    value: .info(isBiometricsEnabled ? "Enabled" : "Disabled")
+                ),
+                stabilityLevel: .optimal,
+                versions: .since(.v5)
+            ),
+            AnnotatedInfoItem(
+                item: DeviceInfoItem(
+                    label: "Biometry type",
+                    value: .info(biometryType.description)
+                ),
+                stabilityLevel: .stable,
+                versions: .since(.v5)
+            ),
+        ]
+    }
+}
 #endif
