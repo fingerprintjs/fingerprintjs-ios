@@ -22,6 +22,11 @@ extension LAContext: AuthenticationContextInfoProviding {
 
     var supportedBiometryType: BiometryType {
         if biometryType == .none {
+            // As the LAContext documentation states, the biometryType property is
+            // set only after the canEvaluatePolicy(_:error:) method is called,
+            // and is set no matter what the call returns. The default value of this
+            // property is LABiometryType.none, so with the below method call we make
+            // sure that the property has the correct value.
             _ = canEvaluatePolicy(.deviceOwnerAuthentication, error: nil)
         }
 
