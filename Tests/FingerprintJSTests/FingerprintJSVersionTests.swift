@@ -33,7 +33,7 @@ final class FingerprintJSVersionTests: XCTestCase {
         XCTAssertEqual(versions, [.v1, .v2, .v3, .v4, .v5])
     }
 
-    func test_whenLatest_thenReturnsVersionFour() {
+    func test_whenLatest_thenReturnsVersionFive() {
         // when
         let latest = FingerprintJSVersion.latest
 
