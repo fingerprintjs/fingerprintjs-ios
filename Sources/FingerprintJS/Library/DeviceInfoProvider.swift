@@ -16,6 +16,7 @@ public class DeviceInfoProvider {
     private let osInfoHarvester: OSInfoHarvesting
     #if os(iOS)
     private let cellularNetworkInfoHarvester: CellularNetworkInfoHarvesting
+    private let localAuthenticationInfoHarvester: LocalAuthenticationInfoHarvesting
 
     public convenience init() {
         self.init(
@@ -23,7 +24,8 @@ public class DeviceInfoProvider {
             appInfoHarvester: AppInfoHarvester(),
             hardwareInfoHarvester: HardwareInfoHarvester(),
             osInfoHarvester: OSInfoHarvester(),
-            cellularNetworkInfoHarvester: CellularNetworkInfoHarvester()
+            cellularNetworkInfoHarvester: CellularNetworkInfoHarvester(),
+            localAuthenticationInfoHarvester: LocalAuthenticationInfoHarvester()
         )
     }
 
@@ -32,13 +34,15 @@ public class DeviceInfoProvider {
         appInfoHarvester: AppInfoHarvesting,
         hardwareInfoHarvester: HardwareInfoHarvesting,
         osInfoHarvester: OSInfoHarvesting,
-        cellularNetworkInfoHarvester: CellularNetworkInfoHarvesting
+        cellularNetworkInfoHarvester: CellularNetworkInfoHarvesting,
+        localAuthenticationInfoHarvester: LocalAuthenticationInfoHarvesting
     ) {
         self.identifierHarvester = identifierHarvester
         self.appInfoHarvester = appInfoHarvester
         self.hardwareInfoHarvester = hardwareInfoHarvester
         self.osInfoHarvester = osInfoHarvester
         self.cellularNetworkInfoHarvester = cellularNetworkInfoHarvester
+        self.localAuthenticationInfoHarvester = localAuthenticationInfoHarvester
     }
     #else
     public convenience init() {
@@ -103,7 +107,12 @@ extension DeviceInfoProvider: DeviceInfoProviding {
             kernelVersion: osInfoHarvester.kernelVersion,
             bootTime: osInfoHarvester.bootTime,
             mobileCountryCodes: cellularNetworkInfoHarvester.mobileCountryCodes,
-            mobileNetworkCodes: cellularNetworkInfoHarvester.mobileNetworkCodes
+            mobileNetworkCodes: cellularNetworkInfoHarvester.mobileNetworkCodes,
+            localAuthentication: .init(
+                isPasscodeEnabled: localAuthenticationInfoHarvester.isPasscodeEnabled,
+                isBiometricsEnabled: localAuthenticationInfoHarvester.isBiometricsEnabled,
+                biometryType: localAuthenticationInfoHarvester.biometryType
+            )
         )
     }
     #else
@@ -130,7 +139,12 @@ extension DeviceInfoProvider: DeviceInfoProviding {
             kernelVersion: osInfoHarvester.kernelVersion,
             bootTime: osInfoHarvester.bootTime,
             mobileCountryCodes: [],
-            mobileNetworkCodes: []
+            mobileNetworkCodes: [],
+            localAuthentication: .init(
+                isPasscodeEnabled: false,
+                isBiometricsEnabled: false,
+                biometryType: .none
+            )
         )
     }
     #endif
