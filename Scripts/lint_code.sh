@@ -33,12 +33,14 @@ function swift_format_lint() {
         swift-format lint \
                 --configuration "$SWIFT_FORMAT_CONFIG_PATH" \
                 --recursive \
+                --parallel \
                 --strict \
                 $SWIFT_FORMAT_INPUT_FILENAMES
     else
         swift-format lint \
                 --configuration "$SWIFT_FORMAT_CONFIG_PATH" \
                 --recursive \
+                --parallel \
                 $SWIFT_FORMAT_INPUT_FILENAMES
     fi
 }

@@ -34,4 +34,5 @@ echo "${SWIFT_FORMAT_INPUT_FILENAMES[@]}" | xargs \
         swift-format format \
         --configuration ./.swift-format \
         --in-place \
+        --parallel \
         --recursive
