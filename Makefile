@@ -2,8 +2,7 @@
 
 .PHONY: help lint tests environment
 
-ROOT_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
-GITHOOKS_DIR := "$(ROOT_DIR)/.githooks"
+GITHOOKS_DIR := ".githooks"
 
 help:
 	@cat $(MAKEFILE_LIST)
