@@ -1,10 +1,13 @@
-// swift-tools-version:5.5
+// swift-tools-version: 5.7
 
 import PackageDescription
 
 let package = Package(
     name: "FingerprintJS",
-    platforms: [.iOS(.v12), .tvOS(.v12)],
+    platforms: [
+        .iOS(.v12),
+        .tvOS(.v12),
+    ],
     products: [
         .library(
             name: "FingerprintJS",
@@ -16,14 +19,14 @@ let package = Package(
         ),
     ],
     targets: [
+        // Client Libraries
         .target(
             name: "FingerprintJS",
             dependencies: ["SystemControl"]
         ),
-        .target(
-            name: "SystemControl",
-            dependencies: []
-        ),
+        .target(name: "SystemControl"),
+
+        // Tests
         .testTarget(
             name: "FingerprintJSTests",
             dependencies: ["FingerprintJS"]
