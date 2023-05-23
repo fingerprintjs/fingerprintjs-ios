@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6A82A17927D65DB4007C023F"
-               BuildableName = "FingerprintJS.framework"
-               BlueprintName = "FingerprintJS"
+               BlueprintIdentifier = "6A2047F22971ACFA008EC677"
+               BuildableName = "SystemControl.framework"
+               BlueprintName = "SystemControl"
                ReferencedContainer = "container:FingerprintJS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -26,21 +26,10 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      codeCoverageEnabled = "YES"
-      onlyGenerateCoverageForSpecifiedTargets = "YES">
-      <CodeCoverageTargets>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6A82A17927D65DB4007C023F"
-            BuildableName = "FingerprintJS.framework"
-            BlueprintName = "FingerprintJS"
-            ReferencedContainer = "container:FingerprintJS.xcodeproj">
-         </BuildableReference>
-      </CodeCoverageTargets>
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:Tests/FingerprintJS.xctestplan"
+            reference = "container:Tests/SystemControl.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>
@@ -65,9 +54,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6A82A17927D65DB4007C023F"
-            BuildableName = "FingerprintJS.framework"
-            BlueprintName = "FingerprintJS"
+            BlueprintIdentifier = "6A2047F22971ACFA008EC677"
+            BuildableName = "SystemControl.framework"
+            BlueprintName = "SystemControl"
             ReferencedContainer = "container:FingerprintJS.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
