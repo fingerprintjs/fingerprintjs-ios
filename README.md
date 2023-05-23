@@ -6,6 +6,9 @@
 <p align="center">Lightweight iOS library for local device fingerprinting</p>
 
 <p align="center">
+  <a href="https://github.com/fingerprintjs/fingerprintjs-ios/actions/workflows/ci.yml">
+    <img src="https://github.com/fingerprintjs/fingerprintjs-ios/actions/workflows/ci.yml/badge.svg" alt="CI status">
+  </a>
   <a href="https://www.swift.org/download/">
     <img src="https://img.shields.io/badge/Swift-5.8%20%7C%205.7-red" alt="Supported Swift versions">
   </a>
@@ -24,7 +27,7 @@
 </p>
 
 <p align="center">
-    <b>Demo application on the App Store</b>
+  <b>Demo application on the App Store</b>
 </p>
 <p align="center">
   <a href="https://apps.apple.com/us/app/fingerprintjs-showcase/id1621330481?itsct=apps_box_badge&amp;itscg=30200" style="display: inline-block; overflow: hidden; border-radius: 13px; width: 250px; height: 83px;"><img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&amp;releaseDate=1653436800&h=6f4dc95fe89ec63aa1fa67305e369224" alt="Download on the App Store" style="border-radius: 13px; width: 250px; height: 83px;"></a>
