@@ -29,7 +29,7 @@
     "NeverForceUnwrap" : false,
     "NeverUseForceTry" : false,
     "NeverUseImplicitlyUnwrappedOptionals" : false,
-    "NoAccessLevelOnExtensionDeclaration" : true,
+    "NoAccessLevelOnExtensionDeclaration" : false,
     "NoBlockComments" : true,
     "NoCasesWithOnlyFallthrough" : true,
     "NoEmptyTrailingClosureParentheses" : true,
@@ -43,14 +43,15 @@
     "OrderedImports" : true,
     "ReturnVoidInsteadOfEmptyTuple" : true,
     "UseEarlyExits" : false,
-    "UseLetInEveryBoundCaseVariable" : true,
+    "UseLetInEveryBoundCaseVariable" : false,
     "UseShorthandTypeNames" : true,
     "UseSingleLinePropertyGetter" : true,
     "UseSynthesizedInitializer" : true,
     "UseTripleSlashForDocumentationComments" : true,
     "UseWhereClausesInForLoops" : false,
-    "ValidateDocumentationComments" : false
+    "ValidateDocumentationComments" : true
   },
+  "spacesAroundRangeFormationOperators" : true,
   "tabWidth" : 8,
   "version" : 1
 }
