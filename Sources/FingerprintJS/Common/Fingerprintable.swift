@@ -2,10 +2,11 @@ import CryptoKit
 import Foundation
 
 protocol Fingerprintable {
-    /// Provides necessary data to compute a fingerprint through a `FingerprintFunction`
+    /// Provides necessary data to compute a fingerprint through a `FingerprintFunction`.
     var fingerprintInput: Data { get }
 
     /// Computes a fingerprint with a `FingerprintFunction` function.
+    /// - Parameter hashingFunction: A hashing function used to compute the fingerprint.
     /// - Returns: Fingerprint in its `String` representation.
     func fingerprint(using hashingFunction: FingerprintFunction) -> String
 }

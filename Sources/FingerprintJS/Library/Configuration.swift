@@ -31,7 +31,7 @@ public struct Configuration {
         switch algorithm {
         case .sha256:
             return SHA256HashingFunction()
-        case .custom(let fingerprintFunction):
+        case let .custom(fingerprintFunction):
             return fingerprintFunction
         }
     }
