@@ -135,9 +135,9 @@
 		15D7C653298BD6930025CE74 /* LocalAuthenticationInfoHarvester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthenticationInfoHarvester.swift; sourceTree = "<group>"; };
 		15D7C655298C071A0025CE74 /* LocalAuthenticationInfoHarvesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthenticationInfoHarvesterTests.swift; sourceTree = "<group>"; };
 		15D7C659298C0C1D0025CE74 /* AuthenticationContextInfoProvidingDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationContextInfoProvidingDummy.swift; sourceTree = "<group>"; };
-		15E9F8102A1CE23F007A98EB /* SystemControl.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = SystemControl.xctestplan; path = Tests/SystemControl.xctestplan; sourceTree = "<group>"; };
+		15EB3D2A2A1D10F30057EC3A /* SystemControl.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = SystemControl.xctestplan; path = FingerprintJS.xcodeproj/xcshareddata/xctestplans/SystemControl.xctestplan; sourceTree = "<group>"; };
+		15EB3D2B2A1D11660057EC3A /* FingerprintJS.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = FingerprintJS.xctestplan; path = FingerprintJS.xcodeproj/xcshareddata/xctestplans/FingerprintJS.xctestplan; sourceTree = "<group>"; };
 		6A0F5C82297898430068BD4D /* SystemControlTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SystemControlTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6A0F5C8E297898B50068BD4D /* FingerprintJS.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = FingerprintJS.xctestplan; path = Tests/FingerprintJS.xctestplan; sourceTree = "<group>"; };
 		6A1D11402809DBDE00566F75 /* DeviceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
 		6A1D1142280F1B6600566F75 /* DeviceInfoProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoProvider.swift; sourceTree = "<group>"; };
 		6A2047F32971ACFA008EC677 /* SystemControl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SystemControl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -407,8 +407,8 @@
 		6A82A17027D65DB4007C023F = {
 			isa = PBXGroup;
 			children = (
-				6A0F5C8E297898B50068BD4D /* FingerprintJS.xctestplan */,
-				15E9F8102A1CE23F007A98EB /* SystemControl.xctestplan */,
+				15EB3D2B2A1D11660057EC3A /* FingerprintJS.xctestplan */,
+				15EB3D2A2A1D10F30057EC3A /* SystemControl.xctestplan */,
 				6A82A17C27D65DB4007C023F /* FingerprintJS */,
 				6A82A18627D65DB4007C023F /* FingerprintJSTests */,
 				6A82A19C27D775A2007C023F /* SystemControl */,
