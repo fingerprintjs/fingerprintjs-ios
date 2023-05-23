@@ -15,7 +15,7 @@ readonly XCODE_SCHEME="FingerprintJS"
 cd "$PROJECT_ROOT_PATH"
 
 function xcodebuild_test() {
-    xcodebuild test \
+    xcodebuild clean test \
         -project "$XCODE_PROJECT" \
         -scheme "$XCODE_SCHEME" \
         -destination platform="$1"

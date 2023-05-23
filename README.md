@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://fingerprint.com">
-    <img src="images/logo.svg" alt="FingerprintJS" width="300px" />
+    <img src="resources/logo.svg" alt="FingerprintJS" width="300px" />
   </a>
 </p>
 <p align="center">Lightweight iOS library for local device fingerprinting</p>
@@ -31,10 +31,10 @@
 </p>
 
 <p align="center">
-  <img src="images/demoapp.gif" width="195">
-  <img src="images/demoapp1.png" width="195">
-  <img src="images/demoapp2.png" width="195">
-  <img src="images/demoapp3.png" width="195">
+  <img src="resources/demoapp.gif" width="195">
+  <img src="resources/demoapp1.png" width="195">
+  <img src="resources/demoapp2.png" width="195">
+  <img src="resources/demoapp3.png" width="195">
 </p>
 
 
