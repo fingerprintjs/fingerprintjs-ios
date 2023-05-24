@@ -29,7 +29,7 @@ Pod::Spec.new do |spec|
   # Build (deployment target, Swift versions)
   spec.ios.deployment_target = '12.0'
   spec.tvos.deployment_target = '12.0'
-  spec.swift_versions = ['5.5', '5.6', '5.7']
+  spec.swift_versions = ['5.7', '5.8']
   spec.default_subspec = 'Core'
 
   # Core

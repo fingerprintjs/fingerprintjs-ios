@@ -6,12 +6,15 @@
 <p align="center">Lightweight iOS library for local device fingerprinting</p>
 
 <p align="center">
-    <a href="https://cocoapods.org/pods/FingerprintJS">
-        <img src="https://img.shields.io/cocoapods/p/ios" alt="Supported platforms">
-    </a>
-    <a href="https://cocoapods.org/pods/FingerprintJS">
-        <img src="https://img.shields.io/cocoapods/v/FingerprintJS" alt="Pod version">
-    </a>
+  <a href="https://www.swift.org/download/">
+    <img src="https://img.shields.io/badge/Swift-5.8%20%7C%205.7-red" alt="Supported Swift versions">
+  </a>
+  <a href="https://fingerprint.com/sdk-libraries/">
+    <img src="https://img.shields.io/badge/Platforms-iOS%20%7C%20tvOS-red" alt="Supported platforms">
+  </a>
+  <a href="https://cocoapods.org/pods/FingerprintJS/">
+    <img src="https://img.shields.io/cocoapods/v/FingerprintJS.svg?style=flat" alt="Pod version">
+  </a>
 </p>
 
 <p align="center">
