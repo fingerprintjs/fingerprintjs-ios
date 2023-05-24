@@ -15,14 +15,12 @@ class SHA256HashingFunctionTests: XCTestCase {
 
     @available(iOS 13.0, tvOS 13.0, *)
     func testComputesSameHashForBothHashingVersions() {
-        if #available(iOS 13.0, tvOS 13.0, *) {
-            let data = Data(base64Encoded: "dGhpcyBpcyBmaW5nZXJwcmludA==")!
+        let data = Data(base64Encoded: "dGhpcyBpcyBmaW5nZXJwcmludA==")!
 
-            let sha256cryptoKit = sut.computeSHA256CryptoKit(data)
-            let sha256commonCrypto = sut.computeSHA256CommonCrypto(data)
+        let sha256cryptoKit = sut.computeSHA256CryptoKit(data)
+        let sha256commonCrypto = sut.computeSHA256CommonCrypto(data)
 
-            XCTAssertEqual(sha256cryptoKit, sha256commonCrypto)
-        }
+        XCTAssertEqual(sha256cryptoKit, sha256commonCrypto)
     }
 
     func testFingerprintComputesCorrectHashFunction() {

@@ -1,8 +1,8 @@
 {
   "configurations" : [
     {
-      "id" : "00FA0C3D-9187-4EB7-8DAE-E8A217C948E1",
-      "name" : "Configuration 1",
+      "id" : "F19A8419-92E7-4763-8138-1DDF67131064",
+      "name" : "Test Scheme Action",
       "options" : {
 
       }
@@ -13,21 +13,16 @@
       "targets" : [
         {
           "containerPath" : "container:FingerprintJS.xcodeproj",
-          "identifier" : "6A82A17927D65DB4007C023F",
-          "name" : "FingerprintJS"
+          "identifier" : "6A2047F22971ACFA008EC677",
+          "name" : "SystemControl"
         }
       ]
-    }
+    },
+    "testExecutionOrdering" : "random"
   },
   "testTargets" : [
     {
-      "target" : {
-        "containerPath" : "container:FingerprintJS.xcodeproj",
-        "identifier" : "6A82A18127D65DB4007C023F",
-        "name" : "FingerprintJSTests"
-      }
-    },
-    {
+      "parallelizable" : true,
       "target" : {
         "containerPath" : "container:FingerprintJS.xcodeproj",
         "identifier" : "6A0F5C81297898430068BD4D",

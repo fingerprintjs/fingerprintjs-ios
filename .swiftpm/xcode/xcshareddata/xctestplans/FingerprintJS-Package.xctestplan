@@ -1,0 +1,47 @@
+{
+  "configurations" : [
+    {
+      "id" : "FE9BB787-5CB9-4F30-9030-41322649ED60",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:",
+          "identifier" : "FingerprintJS",
+          "name" : "FingerprintJS"
+        },
+        {
+          "containerPath" : "container:",
+          "identifier" : "SystemControl",
+          "name" : "SystemControl"
+        }
+      ]
+    },
+    "testExecutionOrdering" : "random"
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "FingerprintJSTests",
+        "name" : "FingerprintJSTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "SystemControlTests",
+        "name" : "SystemControlTests"
+      }
+    }
+  ],
+  "version" : 1
+}

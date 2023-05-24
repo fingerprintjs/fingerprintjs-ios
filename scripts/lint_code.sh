@@ -5,7 +5,7 @@ set -Eeuo pipefail
 readonly SCRIPT_REL_PATH="$(dirname "$0")"
 readonly SCRIPT_ABS_PATH="$(cd "$SCRIPT_REL_PATH" &>/dev/null && pwd -P)"
 
-source "$SCRIPT_REL_PATH"/Commons/common.sh
+source "$SCRIPT_REL_PATH"/commons/common.sh
 
 readonly OPTION_STRICT="--strict"
 
@@ -33,12 +33,14 @@ function swift_format_lint() {
         swift-format lint \
                 --configuration "$SWIFT_FORMAT_CONFIG_PATH" \
                 --recursive \
+                --parallel \
                 --strict \
                 $SWIFT_FORMAT_INPUT_FILENAMES
     else
         swift-format lint \
                 --configuration "$SWIFT_FORMAT_CONFIG_PATH" \
                 --recursive \
+                --parallel \
                 $SWIFT_FORMAT_INPUT_FILENAMES
     fi
 }

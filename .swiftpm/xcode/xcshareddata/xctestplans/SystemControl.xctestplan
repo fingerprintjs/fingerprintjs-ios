@@ -1,0 +1,34 @@
+{
+  "configurations" : [
+    {
+      "id" : "4460A318-B7EE-4355-B0ED-A60FC9285D34",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:",
+          "identifier" : "SystemControl",
+          "name" : "SystemControl"
+        }
+      ]
+    },
+    "testExecutionOrdering" : "random"
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "SystemControlTests",
+        "name" : "SystemControlTests"
+      }
+    }
+  ],
+  "version" : 1
+}

@@ -1,0 +1,34 @@
+{
+  "configurations" : [
+    {
+      "id" : "E78B8808-1033-4182-AA1C-814E645367B0",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:",
+          "identifier" : "FingerprintJS",
+          "name" : "FingerprintJS"
+        }
+      ]
+    },
+    "testExecutionOrdering" : "random"
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "FingerprintJSTests",
+        "name" : "FingerprintJSTests"
+      }
+    }
+  ],
+  "version" : 1
+}
