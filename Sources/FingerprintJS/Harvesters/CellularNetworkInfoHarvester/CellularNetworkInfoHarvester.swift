@@ -21,9 +21,19 @@ struct CellularNetworkInfoHarvester {
 #if os(iOS)
 extension CellularNetworkInfoHarvester {
 
+    #if !targetEnvironment(simulator)
     init() {
         self.init(cellularServiceInfoProvider: CTTelephonyNetworkInfo())
     }
+    #else
+    private struct CellularServiceInfoProviderFake: CellularServiceInfoProviding {
+        var cellularProviders: [CarrierInfoProviding] { [] }
+    }
+
+    init() {
+        self.init(cellularServiceInfoProvider: CellularServiceInfoProviderFake())
+    }
+    #endif
 }
 
 extension CellularNetworkInfoHarvester: CellularNetworkInfoHarvesting {
