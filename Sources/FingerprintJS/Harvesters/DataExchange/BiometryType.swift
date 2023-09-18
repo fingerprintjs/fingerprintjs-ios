@@ -9,6 +9,9 @@ public enum BiometryType: String, Encodable {
     case faceID
     /// The device supports Touch ID.
     case touchID
+    /// The device supports Optic ID.
+    @available(iOS 17.0, *)
+    case opticID
     /// Biometric authentication is not supported.
     case none
     /// The device supports some unknown type of biometric authentication.
@@ -25,6 +28,8 @@ extension BiometryType: CustomStringConvertible {
             return "Face ID"
         case .touchID:
             return "Touch ID"
+        case .opticID:
+            return "Optic ID"
         case .none, .unknown:
             return "<\(rawValue)>"
         }
@@ -34,6 +39,24 @@ extension BiometryType: CustomStringConvertible {
 extension BiometryType {
 
     init(_ biometryType: LABiometryType) {
+        #if compiler(>=5.9)
+        switch biometryType {
+        case .faceID:
+            self = .faceID
+        case .touchID:
+            self = .touchID
+        case .opticID:
+            if #available(iOS 17.0, *) {
+                self = .opticID
+            } else {
+                self = .unknown
+            }
+        case .none:
+            self = .none
+        @unknown default:
+            self = .unknown
+        }
+        #else
         switch biometryType {
         case .faceID:
             self = .faceID
@@ -44,6 +67,7 @@ extension BiometryType {
         @unknown default:
             self = .unknown
         }
+        #endif
     }
 }
 #endif

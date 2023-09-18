@@ -137,14 +137,7 @@ extension DeviceInfoProvider: DeviceInfoProviding {
             osType: osInfoHarvester.osType,
             osRelease: osInfoHarvester.osRelease,
             kernelVersion: osInfoHarvester.kernelVersion,
-            bootTime: osInfoHarvester.bootTime,
-            mobileCountryCodes: [],
-            mobileNetworkCodes: [],
-            localAuthentication: .init(
-                isPasscodeEnabled: false,
-                isBiometricsEnabled: false,
-                biometryType: .none
-            )
+            bootTime: osInfoHarvester.bootTime
         )
     }
     #endif
