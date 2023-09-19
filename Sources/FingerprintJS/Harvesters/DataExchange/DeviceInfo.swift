@@ -1,6 +1,12 @@
 import Foundation
 
 public struct DeviceInfo: Equatable, Encodable {
+    #if os(iOS)
+    private let _mobileCountryCodes: [String]
+    private let _mobileNetworkCodes: [String]
+    private let _localAuthentication: LocalAuthenticationInfo
+    #endif
+
     public let vendorIdentifier: UUID?
 
     /// The identifier for the locale representing the user's language and region settings.
@@ -51,7 +57,13 @@ public struct DeviceInfo: Equatable, Encodable {
         message: "The return value is undefined and no guarantee can be made on its stability."
     )
     @available(tvOS, unavailable)
-    public let mobileCountryCodes: [String]
+    public var mobileCountryCodes: [String] {
+        #if os(iOS)
+        _mobileCountryCodes
+        #else
+        []
+        #endif
+    }
     /// The mobile network codes (MNCs) for the user’s cellular service providers.
     @available(
         iOS,
@@ -59,9 +71,80 @@ public struct DeviceInfo: Equatable, Encodable {
         message: "The return value is undefined and no guarantee can be made on its stability."
     )
     @available(tvOS, unavailable)
-    public let mobileNetworkCodes: [String]
+    public var mobileNetworkCodes: [String] {
+        #if os(iOS)
+        _mobileNetworkCodes
+        #else
+        []
+        #endif
+    }
 
     /// The information about the local authentication settings.
     @available(tvOS, unavailable)
-    public let localAuthentication: LocalAuthenticationInfo
+    public var localAuthentication: LocalAuthenticationInfo {
+        #if os(iOS)
+        _localAuthentication
+        #else
+        .init(
+            isPasscodeEnabled: false,
+            isBiometricsEnabled: false,
+            biometryType: .none
+        )
+        #endif
+    }
+}
+
+extension DeviceInfo {
+
+    #if os(iOS)
+    init(
+        vendorIdentifier: UUID?,
+        localeIdentifier: String,
+        userInterfaceStyle: UserInterfaceStyle,
+        diskSpace: DiskSpaceInfo?,
+        screenResolution: CGSize?,
+        screenScale: CGFloat,
+        deviceName: String,
+        deviceType: String?,
+        deviceModel: String?,
+        memorySize: String?,
+        physicalMemory: String?,
+        cpuCount: String?,
+        kernelHostname: String,
+        osTimeZoneIdentifier: String,
+        osBuild: String?,
+        osVersion: String?,
+        osType: String?,
+        osRelease: String?,
+        kernelVersion: String?,
+        bootTime: String,
+        mobileCountryCodes: [String],
+        mobileNetworkCodes: [String],
+        localAuthentication: LocalAuthenticationInfo
+    ) {
+        self.vendorIdentifier = vendorIdentifier
+        self.localeIdentifier = localeIdentifier
+        self.userInterfaceStyle = userInterfaceStyle
+        self.diskSpace = diskSpace
+        self.screenResolution = screenResolution
+        self.screenScale = screenScale
+        self.deviceName = deviceName
+        self.deviceType = deviceType
+        self.deviceModel = deviceModel
+        self.memorySize = memorySize
+        self.physicalMemory = physicalMemory
+        self.cpuCount = cpuCount
+        self.kernelHostname = kernelHostname
+        self.osTimeZoneIdentifier = osTimeZoneIdentifier
+        self.osBuild = osBuild
+        self.osVersion = osVersion
+        self.osType = osType
+        self.osRelease = osRelease
+        self.kernelVersion = kernelVersion
+        self.bootTime = bootTime
+        self._mobileCountryCodes = mobileCountryCodes
+        self._mobileNetworkCodes = mobileNetworkCodes
+        self._localAuthentication = localAuthentication
+    }
+    #endif
 }
