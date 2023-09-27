@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
   # Name and version
   spec.name         = 'FingerprintJS'
-  spec.version      = '1.4.0'
+  spec.version      = '1.4.1'
 
   # License
   spec.license      = { type: 'MIT', file: 'LICENSE' }
@@ -29,7 +29,7 @@ Pod::Spec.new do |spec|
   # Build (deployment target, Swift versions)
   spec.ios.deployment_target = '12.0'
   spec.tvos.deployment_target = '12.0'
-  spec.swift_versions = ['5.7', '5.8']
+  spec.swift_versions = ['5.7', '5.8', '5.9']
   spec.default_subspec = 'Core'
 
   # Core
