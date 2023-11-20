@@ -94,84 +94,6 @@ final class HardwareInfoHarvesterTests: XCTestCase {
         XCTAssertEqual(1, screenInfoProviderSpy.nativeScaleCallCount)
     }
 
-    func testFreeDiskSpaceReturnsZeroIfDocumentsDirAttributesEmpty() {
-        XCTAssertEqual(sut.freeDiskSpace, 0)
-    }
-
-    func testFreeDiskSpaceReturnsZeroIfDocumentsAttributesThrowsError() {
-        mockDocumentDirectoryAttributesProvider.mockDocumentsDirectoryAttributesError =
-            DocumentsDirectoryError.documentsDirectoryNotFound
-        XCTAssertEqual(sut.freeDiskSpace, 0)
-    }
-
-    func testFreeDiskSpaceReturnsZeroIfDocumentsAttributesPresentButThrowError() {
-        mockDocumentDirectoryAttributesProvider.mockDocumentsDirectoryAttributes = [
-            .systemFreeSize: UInt64(100),
-            .systemSize: UInt64(100),
-        ]
-
-        mockDocumentDirectoryAttributesProvider.mockDocumentsDirectoryAttributesError =
-            DocumentsDirectoryError.documentsDirectoryNotFound
-
-        XCTAssertEqual(sut.freeDiskSpace, 0)
-    }
-
-    func testFreeDiskSpaceReturnsCorrectValuesOnSuccess() {
-        mockDocumentDirectoryAttributesProvider.mockDocumentsDirectoryAttributes = [
-            .systemFreeSize: UInt64(100),
-            .systemSize: UInt64(100),
-        ]
-
-        XCTAssertEqual(sut.freeDiskSpace, 100)
-    }
-
-    func testFreeDiskSpaceReturnsZeroIfOtherValueMissing() {
-        mockDocumentDirectoryAttributesProvider.mockDocumentsDirectoryAttributes = [
-            .systemFreeSize: UInt64(100)
-        ]
-
-        XCTAssertEqual(sut.freeDiskSpace, 0)
-    }
-
-    func testTotalDiskSpaceReturnsZeroIfDocumentsDirAttributesEmpty() {
-        XCTAssertEqual(sut.totalDiskSpace, 0)
-    }
-
-    func testTotalDiskSpaceReturnsZeroIfDocumentsAttributesThrowsError() {
-        mockDocumentDirectoryAttributesProvider.mockDocumentsDirectoryAttributesError =
-            DocumentsDirectoryError.documentsDirectoryNotFound
-        XCTAssertEqual(sut.totalDiskSpace, 0)
-    }
-
-    func testTotalDiskSpaceReturnsZeroIfDocumentsAttributesPresentButThrowError() {
-        mockDocumentDirectoryAttributesProvider.mockDocumentsDirectoryAttributes = [
-            .systemFreeSize: UInt64(100),
-            .systemSize: UInt64(100),
-        ]
-
-        mockDocumentDirectoryAttributesProvider.mockDocumentsDirectoryAttributesError =
-            DocumentsDirectoryError.documentsDirectoryNotFound
-
-        XCTAssertEqual(sut.totalDiskSpace, 0)
-    }
-
-    func testTotalDiskSpaceReturnsCorrectValuesOnSuccess() {
-        mockDocumentDirectoryAttributesProvider.mockDocumentsDirectoryAttributes = [
-            .systemFreeSize: UInt64(100),
-            .systemSize: UInt64(100),
-        ]
-
-        XCTAssertEqual(sut.totalDiskSpace, 100)
-    }
-
-    func testTotalDiskSpaceReturnZeroIfOneValueMissing() {
-        mockDocumentDirectoryAttributesProvider.mockDocumentsDirectoryAttributes = [
-            .systemSize: UInt64(100)
-        ]
-
-        XCTAssertEqual(sut.totalDiskSpace, 0)
-    }
-
     func test_givenConfigurationWithVersionOneAndUniqueStabilityLevel_whenBuildTree_thenReturnsExpectedItems() {
         // given
         let config = Configuration(version: .v1, stabilityLevel: .unique)
@@ -244,8 +166,6 @@ final class HardwareInfoHarvesterTests: XCTestCase {
             "Display resolution",
             "Physical memory",
             "Processor count",
-            "Free disk space (B)",
-            "Total disk space (B)",
         ]
         XCTAssertEqual(expectedItemLabels, itemLabels)
     }
@@ -265,8 +185,6 @@ final class HardwareInfoHarvesterTests: XCTestCase {
             "Display resolution",
             "Physical memory",
             "Processor count",
-            "Free disk space (B)",
-            "Total disk space (B)",
         ]
         XCTAssertEqual(expectedItemLabels, itemLabels)
     }
@@ -286,8 +204,6 @@ final class HardwareInfoHarvesterTests: XCTestCase {
             "Display resolution",
             "Physical memory",
             "Processor count",
-            "Free disk space (B)",
-            "Total disk space (B)",
         ]
         XCTAssertEqual(expectedItemLabels, itemLabels)
     }
@@ -309,8 +225,6 @@ final class HardwareInfoHarvesterTests: XCTestCase {
             "Display scale",
             "Physical memory",
             "Processor count",
-            "Free disk space (B)",
-            "Total disk space (B)",
         ]
         XCTAssertEqual(expectedItemLabels, itemLabels)
     }
@@ -331,7 +245,6 @@ final class HardwareInfoHarvesterTests: XCTestCase {
             "Display scale",
             "Physical memory",
             "Processor count",
-            "Total disk space (B)",
         ]
         XCTAssertEqual(expectedItemLabels, itemLabels)
     }
@@ -352,7 +265,6 @@ final class HardwareInfoHarvesterTests: XCTestCase {
             "Display scale",
             "Physical memory",
             "Processor count",
-            "Total disk space (B)",
         ]
         XCTAssertEqual(expectedItemLabels, itemLabels)
     }
@@ -374,8 +286,6 @@ final class HardwareInfoHarvesterTests: XCTestCase {
             "Display scale",
             "Physical memory",
             "Processor count",
-            "Free disk space (B)",
-            "Total disk space (B)",
             "Device hostname",
         ]
         XCTAssertEqual(expectedItemLabels, itemLabels)
@@ -397,7 +307,6 @@ final class HardwareInfoHarvesterTests: XCTestCase {
             "Display scale",
             "Physical memory",
             "Processor count",
-            "Total disk space (B)",
         ]
         XCTAssertEqual(expectedItemLabels, itemLabels)
     }
@@ -418,7 +327,6 @@ final class HardwareInfoHarvesterTests: XCTestCase {
             "Display scale",
             "Physical memory",
             "Processor count",
-            "Total disk space (B)",
         ]
         XCTAssertEqual(expectedItemLabels, itemLabels)
     }
@@ -440,8 +348,6 @@ final class HardwareInfoHarvesterTests: XCTestCase {
             "Display scale",
             "Physical memory",
             "Processor count",
-            "Free disk space (B)",
-            "Total disk space (B)",
             "Device hostname",
         ]
         XCTAssertEqual(expectedItemLabels, itemLabels)
@@ -463,7 +369,6 @@ final class HardwareInfoHarvesterTests: XCTestCase {
             "Display scale",
             "Physical memory",
             "Processor count",
-            "Total disk space (B)",
         ]
         XCTAssertEqual(expectedItemLabels, itemLabels)
     }
@@ -484,7 +389,6 @@ final class HardwareInfoHarvesterTests: XCTestCase {
             "Display scale",
             "Physical memory",
             "Processor count",
-            "Total disk space (B)",
         ]
         XCTAssertEqual(expectedItemLabels, itemLabels)
     }

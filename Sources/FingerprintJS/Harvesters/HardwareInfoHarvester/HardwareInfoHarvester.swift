@@ -20,15 +20,6 @@ protocol HardwareInfoHarvesting {
     /// The native scale factor for the display.
     var displayScale: CGFloat { get }
 
-    /// Free disk space on the device or 0 if a permission problem occurs
-    var freeDiskSpace: UInt64 { get }
-
-    /// Total disk space on the device or 0 if a permission problem occurs
-    var totalDiskSpace: UInt64 { get }
-
-    /// Disk space information (free and total)
-    var diskSpaceInfo: DiskSpaceInfo? { get }
-
     /// Number of physical CPU cores
     var cpuCount: String { get }
 
@@ -68,24 +59,6 @@ struct HardwareInfoHarvester {
             fileManager: FileManager.default,
             processInfo: ProcessInfo.processInfo
         )
-    }
-
-    var diskSpaceInfo: DiskSpaceInfo? {
-        do {
-            let dict = try fileManager.documentsDirectoryAttributes()
-            if let fileSystemSizeInBytes = dict[.systemSize] as? UInt64,
-                let fileSystemFreeSizeInBytes = dict[.systemFreeSize] as? UInt64
-            {
-                return DiskSpaceInfo(
-                    freeDiskSpace: fileSystemFreeSizeInBytes,
-                    totalDiskSpace: fileSystemSizeInBytes
-                )
-            }
-        } catch {
-            print("Failed to obtain disk space info: \(error)")
-        }
-
-        return nil
     }
 }
 
@@ -134,14 +107,6 @@ extension HardwareInfoHarvester: HardwareInfoHarvesting {
             return "Undefined"
         }
         return "\(cpuFrequency)"
-    }
-
-    var freeDiskSpace: UInt64 {
-        return diskSpaceInfo?.freeDiskSpace ?? 0
-    }
-
-    var totalDiskSpace: UInt64 {
-        return diskSpaceInfo?.totalDiskSpace ?? 0
     }
 
     var kernelHostname: String {

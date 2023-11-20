@@ -14,7 +14,13 @@ public struct DeviceInfo: Equatable, Encodable {
     /// The style associated with the user interface of the app.
     public let userInterfaceStyle: UserInterfaceStyle
 
-    public let diskSpace: DiskSpaceInfo?
+    @available(
+        *,
+        deprecated,
+        message: "DeviceInfo.diskSpace is always nil and will be removed in a future library version"
+    )
+    public let diskSpace: DiskSpaceInfo? = nil
+
     public let screenResolution: CGSize?
     /// The native scale factor for the screen.
     public let screenScale: CGFloat
@@ -101,7 +107,6 @@ extension DeviceInfo {
         vendorIdentifier: UUID?,
         localeIdentifier: String,
         userInterfaceStyle: UserInterfaceStyle,
-        diskSpace: DiskSpaceInfo?,
         screenResolution: CGSize?,
         screenScale: CGFloat,
         deviceName: String,
@@ -125,7 +130,6 @@ extension DeviceInfo {
         self.vendorIdentifier = vendorIdentifier
         self.localeIdentifier = localeIdentifier
         self.userInterfaceStyle = userInterfaceStyle
-        self.diskSpace = diskSpace
         self.screenResolution = screenResolution
         self.screenScale = screenScale
         self.deviceName = deviceName
