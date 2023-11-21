@@ -132,22 +132,6 @@ extension HardwareInfoHarvester: DeviceInfoTreeProvider {
             ),
             AnnotatedInfoItem(
                 DeviceInfoItem(
-                    label: "Free disk space (B)",
-                    value: .info(String(describing: freeDiskSpace))
-                ),
-                stabilityLevel: .unique,
-                versions: .since(.v2)
-            ),
-            AnnotatedInfoItem(
-                DeviceInfoItem(
-                    label: "Total disk space (B)",
-                    value: .info(String(describing: totalDiskSpace))
-                ),
-                stabilityLevel: .stable,
-                versions: .since(.v2)
-            ),
-            AnnotatedInfoItem(
-                DeviceInfoItem(
                     label: "Device hostname",
                     value: .info(kernelHostname)
 
