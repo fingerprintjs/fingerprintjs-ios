@@ -127,6 +127,11 @@ let fingerprint = await fingerprinter.getFingerprint() // returns "42"
 
 Keep in mind that the change in the supplied hashing function will inevitably lead to the change of the output fingerprint.
 
+## Android version
+
+-   [Fingerprint Android - identification and fingerprinting in native apps](https://github.com/fingerprintjs/fingerprintjs-android)
+
+
 ## License
 
-This library is MIT licensed. Copyright FingerprintJS, Inc. 2022.
+This library is MIT licensed. Copyright FingerprintJS, Inc. 2023.
