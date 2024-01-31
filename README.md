@@ -56,11 +56,11 @@ Note: If you've never used CocoaPods for dependency management, check out their 
 import FingerprintJS
  
 let fingerprinter = FingerprinterFactory.getInstance()
-async {
+Task {
     // Get fingerprint for the current device
-    let fingerprint = await fingerprinter.getFingerprint()
-    
-    // Do something awesome with the fingerprint
+    if let fingerprint = await fingerprinter.getFingerprint() {
+      // Do something awesome with the fingerprint  
+    }
 }
 ```
 
