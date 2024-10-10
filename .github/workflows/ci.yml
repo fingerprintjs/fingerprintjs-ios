@@ -24,9 +24,9 @@ concurrency:
 jobs:
   lint:
     name: Lint
-    runs-on: macos-13
+    runs-on: macos-14
     env:
-      DEVELOPER_DIR: "/Applications/Xcode_15.0.app/Contents/Developer"
+      DEVELOPER_DIR: "/Applications/Xcode_16.0.app/Contents/Developer"
 
     steps:
       - name: Checkout
@@ -41,15 +41,22 @@ jobs:
   tests:
     name: Tests (Xcode ${{ matrix.xcode }})
     needs: [lint]
-    runs-on: macos-13
+    runs-on: macos-${{ matrix.macos }}
     env:
       DEVELOPER_DIR: "/Applications/Xcode_${{ matrix.xcode }}.app/Contents/Developer"
     strategy:
       matrix:
-        xcode:
-          - "14.1"  # Swift 5.7
-          - "14.3"  # Swift 5.8
-          - "15.0"  # Swift 5.9
+        include:
+          - macos: 13
+            xcode: '14.1'    # Swift 5.7
+          - macos: 13
+            xcode: '14.3.1'  # Swift 5.8
+          - macos: 14
+            xcode: '15.0'    # Swift 5.9
+          - macos: 14
+            xcode: '15.3'    # Swift 5.10
+          - macos: 14
+            xcode: '16.0'    # Swift 6.0
 
     steps:
       - name: Runner Overview

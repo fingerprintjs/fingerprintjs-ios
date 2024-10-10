@@ -1,7 +1,7 @@
 import CoreGraphics
 
-extension CGSize: CustomStringConvertible {
+extension CoreGraphics.CGSize: Swift.CustomStringConvertible {
     public var description: String {
-        return "\(self.width)x\(self.height)"
+        return "\(width)x\(height)"
     }
 }

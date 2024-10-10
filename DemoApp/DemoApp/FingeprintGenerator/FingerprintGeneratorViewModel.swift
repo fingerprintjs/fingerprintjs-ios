@@ -14,26 +14,18 @@ enum FingerprintGeneratorState {
     case fingerprintReady(FingerprintTree)
 }
 
-class FingerprintGeneratorViewModel: ObservableObject {
+@MainActor
+final class FingerprintGeneratorViewModel: ObservableObject {
+
     private let fingerprinter = FingerprinterFactory.getInstance()
-    
-    @Published var state: FingerprintGeneratorState = .notGenerated
-    @Published var loading: Bool = false
-    @Published var fingerprintTree: FingerprintTree? = nil
-    // @Published var deviceInfo: DeviceInfo? = nil
-    
+
+    @Published private(set) var state: FingerprintGeneratorState = .notGenerated
+
     func generateTree() async {
-        // let deviceInfoProvider = DeviceInfoProvider()
-        // deviceInfo = await deviceInfoProvider.getDeviceInfo()
         state = .generating
-        fingerprintTree = await fingerprinter.getFingerprintTree()
-        if let fingerprintTree = fingerprintTree {
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) { [weak self] in
-                self?.state = .fingerprintReady(fingerprintTree)
-            }
-        } else {
-            state = .notGenerated
+        let fingerprintTree = await fingerprinter.getFingerprintTree()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            self.state = .fingerprintReady(fingerprintTree)
         }
     }
-    
 }

@@ -1,16 +1,20 @@
 PODS:
-  - FingerprintJS (1.0.0)
+  - FingerprintJS (1.5.0):
+    - FingerprintJS/Core (= 1.5.0)
+  - FingerprintJS/Core (1.5.0):
+    - FingerprintJS/SystemControl
+  - FingerprintJS/SystemControl (1.5.0)
 
 DEPENDENCIES:
-  - FingerprintJS (~> 1.0)
+  - FingerprintJS (~> 1.5)
 
 SPEC REPOS:
   trunk:
     - FingerprintJS
 
 SPEC CHECKSUMS:
-  FingerprintJS: 2c0bae1d2f1b65c3c46098edbdefca4a0e72c76d
+  FingerprintJS: 96410117a394cca04d0f1e2374944c8697f2cceb
 
-PODFILE CHECKSUM: f501a0d0aaa742f83340245876e881fc1d89f6c6
+PODFILE CHECKSUM: e711991b69c78b606d26a268b0e7878603d8626e
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.15.2

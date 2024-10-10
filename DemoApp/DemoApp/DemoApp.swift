@@ -6,10 +6,10 @@
 //
 
 import SwiftUI
-import FingerprintJS
 
 @main
 struct DemoApp: App {
+
     var body: some Scene {
         WindowGroup {
             FingerprintGeneratorView()

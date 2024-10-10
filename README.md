@@ -10,7 +10,7 @@
     <img src="https://github.com/fingerprintjs/fingerprintjs-ios/actions/workflows/ci.yml/badge.svg" alt="CI status">
   </a>
   <a href="https://www.swift.org/download/">
-    <img src="https://img.shields.io/badge/Swift-5.9%20%7C%205.8%20%7C%205.7-red" alt="Supported Swift versions">
+    <img src="https://img.shields.io/badge/Swift-6.0%20%7C%205.10%20%7C%205.9%20%7C%205.8%20%7C%205.7-red" alt="Supported Swift versions">
   </a>
   <a href="https://fingerprint.com/sdk-libraries/">
     <img src="https://img.shields.io/badge/Platforms-iOS%20%7C%20tvOS-red" alt="Supported platforms">
@@ -127,10 +127,9 @@ let fingerprint = await fingerprinter.getFingerprint() // returns "42"
 
 Keep in mind that the change in the supplied hashing function will inevitably lead to the change of the output fingerprint.
 
-## Android version
+## Android Version
 
--   [Fingerprint Android - identification and fingerprinting in native apps](https://github.com/fingerprintjs/fingerprintjs-android)
-
+- [Fingerprint Android - identification and fingerprinting in native apps](https://github.com/fingerprintjs/fingerprintjs-android)
 
 ## License
 

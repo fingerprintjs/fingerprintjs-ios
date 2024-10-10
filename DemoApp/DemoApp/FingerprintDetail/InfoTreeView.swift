@@ -5,12 +5,12 @@
 //  Created by Petr Palata on 20.03.2022.
 //
 
-import SwiftUI
 import FingerprintJS
+import SwiftUI
 
 struct InfoTreeView: View {
     let tree: FingerprintTree
-    
+
     var body: some View {
         VStack {
             if let children = tree.children {
@@ -32,7 +32,7 @@ struct InfoTreeView: View {
     }
 }
 
-extension FingerprintTree: Identifiable {
+extension FingerprintTree: Swift.Identifiable {
     public var id: String {
         return fingerprint + info.label
     }
