@@ -49,14 +49,19 @@ jobs:
         include:
           - macos: 13
             xcode: '14.1'    # Swift 5.7
+            ios-simulator: 'iPhone 14 Pro'
           - macos: 13
             xcode: '14.3.1'  # Swift 5.8
+            ios-simulator: 'iPhone 14 Pro'
           - macos: 14
             xcode: '15.0'    # Swift 5.9
+            ios-simulator: 'iPhone 15 Pro'
           - macos: 14
             xcode: '15.3'    # Swift 5.10
+            ios-simulator: 'iPhone 15 Pro'
           - macos: 14
             xcode: '16.0'    # Swift 6.0
+            ios-simulator: 'iPhone 16 Pro'
 
     steps:
       - name: Runner Overview
@@ -66,4 +71,4 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run Tests
-        run: make tests
+        run: make tests OPTIONS="--ios-platform 'iOS Simulator,name=${{ matrix.ios-simulator }}'"
