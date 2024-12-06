@@ -34,20 +34,17 @@ struct HardwareInfoHarvester {
     private let device: DeviceIdentificationInfoProviding
     private let screen: ScreenInfoProviding
     private let systemControl: SystemControlValuesProviding
-    private let fileManager: DocumentsDirectoryAttributesProviding
     private let processInfo: CPUInfoProviding
 
     init(
         device: DeviceIdentificationInfoProviding,
         screen: ScreenInfoProviding,
         systemControl: SystemControlValuesProviding,
-        fileManager: DocumentsDirectoryAttributesProviding,
         processInfo: CPUInfoProviding
     ) {
         self.device = device
         self.screen = screen
         self.systemControl = systemControl
-        self.fileManager = fileManager
         self.processInfo = processInfo
     }
 
@@ -56,7 +53,6 @@ struct HardwareInfoHarvester {
             device: UIDevice.current,
             screen: UIScreen.main,
             systemControl: SystemControlValuesProvider(),
-            fileManager: FileManager.default,
             processInfo: ProcessInfo.processInfo
         )
     }
