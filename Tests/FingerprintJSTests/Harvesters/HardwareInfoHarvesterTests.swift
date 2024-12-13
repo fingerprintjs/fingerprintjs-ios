@@ -8,7 +8,6 @@ final class HardwareInfoHarvesterTests: XCTestCase {
     private var screenInfoProviderSpy: ScreenInfoProvidingSpy!
     private var deviceIdentificationInfoProviderSpy: DeviceIdentificationInfoProvidingSpy!
     private var mockSystemControl: SystemControlMock!
-    private var mockDocumentDirectoryAttributesProvider: DocumentsDirectoryAttributesProvidingMock!
     private var mockCpuInfoProvider: CPUInfoProvidingMock!
 
     override func setUp() {
@@ -16,13 +15,11 @@ final class HardwareInfoHarvesterTests: XCTestCase {
         screenInfoProviderSpy = .init()
         deviceIdentificationInfoProviderSpy = .init()
         mockSystemControl = .init()
-        mockDocumentDirectoryAttributesProvider = .init()
         mockCpuInfoProvider = .init()
         sut = HardwareInfoHarvester(
             device: deviceIdentificationInfoProviderSpy,
             screen: screenInfoProviderSpy,
             systemControl: mockSystemControl,
-            fileManager: mockDocumentDirectoryAttributesProvider,
             processInfo: mockCpuInfoProvider
         )
     }
@@ -30,7 +27,6 @@ final class HardwareInfoHarvesterTests: XCTestCase {
     override func tearDown() {
         sut = nil
         mockCpuInfoProvider = nil
-        mockDocumentDirectoryAttributesProvider = nil
         mockSystemControl = nil
         deviceIdentificationInfoProviderSpy = nil
         screenInfoProviderSpy = nil
