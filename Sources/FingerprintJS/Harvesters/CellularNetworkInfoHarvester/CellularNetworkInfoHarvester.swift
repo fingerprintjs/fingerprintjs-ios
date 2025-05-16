@@ -6,6 +6,7 @@ import CoreTelephony
 protocol CellularNetworkInfoHarvesting {
     var mobileCountryCodes: [String] { get }
     var mobileNetworkCodes: [String] { get }
+    var mobileNetworkTechnologies: [String] { get }
 }
 
 @available(tvOS, unavailable)
@@ -28,6 +29,7 @@ extension CellularNetworkInfoHarvester {
     #else
     private struct CellularServiceInfoProviderFake: CellularServiceInfoProviding {
         var cellularProviders: [CarrierInfoProviding] { [] }
+        var radioAccessTechnologies: [String] { [] }
     }
 
     init() {
@@ -49,6 +51,12 @@ extension CellularNetworkInfoHarvester: CellularNetworkInfoHarvesting {
         cellularServiceInfoProvider
             .cellularProviders
             .compactMap(\.mobileNetworkCode)
+            .sorted()
+    }
+
+    var mobileNetworkTechnologies: [String] {
+        cellularServiceInfoProvider
+            .radioAccessTechnologies
             .sorted()
     }
 }

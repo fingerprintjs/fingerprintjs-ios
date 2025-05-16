@@ -4,6 +4,7 @@ public struct DeviceInfo: Equatable, Encodable {
     #if os(iOS)
     private let _mobileCountryCodes: [String]
     private let _mobileNetworkCodes: [String]
+    private let _mobileNetworkTechnologies: [String]
     private let _localAuthentication: LocalAuthenticationInfo
     #endif
 
@@ -84,6 +85,13 @@ public struct DeviceInfo: Equatable, Encodable {
         []
         #endif
     }
+    public var mobileNetworkTechnologies: [String] {
+        #if os(iOS)
+        _mobileNetworkTechnologies
+        #else
+        []
+        #endif
+    }
 
     /// The information about the local authentication settings.
     @available(tvOS, unavailable)
@@ -125,6 +133,7 @@ extension DeviceInfo {
         bootTime: String,
         mobileCountryCodes: [String],
         mobileNetworkCodes: [String],
+        mobileNetworkTechnologies: [String],
         localAuthentication: LocalAuthenticationInfo
     ) {
         self.vendorIdentifier = vendorIdentifier
@@ -148,6 +157,7 @@ extension DeviceInfo {
         self.bootTime = bootTime
         self._mobileCountryCodes = mobileCountryCodes
         self._mobileNetworkCodes = mobileNetworkCodes
+        self._mobileNetworkTechnologies = mobileNetworkTechnologies
         self._localAuthentication = localAuthentication
     }
     #endif
