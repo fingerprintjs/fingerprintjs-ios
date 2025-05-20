@@ -107,6 +107,7 @@ extension DeviceInfoProvider: DeviceInfoProviding {
             bootTime: osInfoHarvester.bootTime,
             mobileCountryCodes: cellularNetworkInfoHarvester.mobileCountryCodes,
             mobileNetworkCodes: cellularNetworkInfoHarvester.mobileNetworkCodes,
+            mobileNetworkTechnologies: cellularNetworkInfoHarvester.mobileNetworkTechnologies,
             localAuthentication: .init(
                 isPasscodeEnabled: localAuthenticationInfoHarvester.isPasscodeEnabled,
                 isBiometricsEnabled: localAuthenticationInfoHarvester.isBiometricsEnabled,

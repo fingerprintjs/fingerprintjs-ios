@@ -258,6 +258,14 @@ extension CellularNetworkInfoHarvester: DeviceInfoTreeProvider {
                 stabilityLevel: .unique,
                 versions: .since(.v3)
             ),
+            AnnotatedInfoItem(
+                item: DeviceInfoItem(
+                    label: "Mobile network technologies",
+                    value: .info(mobileNetworkTechnologies.description)
+                ),
+                stabilityLevel: .unique,
+                versions: .since(.v6)
+            ),
         ]
     }
 }
