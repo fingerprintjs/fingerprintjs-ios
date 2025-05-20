@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
   # Name and version
   spec.name         = 'FingerprintJS'
-  spec.version      = '1.5.0'
+  spec.version      = '1.6.0'
 
   # License
   spec.license      = { type: 'MIT', file: 'LICENSE' }
