@@ -79,6 +79,8 @@
 		6AC362AB280013E200C4768A /* HardwareInfoHarvesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC362AA280013E200C4768A /* HardwareInfoHarvesterTests.swift */; };
 		6AC362B228042B7C00C4768A /* SystemControlMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC362B128042B7C00C4768A /* SystemControlMock.swift */; };
 		6AC362B628042C1500C4768A /* CPUInfoProvidingMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC362B528042C1500C4768A /* CPUInfoProvidingMock.swift */; };
+		ADB56B952E056591005108D1 /* SystemControlValuesRetrievingSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB56B942E05658B005108D1 /* SystemControlValuesRetrievingSpy.swift */; };
+		ADB56B972E056B35005108D1 /* HardwareSubsystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB56B962E056B32005108D1 /* HardwareSubsystemTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -182,6 +184,8 @@
 		6AC362AA280013E200C4768A /* HardwareInfoHarvesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardwareInfoHarvesterTests.swift; sourceTree = "<group>"; };
 		6AC362B128042B7C00C4768A /* SystemControlMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemControlMock.swift; sourceTree = "<group>"; };
 		6AC362B528042C1500C4768A /* CPUInfoProvidingMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUInfoProvidingMock.swift; sourceTree = "<group>"; };
+		ADB56B942E05658B005108D1 /* SystemControlValuesRetrievingSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemControlValuesRetrievingSpy.swift; sourceTree = "<group>"; };
+		ADB56B962E056B32005108D1 /* HardwareSubsystemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardwareSubsystemTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -374,7 +378,9 @@
 		6A69CA7D29789C09005AF63F /* SystemControlTests */ = {
 			isa = PBXGroup;
 			children = (
+				ADB56B962E056B32005108D1 /* HardwareSubsystemTests.swift */,
 				6A69CA7E29789C09005AF63F /* Integration */,
+				ADB56B922E056538005108D1 /* TestDoubles */,
 			);
 			name = SystemControlTests;
 			path = Tests/SystemControlTests;
@@ -550,6 +556,22 @@
 				6AC362B128042B7C00C4768A /* SystemControlMock.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		ADB56B922E056538005108D1 /* TestDoubles */ = {
+			isa = PBXGroup;
+			children = (
+				ADB56B932E056547005108D1 /* Spies */,
+			);
+			path = TestDoubles;
+			sourceTree = "<group>";
+		};
+		ADB56B932E056547005108D1 /* Spies */ = {
+			isa = PBXGroup;
+			children = (
+				ADB56B942E05658B005108D1 /* SystemControlValuesRetrievingSpy.swift */,
+			);
+			path = Spies;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -750,7 +772,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADB56B952E056591005108D1 /* SystemControlValuesRetrievingSpy.swift in Sources */,
 				6A69CA8029789C0C005AF63F /* SubsystemValueRetrievalIntegrationTests.swift in Sources */,
+				ADB56B972E056B35005108D1 /* HardwareSubsystemTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
