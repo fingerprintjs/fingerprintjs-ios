@@ -38,7 +38,14 @@ extension HardwareSubsystem {
 
 extension HardwareSubsystem {
     var model: String? {
-        try? systemControl.getSystemValue(Definition.hardwareModel)
+        guard var model = try? systemControl.getSystemValue(Definition.hardwareModel) else {
+            return nil
+        }
+        let suffix = "\\u0000"
+        if model.hasSuffix(suffix) {
+            model.removeLast(suffix.count)
+        }
+        return model
     }
 
     var machine: String? {
