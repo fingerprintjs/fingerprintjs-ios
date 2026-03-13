@@ -79,6 +79,10 @@
 		6AC362AB280013E200C4768A /* HardwareInfoHarvesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC362AA280013E200C4768A /* HardwareInfoHarvesterTests.swift */; };
 		6AC362B228042B7C00C4768A /* SystemControlMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC362B128042B7C00C4768A /* SystemControlMock.swift */; };
 		6AC362B628042C1500C4768A /* CPUInfoProvidingMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC362B528042C1500C4768A /* CPUInfoProvidingMock.swift */; };
+		ADAD6AA62F621ACB0074BFBC /* BatteryLevelProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAD6AA52F621ABE0074BFBC /* BatteryLevelProviding.swift */; };
+		ADAD6AA82F621BC00074BFBC /* LowPowerModeProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAD6AA72F621BB30074BFBC /* LowPowerModeProviding.swift */; };
+		ADAD6AE92F6483D30074BFBC /* BatteryLevelProvidingSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAD6AE82F6483CB0074BFBC /* BatteryLevelProvidingSpy.swift */; };
+		ADAD6AEB2F6485040074BFBC /* LowPowerModeProvidingSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAD6AEA2F6484FF0074BFBC /* LowPowerModeProvidingSpy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -182,6 +186,10 @@
 		6AC362AA280013E200C4768A /* HardwareInfoHarvesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardwareInfoHarvesterTests.swift; sourceTree = "<group>"; };
 		6AC362B128042B7C00C4768A /* SystemControlMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemControlMock.swift; sourceTree = "<group>"; };
 		6AC362B528042C1500C4768A /* CPUInfoProvidingMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUInfoProvidingMock.swift; sourceTree = "<group>"; };
+		ADAD6AA52F621ABE0074BFBC /* BatteryLevelProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryLevelProviding.swift; sourceTree = "<group>"; };
+		ADAD6AA72F621BB30074BFBC /* LowPowerModeProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowPowerModeProviding.swift; sourceTree = "<group>"; };
+		ADAD6AE82F6483CB0074BFBC /* BatteryLevelProvidingSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryLevelProvidingSpy.swift; sourceTree = "<group>"; };
+		ADAD6AEA2F6484FF0074BFBC /* LowPowerModeProvidingSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowPowerModeProvidingSpy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,6 +262,8 @@
 				159E0BC0293A6C6F00E2C38A /* TimeZoneInfoProvidingSpy.swift */,
 				159E0BB5292D19B700E2C38A /* UserInterfaceTraitsProvidingSpy.swift */,
 				159E0BCE293FA8F400E2C38A /* DeviceIdentificationInfoProvidingSpy.swift */,
+				ADAD6AE82F6483CB0074BFBC /* BatteryLevelProvidingSpy.swift */,
+				ADAD6AEA2F6484FF0074BFBC /* LowPowerModeProvidingSpy.swift */,
 				159E0BDA294107AE00E2C38A /* CellularServiceInfoProvidingSpy.swift */,
 				159E0BDC294108E900E2C38A /* CarrierInfoProvidingSpy.swift */,
 				6A2E484929630DB200753ACD /* IdentifierStorableSpy.swift */,
@@ -291,8 +301,10 @@
 		159E0BC7293F797C00E2C38A /* Providers */ = {
 			isa = PBXGroup;
 			children = (
+				ADAD6AA52F621ABE0074BFBC /* BatteryLevelProviding.swift */,
 				159E0BC8293F79B000E2C38A /* CPUInfoProviding.swift */,
 				159E0BCA293F7A3F00E2C38A /* DeviceIdentificationInfoProviding.swift */,
+				ADAD6AA72F621BB30074BFBC /* LowPowerModeProviding.swift */,
 				159E0BCC293F7A7900E2C38A /* ScreenInfoProviding.swift */,
 			);
 			path = Providers;
@@ -784,6 +796,7 @@
 				15D7C64C298ACE760025CE74 /* AuthenticationContextInfo.swift in Sources */,
 				6A9B7CB627E7AC55002B9939 /* CGSize+CustomStringConvertible.swift in Sources */,
 				6A9B7CB027E36F66002B9939 /* CompoundTreeBuilder.swift in Sources */,
+				ADAD6AA62F621ACB0074BFBC /* BatteryLevelProviding.swift in Sources */,
 				6A2E484E2963355B00753ACD /* VendorIdentifierProviding.swift in Sources */,
 				15D7C654298BD6930025CE74 /* LocalAuthenticationInfoHarvester.swift in Sources */,
 				159E0BAA292CD1C600E2C38A /* AppInfoHarvester.swift in Sources */,
@@ -791,6 +804,7 @@
 				159E0BB2292D18B800E2C38A /* UserInterfaceTraitsProviding.swift in Sources */,
 				6A9B7CB827E7ADC8002B9939 /* FingerprintTree.swift in Sources */,
 				15D7C62A294A6B010025CE74 /* FingerprintStabilityLevel.swift in Sources */,
+				ADAD6AA82F621BC00074BFBC /* LowPowerModeProviding.swift in Sources */,
 				6A82A1B327DB5941007C023F /* OSInfoHarvester.swift in Sources */,
 				159E0BD32940D35B00E2C38A /* CellularNetworkInfoHarvester.swift in Sources */,
 				6A82A1A627D89817007C023F /* IdentifierStorable.swift in Sources */,
@@ -820,7 +834,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A3BB827280588FD00D2EBB9 /* OSInfoHarvesterTests.swift in Sources */,
+				ADAD6AE92F6483D30074BFBC /* BatteryLevelProvidingSpy.swift in Sources */,
 				6A3BB82928058B4900D2EBB9 /* IdentifierHarvesterTests.swift in Sources */,
+				ADAD6AEB2F6485040074BFBC /* LowPowerModeProvidingSpy.swift in Sources */,
 				15D7C65A298C0C1D0025CE74 /* AuthenticationContextInfoProvidingDummy.swift in Sources */,
 				6A53B737297716FF00DD6872 /* FingerprintJSVersionTests.swift in Sources */,
 				6AB7146427EB65B1004BBCF3 /* MockHashingFunction.swift in Sources */,

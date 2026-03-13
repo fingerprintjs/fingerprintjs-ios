@@ -28,6 +28,12 @@ protocol HardwareInfoHarvesting {
 
     /// Kernel hostname obtained through sysctl API
     var kernelHostname: String { get }
+
+    /// Battery charge level
+    var batteryLevel: Float? { get }
+
+    /// Whether Low Power Mode is enabled
+    var isLowPowerModeEnabled: Bool { get }
 }
 
 struct HardwareInfoHarvester {
@@ -35,17 +41,24 @@ struct HardwareInfoHarvester {
     private let screen: ScreenInfoProviding
     private let systemControl: SystemControlValuesProviding
     private let processInfo: CPUInfoProviding
+    private let lowPowerMode: LowPowerModeProviding
+    #if os(iOS)
+    private let battery: BatteryLevelProviding
 
     init(
         device: DeviceIdentificationInfoProviding,
         screen: ScreenInfoProviding,
         systemControl: SystemControlValuesProviding,
-        processInfo: CPUInfoProviding
+        processInfo: CPUInfoProviding,
+        battery: BatteryLevelProviding,
+        lowPowerMode: LowPowerModeProviding
     ) {
         self.device = device
         self.screen = screen
         self.systemControl = systemControl
         self.processInfo = processInfo
+        self.battery = battery
+        self.lowPowerMode = lowPowerMode
     }
 
     init() {
@@ -53,9 +66,36 @@ struct HardwareInfoHarvester {
             device: UIDevice.current,
             screen: UIScreen.main,
             systemControl: SystemControlValuesProvider(),
-            processInfo: ProcessInfo.processInfo
+            processInfo: ProcessInfo.processInfo,
+            battery: UIDevice.current,
+            lowPowerMode: ProcessInfo.processInfo
         )
     }
+    #else
+    init(
+        device: DeviceIdentificationInfoProviding,
+        screen: ScreenInfoProviding,
+        systemControl: SystemControlValuesProviding,
+        processInfo: CPUInfoProviding,
+        lowPowerMode: LowPowerModeProviding
+    ) {
+        self.device = device
+        self.screen = screen
+        self.systemControl = systemControl
+        self.processInfo = processInfo
+        self.lowPowerMode = lowPowerMode
+    }
+
+    init() {
+        self.init(
+            device: UIDevice.current,
+            screen: UIScreen.main,
+            systemControl: SystemControlValuesProvider(),
+            processInfo: ProcessInfo.processInfo,
+            lowPowerMode: ProcessInfo.processInfo
+        )
+    }
+    #endif
 }
 
 extension HardwareInfoHarvester: HardwareInfoHarvesting {
@@ -107,5 +147,22 @@ extension HardwareInfoHarvester: HardwareInfoHarvesting {
 
     var kernelHostname: String {
         systemControl.hostname ?? "Undefined"
+    }
+
+    var batteryLevel: Float? {
+        let batteryLevel: Float
+        #if os(iOS)
+        let isBatteryMonitoringEnabled = battery.isBatteryMonitoringEnabled
+        battery.isBatteryMonitoringEnabled = true
+        batteryLevel = battery.batteryLevel
+        battery.isBatteryMonitoringEnabled = isBatteryMonitoringEnabled
+        #else
+        batteryLevel = -1
+        #endif
+        return batteryLevel >= 0 ? batteryLevel : nil
+    }
+
+    var isLowPowerModeEnabled: Bool {
+        lowPowerMode.isLowPowerModeEnabled
     }
 }

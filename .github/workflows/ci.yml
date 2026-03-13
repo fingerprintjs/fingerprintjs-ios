@@ -47,12 +47,6 @@ jobs:
     strategy:
       matrix:
         include:
-          - macos: 13
-            xcode: '14.1'    # Swift 5.7
-            ios-simulator: 'iPhone 14 Pro'
-          - macos: 13
-            xcode: '14.3.1'  # Swift 5.8
-            ios-simulator: 'iPhone 14 Pro'
           - macos: 14
             xcode: '15.0'    # Swift 5.9
             ios-simulator: 'iPhone 15 Pro'
