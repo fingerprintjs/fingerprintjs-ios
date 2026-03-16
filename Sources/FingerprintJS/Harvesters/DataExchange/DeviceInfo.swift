@@ -42,6 +42,8 @@ public struct DeviceInfo: Equatable, Encodable {
     public let memorySize: String?
     public let physicalMemory: String?
     public let cpuCount: String?
+    public let batteryLevel: Float?
+    public let isLowPowerModeEnabled: Bool
 
     /// Hostname of the device.
     public let kernelHostname: String
@@ -123,6 +125,8 @@ extension DeviceInfo {
         memorySize: String?,
         physicalMemory: String?,
         cpuCount: String?,
+        batteryLevel: Float?,
+        isLowPowerModeEnabled: Bool,
         kernelHostname: String,
         osTimeZoneIdentifier: String,
         osBuild: String?,
@@ -147,6 +151,8 @@ extension DeviceInfo {
         self.memorySize = memorySize
         self.physicalMemory = physicalMemory
         self.cpuCount = cpuCount
+        self.batteryLevel = batteryLevel
+        self.isLowPowerModeEnabled = isLowPowerModeEnabled
         self.kernelHostname = kernelHostname
         self.osTimeZoneIdentifier = osTimeZoneIdentifier
         self.osBuild = osBuild

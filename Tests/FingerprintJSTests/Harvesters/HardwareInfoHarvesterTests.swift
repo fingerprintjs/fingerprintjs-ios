@@ -9,6 +9,8 @@ final class HardwareInfoHarvesterTests: XCTestCase {
     private var deviceIdentificationInfoProviderSpy: DeviceIdentificationInfoProvidingSpy!
     private var mockSystemControl: SystemControlMock!
     private var mockCpuInfoProvider: CPUInfoProvidingMock!
+    private var batteryLevelProviderSpy: BatteryLevelProvidingSpy!
+    private var lowPowerModeProviderSpy: LowPowerModeProvidingSpy!
 
     override func setUp() {
         super.setUp()
@@ -16,12 +18,27 @@ final class HardwareInfoHarvesterTests: XCTestCase {
         deviceIdentificationInfoProviderSpy = .init()
         mockSystemControl = .init()
         mockCpuInfoProvider = .init()
+        batteryLevelProviderSpy = .init()
+        lowPowerModeProviderSpy = .init()
+
+        #if os(iOS)
         sut = HardwareInfoHarvester(
             device: deviceIdentificationInfoProviderSpy,
             screen: screenInfoProviderSpy,
             systemControl: mockSystemControl,
-            processInfo: mockCpuInfoProvider
+            processInfo: mockCpuInfoProvider,
+            battery: batteryLevelProviderSpy,
+            lowPowerMode: lowPowerModeProviderSpy
         )
+        #else
+        sut = HardwareInfoHarvester(
+            device: deviceIdentificationInfoProviderSpy,
+            screen: screenInfoProviderSpy,
+            systemControl: mockSystemControl,
+            processInfo: mockCpuInfoProvider,
+            lowPowerMode: lowPowerModeProviderSpy
+        )
+        #endif
     }
 
     override func tearDown() {
@@ -88,6 +105,33 @@ final class HardwareInfoHarvesterTests: XCTestCase {
         XCTAssertEqual(superRetinaScale, displayScale)
         XCTAssertEqual(0, screenInfoProviderSpy.nativeBoundsCallCount)
         XCTAssertEqual(1, screenInfoProviderSpy.nativeScaleCallCount)
+    }
+
+    #if os(iOS)
+    func test_givenBatteryLevel_whenBatteryLevel_thenReturnsExpectedBatteryLevel() {
+        // given
+        batteryLevelProviderSpy.batteryLevelReturnValue = 0.5
+
+        // when
+        let batteryLevel = sut.batteryLevel
+
+        // then
+        XCTAssertEqual(0.5, batteryLevel)
+        XCTAssertEqual(3, batteryLevelProviderSpy.isBatteryMonitoringEnabledCallCount)
+        XCTAssertEqual(1, batteryLevelProviderSpy.batteryLevelCallCount)
+    }
+    #endif
+
+    func test_givenIsLowPowerModeEnabled_whenIsLowPowerModeEnabled_thenReturnsExpectedBatteryLevel() {
+        // given
+        lowPowerModeProviderSpy.isLowPowerModeEnabledReturnValue = true
+
+        // when
+        let isLowPowerModeEnabled = sut.isLowPowerModeEnabled
+
+        // then
+        XCTAssertTrue(isLowPowerModeEnabled)
+        XCTAssertEqual(1, lowPowerModeProviderSpy.isLowPowerModeEnabledCallCount)
     }
 
     func test_givenConfigurationWithVersionOneAndUniqueStabilityLevel_whenBuildTree_thenReturnsExpectedItems() {
